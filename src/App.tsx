@@ -96,7 +96,7 @@ export default function App() {
               >
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/tXwnKp9Jb0M?autoplay=0&rel=0"
+                  src="https://www.youtube.com/embed/AR0CrvxlnQ4?autoplay=1&loop=1&playlist=AR0CrvxlnQ4&mute=0&rel=0"
                   title="Treinamento OpenClaw"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
