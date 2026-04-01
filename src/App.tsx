@@ -105,13 +105,15 @@ export default function App() {
               </motion.div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
-                  onClick={scrollToForm}
+                <a 
+                  href="https://pay.kiwify.com.br/x6qCx7u"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-white text-black hover:bg-gray-200 font-bold flex items-center justify-center gap-2 transition-all text-sm"
                 >
                   CONTRATE JÁ
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
                 <button 
                   onClick={scrollToForm}
                   className="px-8 py-4 rounded-full bg-transparent border border-white hover:bg-white/10 text-white font-bold flex items-center justify-center gap-2 transition-all text-sm"
@@ -144,7 +146,7 @@ export default function App() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold mb-8 text-white"
           >
-            Virtual Place Mídias
+            CRM Partner
           </motion.h3>
 
           {/* Video moved from Hero */}
@@ -163,6 +165,22 @@ export default function App() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex justify-center mb-12"
+          >
+            <button 
+              onClick={scrollToForm}
+              className="px-8 py-4 rounded-full bg-white text-black hover:bg-gray-200 font-bold flex items-center justify-center gap-2 transition-all text-sm"
+            >
+              <PlayCircle className="w-4 h-4" />
+              AGENDAR DEMO
+            </button>
           </motion.div>
 
           <motion.p 
