@@ -459,9 +459,17 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="pt-2 pb-8 border-t border-white/10 text-center text-gray-500 text-sm bg-black">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-0">
-          <img src="/logo.png" alt="Virtual Place Logo" className="h-80 w-auto object-contain" />
+      <footer className="py-12 border-t border-white/10 text-center text-gray-500 text-sm bg-black">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+          <img 
+            src="/logo.png" 
+            alt="Agência Virtual Place Logo" 
+            className="h-32 md:h-40 w-auto object-contain brightness-110" 
+            onError={(e) => {
+              console.error("Erro ao carregar a logo no rodapé");
+              e.currentTarget.style.display = 'none';
+            }}
+          />
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
         </div>
       </footer>
