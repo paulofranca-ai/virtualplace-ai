@@ -78,14 +78,9 @@ export default function App() {
                 <Target className="w-4 h-4" />
                 NOVO SERVIÇO EM FOCO
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
-                TREINAMENTO EM OPENCLAW: <br />
-                O MELHOR AGENTE DE IA DA ATUALIDADE
+              <h1 className="text-2xl md:text-5xl font-bold mb-6 text-white leading-tight">
+                O MELHOR AGENTE DE IA COMO MAESTRO DA SUA NOVA EMPRESA DE AGENTES DE INTELIGÊNCIA ARTIFICIAL
               </h1>
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Vendemos a configuração, treinamento e suporte para a plataforma opensource que não apenas conversa, mas age com foco em solução e resultado. Com nossa consultoria você terá velocidade na implementação, maior segurança e melhor economia de tokens, a unidade de medida de consumo de I.A.
-              </p>
-
               {/* Video Embed */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -104,7 +99,7 @@ export default function App() {
                 ></iframe>
               </motion.div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a 
                   href="https://pay.kiwify.com.br/x6qCx7u"
                   target="_blank"
@@ -122,6 +117,10 @@ export default function App() {
                   AGENDAR DEMO
                 </button>
               </div>
+
+              <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
+                Vendemos a configuração, treinamento e suporte para a plataforma opensource que não apenas conversa, mas age com foco em solução e resultado. Com nossa consultoria você terá velocidade na implementação, maior segurança e melhor economia de tokens, a unidade de medida de consumo de I.A.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -224,7 +223,7 @@ export default function App() {
             viewport={{ once: true }}
             className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
           >
-            <img src="/fb-ads-results.png" alt="Resultados Facebook Ads" className="w-full h-auto" />
+            <img src="/fb-ads-results.png" alt="Resultados Facebook Ads" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" />
           </motion.div>
         </div>
       </section>
@@ -331,7 +330,10 @@ export default function App() {
               "DVpDWXVjrZe",
               "DMnknqXOALm",
               "DWhHB-NDaxm",
-              "DOhvA4eDVyY"
+              "DOhvA4eDVyY",
+              "DOqDTJZjg9f",
+              "DVi-PRDDUH4",
+              "DCkJPY7y1w6"
             ].map((shortcode, idx) => (
               <div key={`ig-${idx}`} className="rounded-2xl overflow-hidden border border-white/10 aspect-[9/16] relative bg-gray-900">
                 <iframe
