@@ -79,7 +79,7 @@ export default function App() {
                 NOVO SERVIÇO EM FOCO
               </div>
               <h1 className="text-2xl md:text-5xl font-bold mb-6 text-white leading-tight">
-                O MELHOR AGENTE DE IA COMO MAESTRO DA SUA NOVA EMPRESA DE AGENTES DE INTELIGÊNCIA ARTIFICIAL
+                Consultoria em Inteligência Artificial e Assessoria de Marketing e Vendas
               </h1>
               {/* Video Embed */}
               <motion.div
@@ -148,23 +148,6 @@ export default function App() {
             CRM Partner
           </motion.h3>
 
-          {/* Video moved from Hero */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/20 aspect-video relative bg-gray-900 mb-12"
-          >
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/Arv9cMfd-Kg?autoplay=0&rel=0"
-              title="Sistema de Vendas IA"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
