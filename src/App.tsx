@@ -170,7 +170,7 @@ export default function App() {
             whileInView={{ opacity: 1 }}
             className="text-gray-400 text-lg max-w-3xl mx-auto mb-10 leading-relaxed"
           >
-            Se você é uma empresa, instituição ou figura pública, nosso Ecossistema Comercial e Institucional vai resolver seus gargalos de forma eficiente e com custos otimizados, visando retorno e influência do público com base em comportamento humano e inteligência de dados.
+            Se você vende produtos/carros/imóveis/serviços/consultoria/mentoria/cursos/apps, nosso Ecossistema Comercial vai resolver seus gargalos de forma eficiente e com custos otimizados, visando retorno e influência do público com base em comportamento humano e inteligência de dados.
           </motion.p>
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 text-sm font-medium text-white mb-16">
