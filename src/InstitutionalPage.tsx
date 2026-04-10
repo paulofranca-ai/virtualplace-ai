@@ -150,22 +150,24 @@ export default function InstitutionalPage() {
                 <div className="space-y-8">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">População que prefere vídeos para entender ações públicas</span>
+                      <span className="text-[#94A3B8]">População que prefere vídeos para entender ações públicas*</span>
                       <span className="text-[#00F0FF] font-bold">87%</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '87%' }}></div>
                     </div>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Fonte: Wyzowl Video Marketing Statistics</p>
                   </div>
                   
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">Aumento na percepção de transparência com IA</span>
+                      <span className="text-[#94A3B8]">Aumento na percepção de transparência com IA**</span>
                       <span className="text-orange-400 font-bold">+65%</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '65%' }}></div>
                     </div>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Estimativa baseada em cases de Governo Digital (OECD)</p>
                   </div>
                 </div>
               </div>
