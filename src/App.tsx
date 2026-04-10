@@ -22,7 +22,7 @@ export default function App() {
     try {
       const fullPhone = `${formData.countryCode} ${formData.phone}`;
       
-      const { error } = await supabase
+      const { error: supabaseError } = await supabase
         .from('leads')
         .insert([
           { 
@@ -35,7 +35,10 @@ export default function App() {
           }
         ]);
 
-      if (error) throw error;
+      if (supabaseError) {
+        console.error("Erro detalhado do Supabase:", supabaseError);
+        throw supabaseError;
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
