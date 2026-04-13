@@ -239,6 +239,117 @@ export default function InstitutionalPage() {
         </div>
       </section>
 
+      {/* 5. Prova Social & Portfólio */}
+      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#F8FAFC]">Resultados & Portfólio</h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto">Confira o impacto real da nossa metodologia na visão de quem já está escalando.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20">
+            {[
+              { icon: TrendingUp, val: '738%', label: 'ROAS no Lançamento 6 em 7' },
+              { icon: Rocket, val: '34', label: 'Lançamentos de Infoprodutos' },
+              { icon: Car, val: '+400', label: 'Veículos vendidos com nossa assessoria' }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex flex-col items-center justify-center p-8 rounded-2xl bg-[#050810] border border-[#2563EB]/20"
+              >
+                <item.icon className="w-10 h-10 text-[#00F0FF] mb-4 opacity-80" />
+                <div className="text-5xl font-bold text-[#F8FAFC] mb-3 tracking-tight">{item.val}</div>
+                <div className="text-[#94A3B8] text-sm font-medium text-center">{item.label}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-12 mb-20 max-w-5xl mx-auto">
+            {/* Facebook Ads Print */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
+            >
+              <img src="/fb-ads-results.png" alt="Resultados Facebook Ads" className="w-full h-auto object-contain" referrerPolicy="no-referrer" loading="lazy" />
+            </motion.div>
+
+            {/* Testimonial Video */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] aspect-video relative bg-black"
+            >
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/t93fNnIL0v0?autoplay=0&rel=0"
+                title="Depoimento Cliente"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* YouTube Videos */}
+            {[
+              "nnI4p7e8-yc",
+              "0PlxH5p4kQM",
+              "boIHn_4Oplc",
+              "Sq1pGH0imOY",
+              "g-o083FkYEI",
+              "08VMdyod86Q"
+            ].map((videoId, idx) => (
+              <div key={`yt-${idx}`} className="rounded-2xl overflow-hidden border border-[#2563EB]/20 aspect-video relative bg-black">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title="YouTube video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ))}
+            
+            {/* Instagram Videos */}
+            {[
+              "DWW0dniDk64",
+              "DO7iQHDjTmW",
+              "DOHlp1DDKGq",
+              "DVwurwWiQFp",
+              "DM-35c4xHE3",
+              "DWGp37Cjo1S",
+              "DVpDWXVjrZe",
+              "DMnknqXOALm",
+              "DWhHB-NDaxm",
+              "DOhvA4eDVyY",
+              "DOqDTJZjg9f",
+              "DVi-PRDDUH4",
+              "DCkJPY7y1w6"
+            ].map((shortcode, idx) => (
+              <div key={`ig-${idx}`} className="rounded-2xl overflow-hidden border border-[#2563EB]/20 aspect-[9/16] relative bg-black">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.instagram.com/p/${shortcode}/embed`}
+                  title="Instagram video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
