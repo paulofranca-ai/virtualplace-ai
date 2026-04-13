@@ -252,7 +252,7 @@ export default function SalesPage() {
                 className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
               >
                 <img 
-                  src="https://drive.google.com/uc?id=1PDnXSe6vy1T137tp7KiVA7mjZwf9dEWn" 
+                  src="/resultados1.jpg" 
                   alt="Resultados Facebook Ads 1" 
                   className="w-full h-auto object-contain" 
                   referrerPolicy="no-referrer" 
@@ -266,13 +266,35 @@ export default function SalesPage() {
                 className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
               >
                 <img 
-                  src="https://drive.google.com/uc?id=1OsVczbyRcRbRxOhoHi3N3MIFh4ZArHID" 
+                  src="/resultados2.jpg" 
                   alt="Resultados Facebook Ads 2" 
                   className="w-full h-auto object-contain" 
                   referrerPolicy="no-referrer" 
                   loading="lazy" 
                 />
               </motion.div>
+            </div>
+
+            {/* Instagram Links */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <a 
+                href="https://www.instagram.com/gramatica_na_veia" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
+              >
+                <Instagram className="w-4 h-4" />
+                @gramatica_na_veia
+              </a>
+              <a 
+                href="https://www.instagram.com/portuguesplay" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
+              >
+                <Instagram className="w-4 h-4" />
+                @portuguesplay
+              </a>
             </div>
 
             {/* Testimonial Video */}
@@ -483,7 +505,15 @@ export default function SalesPage() {
 
       {/* Footer */}
       <footer className="py-12 border-t border-[#2563EB]/20 text-center text-[#94A3B8] text-sm bg-[#0A0F1C]">
-        <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
+          <a 
+            href="/institucional"
+            className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
+          >
+            Institucional
+          </a>
+          <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
+        </div>
       </footer>
     </div>
   );
