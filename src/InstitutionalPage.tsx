@@ -269,15 +269,37 @@ export default function InstitutionalPage() {
           </div>
 
           <div className="flex flex-col gap-12 mb-20 max-w-5xl mx-auto">
-            {/* Facebook Ads Print */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
-            >
-              <img src="/fb-ads-results.png" alt="Resultados Facebook Ads" className="w-full h-auto object-contain" referrerPolicy="no-referrer" loading="lazy" />
-            </motion.div>
+            {/* Facebook Ads Results Images */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
+              >
+                <img 
+                  src="https://drive.google.com/uc?id=1PDnXSe6vy1T137tp7KiVA7mjZwf9dEWn" 
+                  alt="Resultados Facebook Ads 1" 
+                  className="w-full h-auto object-contain" 
+                  referrerPolicy="no-referrer" 
+                  loading="lazy" 
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
+              >
+                <img 
+                  src="https://drive.google.com/uc?id=1OsVczbyRcRbRxOhoHi3N3MIFh4ZArHID" 
+                  alt="Resultados Facebook Ads 2" 
+                  className="w-full h-auto object-contain" 
+                  referrerPolicy="no-referrer" 
+                  loading="lazy" 
+                />
+              </motion.div>
+            </div>
 
             {/* Testimonial Video */}
             <motion.div 
@@ -300,6 +322,7 @@ export default function InstitutionalPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* YouTube Videos */}
             {[
+              "iAqXK7PMaWo",
               "nnI4p7e8-yc",
               "0PlxH5p4kQM",
               "boIHn_4Oplc",
