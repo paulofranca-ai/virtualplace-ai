@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus } from 'lucide-react';
+import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
 const COUNTRIES = [
@@ -13,6 +13,8 @@ export default function SalesPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -243,38 +245,6 @@ export default function SalesPage() {
           </div>
 
           <div className="flex flex-col gap-12 mb-20 max-w-5xl mx-auto">
-            {/* Facebook Ads Results Images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
-              >
-                <img 
-                  src="/resultados1.jpg" 
-                  alt="Resultados Facebook Ads 1" 
-                  className="w-full h-auto object-contain" 
-                  referrerPolicy="no-referrer" 
-                  loading="lazy" 
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810]"
-              >
-                <img 
-                  src="/resultados2.jpg" 
-                  alt="Resultados Facebook Ads 2" 
-                  className="w-full h-auto object-contain" 
-                  referrerPolicy="no-referrer" 
-                  loading="lazy" 
-                />
-              </motion.div>
-            </div>
-
             {/* Instagram Links */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <a 
@@ -313,6 +283,28 @@ export default function SalesPage() {
                 allowFullScreen
               ></iframe>
             </motion.div>
+
+            {/* New Results Images */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
+                <motion.div
+                  key={`res-${num}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
+                  onClick={() => setSelectedImage(`/resultados${num}.png`)}
+                >
+                  <img 
+                    src={`/resultados${num}.png`}
+                    alt={`Resultado ${num}`} 
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
+                    referrerPolicy="no-referrer" 
+                    loading="lazy" 
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -515,6 +507,36 @@ export default function SalesPage() {
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
         </div>
       </footer>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-start justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
+          onClick={() => {
+            setSelectedImage(null);
+            setIsZoomed(false);
+          }}
+        >
+          <img 
+            src={selectedImage} 
+            alt="Zoomed Result" 
+            className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto object-contain mt-10 mb-10 rounded-xl shadow-2xl`}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsZoomed(!isZoomed);
+            }}
+          />
+          <button 
+            className="fixed top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/80 transition-colors z-[60]"
+            onClick={() => {
+              setSelectedImage(null);
+              setIsZoomed(false);
+            }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
