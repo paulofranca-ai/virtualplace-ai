@@ -163,16 +163,18 @@ export default function SalesPage() {
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '82%' }}></div>
                     </div>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Fonte: <a href="https://blog.hubspot.com/sales/live-chat-go-to-market-flaw" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00F0FF]">HubSpot Research</a></p>
                   </div>
                   
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">Economia de tempo com Automação de IA</span>
+                      <span className="text-[#94A3B8]">Economia de tempo com Automação de IA**</span>
                       <span className="text-orange-400 font-bold">~12.5h/semana</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '60%' }}></div>
                     </div>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://zapier.com/blog/state-of-business-automation/" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">Zapier State of Business Automation</a></p>
                   </div>
                 </div>
               </div>
@@ -191,10 +193,10 @@ export default function SalesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: BarChart3, title: 'Tráfego Pago & ROI', desc: 'Gestão agressiva de anúncios focada em retorno sobre o investimento e escala de faturamento.' },
-              { icon: MousePointerClick, title: 'Design de Conversão', desc: 'Landing pages e criativos projetados para transformar visitantes em compradores imediatos.' },
-              { icon: Brain, title: 'IA para Vendas', desc: 'Implementação de agentes inteligentes para qualificação de leads e atendimento automático 24/7.' },
-              { icon: Zap, title: 'Funis de Escala', desc: 'Estratégias completas de funil para maximizar o valor de cada cliente (LTV) e reduzir o CAC.' }
+              { icon: Zap, title: 'Funis de Escala', desc: 'Estratégias completas de funil para maximizar o valor de cada cliente (LTV) e reduzir o CAC.' },
+              { icon: Brain, title: 'IA para Vendas e Conteúdo', desc: 'Implementação de agentes inteligentes para qualificação de leads, atendimento automático 24/7, e agentes que criam e postam artes e carrosséis de imagens com legenda e design incrível.' },
+              { icon: MousePointerClick, title: 'Design de Conversão', desc: 'Landing pages e criativos projetados para transformar visitantes em compradores imediatos. Contamos com humanos e agentes artificiais nas entregas para máxima eficiência.' },
+              { icon: BarChart3, title: 'Tráfego Pago & ROAS', desc: 'Gestão agressiva de anúncios focada em retorno sobre o investimento e escala de faturamento.' }
             ].map((service, idx) => (
               <motion.div 
                 key={idx}
@@ -245,26 +247,45 @@ export default function SalesPage() {
           </div>
 
           <div className="flex flex-col gap-12 mb-20 max-w-5xl mx-auto">
-            {/* Instagram Links */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <a 
-                href="https://www.instagram.com/gramatica_na_veia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
-              >
-                <Instagram className="w-4 h-4" />
-                @gramatica_na_veia
-              </a>
-              <a 
-                href="https://www.instagram.com/portuguesplay" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
-              >
-                <Instagram className="w-4 h-4" />
-                @portuguesplay
-              </a>
+            {/* Marcas */}
+            <div className="mb-12">
+              <h3 className="text-center text-xl font-bold text-[#F8FAFC] mb-8">Empresas que confiaram no nosso trabalho:</h3>
+              
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                {[
+                  { handle: '@gramatica_na_veia', url: 'https://www.instagram.com/gramatica_na_veia' },
+                  { handle: '@portuguesplay', url: 'https://www.instagram.com/portuguesplay' },
+                  { handle: '@andreluis.vsw', url: 'https://www.instagram.com/andreluis.vsw' },
+                  { handle: '@luizoliveiraoficiall', url: 'https://www.instagram.com/luizoliveiraoficiall' },
+                  { handle: '@z4.veiculos_', url: 'https://www.instagram.com/z4.veiculos_' },
+                  { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis' }
+                ].map((ig, idx) => (
+                  <a 
+                    key={idx}
+                    href={ig.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    {ig.handle}
+                  </a>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+                {[
+                  "Português Play", "Venda De Software", "Vendedor Imbatível", "Escolinha Lucrativa", 
+                  "Curso Mike Bravo", "Avenida Pneus", "Fio Automóveis", "Amurc", 
+                  "Associação dos Tropeiros", "NZ Motos", "THCElétrica", "Niles Mat Construção", 
+                  "Lucas Sebbem Advogado", "CM Reparos Automotivos", "Souz Place", "Plantão do Gole", 
+                  "Fava Cruz Produções", "Hotel Pinotti", "Lia Tattoer", "Vintage Barber Shop"
+                ].map((brand, idx) => (
+                  <span key={idx} className="px-3 py-1.5 rounded-md bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#94A3B8] text-xs font-medium">
+                    {brand}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Testimonial Video */}

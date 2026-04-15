@@ -158,7 +158,7 @@ export default function InstitutionalPage() {
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '87%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Fonte: Wyzowl Video Marketing Statistics</p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Fonte: <a href="https://www.wyzowl.com/video-marketing-statistics/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00F0FF]">Wyzowl Video Marketing Statistics</a></p>
                   </div>
                   
                   <div>
@@ -169,7 +169,7 @@ export default function InstitutionalPage() {
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '65%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Estimativa baseada em cases de Governo Digital (OECD)</p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://www.oecd.org/gov/digital-government/" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">OECD Digital Government</a></p>
                   </div>
                 </div>
               </div>
@@ -271,26 +271,45 @@ export default function InstitutionalPage() {
           </div>
 
           <div className="flex flex-col gap-12 mb-20 max-w-5xl mx-auto">
-            {/* Instagram Links */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <a 
-                href="https://www.instagram.com/gramatica_na_veia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
-              >
-                <Instagram className="w-4 h-4" />
-                @gramatica_na_veia
-              </a>
-              <a 
-                href="https://www.instagram.com/portuguesplay" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
-              >
-                <Instagram className="w-4 h-4" />
-                @portuguesplay
-              </a>
+            {/* Marcas */}
+            <div className="mb-12">
+              <h3 className="text-center text-xl font-bold text-[#F8FAFC] mb-8">Empresas que confiaram no nosso trabalho:</h3>
+              
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                {[
+                  { handle: '@gramatica_na_veia', url: 'https://www.instagram.com/gramatica_na_veia' },
+                  { handle: '@portuguesplay', url: 'https://www.instagram.com/portuguesplay' },
+                  { handle: '@andreluis.vsw', url: 'https://www.instagram.com/andreluis.vsw' },
+                  { handle: '@luizoliveiraoficiall', url: 'https://www.instagram.com/luizoliveiraoficiall' },
+                  { handle: '@z4.veiculos_', url: 'https://www.instagram.com/z4.veiculos_' },
+                  { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis' }
+                ].map((ig, idx) => (
+                  <a 
+                    key={idx}
+                    href={ig.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full border border-[#00F0FF]/50 text-[#00F0FF] text-sm font-bold hover:bg-[#00F0FF]/10 transition-all flex items-center gap-2"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    {ig.handle}
+                  </a>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+                {[
+                  "Português Play", "Venda De Software", "Vendedor Imbatível", "Escolinha Lucrativa", 
+                  "Curso Mike Bravo", "Avenida Pneus", "Fio Automóveis", "Amurc", 
+                  "Associação dos Tropeiros", "NZ Motos", "THCElétrica", "Niles Mat Construção", 
+                  "Lucas Sebbem Advogado", "CM Reparos Automotivos", "Souz Place", "Plantão do Gole", 
+                  "Fava Cruz Produções", "Hotel Pinotti", "Lia Tattoer", "Vintage Barber Shop"
+                ].map((brand, idx) => (
+                  <span key={idx} className="px-3 py-1.5 rounded-md bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#94A3B8] text-xs font-medium">
+                    {brand}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Testimonial Video */}
