@@ -332,58 +332,6 @@ export default function InstitutionalPage() {
               ))}
             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* YouTube Videos */}
-            {[
-              "iAqXK7PMaWo",
-              "nnI4p7e8-yc",
-              "0PlxH5p4kQM",
-              "boIHn_4Oplc",
-              "Sq1pGH0imOY",
-              "g-o083FkYEI",
-              "08VMdyod86Q"
-            ].map((videoId, idx) => (
-              <div key={`yt-${idx}`} className="rounded-2xl overflow-hidden border border-[#2563EB]/20 aspect-video relative bg-black">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${videoId}`}
-                  title="YouTube video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ))}
-            
-            {/* Instagram Videos */}
-            {[
-              "DWW0dniDk64",
-              "DO7iQHDjTmW",
-              "DOHlp1DDKGq",
-              "DVwurwWiQFp",
-              "DM-35c4xHE3",
-              "DWGp37Cjo1S",
-              "DVpDWXVjrZe",
-              "DMnknqXOALm",
-              "DWhHB-NDaxm",
-              "DOhvA4eDVyY",
-              "DOqDTJZjg9f",
-              "DVi-PRDDUH4",
-              "DCkJPY7y1w6"
-            ].map((shortcode, idx) => (
-              <div key={`ig-${idx}`} className="rounded-2xl overflow-hidden border border-[#2563EB]/20 aspect-[9/16] relative bg-black">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.instagram.com/p/${shortcode}/embed`}
-                  title="Instagram video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
