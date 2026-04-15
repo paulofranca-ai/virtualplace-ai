@@ -314,10 +314,10 @@ export default function SalesPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
-                  onClick={() => setSelectedImage(`/resultados${num}.png`)}
+                  onClick={() => setSelectedImage(`/${num}.png`)}
                 >
                   <img 
-                    src={`/resultados${num}.png`}
+                    src={`/${num}.png`}
                     alt={`Resultado ${num}`} 
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
                     referrerPolicy="no-referrer" 
