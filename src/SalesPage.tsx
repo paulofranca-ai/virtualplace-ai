@@ -223,11 +223,16 @@ export default function SalesPage() {
             <p className="text-[#94A3B8] max-w-2xl mx-auto">Confira o impacto real da nossa metodologia na visão de quem já está escalando.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
               { icon: TrendingUp, val: '738%', label: 'ROAS no Lançamento 6 em 7' },
               { icon: Rocket, val: '34', label: 'Lançamentos de Infoprodutos' },
-              { icon: Car, val: '+400', label: 'Veículos vendidos com nossa assessoria' }
+              { icon: Car, val: '+400', label: 'Veículos vendidos com nossa assessoria' },
+              { icon: Award, val: '123', label: 'Eventos registrados' },
+              { icon: PlayCircle, val: '71', label: 'Vídeos institucionais municipais e de associações produzidos' },
+              { icon: Car, val: '+200', label: 'Vídeos de carros gravados e editados' },
+              { icon: Building, val: '3', label: 'Associações Atendidas' },
+              { icon: Target, val: '5', label: 'Municípios Impactados' }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}

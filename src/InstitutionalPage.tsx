@@ -253,8 +253,9 @@ export default function InstitutionalPage() {
             {[
               { icon: Building, val: '3', label: 'Associações Atendidas' },
               { icon: Target, val: '5', label: 'Municípios Impactados (região AMURC no contestado SC)' },
-              { icon: PlayCircle, val: '+50', label: 'Vídeos Institucionais Produzidos' },
-              { icon: Award, val: '+20', label: 'Eventos cobertos' }
+              { icon: PlayCircle, val: '71', label: 'Vídeos institucionais municipais e de associações produzidos' },
+              { icon: Award, val: '123', label: 'Eventos registrados' },
+              { icon: Car, val: '+200', label: 'Vídeos de carros gravados e editados' }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
