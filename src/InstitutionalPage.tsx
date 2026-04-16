@@ -102,7 +102,7 @@ export default function InstitutionalPage() {
                   className="px-8 py-4 rounded-full bg-transparent border border-[#00F0FF]/50 hover:bg-[#00F0FF]/10 text-[#00F0FF] font-bold flex items-center justify-center gap-2 transition-all text-sm"
                 >
                   <PlayCircle className="w-4 h-4" />
-                  VER PORTFÓLIO
+                  AGENDAR AVALIAÇÃO
                 </button>
               </div>
             </motion.div>
@@ -169,7 +169,7 @@ export default function InstitutionalPage() {
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '65%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://www.oecd.org/gov/digital-government/" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">OECD Digital Government</a></p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://www.ibm.com/topics/artificial-intelligence" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">IBM AI Research</a></p>
                   </div>
                 </div>
               </div>
@@ -249,11 +249,12 @@ export default function InstitutionalPage() {
             <p className="text-[#94A3B8] max-w-2xl mx-auto">Confira o impacto real da nossa metodologia na visão de quem já está escalando.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
-              { icon: TrendingUp, val: '738%', label: 'ROAS no Lançamento 6 em 7' },
-              { icon: Rocket, val: '34', label: 'Lançamentos de Infoprodutos' },
-              { icon: Car, val: '+400', label: 'Veículos vendidos com nossa assessoria' }
+              { icon: Building, val: '3', label: 'Associações Atendidas' },
+              { icon: Target, val: '5', label: 'Municípios Impactados (região AMURC no contestado SC)' },
+              { icon: PlayCircle, val: '+50', label: 'Vídeos Institucionais Produzidos' },
+              { icon: Award, val: '+20', label: 'Eventos cobertos' }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -295,6 +296,10 @@ export default function InstitutionalPage() {
                     {ig.handle}
                   </a>
                 ))}
+                
+                <div className="px-4 py-2 rounded-full border border-orange-500/50 text-orange-400 text-sm font-bold bg-orange-500/10 flex items-center gap-2">
+                  + 46 projetos executados
+                </div>
               </div>
 
               <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">

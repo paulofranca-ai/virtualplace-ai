@@ -93,21 +93,19 @@ export default function SalesPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="https://pay.kiwify.com.br/x6qCx7u"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={scrollToForm}
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-2 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
-                  QUERO ESCALAR AGORA
+                  SOLICITAR CONSULTORIA
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
                 <button 
                   onClick={scrollToForm}
                   className="px-8 py-4 rounded-full bg-transparent border border-[#00F0FF]/50 hover:bg-[#00F0FF]/10 text-[#00F0FF] font-bold flex items-center justify-center gap-2 transition-all text-sm"
                 >
                   <PlayCircle className="w-4 h-4" />
-                  AGENDAR ANÁLISE
+                  AGENDAR AVALIAÇÃO
                 </button>
               </div>
             </motion.div>
@@ -174,7 +172,7 @@ export default function SalesPage() {
                     <div className="w-full bg-gray-800 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '60%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://zapier.com/blog/state-of-business-automation/" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">Zapier State of Business Automation</a></p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://www.ibm.com/topics/automation" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">IBM Automation Research</a></p>
                   </div>
                 </div>
               </div>
@@ -271,6 +269,10 @@ export default function SalesPage() {
                     {ig.handle}
                   </a>
                 ))}
+                
+                <div className="px-4 py-2 rounded-full border border-orange-500/50 text-orange-400 text-sm font-bold bg-orange-500/10 flex items-center gap-2">
+                  + 46 projetos executados
+                </div>
               </div>
 
               <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
