@@ -256,7 +256,9 @@ export default function SalesPage() {
                   { handle: '@andreluis.vsw', url: 'https://www.instagram.com/andreluis.vsw' },
                   { handle: '@luizoliveiraoficiall', url: 'https://www.instagram.com/luizoliveiraoficiall' },
                   { handle: '@z4.veiculos_', url: 'https://www.instagram.com/z4.veiculos_' },
-                  { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis' }
+                  { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis' },
+                  { handle: '@regiao_amurc', url: 'https://www.instagram.com/regiao_amurc' },
+                  { handle: '@culturaturismoamurc', url: 'https://www.instagram.com/culturaturismoamurc' }
                 ].map((ig, idx) => (
                   <a 
                     key={idx}
@@ -271,14 +273,14 @@ export default function SalesPage() {
                 ))}
                 
                 <div className="px-4 py-2 rounded-full border border-orange-500/50 text-orange-400 text-sm font-bold bg-orange-500/10 flex items-center gap-2">
-                  + 46 projetos executados
+                  + 61 projetos executados
                 </div>
               </div>
 
               <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
                 {[
-                  "Português Play", "Venda De Software", "Vendedor Imbatível", "Escolinha Lucrativa", 
-                  "Curso Mike Bravo", "Avenida Pneus", "Fio Automóveis", "Amurc", 
+                  "Vendedor Imbatível", "Escolinha Lucrativa", 
+                  "Curso Mike Bravo", "Avenida Pneus", 
                   "Associação dos Tropeiros", "NZ Motos", "THCElétrica", "Niles Mat Construção", 
                   "Lucas Sebbem Advogado", "CM Reparos Automotivos", "Souz Place", "Plantão do Gole", 
                   "Fava Cruz Produções", "Hotel Pinotti", "Lia Tattoer", "Vintage Barber Shop"
