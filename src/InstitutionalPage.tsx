@@ -152,24 +152,24 @@ export default function InstitutionalPage() {
                 <div className="space-y-8">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">População que prefere vídeos para entender ações públicas*</span>
-                      <span className="text-[#00F0FF] font-bold">87%</span>
+                      <span className="text-[#94A3B8]">Economia de tempo com Automação de IA*</span>
+                      <span className="text-[#00F0FF] font-bold">~12.5h/semana</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2">
-                      <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '87%' }}></div>
+                      <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '90%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Fonte: <a href="https://www.wyzowl.com/video-marketing-statistics/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00F0FF]">Wyzowl Video Marketing Statistics</a></p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Economia média reportada por gestores públicos em tarefas operacionais.</p>
                   </div>
                   
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">Aumento na percepção de transparência com IA**</span>
-                      <span className="text-orange-400 font-bold">+65%</span>
+                      <span className="text-[#94A3B8]">Desperdício anual por microgerenciamento**</span>
+                      <span className="text-orange-400 font-bold">R$ 75.000,00</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2">
-                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: '65%' }}></div>
+                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: '100%' }}></div>
                     </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Fonte: <a href="https://www.ibm.com/topics/artificial-intelligence" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-400">IBM AI Research</a></p>
+                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Simulação baseada em salário de R$ 20k (Prefeito/Secretário) perdendo 50h/mês.</p>
                   </div>
                 </div>
               </div>
@@ -252,13 +252,13 @@ export default function InstitutionalPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-8 mb-20">
             {[
               { icon: Building, val: '3', label: 'Associações Atendidas' },
-              { icon: Target, val: '5', label: 'Municípios Impactados (região AMURC no contestado SC)' },
-              { icon: PlayCircle, val: '71', label: 'Vídeos institucionais municipais e de associações produzidos' },
+              { icon: Target, val: '5', label: 'Municípios Impactados' },
+              { icon: PlayCircle, val: '71', label: 'Vídeos Institucionais (Municipais e Associações)' },
               { icon: Award, val: '123', label: 'Eventos registrados' },
-              { icon: Car, val: '+200', label: 'Vídeos de carros gravados e editados' }
+              { icon: Car, val: '+200', label: 'Vídeos de carros (gravados e editados)' }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -342,17 +342,17 @@ export default function InstitutionalPage() {
 
             {/* New Results Images */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <motion.div
                   key={`res-${num}`}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
-                  onClick={() => setSelectedImage(`/${num}.png`)}
+                  onClick={() => setSelectedImage(`/resultados${num}.png`)}
                 >
                   <img 
-                    src={`/${num}.png`}
+                    src={`/resultados${num}.png`}
                     alt={`Resultado ${num}`} 
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
                     referrerPolicy="no-referrer" 
