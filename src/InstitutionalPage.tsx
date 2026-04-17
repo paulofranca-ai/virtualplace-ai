@@ -245,20 +245,16 @@ export default function InstitutionalPage() {
       <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#F8FAFC]">Resultados & Portfólio</h2>
-            <p className="text-[#94A3B8] max-w-2xl mx-auto mb-4">Confira o impacto real da nossa metodologia na visão de quem já está escalando.</p>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-[#00F0FF]/30 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-2">
-              Rastreamento de vendas de projetos que assessoramos
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#F8FAFC]">Resultados Institucionais</h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto mb-4">Confira o impacto real da nossa metodologia na visão da gestão pública.</p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-8 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
               { icon: Building, val: '3', label: 'Associações Atendidas' },
               { icon: Target, val: '5', label: 'Municípios Impactados' },
               { icon: PlayCircle, val: '71', label: 'Vídeos Institucionais (Municipais e Associações)' },
-              { icon: Award, val: '123', label: 'Eventos registrados' },
-              { icon: Car, val: '+200', label: 'Vídeos de carros (gravados e editados)' }
+              { icon: Award, val: '123', label: 'Eventos registrados' }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
