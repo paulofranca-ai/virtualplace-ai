@@ -159,6 +159,11 @@ export default function InstitutionalPage() {
                       <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '90%' }}></div>
                     </div>
                     <p className="text-[10px] text-[#64748B] mt-2 italic">*Economia média reportada por gestores públicos em tarefas operacionais.</p>
+                    <div className="flex gap-4 mt-2">
+                       <a href="https://www.ibm.com/industries/government/ai" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">IBM Research</a>
+                       <a href="https://www.mckinsey.com/industries/public-sector/our-insights" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">McKinsey & Co.</a>
+                       <a href="https://www.gartner.com/en/newsroom/press-releases/2024-03-25-gartner-identifies-top-10-strategic-technology-trends-for-government-in-2024" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">Gartner Trends</a>
+                    </div>
                   </div>
                   
                   <div>
