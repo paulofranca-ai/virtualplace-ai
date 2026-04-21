@@ -12,6 +12,7 @@ const COUNTRIES = [
 export default function SalesPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -19,28 +20,38 @@ export default function SalesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+    setErrorMessage('');
     try {
       const fullPhone = `${formData.countryCode} ${formData.phone}`;
+      
+      const payload: any = {
+        name: formData.name,
+        email: formData.email,
+        phone: fullPhone,
+        company: formData.company,
+        created_at: new Date().toISOString()
+      };
+      if (formData.instagram) payload.instagram = formData.instagram;
+
       const { error: supabaseError } = await supabase
         .from('leads')
-        .insert([{ 
-          name: formData.name,
-          email: formData.email,
-          phone: fullPhone,
-          company: formData.company,
-          instagram: formData.instagram,
-          created_at: new Date().toISOString()
-        }]);
+        .insert([payload]);
+        
       if (supabaseError) throw supabaseError;
+      
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
         window.location.href = 'https://calendly.com/paulotrafegopago/consultoria-gratuita';
-      }, 5000);
-    } catch (error) {
-      console.error("Erro ao enviar formulário:", error);
+      }, 3000);
+    } catch (error: any) {
+      console.error("Erro detalhado ao enviar:", error);
+      setErrorMessage(error?.message || 'Erro de conexão com o banco de dados.');
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 7000);
     }
   };
 
@@ -460,7 +471,24 @@ export default function SalesPage() {
                       className="w-full bg-[#050810] border border-[#2563EB]/30 rounded-xl py-3 pl-11 pr-4 focus:outline-none focus:border-[#00F0FF] text-[#F8FAFC]"
                     />
                   </div>
+                  <div className="relative">
+                    <Instagram className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#94A3B8]" />
+                    <input 
+                      type="text" 
+                      name="instagram"
+                      value={formData.instagram}
+                      onChange={handleChange}
+                      placeholder="Instagram (Opcional)" 
+                      className="w-full bg-[#050810] border border-[#2563EB]/30 rounded-xl py-3 pl-11 pr-4 focus:outline-none focus:border-[#00F0FF] text-[#F8FAFC]"
+                    />
+                  </div>
                 </div>
+
+                {status === 'error' && (
+                  <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-500 text-sm text-center">
+                    {errorMessage}
+                  </div>
+                )}
 
                 <button 
                   type="submit" 
