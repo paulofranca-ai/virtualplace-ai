@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X } from 'lucide-react';
+import { Rocket, Brain, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
 const COUNTRIES = [
@@ -24,7 +24,6 @@ export default function InstitutionalPage() {
     try {
       const fullPhone = `${formData.countryCode} ${formData.phone}`;
       
-      // Building the payload dynamically to prevent schema errors if optional columns are missing
       const payload: any = {
         name: formData.name,
         email: formData.email,
