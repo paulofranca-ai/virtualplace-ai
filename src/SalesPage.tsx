@@ -29,6 +29,7 @@ export default function SalesPage() {
         email: formData.email,
         phone: fullPhone,
         company: formData.company,
+        origem: 'LP-comercial',
         created_at: new Date().toISOString()
       };
       if (formData.instagram) payload.instagram = formData.instagram;
