@@ -83,7 +83,7 @@ export default function SalesPage() {
           <div className="flex gap-4 md:gap-6 items-center">
             <a href="/" className="text-sm font-semibold text-[#00F0FF] transition-colors">Comercial</a>
             <a href="/institucional" className="text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
-            <a href="/jobs" className="text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-4 py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all">Trabalhe Conosco</a>
+            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-4 py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)]">Contrate Agentes</a>
           </div>
         </div>
       </nav>
@@ -547,10 +547,17 @@ export default function SalesPage() {
               Institucional
             </a>
             <a 
+              href="https://loja-virtualplace.vercel.app"
+              target="_blank" rel="noopener noreferrer"
+              className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
+            >
+              Contrate Agentes
+            </a>
+            <a 
               href="/jobs"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
-              VP Jobs
+              Seja um Freela Credenciado (Trabalhe Conosco)
             </a>
           </div>
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
