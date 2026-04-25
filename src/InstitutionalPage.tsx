@@ -42,7 +42,9 @@ export default function InstitutionalPage() {
       
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        window.location.href = 'https://t.me/VirtualPlaceIAbot';
+      }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
       setErrorMessage(error?.message || 'Erro ao comunicar com o banco de dados. (Sua tabela/RLS está configurada?)');
@@ -103,20 +105,14 @@ export default function InstitutionalPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
-                  onClick={scrollToForm}
-                  className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-2 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
+                <a 
+                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
-                  SOLICITAR CONSULTORIA
+                  <Brain className="w-5 h-5" />
+                  Iniciar Conversa com Agente de Inteligência Artificial
                   <ArrowRight className="w-4 h-4" />
-                </button>
-                <button 
-                  onClick={scrollToForm}
-                  className="px-8 py-4 rounded-full bg-transparent border border-[#00F0FF]/50 hover:bg-[#00F0FF]/10 text-[#00F0FF] font-bold flex items-center justify-center gap-2 transition-all text-sm"
-                >
-                  <PlayCircle className="w-4 h-4" />
-                  AGENDAR AVALIAÇÃO
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -430,6 +426,7 @@ export default function InstitutionalPage() {
                 </ul>
               </div>
 
+              <div className="hidden">
               <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
                 <div className="space-y-4">
                   <div className="relative">
@@ -517,14 +514,31 @@ export default function InstitutionalPage() {
                   className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-70 mt-6"
                 >
                   {status === 'submitting' ? (
-                    <><Loader2 className="w-5 h-5 animate-spin" /> Enviando...</>
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Conectando...</>
                   ) : status === 'success' ? (
-                    <><CheckCircle2 className="w-5 h-5" /> Solicitação Enviada!</>
+                    <><CheckCircle2 className="w-5 h-5" /> Redirecionando para o Telegram...</>
                   ) : (
-                    'Solicitar Consultoria Institucional'
+                    'Iniciar Conversa com Agente de Inteligência Artificial'
                   )}
                 </button>
               </form>
+              </div>
+
+              {/* Temporary direct CTA replacement for hidden form */}
+              <div className="flex flex-col items-center justify-center p-8 bg-[#050810]/50 rounded-2xl border border-[#2563EB]/20">
+                <Brain className="w-16 h-16 text-[#00F0FF] mb-6" />
+                <h3 className="text-2xl font-bold text-white mb-2 text-center">Pronto para começar?</h3>
+                <p className="text-[#94A3B8] mb-8 text-center max-w-md">
+                  Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
+                </p>
+                <a 
+                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                >
+                  <Brain className="w-5 h-5" />
+                  Iniciar Conversa com Agente
+                </a>
+              </div>
             </div>
           </div>
         </div>
