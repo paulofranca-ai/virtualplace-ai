@@ -74,6 +74,20 @@ export default function InstitutionalPage() {
   return (
     <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
       
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/80 backdrop-blur-md border-b border-[#2563EB]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="text-[#F8FAFC] font-bold text-xl tracking-tighter">
+            VIRTUAL<span className="text-[#00F0FF]">PLACE</span>
+          </div>
+          <div className="flex gap-4 md:gap-6 items-center">
+            <a href="/" className="text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
+            <a href="/institucional" className="text-sm font-semibold text-[#00F0FF] transition-colors">Institucional</a>
+            <a href="/jobs" className="text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-4 py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all">Trabalhe Conosco</a>
+          </div>
+        </div>
+      </nav>
+
       {/* 1. Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden border-b border-[#2563EB]/20">
         <div className="absolute inset-0 z-0">
@@ -547,12 +561,20 @@ export default function InstitutionalPage() {
       {/* Footer */}
       <footer className="py-12 border-t border-[#2563EB]/20 text-center text-[#94A3B8] text-sm bg-[#0A0F1C]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
-          <a 
-            href="/"
-            className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
-          >
-            Página de Vendas
-          </a>
+          <div className="flex gap-4">
+            <a 
+              href="/"
+              className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
+            >
+              Página Comercial
+            </a>
+            <a 
+              href="/jobs"
+              className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
+            >
+              VP Jobs
+            </a>
+          </div>
           <p>© {new Date().getFullYear()} Virtual Place Institucional. Todos os direitos reservados.</p>
         </div>
       </footer>
