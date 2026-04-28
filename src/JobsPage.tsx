@@ -72,21 +72,21 @@ export default function JobsPage() {
     <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/80 backdrop-blur-md border-b border-[#2563EB]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:h-16 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-          <div className="text-[#F8FAFC] font-bold text-xl tracking-tighter">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:h-16 md:gap-0">
+          <div className="text-[#F8FAFC] font-bold text-xl tracking-tighter shrink-0">
             VIRTUAL<span className="text-[#00F0FF]">PLACE</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">
-            <a href="/" className="text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
-            <a href="/institucional" className="text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
-            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-4 py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Contrate Agentes</a>
+          <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
+            <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
+            <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
+            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Contrate Agentes</a>
           </div>
         </div>
       </nav>
 
       {/* 1. Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden border-b border-[#2563EB]/20">
+      <section className="relative pt-40 md:pt-32 pb-32 overflow-hidden border-b border-[#2563EB]/20">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 

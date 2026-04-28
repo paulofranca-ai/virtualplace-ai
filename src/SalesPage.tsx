@@ -75,21 +75,21 @@ export default function SalesPage() {
     <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/80 backdrop-blur-md border-b border-[#2563EB]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:h-16 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-          <div className="text-[#F8FAFC] font-bold text-xl tracking-tighter">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:h-16 md:gap-0">
+          <div className="text-[#F8FAFC] font-bold text-xl tracking-tighter shrink-0">
             VIRTUAL<span className="text-[#00F0FF]">PLACE</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">
-            <a href="/" className="text-sm font-semibold text-[#00F0FF] transition-colors">Comercial</a>
-            <a href="/institucional" className="text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
-            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-4 py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Contrate Agentes</a>
+          <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
+            <a href="/" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">Comercial</a>
+            <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
+            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Contrate Agentes</a>
           </div>
         </div>
       </nav>
 
       {/* 1. Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden border-b border-[#2563EB]/20">
+      <section className="relative pt-40 md:pt-32 pb-32 overflow-hidden border-b border-[#2563EB]/20">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2032&auto=format&fit=crop" 
@@ -351,30 +351,28 @@ export default function SalesPage() {
             </motion.div>
 
             {/* New Results Images */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <motion.div
                   key={`res-${num}`}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
-                  onClick={(e) => setSelectedImage(e.currentTarget.querySelector('img')?.src || `/Resultados${num}.png`)}
+                  className="rounded-2xl overflow-hidden border border-[#2563EB]/20 shadow-lg bg-[#050810] cursor-pointer group hover:border-[#00F0FF]/50 transition-all"
+                  onClick={() => setSelectedImage(`/Resultados${num}.png`)}
                 >
-                  <img 
-                    src={`/Resultados${num}.png`}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      const currentSrc = target.src;
-                      if (currentSrc.includes('.png')) {
-                        target.src = currentSrc.replace('.png', '.jpg');
-                      }
-                    }}
-                    alt={`Image ${num}`} 
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
+                  <div className="relative aspect-[4/3] md:aspect-video overflow-hidden">
+                    <img 
+                      src={`/Resultados${num}.png`}
+                      alt={`Performance Case ${num}`} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/80 to-transparent opacity-60"></div>
+                    <div className="absolute bottom-3 left-3">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#00F0FF]">Case {num}</span>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -591,7 +589,7 @@ export default function SalesPage() {
       {/* Image Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 flex items-start justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
           onClick={() => {
             setSelectedImage(null);
             setIsZoomed(false);
@@ -599,14 +597,8 @@ export default function SalesPage() {
         >
           <img 
             src={selectedImage} 
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (target.src.endsWith('.png')) {
-                target.src = target.src.replace('.png', '.jpg');
-              }
-            }}
             alt="Zoomed Result" 
-            className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto object-contain mt-10 mb-10 rounded-xl shadow-2xl`}
+            className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto max-h-[90vh] object-contain rounded-xl shadow-2xl`}
             onClick={(e) => {
               e.stopPropagation();
               setIsZoomed(!isZoomed);
