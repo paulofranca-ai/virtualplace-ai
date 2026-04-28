@@ -40,7 +40,7 @@ export default function JobsPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', userType: 'freelancer' });
       setTimeout(() => {
-        window.location.href = 'https://t.me/VirtualPlaceIAbot';
+        window.location.href = 'https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace';
       }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
@@ -117,7 +117,7 @@ export default function JobsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
                   <Briefcase className="w-5 h-5" />
@@ -229,7 +229,7 @@ export default function JobsPage() {
                   Fale com nosso agente assistente para iniciar seu cadastro e entender seu perfil (Cliente ou Freelancer).
                 </p>
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace" target="_blank" rel="noopener noreferrer"
                   className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                 >
                   <Briefcase className="w-5 h-5" />

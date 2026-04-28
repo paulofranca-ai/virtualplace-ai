@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X } from 'lucide-react';
+import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
 const COUNTRIES = [
@@ -43,7 +43,7 @@ export default function SalesPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
-        window.location.href = 'https://t.me/VirtualPlaceIAbot';
+        window.location.href = 'https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o';
       }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
@@ -108,23 +108,31 @@ export default function SalesPage() {
             >
               <div className="flex items-center justify-center gap-2 text-[#00F0FF] mb-6 tracking-[0.2em] text-[10px] font-black uppercase">
                 <TrendingUp className="w-4 h-4" />
-                ACELERAÇÃO DE VENDAS E ESTRATÉGIA DIGITAL
+                CAÇA TALENTOS HUMANOS IMPULSIONADO POR IA
               </div>
               <h1 className="text-3xl md:text-6xl font-bold mb-6 text-[#F8FAFC] leading-tight tracking-tight">
-                Transforme sua Operação em uma <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#2563EB]">Máquina de Vendas</span> de Alta Performance
+                Contratação de Serviços Humanos e <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#2563EB]">Agentes de IA</span>
               </h1>
               
               <p className="text-[#94A3B8] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-                Escalamos negócios através da união entre Tráfego Pago agressivo, Design de Conversão e Inteligência Artificial. Pare de perder leads e comece a dominar seu mercado com previsibilidade.
+                Oferecemos agenciamento de marketing, implementação de inteligência artificial em empresas e instituições públicas e um marketplace de profissionais e projetos para fomentar o trabalho humano em parceria com a IA.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
                   <Brain className="w-5 h-5" />
-                  Iniciar Conversa com Agente de Inteligência Artificial
+                  Quero Contratar
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
+                  className="px-8 py-4 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-white hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-3 transition-all text-sm"
+                >
+                  <Briefcase className="w-5 h-5" />
+                  Quero Trabalhar
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -516,15 +524,24 @@ export default function SalesPage() {
                 <Brain className="w-16 h-16 text-[#00F0FF] mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-2 text-center">Pronto para começar?</h3>
                 <p className="text-[#94A3B8] mb-8 text-center max-w-md">
-                  Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
+                  Fale diretamente com nosso Agente de Inteligência Artificial no Whatsapp.
                 </p>
-                <a 
-                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
-                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
-                >
-                  <Brain className="w-5 h-5" />
-                  Iniciar Conversa com Agente
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                  <a 
+                    href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                  >
+                    <Brain className="w-5 h-5" />
+                    Quero Contratar
+                  </a>
+                  <a 
+                    href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-3 transition-all"
+                  >
+                    <Briefcase className="w-5 h-5" />
+                    Quero Trabalhar
+                  </a>
+                </div>
               </div>
             </div>
           </div>
