@@ -353,8 +353,11 @@ export default function SalesPage() {
             {/* New Results Images */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                <div
+                <motion.div
                   key={`res-${num}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
                   className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
                   onClick={() => setSelectedImage(`/resultados${num}.png`)}
                 >
@@ -363,7 +366,7 @@ export default function SalesPage() {
                     alt={`Resultado ${num}`} 
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
