@@ -359,11 +359,18 @@ export default function SalesPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] bg-[#050810] cursor-pointer group"
-                  onClick={() => setSelectedImage(`/${num}.png`)}
+                  onClick={(e) => setSelectedImage(e.currentTarget.querySelector('img')?.src || `/Resultados${num}.png`)}
                 >
                   <img 
-                    src={`/${num}.png`}
-                    alt={`Resultado ${num}`} 
+                    src={`/Resultados${num}.png`}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      const currentSrc = target.src;
+                      if (currentSrc.includes('.png')) {
+                        target.src = currentSrc.replace('.png', '.jpg');
+                      }
+                    }}
+                    alt={`Image ${num}`} 
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" 
                     referrerPolicy="no-referrer"
                     loading="lazy"
@@ -592,6 +599,12 @@ export default function SalesPage() {
         >
           <img 
             src={selectedImage} 
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src.endsWith('.png')) {
+                target.src = target.src.replace('.png', '.jpg');
+              }
+            }}
             alt="Zoomed Result" 
             className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto object-contain mt-10 mb-10 rounded-xl shadow-2xl`}
             onClick={(e) => {
