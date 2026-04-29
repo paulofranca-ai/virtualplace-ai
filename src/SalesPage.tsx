@@ -83,7 +83,8 @@ export default function SalesPage() {
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">Comercial</a>
             <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
-            <a href="https://loja-virtualplace.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Contrate Agentes</a>
+            <a href="https://setup.autolead.site/" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Compre Robôs de IA</a>
+            <a href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#00F0FF]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#00F0FF]/50 hover:bg-[#00F0FF]/40 transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)] text-center">Contrate Humanos</a>
           </div>
         </div>
       </nav>
@@ -561,7 +562,7 @@ export default function SalesPage() {
       {/* Footer */}
       <footer className="py-12 border-t border-[#2563EB]/20 text-center text-[#94A3B8] text-sm bg-[#0A0F1C]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="/institucional"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
@@ -569,11 +570,18 @@ export default function SalesPage() {
               Institucional
             </a>
             <a 
-              href="https://loja-virtualplace.vercel.app"
+              href="https://setup.autolead.site/"
               target="_blank" rel="noopener noreferrer"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
-              Contrate Agentes
+              Compre Robôs de IA
+            </a>
+            <a 
+              href="https://loja.autolead.site"
+              target="_blank" rel="noopener noreferrer"
+              className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#F8FAFC] bg-[#00F0FF]/20 font-semibold transition-all hover:bg-[#00F0FF]/30"
+            >
+              Contrate Humanos
             </a>
             <a 
               href="/jobs"
