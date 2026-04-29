@@ -43,7 +43,7 @@ export default function SalesPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
-        window.location.href = 'https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o';
+        window.location.href = 'https://t.me/VirtualplaceIA_bot';
       }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
@@ -120,7 +120,7 @@ export default function SalesPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
                   <Brain className="w-5 h-5" />
@@ -128,7 +128,7 @@ export default function SalesPage() {
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a 
-                  href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-white hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-3 transition-all text-sm"
                 >
                   <Briefcase className="w-5 h-5" />
@@ -351,25 +351,25 @@ export default function SalesPage() {
             </motion.div>
 
             {/* New Results Images */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
                 <motion.div
                   key={`res-${num}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-2xl overflow-hidden border border-[#2563EB]/20 shadow-lg bg-[#050810] cursor-pointer group hover:border-[#00F0FF]/50 transition-all"
+                  className="rounded-2xl overflow-hidden border-2 border-[#2563EB]/20 shadow-xl bg-[#0A0F1C] cursor-pointer group hover:border-[#00F0FF]/50 transition-all"
                   onClick={() => setSelectedImage(`/Resultados${num}.png`)}
                 >
-                  <div className="relative aspect-[4/3] md:aspect-video overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden">
                     <img 
                       src={`/Resultados${num}.png`}
-                      alt={`Performance Case ${num}`} 
+                      alt={`Resultado de Performance ${num}`} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/80 to-transparent opacity-60"></div>
-                    <div className="absolute bottom-3 left-3">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent opacity-60"></div>
+                    <div className="absolute bottom-4 left-4">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-[#00F0FF]">Case {num}</span>
                     </div>
                   </div>
@@ -538,14 +538,14 @@ export default function SalesPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                   <a 
-                    href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
+                    href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                   >
                     <Brain className="w-5 h-5" />
                     Quero Contratar
                   </a>
                   <a 
-                    href="https://wa.me/5549984101144?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
+                    href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-3 transition-all"
                   >
                     <Briefcase className="w-5 h-5" />
@@ -589,7 +589,7 @@ export default function SalesPage() {
       {/* Image Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
+          className="fixed inset-0 z-50 flex items-start justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
           onClick={() => {
             setSelectedImage(null);
             setIsZoomed(false);
@@ -597,8 +597,14 @@ export default function SalesPage() {
         >
           <img 
             src={selectedImage} 
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src.endsWith('.png')) {
+                target.src = target.src.replace('.png', '.jpg');
+              }
+            }}
             alt="Zoomed Result" 
-            className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto max-h-[90vh] object-contain rounded-xl shadow-2xl`}
+            className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto object-contain mt-10 mb-10 rounded-xl shadow-2xl`}
             onClick={(e) => {
               e.stopPropagation();
               setIsZoomed(!isZoomed);
