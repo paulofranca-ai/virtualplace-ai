@@ -43,7 +43,7 @@ export default function SalesPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
-        window.location.href = 'https://t.me/VirtualplaceIA_bot';
+        window.location.href = 'https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o';
       }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
@@ -120,7 +120,7 @@ export default function SalesPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
                   <Brain className="w-5 h-5" />
@@ -128,7 +128,7 @@ export default function SalesPage() {
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a 
-                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-white hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-3 transition-all text-sm"
                 >
                   <Briefcase className="w-5 h-5" />
@@ -534,18 +534,18 @@ export default function SalesPage() {
                 <Brain className="w-16 h-16 text-[#00F0FF] mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-2 text-center">Pronto para começar?</h3>
                 <p className="text-[#94A3B8] mb-8 text-center max-w-md">
-                  Fale diretamente com nosso Agente de Inteligência Artificial no Whatsapp.
+                  Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                   <a 
-                    href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                    href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                   >
                     <Brain className="w-5 h-5" />
                     Quero Contratar
                   </a>
                   <a 
-                    href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                    href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-3 transition-all"
                   >
                     <Briefcase className="w-5 h-5" />

@@ -43,7 +43,7 @@ export default function InstitutionalPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
-        window.location.href = 'https://t.me/VirtualplaceIA_bot';
+        window.location.href = 'https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace%20para%20institui%C3%A7%C3%B5es';
       }, 2000);
     } catch (error: any) {
       console.error("Erro detalhado ao enviar:", error);
@@ -120,7 +120,7 @@ export default function InstitutionalPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace%20para%20institui%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
                 >
                   <Brain className="w-5 h-5" />
@@ -551,7 +551,7 @@ export default function InstitutionalPage() {
                   Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
                 </p>
                 <a 
-                  href="https://t.me/VirtualplaceIA_bot" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace%20para%20institui%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer"
                   className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                 >
                   <Brain className="w-5 h-5" />
