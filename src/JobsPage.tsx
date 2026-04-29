@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Briefcase, ShieldCheck, Star, CreditCard, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, Search, PlayCircle, Plus, Minus, X } from 'lucide-react';
+import { Briefcase, ShieldCheck, Star, CreditCard, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, Search, PlayCircle, Plus, Minus, X, Rocket, Brain } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
 const COUNTRIES = [
@@ -80,8 +80,6 @@ export default function JobsPage() {
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
             <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
-            <a href="https://setup.autolead.site/" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#2563EB]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#2563EB]/50 hover:bg-[#2563EB]/40 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] text-center">Compre Robôs de IA</a>
-            <a href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-sm font-semibold text-[#F8FAFC] bg-[#00F0FF]/20 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#00F0FF]/50 hover:bg-[#00F0FF]/40 transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)] text-center">Contrate Humanos</a>
           </div>
         </div>
       </nav>
@@ -116,14 +114,34 @@ export default function JobsPage() {
                 O portal definitivo para vagas e trabalhos pontuais. Com selo de qualidade, intermediação de pagamentos segura e sistema rigoroso de avaliações mútuas.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace" target="_blank" rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-bold flex items-center justify-center gap-3 transition-all text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
+                  href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 hover:bg-[#00F0FF]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_15px_rgba(0,240,255,0.2)]"
                 >
-                  <Briefcase className="w-5 h-5" />
-                  Conhecer a Plataforma via Agente de IA
-                  <ArrowRight className="w-4 h-4" />
+                  <User className="w-4 h-4" />
+                  CONTRATE HUMANOS
+                </a>
+                <a 
+                  href="/jobs"
+                  className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
+                >
+                  <Briefcase className="w-4 h-4" />
+                  SEJA CONTRATADO
+                </a>
+                <a 
+                  href="https://setup.autolead.site/" target="_blank" rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                >
+                  <Rocket className="w-4 h-4" />
+                  COMPRE ROBÔS / AGENTES DE IA
+                </a>
+                <a 
+                  href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-white hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center"
+                >
+                  <Brain className="w-4 h-4" />
+                  TESTE NOSSOS AGENTES GRATIS AGORA
                 </a>
               </div>
             </motion.div>
