@@ -126,7 +126,7 @@ export default function SalesPage() {
                   CONTRATE HUMANOS
                 </a>
                 <a 
-                  href="/jobs"
+                  href="https://t.me/VirtualPlaceIAbot?text=QUERO%20SER%20CONTRATADO" target="_blank" rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
                 >
                   <Briefcase className="w-4 h-4" />
