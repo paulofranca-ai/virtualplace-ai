@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase } from 'lucide-react';
 import { supabase } from './lib/supabase';
@@ -10,12 +11,41 @@ const COUNTRIES = [
 ];
 
 export default function SalesPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const checkoutStatus = searchParams.get('checkout_status');
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isStripeLoading, setIsStripeLoading] = useState(false);
+  const [stripeError, setStripeError] = useState('');
+
+  const handleStripeCheckout = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsStripeLoading(true);
+    setStripeError('');
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setStripeError(data.error || 'Erro ao conectar ao Stripe.');
+        setIsStripeLoading(false);
+      }
+    } catch (err: any) {
+      console.error(err);
+      setStripeError('Erro ao iniciar conexão com o Stripe.');
+      setIsStripeLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,6 +104,44 @@ export default function SalesPage() {
   return (
     <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
       
+      {checkoutStatus && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className={`p-4 rounded-xl border flex items-start gap-3 shadow-2xl backdrop-blur-md ${
+              checkoutStatus === 'success' 
+                ? 'bg-emerald-950/90 border-emerald-500/50 text-emerald-100' 
+                : 'bg-rose-950/90 border-rose-500/50 text-rose-100'
+            }`}
+          >
+            <div className="mt-0.5">
+              {checkoutStatus === 'success' ? (
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+              ) : (
+                <X className="w-5 h-5 text-rose-400 shrink-0" />
+              )}
+            </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-sm">
+                {checkoutStatus === 'success' ? 'Pagamento Aprovado!' : 'Pagamento Cancelado'}
+              </h4>
+              <p className="text-xs opacity-90 mt-1">
+                {checkoutStatus === 'success' 
+                  ? 'Parabéns! O seu Time de Agentes de IA foi configurado com sucesso. Prepare-se para colher resultados!' 
+                  : 'A transação do Stripe foi cancelada. Se precisar de suporte, volte a qualquer momento.'}
+              </p>
+              <button 
+                onClick={() => setSearchParams({})}
+                className="mt-3 text-xs font-semibold underline opacity-80 hover:opacity-100 cursor-pointer text-white"
+              >
+                Entendido
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+      
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:h-16 md:gap-0">
@@ -126,7 +194,7 @@ export default function SalesPage() {
                   CONTRATE HUMANOS
                 </a>
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot?text=QUERO%20SER%20CONTRATADO" target="_blank" rel="noopener noreferrer"
+                  href="https://chat.whatsapp.com/JscL45d0D4mC5EJlwMkks7" target="_blank" rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
                 >
                   <Briefcase className="w-4 h-4" />
@@ -547,22 +615,37 @@ export default function SalesPage() {
                 <p className="text-[#94A3B8] mb-8 text-center max-w-md">
                   Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <div className="flex flex-col xl:flex-row gap-4 w-full justify-center items-stretch">
                   <a 
-                    href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o" target="_blank" rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                    href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer"
+                    className="flex-1 px-6 py-4 rounded-xl bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_15px_rgba(37,99,235,0.2)]"
                   >
-                    <Brain className="w-5 h-5" />
-                    Quero Contratar
+                    <User className="w-5 h-5 text-[#00F0FF]" />
+                    Quero Contratar Humanos
                   </a>
-                  <a 
-                    href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Trabalhar" target="_blank" rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-3 transition-all"
+                  <button 
+                    onClick={handleStripeCheckout}
+                    disabled={isStripeLoading}
+                    className="flex-1 px-6 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] disabled:opacity-75 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_20px_rgba(0,240,255,0.4)] cursor-pointer"
                   >
-                    <Briefcase className="w-5 h-5" />
+                    {isStripeLoading ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <Rocket className="w-5 h-5" />
+                    )}
+                    {isStripeLoading ? 'Conectando Stripe...' : 'Quero Comprar O Time de Agents de IA'}
+                  </button>
+                  <a 
+                    href="https://chat.whatsapp.com/JscL45d0D4mC5EJlwMkks7" target="_blank" rel="noopener noreferrer"
+                    className="flex-1 px-6 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-2 transition-all text-xs text-center"
+                  >
+                    <Briefcase className="w-5 h-5 text-[#2563EB]" />
                     Quero Trabalhar
                   </a>
                 </div>
+                {stripeError && (
+                  <p className="text-rose-500 text-xs font-semibold mt-4 text-center">{stripeError}</p>
+                )}
               </div>
             </div>
           </div>
