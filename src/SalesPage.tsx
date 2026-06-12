@@ -201,7 +201,7 @@ export default function SalesPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="https://setup.autolead.site" target="_blank" rel="noopener noreferrer"
+                  href="https://setup-autolead-agentes.vercel.app/" target="_blank" rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
                 >
                   <Rocket className="w-4 h-4" />
@@ -263,36 +263,73 @@ export default function SalesPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-[#2563EB]/30 bg-[#050810] p-8 shadow-[0_0_30px_rgba(37,99,235,0.1)]">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500"></div>
-                <h3 className="text-xl font-bold mb-6 text-white">O Custo da Ineficiência</h3>
-                <div className="space-y-8">
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">Economia de tempo com Automação de IA*</span>
-                      <span className="text-[#00F0FF] font-bold">~12.5h/semana</span>
-                    </div>
-                    <div className="w-full bg-gray-800 rounded-full h-2">
-                      <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '90%' }}></div>
-                    </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">*Economia média reportada em tarefas operacionais e burocráticas.</p>
-                    <div className="flex gap-4 mt-2">
-                       <a href="https://www.ibm.com/industries/government/ai" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">IBM Research</a>
-                       <a href="https://www.mckinsey.com/industries/public-sector/our-insights" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">McKinsey & Co.</a>
-                       <a href="https://www.gartner.com/en/newsroom/press-releases/2024-03-25-gartner-identifies-top-10-strategic-technology-trends-for-government-in-2024" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#2563EB] hover:underline">Gartner Trends</a>
-                    </div>
+              <div className="relative rounded-2xl overflow-hidden border border-[#2563EB]/40 bg-[#050810] p-8 shadow-[0_0_40px_rgba(37,99,235,0.15)]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-[#2563EB] to-[#00F0FF]"></div>
+                
+                <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-[#00F0FF]" />
+                  Comparativo de Custo & Entrega
+                </h3>
+
+                <div className="space-y-6">
+                  {/* Traditional Employee row */}
+                  <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-red-400 bg-red-500/10 px-2 py-0.5 rounded">
+                      Contratação Tradicional (CLT)
+                    </span>
+                    <h4 className="text-md font-bold text-white mt-2 mb-3">Funcionário Interno Inexperiente</h4>
+                    
+                    <ul className="space-y-2.5 text-xs text-[#94A3B8]">
+                      <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
+                        <span>Custo Médio de Onboarding + Treinamento:</span>
+                        <span className="font-mono text-red-400 font-bold">R$ 25.000+</span>
+                      </li>
+                      <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
+                        <span>Tempo até total produtividade (Ramp-up):</span>
+                        <span className="font-mono text-red-400 font-semibold">8 a 26 semanas</span>
+                      </li>
+                      <li className="flex justify-between items-center pb-1">
+                        <span>Disponibilidade e Encargos Fiscais:</span>
+                        <span className="font-mono text-red-400 font-semibold">40h/sem • +70% de impostos CLT</span>
+                      </li>
+                    </ul>
                   </div>
-                  
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-[#94A3B8]">Desperdício anual (Custo de Oportunidade)**</span>
-                      <span className="text-orange-400 font-bold">R$ 75.000,00</span>
+
+                  {/* Future hybrid model row */}
+                  <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 relative">
+                    <div className="absolute top-3 right-4 anim-pulse">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-[#0A0F1C] bg-[#00F0FF] px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+                        Alta Performance
+                      </span>
                     </div>
-                    <div className="w-full bg-gray-800 rounded-full h-2">
-                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: '100%' }}></div>
-                    </div>
-                    <p className="text-[10px] text-[#64748B] mt-2 italic">**Simulação baseada em salário de R$ 20k perdendo 50h/mês em microgerenciamento.</p>
+                    
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
+                      Nosso Modelo Híbrido Automático
+                    </span>
+                    <h4 className="text-md font-bold text-white mt-2 mb-3">Freelancers Profissionais + Agentes IA</h4>
+                    
+                    <ul className="space-y-2.5 text-xs text-[#94A3B8]">
+                      <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
+                        <span>Custo de Treinamento e Setup:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">R$ 0,00</span>
+                      </li>
+                      <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
+                        <span>Tempo até o início das entregas:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">Imediato (Zero rampa)</span>
+                      </li>
+                      <li className="flex justify-between items-center pb-1">
+                        <span>Disponibilidade e Cobertura:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">24h p/ dia • Zero encargos</span>
+                      </li>
+                    </ul>
                   </div>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-gray-800 flex flex-wrap gap-x-4 gap-y-1 justify-center text-[10px] text-[#64748B] italic">
+                  <span>*Fontes de mercado e produtividade:</span>
+                  <a href="https://www.shrm.org" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#2563EB]">SHRM Talent</a>
+                  <span>•</span>
+                  <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#2563EB]">McKinsey Automation</a>
                 </div>
               </div>
             </motion.div>
@@ -670,7 +707,7 @@ export default function SalesPage() {
               Institucional
             </a>
             <a 
-              href="https://setup.autolead.site"
+              href="https://setup-autolead-agentes.vercel.app/"
               target="_blank" rel="noopener noreferrer"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
