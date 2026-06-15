@@ -187,7 +187,7 @@ export default function BuyAgentsPage() {
                       <Zap className="w-3.5 h-3.5" /> Licença Anual Completa
                     </div>
                     <h2 className="text-2xl font-black text-white mb-2">
-                      AutoLead Infinity
+                      SquadClawVirtual Infinity
                     </h2>
                     <p className="text-xs text-gray-400 mb-6 font-medium">
                       Melhor custo-benefício para quem quer economizar mais de R$ 1.300 por ano e ter acesso total contínuo.
@@ -227,8 +227,10 @@ export default function BuyAgentsPage() {
 
                   <div>
                     <a
-                      href="/planos/confirmar?plano=anual"
-                      className="w-full py-4 rounded-xl bg-[#00F0FF] hover:bg-[#00D8E6] text-[#0A0F1C] font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(0,240,255,0.4)] text-xs text-center uppercase cursor-pointer animate-pulse"
+                      href="https://pay.kiwify.com.br/GKrbQy6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-4 rounded-xl bg-[#00F0FF] hover:bg-[#00D8E6] text-[#0A0F1C] font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(0,240,255,0.4)] text-xs text-center uppercase cursor-pointer"
                     >
                       🚀 ASSINAR LICENÇA ANUAL AGORA
                     </a>
@@ -253,7 +255,7 @@ export default function BuyAgentsPage() {
                       <Calendar className="w-3.5 h-3.5" /> Licença Mensal Flexível
                     </div>
                     <h2 className="text-2xl font-black text-white mb-2">
-                      AutoLead Light
+                      SquadClawVirtual Light
                     </h2>
                     <p className="text-xs text-gray-400 mb-6 font-medium">
                       Ideal para quem prefere testar o ecossistema com liberdade e com pagamento recorrente sem compromisso anual.
@@ -293,7 +295,9 @@ export default function BuyAgentsPage() {
 
                   <div>
                     <a
-                      href="/planos/confirmar?plano=mensal"
+                      href="https://pay.kiwify.com.br/zABsvn6"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-[#8B5CF6] hover:from-purple-500 hover:to-[#7C3AED] text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)] text-xs text-center uppercase cursor-pointer"
                     >
                       🚀 ASSINAR PLANO MENSAL AGORA
@@ -355,7 +359,7 @@ export default function BuyAgentsPage() {
               <span className="text-[10px] font-bold text-[#00F0FF] bg-[#00F0FF]/15 px-2 py-0.5 rounded uppercase font-mono">
                 Nossa Licença Ativa (Máximo Retorno)
               </span>
-              <h4 className="text-sm font-black mt-2 mb-4 text-white">O Ecossistema Chave-na-Mão AutoLead</h4>
+              <h4 className="text-sm font-black mt-2 mb-4 text-white">O Ecossistema Chave-na-Mão SquadClawVirtual</h4>
               
               <div className="space-y-3.5 text-xs">
                 <div className="flex justify-between items-center border-b border-gray-800/40 pb-2">
