@@ -173,8 +173,8 @@ export default function BuyAgentsPage() {
                     <CheckCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white">Setup e Treinamento Inclusos</h4>
-                    <p className="text-[11px] text-[#94A3B8]">Entrega chave na mão! Nossa equipe integra e treina o agente com os dados do seu negócio.</p>
+                    <h4 className="text-xs font-bold text-white">Setup + Treinamento Gravado em Video Aula</h4>
+                    <p className="text-[11px] text-[#94A3B8]">Você paga, recebe os arquivos, assiste as mini-aulas e implementa. Depois é só aproveitar e deixar seu cérebro cada vez mais inteligente! Conectado ao Obsidian, pra organizar e otimizar o uso de tokens!</p>
                   </div>
                 </div>
               </div>
