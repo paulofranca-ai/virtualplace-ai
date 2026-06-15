@@ -133,7 +133,7 @@ export default function InstitutionalPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="https://ia.autolead.site" target="_blank" rel="noopener noreferrer"
+                  href="/comprar"
                   className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
                 >
                   <Rocket className="w-4 h-4" />
@@ -600,8 +600,7 @@ export default function InstitutionalPage() {
               Página Comercial
             </a>
             <a 
-              href="https://ia.autolead.site"
-              target="_blank" rel="noopener noreferrer"
+              href="/comprar"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
               Compre Robôs de IA
