@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase } from 'lucide-react';
 import { supabase } from './lib/supabase';
+import NeonBackground3D from './components/NeonBackground3D';
 
 const COUNTRIES = [
   { name: 'Brasil', code: '+55', flag: '🇧🇷' },
@@ -102,7 +103,8 @@ export default function SalesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
+    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30 relative overflow-x-hidden">
+      <NeonBackground3D />
       
       {checkoutStatus && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
@@ -201,7 +203,7 @@ export default function SalesPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="/comprar"
+                  href="/planos"
                   className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
                 >
                   <Rocket className="w-4 h-4" />
@@ -268,29 +270,29 @@ export default function SalesPage() {
                 
                 <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-[#00F0FF]" />
-                  Comparativo de Custo & Entrega
+                  Comparativo de Custo & Viabilidade
                 </h3>
 
                 <div className="space-y-6">
-                  {/* Traditional Employee row */}
+                  {/* Traditional Senior Employee row */}
                   <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-red-400 bg-red-500/10 px-2 py-0.5 rounded">
-                      Contratação Tradicional (CLT)
+                      Custo Humano Tradicional (Qualificado)
                     </span>
-                    <h4 className="text-md font-bold text-white mt-2 mb-3">Funcionário Interno Inexperiente</h4>
+                    <h4 className="text-md font-bold text-white mt-2 mb-3">1 Programador Sênior ou Designer Sênior</h4>
                     
                     <ul className="space-y-2.5 text-xs text-[#94A3B8]">
                       <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
-                        <span>Custo Médio de Onboarding + Treinamento:</span>
-                        <span className="font-mono text-red-400 font-bold">R$ 25.000+</span>
+                        <span>Custo Salarial Anual CLT Mínimo:</span>
+                        <span className="font-mono text-red-400 font-bold">R$ 72.000+ /ano</span>
                       </li>
                       <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
-                        <span>Tempo até total produtividade (Ramp-up):</span>
-                        <span className="font-mono text-red-400 font-semibold">8 a 26 semanas</span>
+                        <span>Encargos Fiscais & Benefícios:</span>
+                        <span className="font-mono text-red-400 font-semibold">+ R$ 50.000+ /ano</span>
                       </li>
                       <li className="flex justify-between items-center pb-1">
-                        <span>Disponibilidade e Encargos Fiscais:</span>
-                        <span className="font-mono text-red-400 font-semibold">40h/sem • +70% de impostos CLT</span>
+                        <span>Contratações e Demissões lentas:</span>
+                        <span className="font-mono text-red-400 font-semibold">Alto risco de rotatividade</span>
                       </li>
                     </ul>
                   </div>
@@ -299,35 +301,48 @@ export default function SalesPage() {
                   <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 relative">
                     <div className="absolute top-3 right-4 anim-pulse">
                       <span className="text-[9px] font-black uppercase tracking-widest text-[#0A0F1C] bg-[#00F0FF] px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                        Alta Performance
+                        Eficiência Absoluta
                       </span>
                     </div>
                     
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
-                      Nosso Modelo Híbrido Automático
+                      Nosso Ecossistema & Agentes Autônomos
                     </span>
-                    <h4 className="text-md font-bold text-white mt-2 mb-3">Freelancers Profissionais + Agentes IA</h4>
+                    <h4 className="text-md font-bold text-white mt-2 mb-3">Sua Licença Anual Completa de IA</h4>
                     
                     <ul className="space-y-2.5 text-xs text-[#94A3B8]">
                       <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
-                        <span>Custo de Treinamento e Setup:</span>
-                        <span className="font-mono text-[#00F0FF] font-bold">R$ 0,00</span>
+                        <span>Investimento Anual Total:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">R$ 997,00 /ano</span>
                       </li>
                       <li className="flex justify-between items-center border-b border-gray-800 pb-1.5">
-                        <span>Tempo até o início das entregas:</span>
-                        <span className="font-mono text-[#00F0FF] font-bold">Imediato (Zero rampa)</span>
+                        <span>Custo Operacional Mensal de Tokens:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">~ R$ 100/mês</span>
                       </li>
                       <li className="flex justify-between items-center pb-1">
-                        <span>Disponibilidade e Cobertura:</span>
-                        <span className="font-mono text-[#00F0FF] font-bold">24h p/ dia • Zero encargos</span>
+                        <span>Disponibilidade de Trabalho:</span>
+                        <span className="font-mono text-[#00F0FF] font-bold">24 horas por dia • Imediato</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
+                {/* Strategic insights block */}
+                <div className="mt-6 p-4 rounded-xl bg-[#090D1A] border border-[#2563EB]/25 text-left">
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-1.5 text-[#00F0FF]">
+                    <Zap className="w-3.5 h-3.5 text-[#00F0FF]" /> Por que nosso modelo se paga no 1º mês?
+                  </h4>
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed mb-3">
+                    Ao invés de gastar uma fortuna assinando múltiplos planos de IA individuais e estourar chaves de API caras, nosso agente de IDEs (como o <strong>AntiGravity</strong> ou <strong>VSCode</strong>) e ferramentas avançadas como o <strong>Claude Code</strong> consomem das assinaturas mensais padrão que custam em média <strong>apenas R$ 100/mês</strong>. 
+                  </p>
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                    <strong>Por que não usar apenas o Claude Workspace ou Coworking?</strong> Porque eles limitam drasticamente o uso contínuo das IAs oficiais. O Claude Code é muito mais potente, mas depender só dele é arriscado pelas travas. Com o AntiGravity e VSCode configurados no nosso ecossistema, você tem total liberdade para alternar e consumir de múltiplos planos de outras provedoras, garantindo produtividade máxima sem interrupções!
+                  </p>
+                </div>
+
                 <div className="mt-5 pt-4 border-t border-gray-800 flex flex-wrap gap-x-4 gap-y-1 justify-center text-[10px] text-[#64748B] italic">
-                  <span>*Fontes de mercado e produtividade:</span>
-                  <a href="https://www.shrm.org" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#2563EB]">SHRM Talent</a>
+                  <span>*Comparativo com salários de mercado:</span>
+                  <a href="https://www.glassdoor.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#2563EB]">Glassdoor Market</a>
                   <span>•</span>
                   <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights" target="_blank" rel="noopener noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#2563EB]">McKinsey Automation</a>
                 </div>
@@ -667,18 +682,13 @@ export default function SalesPage() {
                     <User className="w-5 h-5 text-[#00F0FF]" />
                     Quero Contratar Humanos
                   </a>
-                  <button 
-                    onClick={handleStripeCheckout}
-                    disabled={isStripeLoading}
-                    className="flex-1 px-6 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] disabled:opacity-75 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_20px_rgba(0,240,255,0.4)] cursor-pointer"
+                  <a 
+                    href="/planos"
+                    className="flex-1 px-6 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_20px_rgba(0,240,255,0.4)] cursor-pointer"
                   >
-                    {isStripeLoading ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                    ) : (
-                      <Rocket className="w-5 h-5" />
-                    )}
-                    {isStripeLoading ? 'Conectando Stripe...' : 'Quero Comprar O Time de Agents de IA'}
-                  </button>
+                    <Rocket className="w-5 h-5" />
+                    Quero Comprar O Time de Agentes de IA
+                  </a>
                   <a 
                     href="https://chat.whatsapp.com/JscL45d0D4mC5EJlwMkks7" target="_blank" rel="noopener noreferrer"
                     className="flex-1 px-6 py-4 rounded-xl border border-[#2563EB]/50 bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-white font-bold flex items-center justify-center gap-2 transition-all text-xs text-center"
@@ -707,7 +717,7 @@ export default function SalesPage() {
               Institucional
             </a>
             <a 
-              href="/comprar"
+              href="/planos"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
               Compre Robôs de IA

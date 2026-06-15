@@ -1,306 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowLeft, 
-  Rocket, 
   Shield, 
   CheckCircle, 
   Sparkles, 
   Lock,
-  Cpu,
   Bot,
   Zap,
   Calendar,
   Layers,
-  HelpCircle,
-  HelpCircle as QuestionIcon
+  HelpCircle
 } from 'lucide-react';
-
-interface Point3D {
-  x: number;
-  y: number;
-  z: number;
-  color: string;
-}
+import NeonBackground3D from './components/NeonBackground3D';
 
 export default function BuyAgentsPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'anual' | 'mensal'>('anual');
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0, active: false, targetX: 0, targetY: 0 });
-  const scrollRef = useRef({ current: 0, target: 0 });
-
-  // Monitoramento do scroll para morphing do 3D
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const totalHeight = containerRef.current.scrollHeight - window.innerHeight;
-      if (totalHeight <= 0) return;
-      scrollRef.current.target = window.scrollY / totalHeight;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Trigger inicial
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Canvas 3D interativo magnético de neon geométrico
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let width = (canvas.width = canvas.offsetWidth);
-    let height = (canvas.height = canvas.offsetHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    // Gerar pontos 3D base
-    const numPoints = 160;
-    const points: Point3D[] = [];
-    const currentPoints: Point3D[] = [];
-
-    // Gerar formas geométricas predefinidas
-    // 1. Esfera (Shape 0)
-    const spherePoints: Point3D[] = [];
-    for (let i = 0; i < numPoints; i++) {
-      const phi = Math.acos(-1 + (2 * i) / numPoints);
-      const theta = Math.sqrt(numPoints * Math.PI) * phi;
-      spherePoints.push({
-        x: Math.cos(theta) * Math.sin(phi) * 160,
-        y: Math.sin(theta) * Math.sin(phi) * 160,
-        z: Math.cos(phi) * 160,
-        color: i % 2 === 0 ? 'rgba(0, 240, 255, 0.85)' : 'rgba(139, 92, 246, 0.85)'
-      });
-    }
-
-    // 2. Toroide / Donut (Shape 1)
-    const torusPoints: Point3D[] = [];
-    const R = 140; // Raio principal
-    const r = 60;  // Raio interno
-    for (let i = 0; i < numPoints; i++) {
-      const u = (i / numPoints) * Math.PI * 2 * 6; // Voltas completas
-      const v = (i / numPoints) * Math.PI * 2;
-      torusPoints.push({
-        x: (R + r * Math.cos(v)) * Math.cos(u),
-        y: (R + r * Math.cos(v)) * Math.sin(u),
-        z: r * Math.sin(v),
-        color: i % 3 === 0 ? 'rgba(0, 240, 255, 0.85)' : 'rgba(139, 92, 246, 0.85)'
-      });
-    }
-
-    // 3. Dupla Hélice de DNA (Shape 2)
-    const helixPoints: Point3D[] = [];
-    for (let i = 0; i < numPoints; i++) {
-      const isStrandA = i % 2 === 0;
-      const t = (i / numPoints) * Math.PI * 4; // Ângulo ao longo da hélice
-      const spiralRadius = 100;
-      const tOffset = isStrandA ? 0 : Math.PI;
-      helixPoints.push({
-        x: Math.cos(t + tOffset) * spiralRadius,
-        y: (t - Math.PI * 2) * 60, // Distribuído verticalmente
-        z: Math.sin(t + tOffset) * spiralRadius,
-        color: isStrandA ? 'rgba(0, 240, 255, 0.85)' : 'rgba(236, 72, 153, 0.85)'
-      });
-    }
-
-    // Inicializar pontos atuais
-    for (let i = 0; i < numPoints; i++) {
-      currentPoints.push({
-        x: spherePoints[i].x,
-        y: spherePoints[i].y,
-        z: spherePoints[i].z,
-        color: spherePoints[i].color
-      });
-    }
-
-    let angleX = 0.004;
-    let angleY = 0.006;
-    let autoRotateAngleX = 0;
-    let autoRotateAngleY = 0;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current.targetX = e.clientX - rect.left - width / 2;
-      mouseRef.current.targetY = e.clientY - rect.top - height / 2;
-      mouseRef.current.active = true;
-    };
-
-    const handleMouseLeave = () => {
-      mouseRef.current.active = false;
-    };
-
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      // Suavizar scroll
-      scrollRef.current.current += (scrollRef.current.target - scrollRef.current.current) * 0.08;
-      const t = Math.min(Math.max(scrollRef.current.current, 0), 1);
-
-      // Suavizar mouse remoto
-      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.1;
-      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.1;
-
-      // Calcular interpolação entre as formas baseados no progresso do scroll do usuário
-      // Se t < 0.5 interpolamos entre Esfera e Toroide
-      // Se t >= 0.5 interpolamos entre Toroide e Hélice
-      for (let i = 0; i < numPoints; i++) {
-        let targetX = 0, targetY = 0, targetZ = 0;
-        if (t < 0.5) {
-          const ratio = t * 2;
-          targetX = spherePoints[i].x * (1 - ratio) + torusPoints[i].x * ratio;
-          targetY = spherePoints[i].y * (1 - ratio) + torusPoints[i].y * ratio;
-          targetZ = spherePoints[i].z * (1 - ratio) + torusPoints[i].z * ratio;
-        } else {
-          const ratio = (t - 0.5) * 2;
-          targetX = torusPoints[i].x * (1 - ratio) + helixPoints[i].x * ratio;
-          targetY = torusPoints[i].y * (1 - ratio) + helixPoints[i].y * ratio;
-          targetZ = torusPoints[i].z * (1 - ratio) + helixPoints[i].z * ratio;
-        }
-
-        // Suavizar transição da partícula individual
-        currentPoints[i].x += (targetX - currentPoints[i].x) * 0.1;
-        currentPoints[i].y += (targetY - currentPoints[i].y) * 0.1;
-        currentPoints[i].z += (targetZ - currentPoints[i].z) * 0.1;
-      }
-
-      // Rotações automáticas e resposta ao mouse
-      autoRotateAngleX += angleX;
-      autoRotateAngleY += angleY;
-
-      // Adiciona um balanço extra conforme o mouse se move (magnetismo espacial)
-      const finalAngleY = autoRotateAngleY + (mouseRef.current.active ? mouseRef.current.x * 0.002 : 0);
-      const finalAngleX = autoRotateAngleX + (mouseRef.current.active ? mouseRef.current.y * 0.002 : 0);
-
-      const cosY = Math.cos(finalAngleY);
-      const sinY = Math.sin(finalAngleY);
-      const cosX = Math.cos(finalAngleX);
-      const sinX = Math.sin(finalAngleX);
-
-      // Projetar e Desenhar Partículas 3D
-      const projected: { sx: number; sy: number; sz: number; color: string }[] = [];
-
-      for (let i = 0; i < numPoints; i++) {
-        const pt = currentPoints[i];
-
-        // Rotação Y
-        let x1 = pt.x * cosY - pt.z * sinY;
-        let z1 = pt.z * cosY + pt.x * sinY;
-
-        // Rotação X
-        let y2 = pt.y * cosX - z1 * sinX;
-        let z2 = z1 * cosX + pt.y * sinX;
-
-        // Efeito de Profundidade de Perspectiva (Projection)
-        const cameraDistance = 450;
-        const scale = cameraDistance / (cameraDistance + z2);
-        
-        let screenX = x1 * scale + width / 2;
-        let screenY = y2 * scale + height / 2;
-
-        // Atração magnética do cursor nos pontos vizinhos
-        if (mouseRef.current.active) {
-          const mouseWorldX = mouseRef.current.targetX + width / 2;
-          const mouseWorldY = mouseRef.current.targetY + height / 2;
-          const dx = mouseWorldX - screenX;
-          const dy = mouseWorldY - screenY;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 130) {
-            const force = (130 - dist) / 130 * 18; // Força magnética
-            screenX += (dx / dist) * force;
-            screenY += (dy / dist) * force;
-          }
-        }
-
-        projected.push({
-          sx: screenX,
-          sy: screenY,
-          sz: z2,
-          color: pt.color
-        });
-      }
-
-      // Desenhar conexões magnéticas geométricas se estiverem próximas
-      ctx.lineWidth = 0.55;
-      for (let i = 0; i < numPoints; i++) {
-        let connections = 0;
-        for (let j = i + 1; j < numPoints; j++) {
-          if (connections >= 2) break; // Limita conexões para fluidez e leveza do site
-          
-          const p1 = projected[i];
-          const p2 = projected[j];
-          const distance = Math.hypot(p1.sx - p2.sx, p1.sy - p2.sy);
-
-          if (distance < 55) {
-            const alpha = (1 - distance / 55) * 0.18;
-            ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
-            ctx.beginPath();
-            ctx.moveTo(p1.sx, p1.sy);
-            ctx.lineTo(p2.sx, p2.sy);
-            ctx.stroke();
-            connections++;
-          }
-        }
-      }
-
-      // Desenhar os pontos neon brilhantes
-      for (let i = 0; i < numPoints; i++) {
-        const p = projected[i];
-        // O tamanho muda baseado no eixo Z (proximidade da câmera)
-        const size = Math.max(1.2, (180 - p.sz) / 45);
-        ctx.fillStyle = p.color;
-        
-        // Efeito glow primário para tons neon
-        ctx.shadowBlur = size * 1.5;
-        ctx.shadowColor = p.color.includes('139') ? '#8B5CF6' : '#00F0FF';
-
-        ctx.beginPath();
-        ctx.arc(p.sx, p.sy, size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.shadowBlur = 0; // Reseta shadow para performance
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
-      if (canvas) {
-        canvas.removeEventListener('mousemove', handleMouseMove);
-        canvas.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-  }, []);
 
   return (
-    <div 
-      ref={containerRef}
-      className="min-h-screen bg-[#0A0F1C] text-white flex flex-col items-center justify-start py-8 px-4 sm:px-6 lg:px-8 font-sans relative overflow-x-hidden scroll-smooth"
-    >
+    <div className="min-h-screen bg-[#0A0F1C] text-white flex flex-col items-center justify-start py-8 px-4 sm:px-6 lg:px-8 font-sans relative overflow-x-hidden scroll-smooth">
       
-      {/* Canvas Interativo 3D com Neon Magnético */}
-      <div className="absolute inset-0 z-0 pointer-events-none md:pointer-events-auto">
-        <canvas 
-          ref={canvasRef} 
-          className="w-full h-full opacity-65"
-        />
-      </div>
+      {/* Componente Reutilizável de Fundo 3D Neon Magnético e Reativo */}
+      <NeonBackground3D />
 
       <div className="w-full max-w-5xl z-10 relative">
         
@@ -368,10 +91,10 @@ export default function BuyAgentsPage() {
           </div>
         </div>
 
-        {/* Cards de Exibição de Plano Dinâmico Conversivo (Sem Formulário!) */}
+        {/* Cards de Exibição de Plano Dinâmico Conversivo */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch max-w-4xl mx-auto mb-16">
           
-          {/* Card Esquerdo: Detalhamento do que vem incluso (Destaque Modular) */}
+          {/* Card Esquerdo: Detalhamento do que vem incluso */}
           <div className="md:col-span-6 p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-lg flex flex-col justify-between relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 p-4 text-[#00F0FF]/15">
               <Bot className="w-20 h-20 rotate-12" />
@@ -504,10 +227,8 @@ export default function BuyAgentsPage() {
 
                   <div>
                     <a
-                      href="https://pay.kiwify.com.br/GKrbQy6"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-4 rounded-xl bg-[#00F0FF] hover:bg-[#00D8E6] text-[#0A0F1C] font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(0,240,255,0.4)] text-xs text-center uppercase cursor-pointer"
+                      href="/planos/confirmar?plano=anual"
+                      className="w-full py-4 rounded-xl bg-[#00F0FF] hover:bg-[#00D8E6] text-[#0A0F1C] font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(0,240,255,0.4)] text-xs text-center uppercase cursor-pointer animate-pulse"
                     >
                       🚀 ASSINAR LICENÇA ANUAL AGORA
                     </a>
@@ -572,9 +293,7 @@ export default function BuyAgentsPage() {
 
                   <div>
                     <a
-                      href="https://pay.kiwify.com.br/zABsvn6"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/planos/confirmar?plano=mensal"
                       className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-[#8B5CF6] hover:from-purple-500 hover:to-[#7C3AED] text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)] text-xs text-center uppercase cursor-pointer"
                     >
                       🚀 ASSINAR PLANO MENSAL AGORA
@@ -593,7 +312,82 @@ export default function BuyAgentsPage() {
 
         </div>
 
-        {/* Mini FAQs de Alta Conversão */}
+        {/* MÓDULO COMPARATIVO FINANCEIRO E DE PERFORMANCE ESTRATÉGICA */}
+        <div className="max-w-4xl mx-auto mb-16 bg-[#0F172A]/40 border border-gray-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#00F0FF]/5 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div className="text-center sm:text-left mb-6">
+            <span className="text-[9px] font-mono font-bold tracking-widest text-[#00F0FF] bg-[#00F0FF]/10 border border-[#00F0FF]/30 px-3 py-1 rounded-full inline-block mb-2">
+              📊 POR QUE ESTE É O MELHOR NEGÓCIO DA SUA CARREIRA?
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-white">
+              Custo vs. Produtividade Sem Limites
+            </h3>
+            <p className="text-[#94A3B8] text-xs mt-1">
+              Desenvolvemos uma estrutura focada em eliminar travas de orçamentos e te libertar de gargalos operacionais.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mb-8">
+            <div className="bg-[#0A0F1C]/85 border border-red-500/20 rounded-xl p-5 text-left">
+              <span className="text-[10px] font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded uppercase font-mono">
+                Caminho Tradicional (Alto Risco)
+              </span>
+              <h4 className="text-sm font-black mt-2 mb-4 text-white">Contratação de Funcionário ou Várias Assinaturas</h4>
+              
+              <div className="space-y-3.5 text-xs">
+                <div className="flex justify-between items-center border-b border-gray-800/40 pb-2">
+                  <span className="text-gray-400">Salário CLT de Designer ou Dev Sênior:</span>
+                  <span className="font-mono font-bold text-red-400">R$ 72.000 /ano + impostos</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-gray-800/40 pb-2">
+                  <span className="text-gray-400">Gasto com múltiplas IAs isoladas + tokens:</span>
+                  <span className="font-mono font-semibold text-red-300">R$ 1.500+ /mês facilmente</span>
+                </div>
+                <div className="flex justify-between items-center pb-1">
+                  <span className="text-gray-400">Gargalo de Limite do Claude Coworking:</span>
+                  <span className="font-mono text-red-300">Bloqueios rápidos de limite diário</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#0A0F1C]/85 border border-[#00F0FF]/30 rounded-xl p-5 text-left relative">
+              <span className="text-[10px] font-bold text-[#00F0FF] bg-[#00F0FF]/15 px-2 py-0.5 rounded uppercase font-mono">
+                Nossa Licença Ativa (Máximo Retorno)
+              </span>
+              <h4 className="text-sm font-black mt-2 mb-4 text-white">O Ecossistema Chave-na-Mão AutoLead</h4>
+              
+              <div className="space-y-3.5 text-xs">
+                <div className="flex justify-between items-center border-b border-gray-800/40 pb-2">
+                  <span className="text-gray-400">Licença Anual Completa:</span>
+                  <span className="font-mono font-bold text-emerald-400">R$ 997,00 /ano</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-gray-800/40 pb-2">
+                  <span className="text-gray-400">Custo operacional médio de tokens:</span>
+                  <span className="font-mono font-bold text-emerald-400">~ R$ 100/mês para uso comum</span>
+                </div>
+                <div className="flex justify-between items-center pb-1">
+                  <span className="text-gray-400">Flexibilidade Multi-Modelos:</span>
+                  <span className="font-mono font-bold text-[#00F0FF]">Poder alternar IAs sem travas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#0A101D] border border-gray-800 rounded-xl p-4 sm:p-5 text-left">
+            <h4 className="text-xs font-black text-white uppercase tracking-wider mb-2.5 flex items-center gap-1.5 text-[#00F0FF]">
+              <Layers className="w-4 h-4" /> COMPREENSÃO CRÍTICA: CLAUDE COWORKING VS. ANTIGRAVITY & VSCODE
+            </h4>
+            <p className="text-[11px] text-[#94A3B8] leading-relaxed mb-3">
+              Por que não utilizar apenas o Claude Teams ou Coworking nativo? Simples: eles aplicam limitações sérias sobre o volume de tokens e mensagens quando você começa a produzir em massa. Embora o Claude Code oficial forneça uma qualidade de codificação espetacular, depender exclusivamente dos seus limites nativos causa grande frustração e paradas forçadas de fluxo de trabalho.
+            </p>
+            <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+              O ecossistema fornecido na licença te ensina a configurar IDEs modernas (como o <strong>AntiGravity</strong> ou <strong>VSCode</strong>) para conectar outros planos e chaves de API reservas. Assim, você aproveita o melhor do Claude Code, mas consome de forma hibridizada dos planos que custam na média <strong>R$ 100 reais por mês</strong>, destravando limitações diárias e usufruindo de potência total sempre que precisar!
+            </p>
+          </div>
+        </div>
+
+        {/* FAQ */}
         <div className="max-w-2xl mx-auto border-t border-gray-800/40 pt-10 pb-16">
           <h3 className="text-lg font-bold text-center mb-6 text-white flex items-center justify-center gap-2">
             <Zap className="w-4 h-4 text-[#00F0FF]" /> Perguntas Frequentes

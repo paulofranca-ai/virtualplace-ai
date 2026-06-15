@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Briefcase, ShieldCheck, Star, CreditCard, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, Search, PlayCircle, Plus, Minus, X, Rocket, Brain } from 'lucide-react';
 import { supabase } from './lib/supabase';
+import NeonBackground3D from './components/NeonBackground3D';
 
 const COUNTRIES = [
   { name: 'Brasil', code: '+55', flag: '🇧🇷' },
@@ -69,7 +70,8 @@ export default function JobsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30">
+    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30 relative overflow-x-hidden">
+      <NeonBackground3D />
       
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
@@ -130,7 +132,7 @@ export default function JobsPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="/comprar"
+                  href="/planos"
                   className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
                 >
                   <Rocket className="w-4 h-4" />
@@ -284,7 +286,7 @@ export default function JobsPage() {
               Institucional
             </a>
             <a 
-              href="/comprar"
+              href="/planos"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
               Compre Robôs de IA
