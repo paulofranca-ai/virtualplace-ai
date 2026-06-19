@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase } from 'lucide-react';
+import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase, Camera, Video, MapPin, Utensils, Ticket, Layers, Calculator } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
 
@@ -189,7 +189,7 @@ export default function SalesPage() {
 
               <div className="flex flex-wrap gap-4 justify-center">
                 <a 
-                  href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer"
+                  href="/loja"
                   className="px-6 py-3 rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 hover:bg-[#00F0FF]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_15px_rgba(0,240,255,0.2)]"
                 >
                   <User className="w-4 h-4" />
@@ -223,6 +223,29 @@ export default function SalesPage() {
                   <Building className="w-4 h-4 text-[#00F0FF]" />
                   VEJA O ESCRITÓRIO VIRTUAL
                 </a>
+              </div>
+
+              {/* Seção do Vídeo Showcase de Apresentação (Início da página) */}
+              <div className="mt-16 max-w-4xl mx-auto">
+                <div className="text-center mb-6">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded-full border border-[#00F0FF]/30">
+                    🎬 NOSSO TRABALHO DIGITAL & AUDIOVISUAL
+                  </span>
+                  <h3 className="text-lg md:text-xl font-bold text-white mt-3 uppercase tracking-tight">
+                    Showcase de Lançamentos, Aftermovies & Coberturas de Sucesso
+                  </h3>
+                </div>
+                
+                <div className="rounded-2xl overflow-hidden border-2 border-[#2563EB]/40 shadow-[0_0_40px_rgba(37,99,235,0.3)] aspect-video relative bg-black">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/ZtC7aKaTD5w?autoplay=0&rel=0"
+                    title="SquadClawVirtual - Portfólio de Alta Performance"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -382,6 +405,195 @@ export default function SalesPage() {
                 <p className="text-[#94A3B8] text-sm leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção de Planos de Produção Audiovisual & Coberturas */}
+      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#00F0FF]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#2563EB]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight text-center">
+              Tabela de Valores de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#2563EB]">Audiovisual & Cobertura</span>
+            </h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto text-sm text-center">
+              Trabalho de campo totalmente agenciado para garantir a melhor captação visual e alcance do seu evento com custos transparentes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Plano 1: Cobertura Fotográfica */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-gray-800 bg-[#050810]/75 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/40 transition-all shadow-2xl"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/30 text-[#00F0FF]">
+                    <Camera className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded">
+                    Registro de Eventos
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  Plano Fotografia
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Cobertura completa de eventos institucionais, políticos e particulares com fotos de altíssima definição tratadas.
+                </p>
+
+                {/* Opções de Preço */}
+                <div className="space-y-4 mb-8">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-xs font-bold text-white uppercase">Por Hora Contratada</span>
+                      <span className="text-lg font-black text-[#00F0FF]">R$ 100 <span className="text-xs font-normal text-gray-400">/ hora</span></span>
+                    </div>
+                    <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                      Entrega de todas as fotos registradas e tratadas profissionalmente. Ideal para eventos que necessitam de amplo registro imediato.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-xs font-bold text-white uppercase font-mono">Por Venda pelo Site</span>
+                      <span className="text-xs font-black text-[#00F0FF] uppercase bg-[#00F0FF]/10 px-2 py-0.5 rounded">Sob Demanda</span>
+                    </div>
+                    <div className="text-[11px] text-[#94A3B8] leading-relaxed space-y-1 block mt-2">
+                      <div>• Sem custo de hora para a organização!</div>
+                      <div>• Venda de Foto pelo site/particular por <strong className="text-[#F8FAFC]">R$10 cada digital</strong> para baixar.</div>
+                      <div>• Impressão física opcional por <strong className="text-[#F8FAFC]">R$20 cada folha A4</strong>.</div>
+                      <div>• <strong className="text-emerald-400">Bônus Geral:</strong> Fotos grátis extras do evento e dos organizadores da diretoria.</div>
+                      <div>• Plataforma integrada: Galerias digitais profissionais de venda ativa via <strong className="text-white">Site Fotto ou Banlek</strong>.</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefícios e Entregas */}
+                <div className="space-y-2.5 pt-4 border-t border-gray-900">
+                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 font-mono">Entregas inclusas & Benefícios:</h4>
+                  {[
+                    'Upload das fotos e facilidade de download direto por QR Code',
+                    'Edição avançada de colagem automática nas fotos',
+                    'Fomento regional e portfólio rico pronto para redes sociais',
+                    'Controle absoluto de qualidade por agenciamento'
+                  ].map((benefit, bIdx) => (
+                    <div key={bIdx} className="flex items-start gap-2 text-xs text-[#94A3B8]">
+                      <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Informações adicionais */}
+              <div className="mt-8 pt-5 border-t border-gray-900 text-[10px] text-gray-500 space-y-2">
+                <span className="block font-bold text-gray-400 uppercase">⚠️ Custo logístico de responsabilidade do evento:</span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div className="flex items-center gap-1 bg-[#121A2E]/30 p-1.5 rounded border border-gray-800">
+                    <MapPin className="w-3 h-3 text-red-400" /> Deslocamento
+                  </div>
+                  <div className="flex items-center gap-1 bg-[#121A2E]/30 p-1.5 rounded border border-gray-800">
+                    <Utensils className="w-3 h-3 text-amber-500" /> Alimentação
+                  </div>
+                  <div className="flex items-center gap-1 bg-[#121A2E]/30 p-1.5 rounded border border-gray-800">
+                    <Ticket className="w-3 h-3 text-purple-400" /> Acesso Total
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Plano 2: Vídeo Institucional / Comercial (Aftermovie) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-gray-800 bg-[#050810]/75 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#2563EB]/40 transition-all shadow-2xl"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 flex items-center justify-center border border-[#2563EB]/30 text-[#00F0FF]">
+                    <Video className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded">
+                    Cinematografia
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  Plano Vídeo Institucional / Comercial
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Vídeos promocionais de alta potência e Reels comerciais ágeis com takes aéreos espetaculares para fixar sua marca no público.
+                </p>
+
+                {/* Opções de Preço por Minuto */}
+                <div className="space-y-3 mb-8">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-[#00F0FF]/25 transition-all">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold text-white uppercase font-sans">Câmera Pro + Drone</span>
+                      <span className="text-md font-black text-[#00F0FF]">R$ 700 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
+                    </div>
+                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
+                      Altíssimo padrão cinematográfico, takes terrestres ultraestabilizados de alta resolução combinados com fotos e vídeos aéreos.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-[#2563EB]/25 transition-all">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold text-white uppercase font-sans">iPhone + Drone ou iPhone + Câmera</span>
+                      <span className="text-md font-black text-[#2563EB]">R$ 600 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
+                    </div>
+                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
+                      Formato híbrido e extremamente dinâmico perfeito para captação ágil, mantendo tomadas de drone aéreas dramáticas.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-purple-500/25 transition-all">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold text-white uppercase font-sans">Só iPhone (Sem drone e sem câmera)</span>
+                      <span className="text-md font-black text-purple-400">R$ 500 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
+                    </div>
+                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
+                      Estratégia focado 100% no orgânico do Tik Tok e Instagram Vertical Reels, sem custos extras de infraestrutura pesada.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Benefícios e Entregas */}
+                <div className="space-y-2.5 pt-4 border-t border-gray-900">
+                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 font-mono">Entregas inclusas & Benefícios:</h4>
+                  {[
+                    'Montagem rápida de roteiro com gancho de atenção de 3 segundos',
+                    'Edição rítmica alinhada à trilha sonora de alta energia',
+                    'Sonoplastia e correção de ruído profissional inclusa',
+                    'Disponibilização de arquivos finais via Google Drive em 4K/1080p'
+                  ].map((benefit, bIdx) => (
+                    <div key={bIdx} className="flex items-start gap-2 text-xs text-[#94A3B8]">
+                      <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Botão de redirecionamento */}
+              <div className="mt-8 pt-5 border-t border-gray-900 flex justify-center">
+                <a
+                  href="/loja"
+                  className="w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#2563EB] hover:from-[#00D8E6] hover:to-[#1D4ED8] text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <Calculator className="w-4 h-4" /> Simular Orçamento Completo na Calculadora
+                </a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -676,14 +888,14 @@ export default function SalesPage() {
                 </p>
                 <div className="flex flex-col xl:flex-row gap-4 w-full justify-center items-stretch">
                   <a 
-                    href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer"
-                    className="flex-1 px-6 py-4 rounded-xl bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_15px_rgba(37,99,235,0.2)]"
+                    href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20Campanha%20de%20Marketing%2C%20como%20funciona%3F" target="_blank" rel="noopener noreferrer"
+                    className="flex-1 px-6 py-4 rounded-xl bg-[#2563EB]/25 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/40 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_15px_rgba(37,99,235,0.2)]"
                   >
-                    <User className="w-5 h-5 text-[#00F0FF]" />
-                    Quero Contratar Humanos
+                    <TrendingUp className="w-5 h-5 text-[#00F0FF]" />
+                    Comece sua Campanha de Marketing Agora
                   </a>
                   <a 
-                    href="/agentes"
+                    href="https://lp.autolead.site/agentes"
                     className="flex-1 px-6 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_20px_rgba(0,240,255,0.4)] cursor-pointer"
                   >
                     <Rocket className="w-5 h-5" />
@@ -723,8 +935,7 @@ export default function SalesPage() {
               Compre Robôs de IA
             </a>
             <a 
-              href="https://loja.autolead.site"
-              target="_blank" rel="noopener noreferrer"
+              href="/loja"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#F8FAFC] bg-[#00F0FF]/20 font-semibold transition-all hover:bg-[#00F0FF]/30"
             >
               Contrate Humanos

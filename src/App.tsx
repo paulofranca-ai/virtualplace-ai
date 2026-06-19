@@ -5,6 +5,7 @@ import InstitutionalPage from './InstitutionalPage';
 import JobsPage from './JobsPage';
 import SimulatedCheckoutPage from './SimulatedCheckoutPage';
 import BuyAgentsPage from './BuyAgentsPage';
+import LojaPage from './LojaPage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/comprar" element={<BuyAgentsPage />} />
         <Route path="/planos" element={<BuyAgentsPage />} />
         <Route path="/agentes" element={<BuyAgentsPage />} />
+        <Route path="/loja" element={<LojaPage />} />
       </Routes>
     </Router>
   );

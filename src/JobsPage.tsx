@@ -118,7 +118,7 @@ export default function JobsPage() {
 
               <div className="flex flex-wrap gap-4 justify-center">
                 <a 
-                  href="https://loja.autolead.site" target="_blank" rel="noopener noreferrer"
+                  href="/loja"
                   className="px-6 py-3 rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 hover:bg-[#00F0FF]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_15px_rgba(0,240,255,0.2)]"
                 >
                   <User className="w-4 h-4" />
@@ -292,8 +292,7 @@ export default function JobsPage() {
               Compre Robôs de IA
             </a>
             <a 
-              href="https://loja.autolead.site"
-              target="_blank" rel="noopener noreferrer"
+              href="/loja"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#F8FAFC] bg-[#00F0FF]/20 font-semibold transition-all hover:bg-[#00F0FF]/30"
             >
               Contrate Humanos
