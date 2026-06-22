@@ -231,9 +231,13 @@ export default function SalesPage() {
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded-full border border-[#00F0FF]/30">
                     🎬 NOSSO TRABALHO DIGITAL & AUDIOVISUAL
                   </span>
-                  <h3 className="text-lg md:text-xl font-bold text-white mt-3 uppercase tracking-tight">
+                  <h3 className="text-lg md:text-2xl font-black text-white mt-3 uppercase tracking-tight">
                     Showcase de Lançamentos, Aftermovies & Coberturas de Sucesso
                   </h3>
+                  <div className="mt-2.5 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                    Vídeo 100% roteirizado, gravado e editado pelos Freelas Virtual Place
+                  </div>
                 </div>
                 
                 <div className="rounded-2xl overflow-hidden border-2 border-[#2563EB]/40 shadow-[0_0_40px_rgba(37,99,235,0.3)] aspect-video relative bg-black">
@@ -468,10 +472,37 @@ export default function SalesPage() {
                     </div>
                     <div className="text-[11px] text-[#94A3B8] leading-relaxed space-y-1 block mt-2">
                       <div>• Sem custo de hora para a organização!</div>
-                      <div>• Venda de Foto pelo site/particular por <strong className="text-[#F8FAFC]">R$10 cada digital</strong> para baixar.</div>
+                      <div>• Venda de Foto por <strong className="text-[#F8FAFC]">R$10 cada digital</strong> para baixar.</div>
                       <div>• Impressão física opcional por <strong className="text-[#F8FAFC]">R$20 cada folha A4</strong>.</div>
                       <div>• <strong className="text-emerald-400">Bônus Geral:</strong> Fotos grátis extras do evento e dos organizadores da diretoria.</div>
-                      <div>• Plataforma integrada: Galerias digitais profissionais de venda ativa via <strong className="text-white">Site Fotto ou Banlek</strong>.</div>
+                      <div>• Plataforma integrada com reconhecimento facial inteligente!</div>
+                    </div>
+
+                    {/* Showcase Reel de Exemplo com Imagem Farroupilha e link de reconhecimento facial */}
+                    <div className="mt-4 pt-4 border-t border-gray-900">
+                      <div className="relative rounded-lg overflow-hidden group/img mb-3 border border-gray-800">
+                        <img 
+                          src="/farroupilha_rodeo.jpg" 
+                          alt="Semana Farroupilha Curitibanos" 
+                          referrerPolicy="no-referrer"
+                          className="w-full h-36 object-cover object-center group-hover/img:scale-105 transition-all duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-2">
+                          <span className="text-[9px] font-bold text-white bg-black/70 px-1.5 py-0.5 rounded tracking-wide font-mono">
+                            🐎 Semana Farroupilha 2025 - Curitibanos-SC
+                          </span>
+                        </div>
+                      </div>
+
+                      <a 
+                        href="https://www.fotto.com.br/semana-farroupilha-2025-curitibanos-sc/e/187901?folder_id=113449" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full py-3 px-3 rounded-lg bg-[#00F0FF]/10 hover:bg-[#00F0FF]/25 border border-[#00F0FF]/40 hover:border-[#00F0FF] text-[#00F0FF] hover:text-white transition-all text-[11px] font-black uppercase tracking-tight text-center flex flex-col sm:flex-row items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(0,240,255,0.05)] cursor-pointer"
+                      >
+                        <span>Clique aqui para ver nosso trabalho fotográfico e site que busca sua foto pelo rosto</span>
+                        <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                      </a>
                     </div>
                   </div>
                 </div>
