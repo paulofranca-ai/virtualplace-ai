@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase, Camera, Video, MapPin, Utensils, Ticket, Layers, Calculator } from 'lucide-react';
+import { Rocket, Brain, MousePointerClick, BarChart3, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Car, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase, Camera, Video, MapPin, Utensils, Ticket, Layers, Calculator, Sparkles } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
 
@@ -236,7 +236,7 @@ export default function SalesPage() {
                   </h3>
                   <div className="mt-2.5 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
                     <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                    Vídeo 100% roteirizado, gravado e editado pelos Freelas Virtual Place
+                    Vídeo roteirizado, gravado e editado pelos Freelas Virtual Place
                   </div>
                 </div>
                 
@@ -457,11 +457,11 @@ export default function SalesPage() {
                 <div className="space-y-4 mb-8">
                   <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-bold text-white uppercase">Por Hora Contratada</span>
-                      <span className="text-lg font-black text-[#00F0FF]">R$ 100 <span className="text-xs font-normal text-gray-400">/ hora</span></span>
+                      <span className="text-xs font-bold text-white uppercase">Por Diária Contratada</span>
+                      <span className="text-lg font-black text-[#00F0FF]">R$ 1.000 <span className="text-xs font-normal text-gray-400">/ diária</span></span>
                     </div>
                     <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                      Entrega de todas as fotos registradas e tratadas profissionalmente. Ideal para eventos que necessitam de amplo registro imediato.
+                      Cobertura completa diária com entrega de todas as fotos registradas e tratadas profissionalmente. Ou opte por nenhuma cobrança direta à organização selecionando a opção abaixo.
                     </p>
                   </div>
 
@@ -567,34 +567,15 @@ export default function SalesPage() {
 
                 {/* Opções de Preço por Minuto */}
                 <div className="space-y-3 mb-8">
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-[#00F0FF]/25 transition-all">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/30 hover:border-[#00F0FF]/60 transition-all bg-[#00F0FF]/5">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-white uppercase font-sans">Câmera Pro + Drone</span>
-                      <span className="text-md font-black text-[#00F0FF]">R$ 700 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
+                      <span className="text-sm font-black text-white uppercase font-sans flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF] animate-pulse" /> Vídeo Top Premium</span>
+                      <span className="text-md font-black text-[#00F0FF]">R$ 1.000 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
                     </div>
-                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
-                      Altíssimo padrão cinematográfico, takes terrestres ultraestabilizados de alta resolução combinados com fotos e vídeos aéreos.
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-[#2563EB]/25 transition-all">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-white uppercase font-sans">iPhone + Drone ou iPhone + Câmera</span>
-                      <span className="text-md font-black text-[#2563EB]">R$ 600 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
+                    <div className="text-[11px] text-[#94A3B8] leading-relaxed mt-2.5 space-y-1">
+                      <div>• A partir de <strong className="text-white">15 segundos por R$ 250</strong>! (30s por R$500, 45s por R$750)</div>
+                      <div>• Captação profissional completa, drone aéreo de alta resolução, câmeras terrestres de cinema + suporte fotográfico.</div>
                     </div>
-                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
-                      Formato híbrido e extremamente dinâmico perfeito para captação ágil, mantendo tomadas de drone aéreas dramáticas.
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-purple-500/25 transition-all">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-white uppercase font-sans">Só iPhone (Sem drone e sem câmera)</span>
-                      <span className="text-md font-black text-purple-400">R$ 500 <span className="text-[10px] font-normal text-gray-400">/ min final</span></span>
-                    </div>
-                    <p className="text-[10.5px] text-[#94A3B8] leading-relaxed mt-1">
-                      Estratégia focado 100% no orgânico do Tik Tok e Instagram Vertical Reels, sem custos extras de infraestrutura pesada.
-                    </p>
                   </div>
                 </div>
 

@@ -24,12 +24,24 @@ export default function LojaPage() {
 
   // State for Calculator
   const [photoMode, setPhotoMode] = useState<'hourly' | 'venda'>('hourly');
-  const [photoHours, setPhotoHours] = useState<number>(4);
+  const [photoDays, setPhotoDays] = useState<number>(1);
   const [photoQtyDigital, setPhotoQtyDigital] = useState<number>(20);
   const [photoQtyA4, setPhotoQtyA4] = useState<number>(5);
 
   const [videoMode, setVideoMode] = useState<'pro_drone' | 'mix' | 'iphone_only'>('pro_drone');
-  const [videoMinutes, setVideoMinutes] = useState<number>(2);
+  
+  const durationOptions = [
+    { label: '15 segundos', priceFactor: 0.25 },
+    { label: '30 segundos', priceFactor: 0.5 },
+    { label: '45 segundos', priceFactor: 0.75 },
+    { label: '1 minuto', priceFactor: 1.0 },
+    { label: '1.5 minuto', priceFactor: 1.5 },
+    { label: '2 minutos', priceFactor: 2.0 },
+    { label: '3 minutos', priceFactor: 3.0 },
+    { label: '5 minutos', priceFactor: 5.0 },
+    { label: '10 minutos', priceFactor: 10.0 },
+  ];
+  const [durationIndex, setDurationIndex] = useState<number>(3); // Defaults to '1 minuto'
 
   const [addTravelExp, setAddTravelExp] = useState<boolean>(true);
   const [addFood, setAddFood] = useState<boolean>(true);
@@ -37,16 +49,16 @@ export default function LojaPage() {
 
   // Math totals
   const photoCost = photoMode === 'hourly' 
-    ? photoHours * 100 
+    ? photoDays * 1000 
     : (photoQtyDigital * 10) + (photoQtyA4 * 20);
 
   const videoRate = videoMode === 'pro_drone' 
-    ? 700 
+    ? 1000 
     : videoMode === 'mix' 
-      ? 600 
-      : 500;
+      ? 800 
+      : 600;
   
-  const videoCost = videoMinutes * videoRate;
+  const videoCost = durationOptions[durationIndex].priceFactor * videoRate;
   const totalCost = photoCost + videoCost;
 
   // Build WhatsApp Message Link dynamically
@@ -54,18 +66,18 @@ export default function LojaPage() {
     let msg = `Olá! Estive no site da SquadClawVirtual e gostaria de fazer um orçamento de Audiovisual.\n\n`;
     
     if (photoMode === 'hourly') {
-      msg += `📸 Cobertura Fotográfica: Plano por Hora (${photoHours} horas) - Est. R$ ${photoHours * 100},00\n`;
+      msg += `📸 Cobertura Fotográfica: Plano por Diária (${photoDays} diária(s)) - Est. R$ ${photoDays * 1000},00\n`;
     } else {
       msg += `📸 Venda de Fotos Particulares (Est. ${photoQtyDigital} digitais e ${photoQtyA4} impressões A4)\n`;
     }
 
     const videoTypeStr = videoMode === 'pro_drone' 
-      ? 'Câmera Pro + Drone (R$700/min final)' 
+      ? 'Vídeo Top Premium (R$1.000/min final, a partir de 15s por R$250)' 
       : videoMode === 'mix' 
-        ? 'iPhone + Drone ou iPhone + Câmera (R$600/min final)' 
-        : 'Apenas iPhone sem drone/câmera (R$500/min final)';
+        ? 'iPhone + Drone ou iPhone + Câmera (R$800/min final)' 
+        : 'Apenas iPhone sem drone/câmera (R$600/min final)';
 
-    msg += `🎥 Aftermovie: ${videoMinutes} minuto(s) final no formato "${videoTypeStr}" - Est. R$ ${videoCost},00\n\n`;
+    msg += `🎥 Aftermovie: Duração de ${durationOptions[durationIndex].label} no formato "${videoTypeStr}" - Est. R$ ${videoCost},00\n\n`;
     
     msg += `Logística despesas adicionais inclusas:\n`;
     if (addTravelExp) msg += `- Adicional deslocamento/despesas\n`;
@@ -150,25 +162,25 @@ export default function LojaPage() {
               <div className="space-y-4 mb-8">
                 <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-gray-800">
                   <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Opção 1: Por hora contratada</span>
-                    <span className="text-[#00F0FF] font-black">R$ 100 / hora</span>
+                    <span>Opção 1: Por diária contratada</span>
+                    <span className="text-[#00F0FF] font-black">R$ 1.000 / diária</span>
                   </div>
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Você contrata pelas horas de evento e recebe todas as fotos registradas e tratadas profissionalmente pronto para postar.
+                    Você garante a cobertura fotográfica completa pelo dia inteiro de evento e recebe todas as fotos registradas e tratadas profissionalmente.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-gray-800">
                   <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Opção 2: Venda direta do site</span>
+                    <span>Opção 2: Venda direta do site (Fotto/Banlek)</span>
                     <span className="text-purple-400 font-black">Sob Demanda</span>
                   </div>
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed space-y-1.5">
-                    <span>• Fotos sem custo de hora para a organização.</span><br />
-                    <span>• Venda de Foto pelo site/particular por <strong className="text-white">R$10 cada digital</strong> para baixar.</span><br />
+                    <span>• Fotos sem custo de hora/diária para a organização.</span><br />
+                    <span>• Venda de Foto pelo site por <strong className="text-white">R$10 cada digital</strong> download na hora.</span><br />
                     <span>• Impressão física opcional por <strong className="text-white">R$20 cada folha A4</strong>.</span><br />
                     <span>• Bônus: Fotos gerais gratuitas do evento e da diretoria incluídas.</span><br />
-                    <span>• Plataforma integrada: Galeria profissional no <strong className="text-white font-mono">Site Fotto ou Banlek</strong>.</span>
+                    <span>• Plataforma com reconhecimento facial inteligente.</span>
                   </p>
                 </div>
               </div>
@@ -200,34 +212,14 @@ export default function LojaPage() {
               </p>
 
               {/* Pricing Options details */}
-              <div className="space-y-3.5 mb-8">
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/70 border border-gray-800 hover:border-[#00F0FF]/25 transition-all">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-bold text-white uppercase">Câmera Pro + Drone</span>
-                    <span className="text-sm font-black text-[#00F0FF]">R$ 700 <span className="text-[10px] font-normal text-gray-400">/min final</span></span>
+              <div className="space-y-3 mb-8">
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/60 transition-all">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Vídeo Top Premium</span>
+                    <span className="text-sm font-black text-[#00F0FF]">R$ 1.000 <span className="text-[10px] font-normal text-gray-400">/min final</span></span>
                   </div>
-                  <p className="text-[10.5px] text-[#94A3B8] leading-relaxed">
-                    Entrega profissional em altíssima qualidade cinematográfica com transições dinâmicas e tomadas aéreas excepcionais.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/70 border border-gray-800 hover:border-[#2563EB]/25 transition-all">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-bold text-white uppercase">iPhone + Drone / Câmera</span>
-                    <span className="text-sm font-black text-[#2563EB]">R$ 600 <span className="text-[10px] font-normal text-gray-400">/min final</span></span>
-                  </div>
-                  <p className="text-[10.5px] text-[#94A3B8] leading-relaxed">
-                    Otimizado e híbrido: mescla de ângulos rápidos estáticos e imagens aéreas fluidas para reels de extremo impacto de engajamento social.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/70 border border-gray-800">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-bold text-white uppercase">Só iPhone (Sem drone/câmera)</span>
-                    <span className="text-sm font-black text-purple-400">R$ 500 <span className="text-[10px] font-normal text-gray-400">/min final</span></span>
-                  </div>
-                  <p className="text-[10.5px] text-[#94A3B8] leading-relaxed">
-                    Estratégia ágil puramente focada no orgânico, trends verticais em altíssima fluidez e rapidez de pós-produção imediata.
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                    A partir de <strong>15 segundos por R$ 250</strong>! Drone de alta definição, gravação profissional cinematográfica, e câmeras completas (vídeo/foto).
                   </p>
                 </div>
               </div>
@@ -276,7 +268,7 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Por Hora (R$100/h)
+                    Por Diária (R$1.000/dia)
                   </button>
                   <button 
                     onClick={() => setPhotoMode('venda')}
@@ -286,28 +278,28 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Venda sob demanda
+                    Venda de fotos (Site)
                   </button>
                 </div>
 
                 {photoMode === 'hourly' ? (
                   <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                    <label className="text-[11px] text-gray-400 block mb-1">Horas estimadas de cobertura: <strong>{photoHours} horas</strong></label>
+                    <label className="text-[11px] text-gray-400 block mb-1">Diárias estimadas de cobertura: <strong>{photoDays} diária(s)</strong></label>
                     <input 
                       type="range" 
                       min="1" 
-                      max="24" 
-                      value={photoHours} 
-                      onChange={(e) => setPhotoHours(parseInt(e.target.value))}
+                      max="15" 
+                      value={photoDays} 
+                      onChange={(e) => setPhotoDays(parseInt(e.target.value))}
                       className="w-full accent-[#00F0FF] cursor-pointer"
                     />
                     <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                      <span>1h</span>
-                      <span>12h</span>
-                      <span>24h</span>
+                      <span>1 dia</span>
+                      <span>7 dias</span>
+                      <span>15 dias</span>
                     </div>
                     <div className="text-right text-xs font-extrabold text-[#00F0FF] mt-2">
-                      Subtotal: R$ {photoHours * 100},00
+                      Subtotal: R$ {photoDays * 1000},00
                     </div>
                   </div>
                 ) : (
@@ -355,58 +347,28 @@ export default function LojaPage() {
                   <Video className="w-4 h-4 text-purple-400" /> 2. Configurações Aftermovie
                 </h4>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] text-gray-400 uppercase font-mono block">Formato de Captação:</label>
-                  <div className="flex flex-col gap-1.5">
-                    <button 
-                      onClick={() => setVideoMode('pro_drone')}
-                      className={`py-1.5 px-3 rounded-lg border text-left text-[10px] font-black cursor-pointer uppercase flex justify-between items-center ${
-                        videoMode === 'pro_drone' 
-                          ? 'bg-purple-900/15 border-purple-500 text-[#00F0FF]' 
-                          : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      <span>🎥 Câmera Pro + Drone</span>
-                      <span>R$ 700/min</span>
-                    </button>
-                    <button 
-                      onClick={() => setVideoMode('mix')}
-                      className={`py-1.5 px-3 rounded-lg border text-left text-[10px] font-black cursor-pointer uppercase flex justify-between items-center ${
-                        videoMode === 'mix' 
-                          ? 'bg-purple-900/15 border-purple-500 text-[#00F0FF]' 
-                          : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      <span>📱 iPhone + Drone / Câmera</span>
-                      <span>R$ 600/min</span>
-                    </button>
-                    <button 
-                      onClick={() => setVideoMode('iphone_only')}
-                      className={`py-1.5 px-3 rounded-lg border text-left text-[10px] font-black cursor-pointer uppercase flex justify-between items-center ${
-                        videoMode === 'iphone_only' 
-                          ? 'bg-purple-900/15 border-purple-500 text-[#00F0FF]' 
-                          : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      <span>Apenas iPhone (social)</span>
-                      <span>R$ 500/min</span>
-                    </button>
+                 <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 uppercase font-mono block">Formato de Captação Único:</label>
+                  <div className="p-3 rounded-lg border bg-purple-950/15 border-purple-500 text-[#00F0FF] text-[11px] font-black uppercase flex justify-between items-center">
+                    <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF] animate-pulse" /> Vídeo Top Premium</span>
+                    <span>R$ 1.000 / min</span>
                   </div>
                 </div>
 
                 <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 mt-2">
-                  <label className="text-[11px] text-gray-400 block mb-1">Duração final de Aftermovie: <strong>{videoMinutes} minuto(s)</strong></label>
+                  <label className="text-[11px] text-gray-400 block mb-1">Duração final de Aftermovie: <strong>{durationOptions[durationIndex].label}</strong></label>
                   <input 
                     type="range" 
-                    min="1" 
-                    max="10" 
-                    value={videoMinutes} 
-                    onChange={(e) => setVideoMinutes(parseInt(e.target.value))}
+                    min="0" 
+                    max={durationOptions.length - 1} 
+                    value={durationIndex} 
+                    onChange={(e) => setDurationIndex(parseInt(e.target.value))}
                     className="w-full accent-purple-500 cursor-pointer"
                   />
                   <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                    <span>1 minuto</span>
-                    <span>10 minutos</span>
+                    <span>15s (Min)</span>
+                    <span>1 min</span>
+                    <span>10 min (Max)</span>
                   </div>
                   <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
                     Subtotal: R$ {videoCost},00
