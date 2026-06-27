@@ -428,7 +428,7 @@ export default function SalesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Plano 1: Cobertura Fotográfica */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -603,6 +603,73 @@ export default function SalesPage() {
                   className="w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#2563EB] hover:from-[#00D8E6] hover:to-[#1D4ED8] text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <Calculator className="w-4 h-4" /> Simular Orçamento Completo na Calculadora
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Plano 3: Assessoria de Tráfego Pago */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-2xl border border-gray-800 bg-[#050810]/75 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/40 transition-all shadow-2xl"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-purple-400">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded">
+                    Performance & ROAS
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  Assessoria de Tráfego Pago
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Atraia clientes altamente qualificados de forma contínua com anúncios de alta conversão nas redes de maior audiência do mundo.
+                </p>
+
+                {/* Opções de Preço por Minuto */}
+                <div className="space-y-3 mb-8">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/30 hover:border-[#00F0FF]/60 transition-all bg-[#00F0FF]/5">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-black text-white uppercase font-sans flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF] animate-pulse" /> Gestão Mensal</span>
+                      <span className="text-md font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-400">/ mês</span></span>
+                    </div>
+                    <div className="text-[11px] text-[#94A3B8] leading-relaxed mt-2.5 space-y-1">
+                      <div>• Assessoria focada em escala de <strong className="text-white">Faturamento & Retorno (ROAS)</strong>.</div>
+                      <div>• Criação, otimização e monitoramento diário das suas campanhas.</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefícios e Entregas */}
+                <div className="space-y-2.5 pt-4 border-t border-gray-900">
+                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 font-mono">Canais de Anúncio Patrocinado:</h4>
+                  {[
+                    'Meta Ads (Facebook Ads & Instagram Ads)',
+                    'Google Ads (Pesquisa, Rede de Display e YouTube)',
+                    'TikTok Ads (Vídeos curtos, dinâmicos e virais)',
+                    'Copywriting persuasivo focado em cliques qualificados',
+                    'Acompanhamento e relatórios periódicos de métricas'
+                  ].map((benefit, bIdx) => (
+                    <div key={bIdx} className="flex items-start gap-2 text-xs text-[#94A3B8]">
+                      <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Botão de redirecionamento */}
+              <div className="mt-8 pt-5 border-t border-gray-900 flex justify-center">
+                <a
+                  href="/loja"
+                  className="w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-purple-500 to-[#2563EB] hover:from-purple-600 hover:to-[#1D4ED8] text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(147,51,234,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <Calculator className="w-4 h-4" /> Simular na Calculadora de Orçamento
                 </a>
               </div>
             </motion.div>

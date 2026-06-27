@@ -15,7 +15,8 @@ import {
   Calculator, 
   Info,
   Layers,
-  ArrowRight
+  ArrowRight,
+  TrendingUp
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
 
@@ -47,6 +48,10 @@ export default function LojaPage() {
   const [addFood, setAddFood] = useState<boolean>(true);
   const [addAccess, setAddAccess] = useState<boolean>(true);
 
+  // Paid Traffic States
+  const [addTraffic, setAddTraffic] = useState<boolean>(false);
+  const [trafficMonths, setTrafficMonths] = useState<number>(3); // 3 months default as typical cycle
+
   // Math totals
   const photoCost = photoMode === 'hourly' 
     ? photoDays * 1000 
@@ -59,7 +64,8 @@ export default function LojaPage() {
       : 600;
   
   const videoCost = durationOptions[durationIndex].priceFactor * videoRate;
-  const totalCost = photoCost + videoCost;
+  const trafficCost = addTraffic ? trafficMonths * 1500 : 0;
+  const totalCost = photoCost + videoCost + trafficCost;
 
   // Build WhatsApp Message Link dynamically
   const getWhatsAppLink = () => {
@@ -77,7 +83,12 @@ export default function LojaPage() {
         ? 'iPhone + Drone ou iPhone + Câmera (R$800/min final)' 
         : 'Apenas iPhone sem drone/câmera (R$600/min final)';
 
-    msg += `🎥 Aftermovie: Duração de ${durationOptions[durationIndex].label} no formato "${videoTypeStr}" - Est. R$ ${videoCost},00\n\n`;
+    msg += `🎥 Aftermovie: Duração de ${durationOptions[durationIndex].label} no formato "${videoTypeStr}" - Est. R$ ${videoCost},00\n`;
+
+    if (addTraffic) {
+      msg += `📈 Assessoria de Tráfego Pago: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok) - Est. R$ ${trafficCost},00\n`;
+    }
+    msg += `\n`;
     
     msg += `Logística despesas adicionais inclusas:\n`;
     if (addTravelExp) msg += `- Adicional deslocamento/despesas\n`;
@@ -141,7 +152,7 @@ export default function LojaPage() {
         </div>
 
         {/* Catalog of Services Grid (Two main options specified by user) */}
-        <div id="loja-catalog-grid" className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+        <div id="loja-catalog-grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
           
           {/* Card 1: Cobertura Fotográfica */}
           <div id="loja-card-photo" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/40 transition-all shadow-xl">
@@ -235,6 +246,45 @@ export default function LojaPage() {
             </div>
           </div>
 
+          {/* Card 3: Assessoria de Tráfego Pago */}
+          <div id="loja-card-traffic" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-xl">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/25">
+                <TrendingUp className="w-6 h-6 text-purple-400" />
+              </div>
+              <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
+                Assessoria de Tráfego Pago
+              </h2>
+              <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok Ads) focada em tração, geração de leads e vendas recorrentes.
+              </p>
+
+              {/* Pricing Options details */}
+              <div className="space-y-3 mb-8">
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/60 transition-all">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Gestão Mensal</span>
+                    <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-400">/mês</span></span>
+                  </div>
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                    Estratégia, configuração de pixel, remarketing e análise contínua de criativos de alta conversão para maximizar o seu ROAS.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-gray-800/60">
+              <div className="bg-purple-950/20 border border-purple-500/30 rounded-lg p-3 text-[10px] text-gray-300 flex items-start gap-2">
+                <Info className="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5" />
+                <span>
+                  Plano ideal para quem quer expandir marcas institucionais, políticos em campanha e negócios locais de forma automatizada e constante.
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* Estimador de Projetos (Real-time Calculator) */}
@@ -251,7 +301,7 @@ export default function LojaPage() {
               Monte seu Orçamento Estimado
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-gray-800/80 pb-8 mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border-b border-gray-800/80 pb-8 mb-6">
               
               {/* Photo settings column */}
               <div className="space-y-4">
@@ -374,6 +424,62 @@ export default function LojaPage() {
                     Subtotal: R$ {videoCost},00
                   </div>
                 </div>
+              </div>
+
+              {/* Paid Traffic settings column */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
+                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Assessoria de Tráfego Pago
+                </h4>
+
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => setAddTraffic(true)}
+                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-center ${
+                      addTraffic 
+                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    Ativar (R$1.500/mês)
+                  </button>
+                  <button 
+                    onClick={() => setAddTraffic(false)}
+                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-center ${
+                      !addTraffic 
+                        ? 'bg-red-950/10 border-red-900/40 text-red-400' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    Sem Tráfego
+                  </button>
+                </div>
+
+                {addTraffic ? (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
+                    <label className="text-[11px] text-gray-400 block mb-1">Período de assessoria: <strong>{trafficMonths} {trafficMonths === 1 ? 'mês' : 'meses'}</strong></label>
+                    <input 
+                      type="range" 
+                      min="1" 
+                      max="12" 
+                      value={trafficMonths} 
+                      onChange={(e) => setTrafficMonths(parseInt(e.target.value))}
+                      className="w-full accent-purple-500 cursor-pointer"
+                    />
+                    <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
+                      <span>1 mês</span>
+                      <span>6 meses</span>
+                      <span>12 meses</span>
+                    </div>
+                    <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
+                      Subtotal: R$ {trafficMonths * 1500},00
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-8 text-gray-500 text-[10.5px]">
+                    <p>Otimize sua divulgação local com anúncios patrocinados no Meta Ads (Facebook/Instagram), Google Ads e TikTok.</p>
+                  </div>
+                )}
               </div>
 
             </div>
