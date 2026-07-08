@@ -51,7 +51,7 @@ export default function LojaPage() {
     : videoMode === 'videomaker' 
       ? videoHours * 80 
       : videoMode === 'premium'
-        ? videoMinutes * 750
+        ? videoMinutes * 297
         : 0;
 
   const trafficCost = addTraffic ? trafficMonths * 1500 : 0;
@@ -238,11 +238,11 @@ export default function LojaPage() {
 
                 <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-purple-500/30 bg-purple-500/5 hover:border-purple-500/50 transition-all">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-black text-purple-400 uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-purple-400" /> Vídeo Profissional</span>
-                    <span className="text-sm font-black text-purple-400">R$ 750 <span className="text-[10px] font-normal text-gray-400">/ minuto</span></span>
+                    <span className="text-xs font-black text-purple-400 uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-purple-400" /> Edição</span>
+                    <span className="text-sm font-black text-purple-400">R$ 297 <span className="text-[10px] font-normal text-gray-400">/ minuto final</span></span>
                   </div>
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Takes e aftermovie premium com os melhores profissionais freelancers credenciados da plataforma.
+                    Edição e pós-produção audiovisual completa com cortes rítmicos, sonorização e correção de cores de alta performance.
                   </p>
                 </div>
               </div>
@@ -440,8 +440,8 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Vídeo Profissional (Top Freelas)</span>
-                    <span>R$ 750 / min</span>
+                    <span>Edição Profissional</span>
+                    <span>R$ 297 / min final</span>
                   </button>
                   <button 
                     onClick={() => setVideoMode('none')}

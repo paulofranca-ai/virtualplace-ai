@@ -912,10 +912,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   {/* USER REQUEST PRICE ADDITION */}
                   <div className="p-3.5 rounded-xl bg-purple-950/25 border border-purple-500/35">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-purple-300 uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-purple-400" /> Vídeo Profissional</span>
-                      <span className="text-xs font-black text-purple-300">R$ 750 / minuto</span>
+                      <span className="text-[11px] font-bold text-purple-300 uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-purple-400" /> Edição</span>
+                      <span className="text-xs font-black text-purple-300">R$ 297 / minuto final</span>
                     </div>
-                    <p className="text-[9px] text-[#94A3B8] mt-1">Takes e aftermovie roteirizados com os melhores profissionais freelancers credenciados.</p>
+                    <p className="text-[9px] text-[#94A3B8] mt-1">Edição e pós-produção audiovisual de alta performance, sonorização e correção de cores.</p>
                   </div>
                 </div>
               </div>
