@@ -81,7 +81,7 @@ export default function JobsPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
-            <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
+            <a href="https://lp.autolead.site/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
           </div>
         </div>
       </nav>
@@ -280,7 +280,7 @@ export default function JobsPage() {
               Comercial
             </a>
             <a 
-              href="/institucional"
+              href="https://lp.autolead.site/institucional"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
               Institucional

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Brain, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase } from 'lucide-react';
+import { Rocket, Brain, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase, Video, Sparkles, Calculator, Check } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
 
@@ -84,7 +84,7 @@ export default function InstitutionalPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
-            <a href="/institucional" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">Institucional</a>
+            <a href="https://lp.autolead.site/institucional" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">Institucional</a>
           </div>
         </div>
       </nav>
@@ -427,6 +427,211 @@ export default function InstitutionalPage() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Oferta Irresistível & Tabela de Valores (Planos atualizados) */}
+      <section id="oferta-irresistivel" className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
+              VALORES CLAROS E TRANSPARENTES
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight text-center">
+              Opções de Serviços e Baixo Ticket
+            </h2>
+            <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-sm text-center">
+              Escolha a solução ideal para seu momento atual de escala comercial ou de inteligência artificial.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+            
+            {/* PLANO BAIXO TICKET (R$197) - ESTRELA DO TRÁFEGO PAGO */}
+            <div className="p-8 rounded-2xl border-2 border-purple-500 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-purple-400 transition-all shadow-2xl">
+              
+              <div className="absolute top-4 right-4 bg-[#00F0FF] text-[#0A0F1C] text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
+                Mais Vendido
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-[#00F0FF]">
+                    <Brain className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/20">
+                    Download Imediato
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  Squad Jarvis IA
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Baixe e implemente instantaneamente o nosso assistente mestre Jarvis e seu Squad de <strong>30 SubAgentes de IA</strong> programados para atuar em diversas áreas da sua empresa.
+                </p>
+
+                {/* Preço de R$197 */}
+                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-800">
+                  <div className="text-[10px] text-gray-500 line-through">De R$ 997,00 por apenas</div>
+                  <div className="flex items-baseline gap-1 mt-1">
+                    <span className="text-sm font-bold text-white">R$</span>
+                    <span className="text-3xl font-black text-[#00F0FF]">197</span>
+                    <span className="text-xs text-gray-500">pagamento único</span>
+                  </div>
+                  <p className="text-[10px] text-emerald-400 font-extrabold mt-1.5 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Acesso vitalício aos robôs
+                  </p>
+                </div>
+
+                {/* Recursos */}
+                <ul className="space-y-2 mb-8">
+                  {[
+                    "Assistente Master Jarvis inteligente",
+                    "30 SubAgentes de IA prontos",
+                    "Roteiros de vendas para WhatsApp",
+                    "Acesso aos melhores prompts do mercado",
+                    "Manual simples de importação"
+                  ].map((feat, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs text-gray-300">
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Botão de checkout Kiwify integrado */}
+              <div className="pt-5 border-t border-gray-800">
+                <a
+                  href="https://pay.kiwify.com.br/zABsvn6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+                >
+                  <Rocket className="w-4 h-4" /> Baixar Robôs por R$ 197
+                </a>
+                
+                <a 
+                  href="https://wa.me/5549984101144?text=acabei%20de%20comprar%20o%20Jarvis%20da%20VirtualPlace%2C%20quero%20meu%20onboarding."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center text-[10.5px] text-gray-400 hover:text-white underline mt-3 transition-colors"
+                >
+                  Comprar pelo WhatsApp e receber onboarding
+                </a>
+              </div>
+            </div>
+
+            {/* Plano 2: Cobertura de Vídeos e Audiovisual */}
+            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/25 text-[#00F0FF]">
+                    <Video className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/20">
+                    Registro Profissional
+                  </span>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  COBERTURA DE EVENTOS E PRODUÇÃO AUDIOVISUAL
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Equipe de filmagem, captação cinematográfica, aftermovie de eventos corporativos e captação móvel de altíssimo padrão.
+                </p>
+
+                {/* Opções de Preço por Hora */}
+                <div className="space-y-3.5 mb-8">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-bold text-white uppercase">Videomaker Mobile</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 80 / hora</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-bold text-white uppercase">Filmmaker Professional</span>
+                      <span className="text-xs font-black text-white">R$ 160 / hora</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-bold text-white uppercase">Fotógrafo</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 120 / hora</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/20">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-bold text-white uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-[#00F0FF]" /> Edição</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 297 / minuto final</span>
+                    </div>
+                    <p className="text-[9px] text-[#94A3B8] mt-1">Edição e pós-produção audiovisual de alta performance, sonorização e correção de cores.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Botão de redirecionamento */}
+              <div className="pt-5 border-t border-gray-800 flex justify-center">
+                <a
+                  href="/loja"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <Calculator className="w-4 h-4" /> Simular na Calculadora
+                </a>
+              </div>
+            </div>
+
+            {/* Plano 3: Consultoria e Assessoria de Tráfego Pago (R$1.500) */}
+            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 flex items-center justify-center border border-[#2563EB]/25 text-[#00F0FF]">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/20">
+                    Performance e ROAS
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  Assessoria Tráfego
+                </h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
+                  Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads e Google Ads para atração massiva de clientes.
+                </p>
+
+                {/* Opções de Preço */}
+                <div className="space-y-3 mb-8">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80 hover:border-[#2563EB]/40 transition-all">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-black text-white uppercase">Consultoria Mensal</span>
+                      <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-500">/ mês</span></span>
+                    </div>
+                    <div className="text-[10px] text-[#94A3B8] leading-relaxed mt-3 space-y-1 block">
+                      <div>• Otimização e testes de criativos diários.</div>
+                      <div>• Criação de públicos compradores e públicos de remarketing.</div>
+                      <div>• Relatórios mensais completos de retorno sobre investimento.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Botão de redirecionamento */}
+              <div className="pt-5 border-t border-gray-800 flex justify-center">
+                <a
+                  href="/loja"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <Calculator className="w-4 h-4" /> Ver na Calculadora Completa
+                </a>
+              </div>
             </div>
           </div>
         </div>

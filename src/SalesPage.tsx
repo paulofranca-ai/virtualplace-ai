@@ -39,7 +39,8 @@ import {
   Check,
   Copy,
   ChevronRight,
-  AlertCircle
+  AlertCircle,
+  MessageSquare
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
@@ -311,12 +312,12 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       
       {/* 1. Navigation (Optimized for paid traffic - Logo + single CTA to reduce friction) */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="shrink-0 flex items-center">
             <img 
               src="https://i.imgur.com/w2iO5CR.png" 
               alt="Virtual Place Logo" 
-              className="h-8 md:h-10 w-auto object-contain" 
+              className="h-[96px] md:h-[120px] w-auto object-contain" 
               referrerPolicy="no-referrer" 
             />
           </div>
@@ -328,19 +329,19 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               Ver Tabela de Valores
             </button>
             <a 
-              href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20vi%20o%20an%C3%BAncio%20e%20quero%20um%20teste%20gr%C3%A1tis%20do%20Jarvis%20da%20VirtualPlace"
+              href="https://t.me/VirtualPlaceIAbot"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]"
             >
-              Falar com Consultor
+              Fale com nossa IA
             </a>
           </div>
         </div>
       </nav>
 
       {/* 2. Hero Section (Above the Fold) */}
-      <section className="relative pt-32 pb-24 md:pt-36 md:pb-28 overflow-hidden border-b border-[#2563EB]/20">
+      <section className="relative pt-48 pb-24 md:pt-56 md:pb-28 overflow-hidden border-b border-[#2563EB]/20">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2032&auto=format&fit=crop" 
@@ -352,18 +353,18 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#00F0FF]/15 border border-[#00F0FF]/40 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-6">
-              <Zap className="w-3.5 h-3.5 text-[#00F0FF]" /> AGENTES DE IA QUE GERAM LEADS ENQUANTO VOCÊ DORME
+            <span className="inline-block text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+              CENTRAL DE TALENTOS - AGÊNCIA DE MARKETING
             </span>
             
             {/* Impact Headline - Max 10-12 words */}
-            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight tracking-tight uppercase">
-              Atraia leads e feche vendas 24h por dia no piloto automático com <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">Agentes de IA</span>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight tracking-tight">
+              Pare de se matar de trabalhar. Tenha <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">30 assistentes de IA</span> fazendo o trabalho pesado por você.
             </h1>
             
             {/* Subheadline with core benefit + numeric proof */}
             <p className="text-[#94A3B8] text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-              Reduza custos operacionais em até <strong>90%</strong> e alcance até <strong>+340% mais leads qualificados em 30 dias</strong> integrando robôs de conversão e tráfego pago de alta conversão.
+              Faça em minutos o que levava horas. Crie textos, artes, sites e estratégias sem estresse. Dê conta de mais clientes, aumente sua renda e recupere seu tempo livre. Tudo isso com controle total do seu bolso e privacidade das suas ideias.
             </p>
 
             {/* Scarcity Notice */}
@@ -377,12 +378,12 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto mb-14">
               <a 
-                href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20vi%20o%20an%C3%BAncio%20e%20quero%20um%20teste%20gr%C3%A1tis%20do%20Jarvis%20da%20VirtualPlace" 
+                href="https://t.me/VirtualPlaceIAbot" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(0,240,255,0.45)] cursor-pointer"
               >
-                <Rocket className="w-5 h-5" /> Quero Testar Grátis No WhatsApp
+                <Rocket className="w-5 h-5" /> Fale com nossa IA
               </a>
               
               <button 
@@ -396,7 +397,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             {/* Video Section - Kept Exactly as requested, placed right below */}
             <div className="mt-10 max-w-3xl mx-auto">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
-                <PlayCircle className="w-4 h-4 text-[#00F0FF] animate-pulse" /> Assista em 1 minuto como funciona nosso ecossistema audiovisual e inteligente:
+                <PlayCircle className="w-4 h-4 text-[#00F0FF] animate-pulse" /> Assista nosso Aftermovie mais recente e contrate ainda hoje nossos Profissionais Indicados com selo FreelaPro da VirtualPlace.
               </p>
               
               <div className="rounded-2xl overflow-hidden border-2 border-[#2563EB]/40 shadow-[0_0_45px_rgba(37,99,235,0.25)] aspect-video relative bg-black">
@@ -934,8 +935,8 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
-                  Produção Vídeos
+                <h3 className="text-xl md:text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                  COBERTURA DE EVENTOS E PRODUÇÃO AUDIOVISUAL
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
                   Equipe de filmagem, captação cinematográfica, aftermovie de eventos corporativos e captação móvel de altíssimo padrão.
@@ -954,6 +955,13 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-white uppercase">Filmmaker Professional</span>
                       <span className="text-xs font-black text-white">R$ 160 / hora</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-bold text-white uppercase">Fotógrafo</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 120 / hora</span>
                     </div>
                   </div>
 
@@ -1034,28 +1042,28 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   Comece Seu Teste Gratuito
                 </h3>
                 <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed mb-6">
-                  Qualifique e atenda automaticamente no WhatsApp. Fale com um consultor comercial da Virtual Place ou ative nossa triagem gratuita agora.
+                  Qualifique e atenda automaticamente no Telegram. Converse com nossa Inteligência Artificial ou ative nossa triagem gratuita agora.
                 </p>
                 <ul className="space-y-3.5">
                   <li className="flex items-start gap-2.5 text-xs text-gray-400">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
                     <span>Diagnóstico de tráfego pago gratuito</span>
                   </li>
                   <li className="flex items-start gap-2.5 text-xs text-gray-400">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Roteiro de copywriting para o WhatsApp</span>
+                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
+                    <span>Roteiro de copywriting para o Telegram</span>
                   </li>
                 </ul>
               </div>
 
               <div className="flex flex-col gap-4 items-stretch justify-center">
                 <a 
-                  href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20Campanha%20de%20Marketing%2C%20como%20funciona%3F" 
+                  href="https://t.me/VirtualPlaceIAbot" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="px-6 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.2)]"
                 >
-                  <TrendingUp className="w-4 h-4" /> Iniciar Campanha de Marketing
+                  <TrendingUp className="w-4 h-4" /> Fale com nossa IA
                 </a>
                 
                 <a 
@@ -1131,12 +1139,12 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto mb-10">
             <a 
-              href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20Campanha%20de%20Marketing%2C%20como%20funciona%3F" 
+              href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20consultor%20da%20Virtual%20Place." 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center"
+              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center shadow-[0_0_15px_rgba(16,185,129,0.25)]"
             >
-              <TrendingUp className="w-5 h-5" /> Iniciar Tráfego No WhatsApp
+              <MessageSquare className="w-5 h-5" /> Falar com Consultor
             </a>
             
             <a 
@@ -1145,7 +1153,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#050810] border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center"
             >
-              <Rocket className="w-5 h-5" /> Testar Grátis No Telegram
+              <Rocket className="w-5 h-5" /> Fale com nossa IA
             </a>
           </div>
         </div>
@@ -1155,12 +1163,13 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       <footer className="py-12 border-t border-gray-900 text-center text-gray-400 text-xs bg-[#0A0F1C]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="/institucional" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
+            <a href="https://lp.autolead.site/institucional" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
             <a href="/agentes" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Compre Robôs de IA</a>
             <a href="/loja" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Contrate Humanos</a>
             <a href="/jobs" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela (Trabalhe Conosco)</a>
           </div>
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
+          <p className="text-gray-500 text-[11px] mt-1">CNPJ: 31.509.856/0001-10</p>
         </div>
       </footer>
 
