@@ -72,7 +72,7 @@ export default function LojaPage() {
         ? 'Filmmaker Profissional (R$160/hora)' 
         : videoMode === 'videomaker'
           ? 'Videomaker Mobile (R$80/hora)'
-          : 'Vídeo Profissional com Top Freelas (R$750/minuto final)';
+          : 'Edição Profissional (R$297/minuto final)';
       const quantityStr = videoMode === 'premium' ? `${videoMinutes} minuto(s) final(is)` : `${videoHours} hora(s)`;
       msg += `🎥 Captação de Vídeo: ${videoTypeStr} (${quantityStr}) - Est. R$ ${videoCost},00\n`;
     }

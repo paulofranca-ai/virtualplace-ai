@@ -55,7 +55,7 @@ export default function NeonBackground3D() {
         x: Math.cos(theta) * Math.sin(phi) * 160,
         y: Math.sin(theta) * Math.sin(phi) * 160,
         z: Math.cos(phi) * 160,
-        color: i % 2 === 0 ? 'rgba(0, 240, 255, 0.85)' : 'rgba(139, 92, 246, 0.85)'
+        color: i % 2 === 0 ? 'rgba(255, 255, 255, 0.85)' : 'rgba(150, 150, 150, 0.65)'
       });
     }
 
@@ -89,7 +89,7 @@ export default function NeonBackground3D() {
         x,
         y,
         z,
-        color: i % 2 === 0 ? 'rgba(0, 240, 255, 0.9)' : 'rgba(59, 130, 246, 0.9)'
+        color: i % 2 === 0 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(140, 140, 140, 0.6)'
       });
     }
 
@@ -107,7 +107,7 @@ export default function NeonBackground3D() {
         const y = v * 120;
         const z = Math.sin(u * 2.5) * 12;
 
-        // Determinar cor da bandeira brasileira
+        // Determinar cor da bandeira brasileira adaptada para monocromático
         // Losango Amarelo
         const inRhombus = (Math.abs(u) / 0.78) + (Math.abs(v) / 0.58) <= 1.0;
         // Círculo Azul
@@ -115,13 +115,13 @@ export default function NeonBackground3D() {
         // Faixa Branca
         const inWhiteBand = inCircle && (v - u * 0.35 >= -0.05 && v - u * 0.35 <= 0.05);
 
-        let color = 'rgba(34, 197, 94, 0.9)'; // Verde
+        let color = 'rgba(100, 100, 100, 0.7)'; // Cinza Médio (antigo Verde)
         if (inWhiteBand) {
           color = 'rgba(255, 255, 255, 0.95)'; // Branco
         } else if (inCircle) {
-          color = 'rgba(30, 64, 175, 0.95)'; // Azul escuro
+          color = 'rgba(40, 40, 40, 0.95)'; // Cinza Escuro (antigo Azul)
         } else if (inRhombus) {
-          color = 'rgba(250, 204, 21, 0.95)'; // Amarelo
+          color = 'rgba(180, 180, 180, 0.95)'; // Cinza Claro (antigo Amarelo)
         }
 
         brazilPoints.push({ x, y, z, color });
@@ -139,7 +139,7 @@ export default function NeonBackground3D() {
         x: Math.cos(t + tOffset) * spiralRadius,
         y: (t - Math.PI * 2) * 65,
         z: Math.sin(t + tOffset) * spiralRadius,
-        color: isStrandA ? 'rgba(0, 240, 255, 0.85)' : 'rgba(236, 72, 153, 0.85)'
+        color: isStrandA ? 'rgba(255, 255, 255, 0.85)' : 'rgba(130, 130, 130, 0.6)'
       });
     }
 
@@ -281,11 +281,11 @@ export default function NeonBackground3D() {
           if (dist < 50) {
             const alpha = (1 - dist / 50) * 0.12;
             
-            // Cor gradiente suave para conexões da bandeira do Brasil ou neutro cyan
+            // Cor gradiente suave para conexões adaptadas para monocromático (branco/cinza)
             if (activeShapeIdxVal === 2) {
-              ctx.strokeStyle = `rgba(34, 197, 94, ${alpha * 1.5})`;
+              ctx.strokeStyle = `rgba(180, 180, 180, ${alpha * 1.5})`;
             } else {
-              ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+              ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
             }
 
             ctx.beginPath();
@@ -303,18 +303,16 @@ export default function NeonBackground3D() {
         const size = Math.max(1.0, (180 - p.sz) / 45);
         ctx.fillStyle = p.color;
 
-        // Ativa glow neon de acordo com a cor do ponto
+        // Ativa glow neon de acordo com a cor do ponto (adaptado para monocromático)
         ctx.shadowBlur = size * 1.5;
-        if (p.color.includes('34, 197')) {
-          ctx.shadowColor = '#22c55e'; // Verde
-        } else if (p.color.includes('250, 204')) {
-          ctx.shadowColor = '#facc15'; // Amarelo
-        } else if (p.color.includes('30, 64')) {
-          ctx.shadowColor = '#1d4ed8'; // Azul
-        } else if (p.color.includes('139, 92')) {
-          ctx.shadowColor = '#8b5cf6'; // Roxo
+        if (p.color.includes('100, 100')) {
+          ctx.shadowColor = '#646464'; // Cinza médio
+        } else if (p.color.includes('180, 180')) {
+          ctx.shadowColor = '#b4b4b4'; // Cinza claro
+        } else if (p.color.includes('40, 40')) {
+          ctx.shadowColor = '#282828'; // Cinza escuro
         } else {
-          ctx.shadowColor = '#00f0ff'; // Cyan
+          ctx.shadowColor = '#ffffff'; // Branco/Prata
         }
 
         ctx.beginPath();
@@ -348,10 +346,10 @@ export default function NeonBackground3D() {
       />
 
       {/* Identificador discreto da geometria ativa no canto */}
-      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-[#0F172A]/80 border border-gray-800/80 px-2.5 py-1 rounded-full text-[9px] font-mono text-gray-500 backdrop-blur-sm shadow-md">
-        <Layers className="w-3 h-3 text-[#00F0FF] animate-spin" style={{ animationDuration: '6s' }} />
+      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/80 border border-zinc-800 px-2.5 py-1 rounded-full text-[9px] font-mono text-zinc-500 backdrop-blur-sm shadow-md">
+        <Layers className="w-3 h-3 text-white animate-spin" style={{ animationDuration: '6s' }} />
         <span>Geometria Ativa: </span>
-        <span className="text-[#00F0FF] font-bold uppercase">{shapes[currentShapeIdx]}</span>
+        <span className="text-white font-bold uppercase">{shapes[currentShapeIdx]}</span>
       </div>
     </div>
   );

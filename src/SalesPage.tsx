@@ -242,8 +242,8 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
 
   const faqs = [
     { 
-      q: "Quanto tempo leva para os agentes de IA estarem prontos?", 
-      a: "Nossa implementação é extremamente ágil. Em média de 7 a 15 dias seu ecossistema estará configurado, treinado com os dados da sua empresa e pronto para rodar." 
+      q: "Quanto tempo leva?", 
+      a: "Download imediato após pagamento, em poucos minutos você conecta com Claude Code, VSCode, Antigravity ou similares e já sai promptando. Mas só o tempo vai otimizar seu cérebro personalizado conforme vai precisando e criando agentes + habilidades." 
     },
     { 
       q: "A inteligência artificial vai substituir meus funcionários humanos?", 
@@ -296,7 +296,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               <p className="text-xs opacity-90 mt-1">
                 {checkoutStatus === 'success' 
                   ? 'Parabéns! O seu Time de Agentes de IA foi configurado com sucesso. Prepare-se para colher resultados!' 
-                  : 'A transação do Stripe foi cancelada. Se precisar de suporte, volte a qualquer momento.'}
+                  : 'A transação do Stripe foi cancelada. Se precisar de suporte, voltar a qualquer momento.'}
               </p>
               <button 
                 onClick={() => setSearchParams({})}
@@ -312,14 +312,18 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       {/* 1. Navigation (Optimized for paid traffic - Logo + single CTA to reduce friction) */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between h-16">
-          <div className="text-[#F8FAFC] font-extrabold text-xl tracking-tighter shrink-0 flex items-center gap-1">
-            <Sparkles className="w-5 h-5 text-[#00F0FF]" />
-            VIRTUAL<span className="text-[#00F0FF]">PLACE</span>
+          <div className="shrink-0 flex items-center">
+            <img 
+              src="https://i.imgur.com/w2iO5CR.png" 
+              alt="Virtual Place Logo" 
+              className="h-8 md:h-10 w-auto object-contain" 
+              referrerPolicy="no-referrer" 
+            />
           </div>
           <div className="flex items-center gap-4">
             <button 
               onClick={() => scrollToSection('oferta-irresistivel')}
-              className="text-xs md:text-sm font-black text-purple-400 hover:text-white uppercase tracking-tight hidden sm:inline-block transition-colors"
+              className="text-xs md:text-sm font-black text-purple-400 hover:text-white uppercase tracking-tight hidden sm:inline-block transition-colors cursor-pointer"
             >
               Ver Tabela de Valores
             </button>
@@ -348,7 +352,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#00F0FF]/15 border border-[#00F0FF]/40 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-6 animate-pulse">
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#00F0FF]/15 border border-[#00F0FF]/40 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-6">
               <Zap className="w-3.5 h-3.5 text-[#00F0FF]" /> AGENTES DE IA QUE GERAM LEADS ENQUANTO VOCÊ DORME
             </span>
             
@@ -431,16 +435,25 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 key={idx}
                 className="p-8 rounded-2xl bg-[#050810] border border-[#2563EB]/20 hover:border-[#00F0FF]/50 transition-all group relative overflow-hidden"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#2563EB]/10 border border-[#2563EB]/20 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center mb-6">
                   <b.icon className="w-6 h-6 text-[#00F0FF]" />
                 </div>
-                <span className="text-[9px] font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full mb-3 inline-block">
+                <span className="text-[9px] font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 mb-3 inline-block">
                   {b.badge}
                 </span>
                 <h3 className="text-xl font-bold mb-3 text-white">{b.title}</h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed">{b.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => scrollToSection('oferta-irresistivel')}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer"
+            >
+              <Calculator className="w-4 h-4" /> Ver Planos e Valores do Ecossistema
+            </button>
           </div>
         </div>
       </section>
@@ -473,11 +486,11 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               <tbody className="divide-y divide-gray-800">
                 {comparisons.map((c, idx) => (
                   <tr key={idx} className="hover:bg-gray-900/30 transition-colors">
-                    <td className="p-5 text-sm font-extrabold text-white">{c.activity}</td>
+                    <td className="p-5 text-sm font-extrabold text-[#F8FAFC]">{c.activity}</td>
                     <td className="p-5 text-xs text-gray-400 leading-relaxed max-w-[240px]">{c.withoutIA}</td>
                     <td className="p-5 text-xs text-[#F8FAFC] leading-relaxed max-w-[240px] font-medium">
                       <span className="inline-flex items-center gap-1.5 text-[#00F0FF] font-extrabold mb-1 block">
-                        <Check className="w-3.5 h-3.5" /> IA Ativa
+                        <Check className="w-3.5 h-3.5 text-[#00F0FF]" /> IA Ativa
                       </span>
                       {c.withIA}
                     </td>
@@ -486,6 +499,15 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="mt-8 text-center">
+            <button 
+              onClick={() => scrollToSection('oferta-irresistivel')}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-[#00F0FF] text-white hover:from-purple-600 hover:to-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+            >
+              <Calculator className="w-4 h-4" /> Começar Agora - Ver Opções de Planos
+            </button>
           </div>
         </div>
       </section>
@@ -519,6 +541,15 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               </div>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => scrollToSection('oferta-irresistivel')}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer"
+            >
+              <Calculator className="w-4 h-4" /> Ver Planos e Ativar Meu Robô
+            </button>
+          </div>
         </div>
       </section>
 
@@ -542,10 +573,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             <div className="p-6 rounded-2xl bg-[#0A0F1C] border border-gray-800 flex flex-col justify-between hover:border-[#00F0FF]/40 transition-all">
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#00F0FF]/15 flex items-center justify-center text-[#00F0FF]">
+                  <div className="w-10 h-10 rounded-lg bg-[#00F0FF]/15 flex items-center justify-center text-[#00F0FF] border border-[#00F0FF]/30">
                     <FileText className="w-5 h-5" />
                   </div>
-                  <span className="text-[9px] font-extrabold text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded uppercase tracking-widest">
+                  <span className="text-[9px] font-extrabold text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/30 uppercase tracking-widest">
                     PDF Grátis
                   </span>
                 </div>
@@ -570,10 +601,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             <div className="p-6 rounded-2xl bg-[#0A0F1C] border border-gray-800 flex flex-col justify-between hover:border-purple-500/40 transition-all">
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/15 flex items-center justify-center text-purple-400">
+                  <div className="w-10 h-10 rounded-lg bg-purple-500/15 flex items-center justify-center text-purple-400 border border-purple-500/30">
                     <Car className="w-5 h-5" />
                   </div>
-                  <span className="text-[9px] font-extrabold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded uppercase tracking-widest">
+                  <span className="text-[9px] font-extrabold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/30 uppercase tracking-widest">
                     Tutorial Prático
                   </span>
                 </div>
@@ -593,6 +624,15 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 <ArrowDownToLine className="w-4 h-4" /> Baixar Tutorial Tintim Gratuitamente
               </a>
             </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => scrollToSection('oferta-irresistivel')}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+            >
+              <Calculator className="w-4 h-4" /> Prefiro Ir Direto aos Planos & Preços
+            </button>
           </div>
         </div>
       </section>
@@ -663,17 +703,17 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
           {/* Depoimento em Vídeo Léo que já está no site */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
             <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-[10px] font-black uppercase text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded">
+              <span className="text-[10px] font-black uppercase text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
                 DEPOIMENTO DO NOSSO CLIENTE LÉO
               </span>
               <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
-                "Tivemos ROI de 3x e 4x na nossa operação comercial"
+                "Tivemos ROI de 3x e 4x na nossa operation comercial"
               </h3>
               <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed">
                 Assista ao depoimento em vídeo gravado pelo nosso parceiro Léo, detalhando como a nossa estratégia de tráfego pago aliada ao atendimento de ponta destravou o crescimento financeiro do negócio.
               </p>
               <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex gap-3 items-center">
-                <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-black text-white text-sm shrink-0">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-black text-white text-sm shrink-0 border border-emerald-500/30">
                   L
                 </div>
                 <div>
@@ -727,21 +767,30 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 </div>
               ))}
             </div>
+
+            <div className="mt-12 text-center">
+              <button 
+                onClick={() => scrollToSection('oferta-irresistivel')}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer shadow-lg"
+              >
+                <Calculator className="w-4 h-4" /> Ver Planos e Garantir Minha Vaga
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CLAUDE 3.5 SONNET / FABLE 5 PROMPTS TEMPLATE SECTION */}
-      <section className="py-24 bg-[#050810] border-b border-[#2563EB]/10">
+      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 rounded-3xl bg-purple-950/20 border border-purple-500/30 relative overflow-hidden">
+          <div className="p-8 rounded-3xl bg-[#050810] border border-gray-800 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-5">
               <Sparkles className="w-40 h-40 text-purple-400" />
             </div>
             
             <div className="relative z-10 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5">
+                <span className="px-3 py-1 rounded-full bg-[#2563EB]/15 text-[#00F0FF] text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 border border-[#2563EB]/35">
                   <Brain className="w-3.5 h-3.5" /> RECURSO PARA CLAUDE 3.5 SONNET / FABLE 5
                 </span>
                 <span className="text-xs font-bold text-gray-400">Gratuito para Visitantes</span>
@@ -755,18 +804,18 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 Copie o prompt profissional abaixo e cole no seu modelo de IA favorito (Claude, GPT, Gemini) para planejar sua primeira campanha de tráfego integrado a robôs virtuais.
               </p>
 
-              <div className="relative rounded-xl bg-black/60 p-4 border border-gray-800 font-mono text-[11px] text-[#A7F3D0] leading-relaxed max-h-52 overflow-y-auto whitespace-pre-wrap">
+              <div className="relative rounded-xl bg-black/60 p-4 border border-[#2563EB]/20 font-mono text-[11px] text-zinc-300 leading-relaxed max-h-52 overflow-y-auto whitespace-pre-wrap">
                 {promptTemplate}
               </div>
 
               <div className="flex justify-end pt-2">
                 <button
                   onClick={copyToClipboard}
-                  className="px-5 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs uppercase flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(168,85,247,0.25)] cursor-pointer"
+                  className="px-5 py-2.5 rounded-lg bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-extrabold text-xs uppercase flex items-center gap-1.5 transition-all cursor-pointer"
                 >
                   {copiedPrompt ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" /> Prompt Copiado!
+                      <Check className="w-3.5 h-3.5 text-[#0A0F1C]" /> Prompt Copiado!
                     </>
                   ) : (
                     <>
@@ -784,7 +833,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       <section id="oferta-irresistivel" className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded border border-[#00F0FF]/30">
+            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
               VALORES CLAROS E TRANSPARENTES
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight text-center">
@@ -798,19 +847,18 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
             
             {/* PLANO BAIXO TICKET (R$197) - ESTRELA DO TRÁFEGO PAGO */}
-            <div className="p-8 rounded-2xl border-2 border-purple-500 bg-[#120B24]/90 flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/60 transition-all shadow-2xl">
-              <div className="absolute -top-3 -right-3 w-16 h-16 bg-[#00F0FF]/10 rounded-full blur-xl"></div>
+            <div className="p-8 rounded-2xl border-2 border-purple-500 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-purple-400 transition-all shadow-2xl">
               
-              <div className="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-[#00F0FF] text-white text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
+              <div className="absolute top-4 right-4 bg-[#00F0FF] text-[#0A0F1C] text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
                 Mais Vendido
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-500/35 text-purple-300">
-                    <Brain className="w-6 h-6 animate-pulse" />
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-[#00F0FF]">
+                    <Brain className="w-6 h-6" />
                   </div>
-                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded">
+                  <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/20">
                     Download Imediato
                   </span>
                 </div>
@@ -823,15 +871,15 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                 </p>
 
                 {/* Preço de R$197 */}
-                <div className="mb-6 p-4 rounded-xl bg-black/40 border border-purple-500/20">
-                  <div className="text-[10px] text-gray-400 line-through">De R$ 997,00 por apenas</div>
+                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-800">
+                  <div className="text-[10px] text-gray-500 line-through">De R$ 997,00 por apenas</div>
                   <div className="flex items-baseline gap-1 mt-1">
                     <span className="text-sm font-bold text-white">R$</span>
                     <span className="text-3xl font-black text-[#00F0FF]">197</span>
-                    <span className="text-xs text-gray-400">pagamento único</span>
+                    <span className="text-xs text-gray-500">pagamento único</span>
                   </div>
                   <p className="text-[10px] text-emerald-400 font-extrabold mt-1.5 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Acesso vitalício aos robôs
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Acesso vitalício aos robôs
                   </p>
                 </div>
 
@@ -845,7 +893,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                     "Manual simples de importação"
                   ].map((feat, i) => (
                     <li key={i} className="flex items-center gap-2 text-xs text-gray-300">
-                      <Check className="w-4 h-4 text-[#00F0FF] shrink-0" />
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -853,12 +901,12 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               </div>
 
               {/* Botão de checkout Kiwify integrado */}
-              <div className="pt-5 border-t border-purple-500/25">
+              <div className="pt-5 border-t border-gray-800">
                 <a
                   href="https://pay.kiwify.com.br/zABsvn6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-purple-500 to-[#00F0FF] hover:from-purple-600 hover:to-[#00D8E6] text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(168,85,247,0.3)] flex items-center justify-center gap-2 transition-all cursor-pointer block"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(168,85,247,0.3)]"
                 >
                   <Rocket className="w-4 h-4" /> Baixar Robôs por R$ 197
                 </a>
@@ -867,7 +915,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   href="https://wa.me/5549984101144?text=acabei%20de%20comprar%20o%20Jarvis%20da%20VirtualPlace%2C%20quero%20meu%20onboarding."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center text-[10.5px] text-[#94A3B8] hover:text-white underline mt-3 transition-colors"
+                  className="block text-center text-[10.5px] text-gray-400 hover:text-white underline mt-3 transition-colors"
                 >
                   Comprar pelo WhatsApp e receber onboarding
                 </a>
@@ -875,13 +923,13 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             </div>
 
             {/* Plano 2: Cobertura de Vídeos e Audiovisual */}
-            <div className="p-8 rounded-2xl border border-gray-800 bg-[#0A0F1C]/85 flex flex-col justify-between relative overflow-hidden group hover:border-[#2563EB]/40 transition-all shadow-2xl">
+            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 flex items-center justify-center border border-[#2563EB]/30 text-[#00F0FF]">
+                  <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/25 text-[#00F0FF]">
                     <Video className="w-6 h-6" />
                   </div>
-                  <span className="text-[9px] font-black uppercase text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded">
+                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/20">
                     Registro Profissional
                   </span>
                 </div>
@@ -895,25 +943,25 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
 
                 {/* Opções de Preço por Hora */}
                 <div className="space-y-3.5 mb-8">
-                  <div className="p-3.5 rounded-xl bg-[#050810] border border-gray-800">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-white uppercase">Videomaker Mobile</span>
-                      <span className="text-xs font-black text-gray-300">R$ 80 / hora</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 80 / hora</span>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#050810] border border-gray-800">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-[#00F0FF] uppercase">Filmmaker Professional</span>
-                      <span className="text-xs font-black text-[#00F0FF]">R$ 160 / hora</span>
+                      <span className="text-[11px] font-bold text-white uppercase">Filmmaker Professional</span>
+                      <span className="text-xs font-black text-white">R$ 160 / hora</span>
                     </div>
                   </div>
 
                   {/* USER REQUEST PRICE ADDITION */}
-                  <div className="p-3.5 rounded-xl bg-purple-950/25 border border-purple-500/35">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/20">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-purple-300 uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-purple-400" /> Edição</span>
-                      <span className="text-xs font-black text-purple-300">R$ 297 / minuto final</span>
+                      <span className="text-[11px] font-bold text-white uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-[#00F0FF]" /> Edição</span>
+                      <span className="text-xs font-black text-[#00F0FF]">R$ 297 / minuto final</span>
                     </div>
                     <p className="text-[9px] text-[#94A3B8] mt-1">Edição e pós-produção audiovisual de alta performance, sonorização e correção de cores.</p>
                   </div>
@@ -924,7 +972,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               <div className="pt-5 border-t border-gray-800 flex justify-center">
                 <a
                   href="/loja"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#2563EB] hover:from-[#00E0EC] hover:to-[#1D4ED8] text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer animate-pulse"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <Calculator className="w-4 h-4" /> Simular na Calculadora
                 </a>
@@ -932,13 +980,13 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
             </div>
 
             {/* Plano 3: Consultoria e Assessoria de Tráfego Pago (R$1.500) */}
-            <div className="p-8 rounded-2xl border border-gray-800 bg-[#0A0F1C]/85 flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-2xl">
+            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-purple-400">
+                  <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 flex items-center justify-center border border-[#2563EB]/25 text-[#00F0FF]">
                     <TrendingUp className="w-6 h-6" />
                   </div>
-                  <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded">
+                  <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/20">
                     Performance e ROAS
                   </span>
                 </div>
@@ -952,10 +1000,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
 
                 {/* Opções de Preço */}
                 <div className="space-y-3 mb-8">
-                  <div className="p-4 rounded-xl bg-[#050810] border border-purple-500/25 bg-purple-500/5 hover:border-purple-500/50 transition-all">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80 hover:border-[#2563EB]/40 transition-all">
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-black text-white uppercase">Consultoria Mensal</span>
-                      <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-400">/ mês</span></span>
+                      <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-500">/ mês</span></span>
                     </div>
                     <div className="text-[10px] text-[#94A3B8] leading-relaxed mt-3 space-y-1 block">
                       <div>• Otimização e testes de criativos diários.</div>
@@ -970,7 +1018,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               <div className="pt-5 border-t border-gray-800 flex justify-center">
                 <a
                   href="/loja"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase shadow-[0_0_20px_rgba(168,85,247,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <Calculator className="w-4 h-4" /> Ver na Calculadora Completa
                 </a>
@@ -979,7 +1027,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
           </div>
 
           {/* Interactive Form/CTA Block (Optimized with direct CTA routing to lower friction) */}
-          <div id="conversion-cta-block" className="max-w-4xl mx-auto mt-16 bg-[#0A0F1C] border border-[#2563EB]/30 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.15)] relative overflow-hidden">
+          <div id="conversion-cta-block" className="max-w-4xl mx-auto mt-16 bg-[#050810] border border-gray-850 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.05)] relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-4">
@@ -989,12 +1037,12 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   Qualifique e atenda automaticamente no WhatsApp. Fale com um consultor comercial da Virtual Place ou ative nossa triagem gratuita agora.
                 </p>
                 <ul className="space-y-3.5">
-                  <li className="flex items-start gap-2.5 text-xs text-[#94A3B8]">
-                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-2.5 text-xs text-gray-400">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span>Diagnóstico de tráfego pago gratuito</span>
                   </li>
-                  <li className="flex items-start gap-2.5 text-xs text-[#94A3B8]">
-                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-2.5 text-xs text-gray-400">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span>Roteiro de copywriting para o WhatsApp</span>
                   </li>
                 </ul>
@@ -1005,16 +1053,16 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20Campanha%20de%20Marketing%2C%20como%20funciona%3F" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] text-center cursor-pointer"
+                  className="px-6 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.2)]"
                 >
-                  <TrendingUp className="w-4 h-4 text-[#00F0FF]" /> Iniciar Campanha de Marketing
+                  <TrendingUp className="w-4 h-4" /> Iniciar Campanha de Marketing
                 </a>
                 
                 <a 
                   href="https://t.me/VirtualPlaceIAbot" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] text-center cursor-pointer"
+                  className="px-6 py-4 rounded-xl bg-gray-900 hover:bg-[#00F0FF]/20 border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer"
                 >
                   <Rocket className="w-4 h-4" /> Quero Testar Grátis No Telegram
                 </a>
@@ -1023,9 +1071,9 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   href="https://t.me/VirtualPlaceIAbot?start=Quero_ser_contratado" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl border border-[#2563EB]/40 bg-[#2563EB]/10 hover:bg-[#2563EB]/25 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center"
+                  className="px-6 py-4 rounded-xl border border-gray-800 bg-[#0A0F1C] hover:bg-gray-800 text-gray-300 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center"
                 >
-                  <Briefcase className="w-4 h-4 text-purple-400" /> Quero ser contratado como Freela
+                  <Briefcase className="w-4 h-4 text-gray-400" /> Quero ser contratado como Freela
                 </a>
               </div>
             </div>
@@ -1034,10 +1082,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       </section>
 
       {/* 7. Objeções / FAQ */}
-      <section className="py-24 bg-[#050810] border-b border-[#2563EB]/10">
+      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20">
+            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
               DÚVIDAS FREQUENTES
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white mt-4 uppercase tracking-tight">
@@ -1047,16 +1095,16 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
           
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="border border-gray-800 rounded-xl bg-[#0A0F1C] overflow-hidden">
+              <div key={idx} className="border border-gray-800 rounded-xl bg-[#050810] overflow-hidden">
                 <button 
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-900/30 transition-colors cursor-pointer"
+                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-[#0A0F1C]/50 transition-colors cursor-pointer"
                 >
                   <span className="font-bold text-sm md:text-base text-[#F8FAFC] pr-8">{faq.q}</span>
                   {openFaq === idx ? <Minus className="w-4 h-4 text-[#00F0FF] shrink-0" /> : <Plus className="w-4 h-4 text-[#00F0FF] shrink-0" />}
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 text-xs md:text-sm text-[#94A3B8] leading-relaxed border-t border-gray-900/40 pt-4">
+                  <div className="px-6 pb-5 text-xs md:text-sm text-[#94A3B8] leading-relaxed border-t border-gray-800 pt-4">
                     {faq.a}
                   </div>
                 )}
@@ -1067,10 +1115,10 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       </section>
 
       {/* 8. Seção Final com CTA forte + Garantia */}
-      <section className="py-24 bg-[#0A0F1C] relative text-center border-b border-[#2563EB]/20">
+      <section className="py-24 bg-[#050810] relative text-center border-b border-[#2563EB]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20 mb-6">
-            <Shield className="w-3.5 h-3.5" /> GARANTIA DE SATISFAÇÃO & EFICIÊNCIA
+          <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded border border-[#00F0FF]/30 mb-6">
+            <Shield className="w-3.5 h-3.5 text-[#00F0FF]" /> GARANTIA DE SATISFAÇÃO & EFICIÊNCIA
           </span>
           
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-6">
@@ -1086,7 +1134,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20Campanha%20de%20Marketing%2C%20como%20funciona%3F" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(0,240,255,0.45)]"
+              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center"
             >
               <TrendingUp className="w-5 h-5" /> Iniciar Tráfego No WhatsApp
             </a>
@@ -1095,7 +1143,7 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               href="https://t.me/VirtualPlaceIAbot" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#050810] border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center"
             >
               <Rocket className="w-5 h-5" /> Testar Grátis No Telegram
             </a>
@@ -1104,13 +1152,13 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-900 text-center text-[#94A3B8] text-xs bg-[#0A0F1C]">
+      <footer className="py-12 border-t border-gray-900 text-center text-gray-400 text-xs bg-[#0A0F1C]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="/institucional" className="px-5 py-2 rounded-full border border-gray-800 hover:border-[#00F0FF] text-gray-400 hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
-            <a href="/agentes" className="px-5 py-2 rounded-full border border-gray-800 hover:border-[#00F0FF] text-gray-400 hover:text-[#00F0FF] font-semibold transition-all">Compre Robôs de IA</a>
-            <a href="/loja" className="px-5 py-2 rounded-full border border-gray-800 hover:border-purple-500 text-gray-400 hover:text-purple-400 font-semibold transition-all">Contrate Humanos</a>
-            <a href="/jobs" className="px-5 py-2 rounded-full border border-gray-800 hover:border-[#00F0FF] text-gray-400 hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela (Trabalhe Conosco)</a>
+            <a href="/institucional" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
+            <a href="/agentes" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Compre Robôs de IA</a>
+            <a href="/loja" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Contrate Humanos</a>
+            <a href="/jobs" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela (Trabalhe Conosco)</a>
           </div>
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
         </div>
