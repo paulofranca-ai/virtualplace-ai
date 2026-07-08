@@ -25,24 +25,13 @@ export default function LojaPage() {
 
   // State for Calculator
   const [photoMode, setPhotoMode] = useState<'hourly' | 'venda'>('hourly');
-  const [photoDays, setPhotoDays] = useState<number>(1);
+  const [photoHours, setPhotoHours] = useState<number>(4);
   const [photoQtyDigital, setPhotoQtyDigital] = useState<number>(20);
   const [photoQtyA4, setPhotoQtyA4] = useState<number>(5);
 
-  const [videoMode, setVideoMode] = useState<'pro_drone' | 'mix' | 'iphone_only'>('pro_drone');
-  
-  const durationOptions = [
-    { label: '15 segundos', priceFactor: 0.25 },
-    { label: '30 segundos', priceFactor: 0.5 },
-    { label: '45 segundos', priceFactor: 0.75 },
-    { label: '1 minuto', priceFactor: 1.0 },
-    { label: '1.5 minuto', priceFactor: 1.5 },
-    { label: '2 minutos', priceFactor: 2.0 },
-    { label: '3 minutos', priceFactor: 3.0 },
-    { label: '5 minutos', priceFactor: 5.0 },
-    { label: '10 minutos', priceFactor: 10.0 },
-  ];
-  const [durationIndex, setDurationIndex] = useState<number>(3); // Defaults to '1 minuto'
+  const [videoMode, setVideoMode] = useState<'filmmaker' | 'videomaker' | 'premium' | 'none'>('filmmaker');
+  const [videoHours, setVideoHours] = useState<number>(4);
+  const [videoMinutes, setVideoMinutes] = useState<number>(2);
 
   const [addTravelExp, setAddTravelExp] = useState<boolean>(true);
   const [addFood, setAddFood] = useState<boolean>(true);
@@ -54,16 +43,17 @@ export default function LojaPage() {
 
   // Math totals
   const photoCost = photoMode === 'hourly' 
-    ? photoDays * 1000 
+    ? photoHours * 160 
     : (photoQtyDigital * 10) + (photoQtyA4 * 20);
 
-  const videoRate = videoMode === 'pro_drone' 
-    ? 1000 
-    : videoMode === 'mix' 
-      ? 800 
-      : 600;
-  
-  const videoCost = durationOptions[durationIndex].priceFactor * videoRate;
+  const videoCost = videoMode === 'filmmaker' 
+    ? videoHours * 160 
+    : videoMode === 'videomaker' 
+      ? videoHours * 80 
+      : videoMode === 'premium'
+        ? videoMinutes * 750
+        : 0;
+
   const trafficCost = addTraffic ? trafficMonths * 1500 : 0;
   const totalCost = photoCost + videoCost + trafficCost;
 
@@ -72,18 +62,20 @@ export default function LojaPage() {
     let msg = `Olá! Estive no site da SquadClawVirtual e gostaria de fazer um orçamento de Audiovisual.\n\n`;
     
     if (photoMode === 'hourly') {
-      msg += `📸 Cobertura Fotográfica: Plano por Diária (${photoDays} diária(s)) - Est. R$ ${photoDays * 1000},00\n`;
+      msg += `📸 Cobertura Fotográfica: Plano por Hora (${photoHours} hora(s)) - Est. R$ ${photoHours * 160},00\n`;
     } else {
       msg += `📸 Venda de Fotos Particulares (Est. ${photoQtyDigital} digitais e ${photoQtyA4} impressões A4)\n`;
     }
 
-    const videoTypeStr = videoMode === 'pro_drone' 
-      ? 'Vídeo Top Premium (R$1.000/min final, a partir de 15s por R$250)' 
-      : videoMode === 'mix' 
-        ? 'iPhone + Drone ou iPhone + Câmera (R$800/min final)' 
-        : 'Apenas iPhone sem drone/câmera (R$600/min final)';
-
-    msg += `🎥 Aftermovie: Duração de ${durationOptions[durationIndex].label} no formato "${videoTypeStr}" - Est. R$ ${videoCost},00\n`;
+    if (videoMode !== 'none') {
+      const videoTypeStr = videoMode === 'filmmaker' 
+        ? 'Filmmaker Profissional (R$160/hora)' 
+        : videoMode === 'videomaker'
+          ? 'Videomaker Mobile (R$80/hora)'
+          : 'Vídeo Profissional com Top Freelas (R$750/minuto final)';
+      const quantityStr = videoMode === 'premium' ? `${videoMinutes} minuto(s) final(is)` : `${videoHours} hora(s)`;
+      msg += `🎥 Captação de Vídeo: ${videoTypeStr} (${quantityStr}) - Est. R$ ${videoCost},00\n`;
+    }
 
     if (addTraffic) {
       msg += `📈 Assessoria de Tráfego Pago: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok) - Est. R$ ${trafficCost},00\n`;
@@ -171,13 +163,13 @@ export default function LojaPage() {
 
               {/* Pricing Options details */}
               <div className="space-y-4 mb-8">
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-gray-800">
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/50 transition-all">
                   <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Opção 1: Por diária contratada</span>
-                    <span className="text-[#00F0FF] font-black">R$ 1.000 / diária</span>
+                    <span>Opção 1: Por hora contratada</span>
+                    <span className="text-[#00F0FF] font-black">R$ 160 / hora</span>
                   </div>
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Você garante a cobertura fotográfica completa pelo dia inteiro de evento e recebe todas as fotos registradas e tratadas profissionalmente.
+                    Você garante cobertura flexível de acordo com a duração exata do seu evento e recebe todas as fotos registradas e editadas profissionalmente.
                   </p>
                 </div>
 
@@ -207,7 +199,7 @@ export default function LojaPage() {
             </div>
           </div>
 
-          {/* Card 2: Vídeo Aftermovie */}
+          {/* Card 2: Vídeo Aftermovie & Captação */}
           <div id="loja-card-video" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#2563EB]/40 transition-all shadow-xl">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#2563EB]/5 rounded-full blur-2xl pointer-events-none"></div>
             
@@ -216,21 +208,41 @@ export default function LojaPage() {
                 <Video className="w-6 h-6 text-[#2563EB]" />
               </div>
               <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
-                Vídeo Aftermovie Cinematográfico
+                Captação Audiovisual Profissional
               </h2>
               <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
                 Vídeos de alta energia para carrosséis, Reels ou YouTube. Produzidos com equipamentos modernos de gravação terrestre e aérea.
               </p>
 
               {/* Pricing Options details */}
-              <div className="space-y-3 mb-8">
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/60 transition-all">
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Vídeo Top Premium</span>
-                    <span className="text-sm font-black text-[#00F0FF]">R$ 1.000 <span className="text-[10px] font-normal text-gray-400">/min final</span></span>
+              <div className="space-y-3.5 mb-8">
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-purple-500/20 bg-[#0A0F1C]/40 hover:border-purple-500/50 transition-all">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-blue-400" /> Videomaker Mobile</span>
+                    <span className="text-sm font-black text-white">R$ 80 <span className="text-[10px] font-normal text-gray-400">/ hora</span></span>
                   </div>
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    A partir de <strong>15 segundos por R$ 250</strong>! Drone de alta definição, gravação profissional cinematográfica, e câmeras completas (vídeo/foto).
+                    Focado em mídias rápidas e carrosséis dinâmicos usando iPhones de última geração e setups portáteis.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/50 transition-all">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-xs font-black text-[#00F0FF] uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Filmmaker Professional</span>
+                    <span className="text-sm font-black text-[#00F0FF]">R$ 160 <span className="text-[10px] font-normal text-gray-400">/ hora</span></span>
+                  </div>
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                    Captação cinematográfica premium usando câmeras profissionais dedicadas, lentes cinema e drones de alta definição.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-purple-500/30 bg-purple-500/5 hover:border-purple-500/50 transition-all">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-xs font-black text-purple-400 uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-purple-400" /> Vídeo Profissional</span>
+                    <span className="text-sm font-black text-purple-400">R$ 750 <span className="text-[10px] font-normal text-gray-400">/ minuto</span></span>
+                  </div>
+                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+                    Takes e aftermovie premium com os melhores profissionais freelancers credenciados da plataforma.
                   </p>
                 </div>
               </div>
@@ -240,7 +252,7 @@ export default function LojaPage() {
               <div className="bg-[#2563EB]/10 border border-[#2563EB]/30 rounded-lg p-3 text-[10px] text-gray-300 flex items-start gap-2">
                 <Info className="w-3.5 h-3.5 text-[#00F0FF] shrink-0 mt-0.5" />
                 <span>
-                  Cada Aftermovie é acompanhado pela nossa consultoria criativa de roteiro de atenção rápido (primeiros 3 segundos).
+                  Cada projeto acompanha nossa consultoria de roteirização rápida para reter atenção nos primeiros 3 segundos de reprodução.
                 </span>
               </div>
             </div>
@@ -318,7 +330,7 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Por Diária (R$1.000/dia)
+                    Por Hora (R$160/h)
                   </button>
                   <button 
                     onClick={() => setPhotoMode('venda')}
@@ -334,22 +346,22 @@ export default function LojaPage() {
 
                 {photoMode === 'hourly' ? (
                   <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                    <label className="text-[11px] text-gray-400 block mb-1">Diárias estimadas de cobertura: <strong>{photoDays} diária(s)</strong></label>
+                    <label className="text-[11px] text-gray-400 block mb-1">Horas estimadas de cobertura: <strong>{photoHours} hora(s)</strong></label>
                     <input 
                       type="range" 
                       min="1" 
-                      max="15" 
-                      value={photoDays} 
-                      onChange={(e) => setPhotoDays(parseInt(e.target.value))}
+                      max="40" 
+                      value={photoHours} 
+                      onChange={(e) => setPhotoHours(parseInt(e.target.value))}
                       className="w-full accent-[#00F0FF] cursor-pointer"
                     />
                     <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                      <span>1 dia</span>
-                      <span>7 dias</span>
-                      <span>15 dias</span>
+                      <span>1 hora</span>
+                      <span>20 horas</span>
+                      <span>40 horas</span>
                     </div>
                     <div className="text-right text-xs font-extrabold text-[#00F0FF] mt-2">
-                      Subtotal: R$ {photoDays * 1000},00
+                      Subtotal: R$ {photoHours * 160},00
                     </div>
                   </div>
                 ) : (
@@ -394,36 +406,102 @@ export default function LojaPage() {
               {/* Video settings column */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <Video className="w-4 h-4 text-purple-400" /> 2. Configurações Aftermovie
+                  <Video className="w-4 h-4 text-purple-400" /> 2. Configurações Captação Vídeo
                 </h4>
 
-                 <div className="space-y-2">
-                  <label className="text-[10px] text-gray-400 uppercase font-mono block">Formato de Captação Único:</label>
-                  <div className="p-3 rounded-lg border bg-purple-950/15 border-purple-500 text-[#00F0FF] text-[11px] font-black uppercase flex justify-between items-center">
-                    <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF] animate-pulse" /> Vídeo Top Premium</span>
-                    <span>R$ 1.000 / min</span>
-                  </div>
+                <div className="flex flex-col gap-2">
+                  <button 
+                    onClick={() => setVideoMode('filmmaker')}
+                    className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
+                      videoMode === 'filmmaker' 
+                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <span>Filmmaker Professional</span>
+                    <span>R$ 160 / h</span>
+                  </button>
+                  <button 
+                    onClick={() => setVideoMode('videomaker')}
+                    className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
+                      videoMode === 'videomaker' 
+                        ? 'bg-purple-950/25 border-purple-500 text-purple-300' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <span>Videomaker Mobile</span>
+                    <span>R$ 80 / h</span>
+                  </button>
+                  <button 
+                    onClick={() => setVideoMode('premium')}
+                    className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
+                      videoMode === 'premium' 
+                        ? 'bg-purple-950/30 border-purple-500 text-[#00F0FF]' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <span>Vídeo Profissional (Top Freelas)</span>
+                    <span>R$ 750 / min</span>
+                  </button>
+                  <button 
+                    onClick={() => setVideoMode('none')}
+                    className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
+                      videoMode === 'none' 
+                        ? 'bg-red-950/15 border-red-900/40 text-red-400' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    <span>Nenhum Vídeo</span>
+                    <span>R$ 0</span>
+                  </button>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 mt-2">
-                  <label className="text-[11px] text-gray-400 block mb-1">Duração final de Aftermovie: <strong>{durationOptions[durationIndex].label}</strong></label>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max={durationOptions.length - 1} 
-                    value={durationIndex} 
-                    onChange={(e) => setDurationIndex(parseInt(e.target.value))}
-                    className="w-full accent-purple-500 cursor-pointer"
-                  />
-                  <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                    <span>15s (Min)</span>
-                    <span>1 min</span>
-                    <span>10 min (Max)</span>
+                {videoMode !== 'none' ? (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 mt-2">
+                    {videoMode === 'premium' ? (
+                      <>
+                        <label className="text-[11px] text-gray-400 block mb-1">Minutos finais de vídeo estimado: <strong>{videoMinutes} minuto(s)</strong></label>
+                        <input 
+                          type="range" 
+                          min="1" 
+                          max="20" 
+                          value={videoMinutes} 
+                          onChange={(e) => setVideoMinutes(parseInt(e.target.value))}
+                          className="w-full accent-purple-500 cursor-pointer"
+                        />
+                        <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
+                          <span>1 min</span>
+                          <span>10 min</span>
+                          <span>20 min</span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <label className="text-[11px] text-gray-400 block mb-1">Horas estimadas de captação: <strong>{videoHours} hora(s)</strong></label>
+                        <input 
+                          type="range" 
+                          min="1" 
+                          max="40" 
+                          value={videoHours} 
+                          onChange={(e) => setVideoHours(parseInt(e.target.value))}
+                          className="w-full accent-purple-500 cursor-pointer"
+                        />
+                        <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
+                          <span>1 hora</span>
+                          <span>20 horas</span>
+                          <span>40 horas</span>
+                        </div>
+                      </>
+                    )}
+                    <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
+                      Subtotal: R$ {videoCost},00
+                    </div>
                   </div>
-                  <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
-                    Subtotal: R$ {videoCost},00
+                ) : (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-8 text-gray-500 text-[10.5px]">
+                    <p>Nenhuma captação de vídeo selecionada no estimador.</p>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Paid Traffic settings column */}

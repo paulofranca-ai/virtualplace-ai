@@ -128,7 +128,7 @@ export default function InstitutionalPage() {
                   CONTRATE HUMANOS
                 </a>
                 <a 
-                  href="https://chat.whatsapp.com/JscL45d0D4mC5EJlwMkks7" target="_blank" rel="noopener noreferrer"
+                  href="https://t.me/VirtualPlaceIAbot?start=Quero_ser_contratado" target="_blank" rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
                 >
                   <Briefcase className="w-4 h-4" />
@@ -391,6 +391,16 @@ export default function InstitutionalPage() {
                 allowFullScreen
               ></iframe>
             </motion.div>
+
+            {/* Botão Contrate Nosso Time abaixo do depoimento */}
+            <div className="mt-6 flex justify-center">
+              <a
+                href="/loja"
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-[#2563EB] text-white hover:from-purple-600 hover:to-[#1D4ED8] font-black text-xs uppercase shadow-[0_0_20px_rgba(147,51,234,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <User className="w-4 h-4" /> Contrate Nosso Time
+              </a>
+            </div>
 
             {/* New Results Images */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
