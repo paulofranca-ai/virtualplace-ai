@@ -245,6 +245,16 @@ export default function BuyAgentsPage() {
                   </p>
                 </div>
 
+                {/* Oferta de Upsell de R$ 997 */}
+                <div className="mb-6 p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 text-left">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase text-[#00F0FF]">
+                    <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#00F0FF] animate-pulse" /> Upgrade de Upsell: Anual Completo
+                  </div>
+                  <p className="text-[11px] text-gray-300 mt-1 leading-relaxed font-medium">
+                    Oferecemos o plano Anual de <strong>R$ 997,00 como Upsell</strong> na próxima página, incluindo 1 ano inteiro de suporte prioritário e onboarding!
+                  </p>
+                </div>
+
                 <div className="space-y-2 mb-8 border-t border-gray-800/40 pt-4">
                   <div className="flex items-center gap-2 text-[11px] text-gray-300">
                     <CheckCircle className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -265,14 +275,23 @@ export default function BuyAgentsPage() {
                 </div>
               </div>
 
-              <div>
+              <div className="space-y-3">
                 <a
-                  href="https://pay.kiwify.com.br/zABsvn6"
+                  href="https://pay.kiwify.com.br/2yfNvHR"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-[#8B5CF6] hover:from-purple-500 hover:to-[#7C3AED] text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)] text-xs text-center uppercase cursor-pointer"
                 >
                   🚀 ASSINAR PLANO MENSAL AGORA
+                </a>
+
+                <a
+                  href="https://pay.kiwify.com.br/rViC8d1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] text-xs text-center uppercase cursor-pointer"
+                >
+                  ✨ ADQUIRIR PLANO ANUAL POR R$ 997
                 </a>
                 
                 <div className="flex gap-2 items-center justify-center text-[10px] text-[#64748B] mt-4 font-mono">

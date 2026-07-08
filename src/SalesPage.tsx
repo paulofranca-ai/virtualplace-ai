@@ -884,6 +884,16 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
                   </p>
                 </div>
 
+                {/* Oferta de Upsell de R$ 997 */}
+                <div className="mb-6 p-3.5 rounded-xl bg-purple-950/40 border border-purple-500/30 text-left">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black uppercase text-[#00F0FF]">
+                    <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#00F0FF] animate-pulse" /> Plano de 1 Ano: Suporte Completo & Onboarding
+                  </div>
+                  <p className="text-[11px] text-gray-300 mt-1 leading-relaxed font-medium">
+                    Garanta 1 ano de suporte dedicado, atualizações contínuas de novos robôs de IA e onboarding individual exclusivo!
+                  </p>
+                </div>
+
                 {/* Recursos */}
                 <ul className="space-y-2 mb-8">
                   {[
@@ -902,21 +912,30 @@ Entregue o plano completo focado em gerar ROAS e vendas no piloto automático.`;
               </div>
 
               {/* Botão de checkout Kiwify integrado */}
-              <div className="pt-5 border-t border-gray-800">
+              <div className="pt-5 border-t border-gray-800 space-y-3">
                 <a
-                  href="https://pay.kiwify.com.br/zABsvn6"
+                  href="https://pay.kiwify.com.br/2yfNvHR"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(168,85,247,0.3)]"
                 >
                   <Rocket className="w-4 h-4" /> Baixar Robôs por R$ 197
                 </a>
+
+                <a
+                  href="https://pay.kiwify.com.br/rViC8d1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                >
+                  <Sparkles className="w-4 h-4 text-white animate-pulse" /> Adquirir Plano de 1 Ano por R$ 997
+                </a>
                 
                 <a 
                   href="https://wa.me/5549984101144?text=acabei%20de%20comprar%20o%20Jarvis%20da%20VirtualPlace%2C%20quero%20meu%20onboarding."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center text-[10.5px] text-gray-400 hover:text-white underline mt-3 transition-colors"
+                  className="block text-center text-[10.5px] text-gray-400 hover:text-white underline pt-2 transition-colors"
                 >
                   Comprar pelo WhatsApp e receber onboarding
                 </a>
