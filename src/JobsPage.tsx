@@ -81,6 +81,7 @@ export default function JobsPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
+            <a href="/precos" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Preços & Orçamentos</a>
             <a href="https://lp.autolead.site/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Institucional</a>
           </div>
         </div>

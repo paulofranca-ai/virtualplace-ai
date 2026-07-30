@@ -27,14 +27,22 @@ export default function BuyAgentsPage() {
         
         {/* Header e Navegabilidade */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-gray-800/40">
-          <button 
-            onClick={() => navigate('/')}
-            className="group flex items-center gap-2 text-xs text-[#00F0FF]/80 hover:text-[#00F0FF] transition-colors self-start border border-[#00F0FF]/20 bg-[#00F0FF]/5 hover:bg-[#00F0FF]/15 px-3.5 py-1.5 rounded-full font-semibold cursor-pointer"
-            id="back-button"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-            Voltar para a Página Inicial
-          </button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => navigate('/')}
+              className="group flex items-center gap-2 text-xs text-[#00F0FF]/80 hover:text-[#00F0FF] transition-colors self-start border border-[#00F0FF]/20 bg-[#00F0FF]/5 hover:bg-[#00F0FF]/15 px-3.5 py-1.5 rounded-full font-semibold cursor-pointer"
+              id="back-button"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              Início
+            </button>
+            <a 
+              href="/precos"
+              className="text-xs font-semibold text-[#00F0FF] hover:text-white transition-colors"
+            >
+              Tabela de Preços & Orçamentos
+            </a>
+          </div>
 
           <div className="flex items-center gap-2 bg-[#0F172A]/80 border border-gray-800 px-3 py-1 rounded-full text-[10px] font-mono text-[#94A3B8]">
             <span className="relative flex h-2 w-2">

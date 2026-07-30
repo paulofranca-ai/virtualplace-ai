@@ -99,13 +99,21 @@ export default function LojaPage() {
       {/* Header */}
       <nav id="loja-nav" className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <button 
-            id="loja-back-btn"
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-400 hover:text-white transition-all cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 text-[#00F0FF]" /> Voltar ao Início
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              id="loja-back-btn"
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-400 hover:text-white transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4 text-[#00F0FF]" /> Início
+            </button>
+            <a 
+              href="/precos"
+              className="text-xs md:text-sm font-semibold text-[#00F0FF] hover:text-white transition-all hidden sm:inline-block"
+            >
+              Tabela de Preços
+            </a>
+          </div>
           <div className="text-[#F8FAFC] font-bold text-lg tracking-tighter uppercase font-mono">
             SquadClaw<span className="text-[#00F0FF]">Virtual</span>
           </div>

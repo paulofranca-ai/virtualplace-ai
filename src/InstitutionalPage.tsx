@@ -84,6 +84,7 @@ export default function InstitutionalPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Comercial</a>
+            <a href="/precos" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">Preços & Orçamentos</a>
             <a href="https://lp.autolead.site/institucional" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">Institucional</a>
           </div>
         </div>
@@ -474,15 +475,18 @@ export default function InstitutionalPage() {
                 </p>
 
                 {/* Preço de R$197 */}
-                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-800">
-                  <div className="text-[10px] text-gray-500 line-through">De R$ 997,00 por apenas</div>
-                  <div className="flex items-baseline gap-1 mt-1">
-                    <span className="text-sm font-bold text-white">R$</span>
-                    <span className="text-3xl font-black text-[#00F0FF]">197</span>
-                    <span className="text-xs text-gray-500">pagamento único</span>
+                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-800 space-y-1">
+                  <div className="text-[11px] text-gray-400 line-through font-semibold">De R$ 997,00 por apenas</div>
+                  <div className="flex items-baseline gap-1.5 my-1">
+                    <span className="text-sm font-black text-white">R$</span>
+                    <span className="text-4xl font-black text-[#00F0FF] tracking-tight">197</span>
+                    <span className="text-xs text-gray-400 font-medium">pagamento único</span>
                   </div>
-                  <p className="text-[10px] text-emerald-400 font-extrabold mt-1.5 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Acesso vitalício aos robôs
+                  <p className="text-[10.5px] text-emerald-400 font-extrabold flex items-center gap-1.5 pt-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Acesso vitalício aos robôs
+                  </p>
+                  <p className="text-[10.5px] text-[#00F0FF] font-extrabold flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00F0FF] shrink-0" /> Suporte por 30 dias via WhatsApp
                   </p>
                 </div>
 
