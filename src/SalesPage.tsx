@@ -163,7 +163,7 @@ export default function SalesPage() {
     },
     {
       title: "Tráfego e ROAS Otimizados",
-      description: "Campanhas profissionais e cirúrgicas no Meta Ads, Google Ads e TikTok Ads gerando leads qualificados para alimentar seus funis de IA continuamente.",
+      description: "Campanhas profissionais e cirúrgicas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads gerando leads qualificados para alimentar seus funis de IA continuamente.",
       badge: "Escala Real",
       icon: TrendingUp
     },
@@ -185,7 +185,7 @@ export default function SalesPage() {
     {
       number: "02",
       title: "Anúncios Cirúrgicos",
-      desc: "Ativamos campanhas no Google e Meta Ads focando no público comprador exato.",
+      desc: "Ativamos campanhas no Meta, Google, TikTok e LinkedIn Ads focando no público comprador exato.",
       icon: MousePointerClick
     },
     {
@@ -244,7 +244,7 @@ export default function SalesPage() {
     },
     { 
       q: "O que está incluso na Consultoria de Tráfego de R$1.500 mensal?", 
-      a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads e TikTok Ads. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
+      a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
     },
     { 
       q: "Como posso testar os agentes de inteligência artificial gratuitamente?", 
@@ -347,12 +347,12 @@ export default function SalesPage() {
             
             {/* Impact Headline - Max 10-12 words */}
             <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight tracking-tight">
-              Pare de se matar de trabalhar. Tenha <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">30 assistentes de IA</span> fazendo o trabalho pesado por você.
+              Escale seu Negócio com Estrutura Completa: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">IA, Tráfego Pago e Produção Audiovisual</span>.
             </h1>
             
             {/* Subheadline with core benefit + numeric proof */}
             <p className="text-[#94A3B8] text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-              Faça em minutos o que levava horas. Crie textos, artes, sites e estratégias sem estresse. Dê conta de mais clientes, aumente sua renda e recupere seu tempo livre. Tudo isso com controle total do seu bolso e privacidade das suas ideias.
+              Unimos automação inteligente de vendas com IA, gestão de tráfego pago de alta performance (Meta, Google, TikTok e LinkedIn Ads) e cobertura audiovisual profissional com gravação, fotografia e edição de vídeo. Atraia clientes qualificados e fortaleça sua marca com um ecossistema unificado.
             </p>
 
             {/* Scarcity Notice */}
@@ -831,14 +831,14 @@ export default function SalesPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
                     <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Assessoria de Tráfego Pago e Performance (Meta & Google Ads)
+                      Assessoria de Tráfego Pago e Performance (Meta, Google, TikTok & LinkedIn Ads)
                     </h3>
                     <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                       Anúncios & Mídia
                     </span>
                   </div>
                   <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Gestão diária das suas campanhas patrocinadas focada em atração de clientes compradores e retorno de investimento. Otimização de anúncios, criação de públicos e relatórios transparentes.
+                    Gestão diária das suas campanhas patrocinadas (Meta, Google, TikTok e LinkedIn Ads) focada em atração de clientes compradores e retorno de investimento. Otimização de anúncios, criação de públicos e relatórios transparentes.
                   </p>
                   <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
                     <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>

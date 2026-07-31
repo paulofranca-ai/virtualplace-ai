@@ -627,7 +627,7 @@ export default function InstitutionalPage() {
                   Assessoria Tráfego
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads e Google Ads para atração massiva de clientes.
+                  Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads para atração massiva de clientes.
                 </p>
 
                 {/* Opções de Preço */}

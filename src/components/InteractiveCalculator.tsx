@@ -493,7 +493,7 @@ export default function InteractiveCalculator() {
 
             {includeTraffic && (
               <div className="mt-3 pt-3 border-t border-gray-800/80 flex items-center justify-between">
-                <span className="text-[11px] text-gray-300 font-semibold">Meses de Gestão Meta/Google:</span>
+                <span className="text-[11px] text-gray-300 font-semibold">Meses de Gestão Meta/Google/TikTok/LinkedIn:</span>
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => setTrafficMonths(Math.max(1, trafficMonths - 1))}

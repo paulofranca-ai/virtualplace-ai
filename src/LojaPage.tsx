@@ -78,7 +78,7 @@ export default function LojaPage() {
     }
 
     if (addTraffic) {
-      msg += `📈 Assessoria de Tráfego Pago: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok) - Est. R$ ${trafficCost},00\n`;
+      msg += `📈 Assessoria de Tráfego Pago: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok, LinkedIn) - Est. R$ ${trafficCost},00\n`;
     }
     msg += `\n`;
     
@@ -278,7 +278,7 @@ export default function LojaPage() {
                 Assessoria de Tráfego Pago
               </h2>
               <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok Ads) focada em tração, geração de leads e vendas recorrentes.
+                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok e LinkedIn Ads) focada em tração, geração de leads e vendas recorrentes.
               </p>
 
               {/* Pricing Options details */}
@@ -563,7 +563,7 @@ export default function LojaPage() {
                   </div>
                 ) : (
                   <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-8 text-gray-500 text-[10.5px]">
-                    <p>Otimize sua divulgação local com anúncios patrocinados no Meta Ads (Facebook/Instagram), Google Ads e TikTok.</p>
+                    <p>Otimize sua divulgação local com anúncios patrocinados no Meta Ads (Facebook/Instagram), Google Ads, TikTok Ads e LinkedIn Ads.</p>
                   </div>
                 )}
               </div>

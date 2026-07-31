@@ -113,7 +113,7 @@ export default function PricesPage() {
     },
     {
       question: 'O que está incluso na Assessoria de Tráfego Pago (R$ 1.500/mês)?',
-      answer: 'Inclui gestão estratégica de anúncios no Meta Ads (Instagram/Facebook) e Google Ads, criação de copys e peças, configuração de píxels e tags, otimização diária de orçamentos, testes A/B de públicos e relatórios de métricas e ROI.'
+      answer: 'Inclui gestão estratégica de anúncios no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads, criação de copys e peças, configuração de píxels e tags, otimização diária de orçamentos, testes A/B de públicos e relatórios de métricas e ROI.'
     },
     {
       question: 'Como emitir nota fiscal e receber contrato formal?',
@@ -276,14 +276,14 @@ export default function PricesPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Assessoria de Tráfego Pago e Performance (Meta & Google Ads)
+                          Assessoria de Tráfego Pago e Performance (Meta, Google, TikTok & LinkedIn Ads)
                         </h3>
                         <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                           Anúncios & Mídia
                         </span>
                       </div>
                       <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Gestão diária de anúncios patrocinados no Meta Ads (Instagram/Facebook) e Google Ads para atração constante de clientes qualificados.
+                        Gestão diária de anúncios patrocinados no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads para atração constante de clientes qualificados.
                       </p>
                       <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
                         <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>
@@ -678,7 +678,7 @@ export default function PricesPage() {
                   <td className="py-4 px-6 font-bold text-[#00F0FF]">
                     R$ 1.500 <span className="text-[10px] text-gray-500 font-normal">/ mês</span>
                   </td>
-                  <td className="py-4 px-6 text-gray-400">Gestão diária Meta Ads + Google Ads</td>
+                  <td className="py-4 px-6 text-gray-400">Gestão diária Meta, Google, TikTok e LinkedIn Ads</td>
                   <td className="py-4 px-6 text-gray-400">Mensal recorrente / Boleto PJ</td>
                   <td className="py-4 px-6 text-right">
                     <a 
