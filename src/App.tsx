@@ -7,6 +7,7 @@ import SimulatedCheckoutPage from './SimulatedCheckoutPage';
 import BuyAgentsPage from './BuyAgentsPage';
 import LojaPage from './LojaPage';
 import PricesPage from './PricesPage';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/agentes" element={<BuyAgentsPage />} />
         <Route path="/loja" element={<LojaPage />} />
       </Routes>
+      <WhatsAppButton />
     </Router>
   );
 }
