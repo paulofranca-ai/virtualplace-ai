@@ -46,7 +46,6 @@ import {
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
-import InteractiveCalculator from './components/InteractiveCalculator';
 
 const COUNTRIES = [
   { name: 'Brasil', code: '+55', flag: '🇧🇷' },
@@ -127,7 +126,7 @@ export default function SalesPage() {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
       setTimeout(() => {
-        window.location.href = 'https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%20Jarvis%2C%20Quero%20Contratar%20um%20Servi%C3%A7o';
+        window.location.href = 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Enviei%20meus%20dados%20no%20site%20e%20gostaria%20de%20falar%20com%20um%20consultor.';
       }, 2000);
     } catch (error: any) {
       console.error("Erro ao enviar lead:", error);
@@ -247,8 +246,8 @@ export default function SalesPage() {
       a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
     },
     { 
-      q: "Como posso testar os agentes de inteligência artificial gratuitamente?", 
-      a: "Você pode interagir e testar nossos robôs em tempo real agora mesmo através do nosso bot do Telegram. Clique no botão de teste grátis e simule exatamente o poder de atendimento que seu cliente receberá." 
+      q: "Como posso solicitar uma demonstração ou atendimento?", 
+      a: "Você pode falar diretamente com nossa equipe no WhatsApp pelo número +55 (49) 99105-2315. Nós tiramos suas dúvidas e apresentamos o ecossistema ideal para a sua empresa." 
     },
     { 
       q: "Preciso ter conhecimento de programação ou tecnologia?", 
@@ -317,12 +316,12 @@ export default function SalesPage() {
               Preços & Orçamentos
             </a>
             <a 
-              href="https://t.me/VirtualPlaceIAbot"
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20consultor."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)]"
+              className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)] flex items-center gap-1.5"
             >
-              Fale com nossa IA
+              <MessageSquare className="w-3.5 h-3.5" /> Falar no WhatsApp
             </a>
           </div>
         </div>
@@ -366,20 +365,13 @@ export default function SalesPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto mb-14">
               <a 
-                href="https://t.me/VirtualPlaceIAbot" 
+                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(0,240,255,0.45)] cursor-pointer"
+                className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(16,185,129,0.35)] cursor-pointer"
               >
-                <Rocket className="w-5 h-5" /> Fale com nossa IA
+                <MessageSquare className="w-5 h-5" /> Comece seu projeto agora
               </a>
-              
-              <button 
-                onClick={() => scrollToSection('oferta-irresistivel')}
-                className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)]"
-              >
-                <Calculator className="w-5 h-5" /> Ver Planos & Preços de Serviços
-              </button>
             </div>
 
             {/* Video Section - Kept Exactly as requested, placed right below */}
@@ -437,12 +429,14 @@ export default function SalesPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <button 
-              onClick={() => scrollToSection('oferta-irresistivel')}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer"
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
-              <Calculator className="w-4 h-4" /> Ver Planos e Valores do Ecossistema
-            </button>
+              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
+            </a>
           </div>
         </div>
       </section>
@@ -491,12 +485,14 @@ export default function SalesPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <button 
-              onClick={() => scrollToSection('oferta-irresistivel')}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-[#00F0FF] text-white hover:from-purple-600 hover:to-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
-              <Calculator className="w-4 h-4" /> Começar Agora - Ver Opções de Planos
-            </button>
+              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
+            </a>
           </div>
         </div>
       </section>
@@ -532,12 +528,14 @@ export default function SalesPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <button 
-              onClick={() => scrollToSection('oferta-irresistivel')}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer"
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
-              <Calculator className="w-4 h-4" /> Ver Planos e Ativar Meu Robô
-            </button>
+              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
+            </a>
           </div>
         </div>
       </section>
@@ -577,7 +575,7 @@ export default function SalesPage() {
                 </p>
               </div>
               <a 
-                href="https://wa.me/5549984101144?text=Quero%20receber%20os%20Prompts%20para%20Gera%C3%A7%C3%A3o%20de%20Imagens%20de%20IA%20para%20An%C3%BAncios" 
+                href="https://wa.me/5549991052315?text=Quero%20receber%20os%20Prompts%20para%20Gera%C3%A7%C3%A3o%20de%20Imagens%20de%20IA%20para%20An%C3%BAncios" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-gray-900 hover:bg-[#00F0FF]/20 border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] transition-all text-xs font-black uppercase text-center flex items-center justify-center gap-1.5"
@@ -605,7 +603,7 @@ export default function SalesPage() {
                 </p>
               </div>
               <a 
-                href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20quero%20solicitar%20a%20An%C3%A1lise%20de%20Perfil%20Empresarial%20para%20An%C3%BAncios" 
+                href="https://wa.me/5549991052315?text=Ol%C3%A1%2C%20quero%20solicitar%20a%20An%C3%A1lise%20de%20Perfil%20Empresarial%20para%20An%C3%BAncios" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-gray-900 hover:bg-purple-500/20 border border-gray-800 hover:border-purple-500 text-gray-300 hover:text-purple-400 transition-all text-xs font-black uppercase text-center flex items-center justify-center gap-1.5"
@@ -616,12 +614,14 @@ export default function SalesPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <button 
-              onClick={() => scrollToSection('oferta-irresistivel')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
-              <Calculator className="w-4 h-4" /> Prefiro Ir Direto aos Planos & Preços
-            </button>
+              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
+            </a>
           </div>
         </div>
       </section>
@@ -758,12 +758,14 @@ export default function SalesPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <button 
-                onClick={() => scrollToSection('oferta-irresistivel')}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] transition-all font-black text-xs uppercase cursor-pointer shadow-lg"
+              <a 
+                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-lg"
               >
-                <Calculator className="w-4 h-4" /> Ver Planos e Garantir Minha Vaga
-              </button>
+                <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
+              </a>
             </div>
           </div>
         </div>
@@ -780,12 +782,12 @@ export default function SalesPage() {
               Nossos Serviços Especializados
             </h2>
             <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-sm text-center">
-              Conheça em detalhes cada um dos nossos serviços de inteligência artificial, cobertura audiovisual e performance de vendas. Monte e simule o seu orçamento personalizado na calculadora abaixo.
+              Conheça em detalhes cada um dos nossos serviços de inteligência artificial, cobertura audiovisual e performance de vendas. Solicite o seu orçamento personalizado pelo WhatsApp.
             </p>
           </div>
 
           {/* Lista de Serviços um abaixo do outro (sem preços) na ordem solicitada */}
-          <div className="space-y-4 max-w-5xl mx-auto mb-16">
+          <div className="space-y-4 max-w-5xl mx-auto mb-12">
             
             {/* 1. Squad Jarvis IA */}
             <div className="p-6 rounded-2xl border border-purple-500/30 bg-[#050810] hover:border-purple-400 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
@@ -814,10 +816,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600 border border-purple-500/40 text-purple-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20Squad%20Jarvis%20IA."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -848,10 +852,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Assessoria%20de%20Tr%C3%A1fego%20Pago."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -883,10 +889,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/30 text-violet-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeo."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -918,10 +926,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-[#00F0FF]/10 hover:bg-[#00F0FF]/20 border border-[#00F0FF]/30 text-[#00F0FF] font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Cobertura%20de%20Eventos."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -952,10 +962,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Cobertura%20Fotogr%C3%A1fica."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -986,10 +998,12 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 text-pink-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20StoryMaker."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
@@ -1020,64 +1034,63 @@ export default function SalesPage() {
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="#simulador-home"
-                  className="px-4 py-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Meia%20Di%C3%A1ria%20Extra."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
                 >
-                  <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
                 </a>
               </div>
             </div>
 
           </div>
 
-          {/* Interactive Calculator Component on Home Page */}
-          <div id="simulador-home" className="mt-16 max-w-6xl mx-auto">
-            <InteractiveCalculator />
+          {/* Banner para página de preços / calculadora */}
+          <div className="text-center p-6 rounded-2xl bg-[#050810] border border-gray-800 max-w-2xl mx-auto mb-16">
+            <p className="text-xs text-gray-400 mb-3">Deseja simular valores e consultar nossa calculadora de orçamentos?</p>
+            <a 
+              href="/precos"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-600/20 hover:bg-purple-600 border border-purple-500/40 text-purple-300 hover:text-white font-bold text-xs uppercase transition-all"
+            >
+              <Calculator className="w-4 h-4" /> Acesse Nossa Tabela de Preços & Calculadora
+            </a>
           </div>
 
-          {/* Interactive Form/CTA Block (Optimized with direct CTA routing to lower friction) */}
-          <div id="conversion-cta-block" className="max-w-4xl mx-auto mt-16 bg-[#050810] border border-gray-850 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.05)] relative overflow-hidden">
+          {/* Interactive Form/CTA Block */}
+          <div id="conversion-cta-block" className="max-w-4xl mx-auto bg-[#050810] border border-gray-850 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.05)] relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-4">
-                  Comece Seu Teste Gratuito
+                  Comece Seu Projeto Agora
                 </h3>
                 <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed mb-6">
-                  Qualifique e atenda automaticamente no Telegram. Converse com nossa Inteligência Artificial ou ative nossa triagem gratuita agora.
+                  Fale com nossa equipe diretamente no WhatsApp para cotação e alinhamento do seu projeto.
                 </p>
                 <ul className="space-y-3.5">
                   <li className="flex items-start gap-2.5 text-xs text-gray-400">
                     <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
-                    <span>Diagnóstico de tráfego pago gratuito</span>
+                    <span>Orçamento rápido e sem compromisso</span>
                   </li>
                   <li className="flex items-start gap-2.5 text-xs text-gray-400">
                     <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
-                    <span>Roteiro de copywriting para o Telegram</span>
+                    <span>Atendimento direto e personalizado via WhatsApp</span>
                   </li>
                 </ul>
               </div>
 
               <div className="flex flex-col gap-4 items-stretch justify-center">
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot" 
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                  className="px-6 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.3)]"
                 >
-                  <TrendingUp className="w-4 h-4" /> Fale com nossa IA
-                </a>
-                
-                <a 
-                  href="https://t.me/VirtualPlaceIAbot" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl bg-gray-900 hover:bg-[#00F0FF]/20 border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer"
-                >
-                  <Rocket className="w-4 h-4" /> Quero Testar Grátis No Telegram
+                  <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
                 </a>
 
                 <a 
-                  href="https://t.me/VirtualPlaceIAbot?start=Quero_ser_contratado" 
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20me%20candidatar%20como%20Freela." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="px-6 py-4 rounded-xl border border-gray-800 bg-[#0A0F1C] hover:bg-gray-800 text-gray-300 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center"
@@ -1140,21 +1153,12 @@ export default function SalesPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto mb-10">
             <a 
-              href="https://wa.me/5549984101144?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20consultor%20da%20Virtual%20Place." 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center shadow-[0_0_15px_rgba(16,185,129,0.25)]"
+              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center shadow-[0_0_25px_rgba(16,185,129,0.35)]"
             >
-              <MessageSquare className="w-5 h-5" /> Falar com Consultor
-            </a>
-            
-            <a 
-              href="https://t.me/VirtualPlaceIAbot" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-[#050810] border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center"
-            >
-              <Rocket className="w-5 h-5" /> Fale com nossa IA
+              <MessageSquare className="w-5 h-5" /> Comece seu projeto agora
             </a>
           </div>
         </div>
