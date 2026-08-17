@@ -29,7 +29,9 @@ import {
   DollarSign, 
   Layers,
   Smartphone,
-  Scissors
+  Scissors,
+  Bot,
+  Terminal
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
 import InteractiveCalculator from './components/InteractiveCalculator';
@@ -83,7 +85,7 @@ export default function PricesPage() {
       msg += `✂️ Edição & Pós-Produção: ${editMinutes} minuto(s) final(is) (R$ 297/min) = R$ ${editingTotal},00\n`;
     }
     if (includeTraffic) {
-      msg += `📈 Assessoria de Tráfego Pago: ${trafficMonths} mês(es) (R$ 1.500/mês) = R$ ${trafficTotal},00\n`;
+      msg += `📈 Assessoria de Branding e Growth Marketing: ${trafficMonths} mês(es) (R$ 1.500/mês) = R$ ${trafficTotal},00\n`;
     }
 
     msg += `\n*Ajustes de Logística:*\n`;
@@ -112,8 +114,8 @@ export default function PricesPage() {
       answer: 'As fotos tratadas em alta resolução são entregues em até 48 horas úteis via link no Google Drive ou Pixieset. O Aftermovie e vídeos verticais editados possuem prazo padrão de 3 a 5 dias úteis após o término da captação.'
     },
     {
-      question: 'O que está incluso na Assessoria de Tráfego Pago (R$ 1.500/mês)?',
-      answer: 'Inclui gestão estratégica de anúncios no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads, criação de copys e peças, configuração de píxels e tags, otimização diária de orçamentos, testes A/B de públicos e relatórios de métricas e ROI.'
+      question: 'O que está incluso na Assessoria de Branding e Growth Marketing (R$ 1.500/mês)?',
+      answer: 'Inclui gestão estratégica de anúncios no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads, posicionamento de marca, criação de copys e peças, configuração de píxels e tags, otimização diária de orçamentos, testes A/B de públicos e relatórios de métricas e ROI.'
     },
     {
       question: 'Como emitir nota fiscal e receber contrato formal?',
@@ -134,15 +136,18 @@ export default function PricesPage() {
             </span>
           </a>
 
-          <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 items-center">
+          <div className="flex flex-wrap justify-center gap-x-3 md:gap-x-4 gap-y-2 items-center">
             <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
               Comercial
             </a>
             <a href="/precos" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">
               Preços & Orçamentos
             </a>
-            <a href="/agentes" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
-              Robôs de IA
+            <a 
+              href="/agentes" 
+              className="px-3 py-1 rounded-lg bg-black border border-gray-700 hover:bg-gray-900 text-white text-xs font-bold transition-all shadow-[0_0_12px_rgba(0,0,0,0.8)] flex items-center gap-1.5"
+            >
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
             </a>
             <a href="/loja" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
               Contrate Humanos
@@ -173,7 +178,7 @@ export default function PricesPage() {
             </h1>
 
             <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-8">
-              Confira os custos sem pegadinhas para Inteligência Artificial, Produção Audiovisual de Eventos, Fotografia e Gestão de Tráfego Pago. Monte seu orçamento em tempo real.
+              Confira os custos sem pegadinhas para Inteligência Artificial, Produção Audiovisual de Eventos, Fotografia e Gestão de Branding e Growth Marketing. Monte seu orçamento em tempo real.
             </p>
 
             {/* Category Filter Pills */}
@@ -182,7 +187,7 @@ export default function PricesPage() {
                 { id: 'all', label: 'Todos os Serviços', icon: Layers },
                 { id: 'ai', label: 'Robôs de IA (Jarvis)', icon: Brain },
                 { id: 'audiovisual', label: 'Audiovisual & Eventos', icon: Video },
-                { id: 'traffic', label: 'Tráfego Pago', icon: TrendingUp },
+                { id: 'traffic', label: 'Branding e Growth Marketing', icon: TrendingUp },
                 { id: 'calculator', label: 'Simulador de Orçamento', icon: Calculator }
               ].map((cat) => {
                 const Icon = cat.icon;
@@ -225,48 +230,55 @@ export default function PricesPage() {
 
             <div className="space-y-4">
               
-              {/* CARD 1: SQUAD JARVIS IA */}
+              {/* CARD 1: PARADOXTEAM - ESQUADRÃO DE AGENTES */}
               {(activeCategory === 'all' || activeCategory === 'ai') && (
-                <div className="p-6 rounded-2xl border border-purple-500/30 bg-[#050810] hover:border-purple-400 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
+                <div className="p-6 rounded-2xl border border-gray-700 bg-black hover:border-gray-500 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-[#00F0FF] shrink-0 group-hover:scale-105 transition-transform">
-                      <Brain className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center border border-gray-700 text-white shrink-0 group-hover:scale-105 transition-transform">
+                      <Terminal className="w-6 h-6 text-emerald-400" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Squad Jarvis IA (Robôs de Vendas e Atendimento)
+                          ParadoxTeam - Esquadrão de Agentes (30+ Agentes)
                         </h3>
-                        <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                          Inteligência Artificial
+                        <span className="text-[9px] font-black uppercase text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+                          Submundo da IA
                         </span>
                       </div>
                       <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Assistente Mestre Jarvis com Squad de 30 SubAgentes de IA prontos para automatizar prospecção, qualificação de leads, criação de roteiros para WhatsApp e atendimento comercial 24h.
+                        Esquadrão Completo: <strong>Marketing, Design, Vendas, Segurança, Devs e Assistente Financeiro Pessoal</strong>. Crie qualquer time de agentes autônomos e use nosso cérebro atualizado para plugar no seu projeto.
                       </p>
                       <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> 30 Agentes Especializados</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Roteiros para WhatsApp</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Importação & Onboarding Rápido</span>
+                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Marketing & Vendas 24/7</span>
+                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Design & Devs Full-Stack</span>
+                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Segurança & Finanças</span>
+                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> ClaudeCode, AntiGravity & Kali Linux</span>
                       </div>
                     </div>
                   </div>
                   <div className="shrink-0 flex md:flex-col gap-2">
+                    <a
+                      href="/agentes#planos"
+                      className="px-4 py-2.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                    >
+                      <Terminal className="w-3.5 h-3.5 text-black" /> Ver Planos ParadoxTeam
+                    </a>
                     <button
                       onClick={() => {
                         setActiveCategory('calculator');
                         const el = document.getElementById('simulador-orcamento');
                         if (el) el.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="px-4 py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600 border border-purple-500/40 text-purple-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                      className="px-4 py-2 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/40 text-purple-300 hover:text-white font-bold text-[11px] uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
                     >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
+                      <Calculator className="w-3.5 h-3.5" /> Simular
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* CARD 2: ASSESSORIA DE TRÁFEGO PAGO */}
+              {/* CARD 2: ASSESSORIA DE BRANDING E GROWTH MARKETING */}
               {(activeCategory === 'all' || activeCategory === 'traffic') && (
                 <div className="p-6 rounded-2xl border border-blue-500/20 bg-[#050810] hover:border-blue-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
                   <div className="flex items-start gap-4">
@@ -276,18 +288,18 @@ export default function PricesPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Assessoria de Tráfego Pago e Performance (Meta, Google, TikTok & LinkedIn Ads)
+                          Assessoria de Branding e Growth Marketing (Meta, Google, TikTok & LinkedIn Ads)
                         </h3>
                         <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                          Anúncios & Mídia
+                          Posicionamento & Performance
                         </span>
                       </div>
                       <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Gestão diária de anúncios patrocinados no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads para atração constante de clientes qualificados.
+                        Gestão diária de anúncios patrocinados no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads aliada a estratégias de branding para atração constante de clientes qualificados.
                       </p>
                       <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
                         <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Criação de Públicos Compradores</span>
+                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Posicionamento & Criação de Públicos</span>
                       </div>
                     </div>
                   </div>
@@ -673,16 +685,16 @@ export default function PricesPage() {
                 <tr className="hover:bg-gray-900/50 transition-colors">
                   <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-blue-400 shrink-0" />
-                    Assessoria de Tráfego Pago
+                    Assessoria de Branding e Growth Marketing
                   </td>
                   <td className="py-4 px-6 font-bold text-[#00F0FF]">
                     R$ 1.500 <span className="text-[10px] text-gray-500 font-normal">/ mês</span>
                   </td>
-                  <td className="py-4 px-6 text-gray-400">Gestão diária Meta, Google, TikTok e LinkedIn Ads</td>
+                  <td className="py-4 px-6 text-gray-400">Gestão diária Meta, Google, TikTok e LinkedIn Ads + Branding</td>
                   <td className="py-4 px-6 text-gray-400">Mensal recorrente / Boleto PJ</td>
                   <td className="py-4 px-6 text-right">
                     <a 
-                      href="https://wa.me/5549984101144?text=Quero%20contratar%20Tráfego%20Pago" 
+                      href="https://wa.me/5549984101144?text=Quero%20contratar%20Branding%20e%20Growth%20Marketing" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 bg-[#2563EB] hover:bg-blue-600 text-white font-bold rounded text-[10px] uppercase inline-block"
@@ -772,7 +784,7 @@ export default function PricesPage() {
 
           <div className="space-y-1">
             <p className="font-bold text-[#F8FAFC]">VirtualPlace — Inteligência Artificial, Audiovisual & Marketing</p>
-            <p className="text-[10px] text-gray-600">CNPJ & Termos de Uso • Todos os Direitos Reservados © 2026</p>
+            <p className="text-xs text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
           </div>
         </div>
       </footer>

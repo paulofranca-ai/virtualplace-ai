@@ -42,7 +42,9 @@ import {
   AlertCircle,
   MessageSquare,
   Smartphone,
-  Scissors
+  Scissors,
+  Bot,
+  Terminal
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
@@ -161,8 +163,8 @@ export default function SalesPage() {
       icon: Shield
     },
     {
-      title: "Tráfego e ROAS Otimizados",
-      description: "Campanhas profissionais e cirúrgicas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads gerando leads qualificados para alimentar seus funis de IA continuamente.",
+      title: "Branding e Growth Marketing",
+      description: "Campanhas profissionais e cirúrgicas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads aliadas ao posicionamento de marca, gerando leads qualificados para alimentar seus funis de IA continuamente.",
       badge: "Escala Real",
       icon: TrendingUp
     },
@@ -242,8 +244,8 @@ export default function SalesPage() {
       a: "Diferente de sistemas fechados que cobram taxas abusivas por mensagem, nós configuramos o sistema para usar chaves de API padrão. O custo é extremamente baixo, girando em torno de apenas R$ 100/mês para milhares de atendimentos." 
     },
     { 
-      q: "O que está incluso na Consultoria de Tráfego de R$1.500 mensal?", 
-      a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
+      q: "O que está incluso na Consultoria de Branding e Growth Marketing de R$1.500 mensal?", 
+      a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads com estratégias de posicionamento e branding. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
     },
     { 
       q: "Como posso solicitar uma demonstração ou atendimento?", 
@@ -308,7 +310,13 @@ export default function SalesPage() {
               referrerPolicy="no-referrer" 
             />
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <a 
+              href="/agentes"
+              className="px-3 py-2 rounded-lg bg-black hover:bg-gray-900 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center gap-1.5 border border-gray-700 whitespace-nowrap"
+            >
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
+            </a>
             <a 
               href="/precos"
               className="text-xs md:text-sm font-black text-purple-400 hover:text-white uppercase tracking-tight hidden sm:inline-block transition-colors"
@@ -346,12 +354,12 @@ export default function SalesPage() {
             
             {/* Impact Headline - Max 10-12 words */}
             <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight tracking-tight">
-              Escale seu Negócio com Estrutura Completa: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">IA, Tráfego Pago e Produção Audiovisual</span>.
+              Escale seu Negócio com Estrutura Completa: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">IA, Branding e Growth Marketing e Audiovisual</span>.
             </h1>
             
             {/* Subheadline with core benefit + numeric proof */}
             <p className="text-[#94A3B8] text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-              Unimos automação inteligente de vendas com IA, gestão de tráfego pago de alta performance (Meta, Google, TikTok e LinkedIn Ads) e cobertura audiovisual profissional com gravação, fotografia e edição de vídeo. Atraia clientes qualificados e fortaleça sua marca com um ecossistema unificado.
+              Unimos automação inteligente de vendas com IA, estratégias de branding e growth marketing de alta performance (Meta, Google, TikTok e LinkedIn Ads) e cobertura audiovisual profissional com gravação, fotografia e edição de vídeo. Atraia clientes qualificados e fortaleça sua marca com um ecossistema unificado.
             </p>
 
             {/* Scarcity Notice */}
@@ -363,7 +371,7 @@ export default function SalesPage() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto mb-14">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-3xl mx-auto mb-14">
               <a 
                 href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
                 target="_blank" 
@@ -371,6 +379,12 @@ export default function SalesPage() {
                 className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(16,185,129,0.35)] cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5" /> Comece seu projeto agora
+              </a>
+              <a 
+                href="/agentes"
+                className="w-full sm:w-auto px-6 py-4.5 rounded-xl bg-black hover:bg-gray-900 text-white font-black text-xs md:text-sm uppercase flex items-center justify-center gap-2.5 transition-all shadow-[0_0_25px_rgba(0,0,0,0.8)] cursor-pointer border border-gray-700"
+              >
+                <Terminal className="w-5 h-5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
               </a>
             </div>
 
@@ -599,7 +613,7 @@ export default function SalesPage() {
                   Análise de Perfil Empresarial para Receber Anúncios Patrocinados
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Entenda os critérios essenciais para estruturar o perfil da sua empresa, otimizar sua presença digital e estar 100% pronto para receber campanhas de tráfego pago.
+                  Entenda os critérios essenciais para estruturar o perfil da sua empresa, otimizar sua presença digital e estar 100% pronto para receber campanhas de branding e growth marketing.
                 </p>
               </div>
               <a 
@@ -637,7 +651,7 @@ export default function SalesPage() {
               Eles Já Estão no Próximo Nível
             </h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto mt-2 text-sm">
-              Mais de 60 marcas atendidas com tráfego otimizado, fotografia profissional, audiovisual premium e IA integrada.
+              Mais de 60 marcas atendidas com branding e growth marketing de alta performance, fotografia profissional, audiovisual premium e IA integrada.
             </p>
           </div>
 
@@ -699,7 +713,7 @@ export default function SalesPage() {
                 "Venho aqui falar do trabalho do Paulo, gestor de tráfego. Olha, gostei bastante, ele me ajudou em várias campanhas, conseguimos aí a ter ROI de 3x, 4x, alavancando também as minhas vendas."
               </h3>
               <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed">
-                Assista ao depoimento em vídeo gravado pelo nosso parceiro Léo, detalhando como a nossa estratégia de tráfego pago aliada ao atendimento de ponta destravou o crescimento financeiro do negócio.
+                Assista ao depoimento em vídeo gravado pelo nosso parceiro Léo, detalhando como a nossa estratégia de branding e growth marketing aliada ao atendimento de ponta destravou o crescimento financeiro do negócio.
               </p>
               <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex gap-3 items-center">
                 <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-black text-white text-sm shrink-0 border border-emerald-500/30">
@@ -707,7 +721,7 @@ export default function SalesPage() {
                 </div>
                 <div>
                   <h5 className="font-extrabold text-xs text-white">Léo - Parceiro Comercial</h5>
-                  <p className="text-[10px] text-gray-400">Escala em Lançamentos e Tráfego Patrocinado</p>
+                  <p className="text-[10px] text-gray-400">Escala em Lançamentos, Branding e Growth</p>
                 </div>
               </div>
             </div>
@@ -789,44 +803,43 @@ export default function SalesPage() {
           {/* Lista de Serviços um abaixo do outro (sem preços) na ordem solicitada */}
           <div className="space-y-4 max-w-5xl mx-auto mb-12">
             
-            {/* 1. Squad Jarvis IA */}
-            <div className="p-6 rounded-2xl border border-purple-500/30 bg-[#050810] hover:border-purple-400 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
+            {/* 1. ParadoxTeam - Esquadrão de Agentes */}
+            <div className="p-6 rounded-2xl border border-gray-700 bg-black hover:border-gray-500 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-[#00F0FF] shrink-0 group-hover:scale-105 transition-transform">
-                  <Brain className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center border border-gray-700 text-white shrink-0 group-hover:scale-105 transition-transform">
+                  <Terminal className="w-6 h-6 text-emerald-400" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
                     <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Squad Jarvis IA (Robôs de Vendas e Atendimento)
+                      ParadoxTeam - Esquadrão de Agentes (30+ Agentes)
                     </h3>
-                    <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                      Inteligência Artificial
+                    <span className="text-[9px] font-black uppercase text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+                      Submundo da IA
                     </span>
                   </div>
                   <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Assistente Mestre Jarvis com Squad de 30 SubAgentes de IA prontos para automatizar prospecção, qualificação de leads, criação de roteiros para WhatsApp e atendimento comercial 24 horas por dia.
+                    Esquadrão Completo: <strong>Marketing, Design, Vendas, Segurança, Devs e Assistente Financeiro Pessoal</strong>. Crie qualquer time de agentes autônomos e use nosso cérebro atualizado para plugar diretamente no seu projeto.
                   </p>
                   <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> 30 Agentes Especializados</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Roteiros para WhatsApp</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Importação & Onboarding Rápido</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Marketing & Vendas 24/7</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Design & Devs Full-Stack</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Segurança & Finanças</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> ClaudeCode, AntiGravity & Kali Linux</span>
                   </div>
                 </div>
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20Squad%20Jarvis%20IA."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
+                  href="/agentes#planos"
+                  className="px-4 py-2.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
+                  <Terminal className="w-3.5 h-3.5 text-black" /> Ver Planos do ParadoxTeam
                 </a>
               </div>
             </div>
 
-            {/* 2. Assessoria de Tráfego Pago */}
+            {/* 2. Assessoria de Branding e Growth Marketing */}
             <div className="p-6 rounded-2xl border border-blue-500/20 bg-[#050810] hover:border-blue-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center border border-blue-500/25 text-blue-400 shrink-0 group-hover:scale-105 transition-transform">
@@ -835,24 +848,24 @@ export default function SalesPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
                     <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Assessoria de Tráfego Pago e Performance (Meta, Google, TikTok & LinkedIn Ads)
+                      Assessoria de Branding e Growth Marketing (Meta, Google, TikTok & LinkedIn Ads)
                     </h3>
                     <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                      Anúncios & Mídia
+                      Posicionamento & Performance
                     </span>
                   </div>
                   <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Gestão diária das suas campanhas patrocinadas (Meta, Google, TikTok e LinkedIn Ads) focada em atração de clientes compradores e retorno de investimento. Otimização de anúncios, criação de públicos e relatórios transparentes.
+                    Gestão diária das suas campanhas patrocinadas (Meta, Google, TikTok e LinkedIn Ads) e posicionamento de marca focado em atração de clientes compradores e retorno de investimento. Otimização de anúncios, criação de públicos e relatórios transparentes.
                   </p>
                   <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
                     <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Criação de Públicos Compradores</span>
+                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Posicionamento & Criação de Públicos</span>
                   </div>
                 </div>
               </div>
               <div className="shrink-0 flex md:flex-col gap-2">
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Assessoria%20de%20Tr%C3%A1fego%20Pago."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Assessoria%20de%20Branding%20e%20Growth%20Marketing."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
@@ -1174,8 +1187,7 @@ export default function SalesPage() {
             <a href="/loja" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Contrate Humanos</a>
             <a href="/jobs" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela (Trabalhe Conosco)</a>
           </div>
-          <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
-          <p className="text-gray-500 text-[11px] mt-1">CNPJ: 31.509.856/0001-10</p>
+          <p className="text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
         </div>
       </footer>
 

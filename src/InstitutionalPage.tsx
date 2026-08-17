@@ -137,10 +137,10 @@ export default function InstitutionalPage() {
                 </a>
                 <a 
                   href="/agentes"
-                  className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] border border-purple-400/30"
                 >
-                  <Rocket className="w-4 h-4" />
-                  COMPRE ROBÔS / AGENTES DE IA
+                  <Rocket className="w-4 h-4 text-cyan-300" />
+                  ESQUADRÃO DE IA PARA CLAUDECODE E ANTIGRAVITY (30+ AGENTS)
                 </a>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
@@ -450,7 +450,7 @@ export default function InstitutionalPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
             
-            {/* PLANO BAIXO TICKET (R$197) - ESTRELA DO TRÁFEGO PAGO */}
+            {/* PLANO BAIXO TICKET (R$197) - ESTRELA DE BRANDING & GROWTH */}
             <div className="p-8 rounded-2xl border-2 border-purple-500 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-purple-400 transition-all shadow-2xl">
               
               <div className="absolute top-4 right-4 bg-[#00F0FF] text-[#0A0F1C] text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
@@ -468,10 +468,10 @@ export default function InstitutionalPage() {
                 </div>
 
                 <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
-                  Squad Jarvis IA
+                  ParadoxTeam — Agentes IA
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Baixe e implemente instantaneamente o nosso assistente mestre Jarvis e seu Squad de <strong>30 SubAgentes de IA</strong> programados para atuar em diversas áreas da sua empresa.
+                  Baixe e implemente instantaneamente o nosso assistente mestre Jarvis e seu Esquadrão de <strong>30+ Agentes de IA</strong> programados para atuar nas principais frentes do seu negócio.
                 </p>
 
                 {/* Preço de R$197 */}
@@ -611,7 +611,7 @@ export default function InstitutionalPage() {
               </div>
             </div>
 
-            {/* Plano 3: Consultoria e Assessoria de Tráfego Pago (R$1.500) */}
+            {/* Plano 3: Consultoria e Assessoria de Branding e Growth Marketing (R$1.500) */}
             <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -619,22 +619,22 @@ export default function InstitutionalPage() {
                     <TrendingUp className="w-6 h-6" />
                   </div>
                   <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/20">
-                    Performance e ROAS
+                    Posicionamento & Escala
                   </span>
                 </div>
 
                 <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
-                  Assessoria Tráfego
+                  Branding & Growth Marketing
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads para atração massiva de clientes.
+                  Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads aliada a posicionamento estratégico de marca.
                 </p>
 
                 {/* Opções de Preço */}
                 <div className="space-y-3 mb-8">
                   <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80 hover:border-[#2563EB]/40 transition-all">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-black text-white uppercase">Consultoria Mensal</span>
+                      <span className="text-xs font-black text-white uppercase">Assessoria Mensal</span>
                       <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-500">/ mês</span></span>
                     </div>
                     <div className="text-[10px] text-[#94A3B8] leading-relaxed mt-3 space-y-1 block">
@@ -858,7 +858,7 @@ export default function InstitutionalPage() {
               Seja um Freela Credenciado (Trabalhe Conosco)
             </a>
           </div>
-          <p>© {new Date().getFullYear()} Virtual Place Institucional. Todos os direitos reservados.</p>
+          <p className="text-xs text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
         </div>
       </footer>
 

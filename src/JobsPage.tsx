@@ -134,10 +134,10 @@ export default function JobsPage() {
                 </a>
                 <a 
                   href="/agentes"
-                  className="px-6 py-3 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] border border-purple-400/30"
                 >
-                  <Rocket className="w-4 h-4" />
-                  COMPRE ROBÔS / AGENTES DE IA
+                  <Rocket className="w-4 h-4 text-cyan-300" />
+                  ESQUADRÃO DE IA PARA CLAUDECODE E ANTIGRAVITY (30+ AGENTS)
                 </a>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
@@ -299,7 +299,7 @@ export default function JobsPage() {
               Contrate Humanos
             </a>
           </div>
-          <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
+          <p className="text-xs text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
         </div>
       </footer>
     </div>

@@ -78,7 +78,7 @@ export default function LojaPage() {
     }
 
     if (addTraffic) {
-      msg += `📈 Assessoria de Tráfego Pago: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok, LinkedIn) - Est. R$ ${trafficCost},00\n`;
+      msg += `📈 Assessoria de Branding e Growth Marketing: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok, LinkedIn) - Est. R$ ${trafficCost},00\n`;
     }
     msg += `\n`;
     
@@ -266,7 +266,7 @@ export default function LojaPage() {
             </div>
           </div>
 
-          {/* Card 3: Assessoria de Tráfego Pago */}
+          {/* Card 3: Assessoria de Branding e Growth Marketing */}
           <div id="loja-card-traffic" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-xl">
             <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
             
@@ -275,10 +275,10 @@ export default function LojaPage() {
                 <TrendingUp className="w-6 h-6 text-purple-400" />
               </div>
               <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
-                Assessoria de Tráfego Pago
+                Assessoria de Branding e Growth Marketing
               </h2>
               <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok e LinkedIn Ads) focada em tração, geração de leads e vendas recorrentes.
+                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok e LinkedIn Ads) aliada a estratégias de branding focada em tração, geração de leads e vendas recorrentes.
               </p>
 
               {/* Pricing Options details */}
@@ -515,7 +515,7 @@ export default function LojaPage() {
               {/* Paid Traffic settings column */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Assessoria de Tráfego Pago
+                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Assessoria de Branding e Growth Marketing
                 </h4>
 
                 <div className="flex gap-2">
@@ -537,7 +537,7 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Sem Tráfego
+                    Sem Assessoria
                   </button>
                 </div>
 
@@ -665,8 +665,8 @@ export default function LojaPage() {
       </main>
 
       {/* Mini Footer */}
-      <footer id="loja-footer" className="py-8 border-t border-gray-800/80 text-center text-gray-500 text-[11px] bg-[#0A0F1C]/50 relative z-10">
-        <p>© {new Date().getFullYear()} SquadClawVirtual. Todos os direitos reservados. Fotos e Aftermovies de eventos parceiros com segurança.</p>
+      <footer id="loja-footer" className="py-8 border-t border-gray-800/80 text-center text-gray-400 text-xs bg-[#0A0F1C]/50 relative z-10">
+        <p>VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
       </footer>
     </div>
   );

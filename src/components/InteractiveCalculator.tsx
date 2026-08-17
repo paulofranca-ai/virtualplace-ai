@@ -41,7 +41,7 @@ export default function InteractiveCalculator() {
   const [editingDuration, setEditingDuration] = useState<'1min' | '3min' | '30min' | '1h'>('1min');
   const [editingLevel, setEditingLevel] = useState<'simples' | 'avancada' | 'vfx'>('simples');
 
-  // 6. Assessoria de Tráfego Pago (R$ 1.500/mês)
+  // 6. Assessoria de Branding e Growth Marketing (R$ 1.500/mês)
   const [includeTraffic, setIncludeTraffic] = useState<boolean>(false);
   const [trafficMonths, setTrafficMonths] = useState<number>(1);
 
@@ -138,7 +138,7 @@ export default function InteractiveCalculator() {
     }
 
     if (includeTraffic && trafficMonths > 0) {
-      msg += `📈 Assessoria de Tráfego Pago: ${trafficMonths} mês(es) (R$ 1.500/mês) = R$ ${formatMoney(trafficCost)}\n`;
+      msg += `📈 Assessoria de Branding e Growth Marketing: ${trafficMonths} mês(es) (R$ 1.500/mês) = R$ ${formatMoney(trafficCost)}\n`;
     }
 
     if (aiPlan === 'single') {
@@ -171,7 +171,7 @@ export default function InteractiveCalculator() {
             Calculadora de Orçamento
           </h3>
           <p className="text-xs text-[#94A3B8] mt-1">
-            Selecione e configure a minutagem, meias diárias extras, tráfego e robôs de IA para o seu projeto.
+            Selecione e configure a minutagem, meias diárias extras, branding & growth e robôs de IA para o seu projeto.
           </p>
         </div>
         <div className="hidden sm:flex items-center gap-2 text-purple-400 bg-purple-950/30 border border-purple-500/30 px-3.5 py-2 rounded-xl text-xs font-bold">
@@ -475,7 +475,7 @@ export default function InteractiveCalculator() {
             )}
           </div>
 
-          {/* 6. ASSESSORIA DE TRÁFEGO PAGO (R$ 1.500 / MÊS) */}
+          {/* 6. ASSESSORIA DE BRANDING E GROWTH MARKETING (R$ 1.500 / MÊS) */}
           <div className={`p-4 rounded-xl border transition-all ${includeTraffic ? 'bg-[#050810] border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'bg-[#050810]/60 border-gray-800'}`}>
             <div className="flex items-start justify-between gap-3">
               <label className="flex items-center gap-2.5 text-xs font-black text-white uppercase cursor-pointer select-none">
@@ -486,7 +486,7 @@ export default function InteractiveCalculator() {
                   className="rounded bg-gray-900 border-gray-700 text-blue-500 focus:ring-0 w-4 h-4 cursor-pointer"
                 />
                 <TrendingUp className="w-4 h-4 text-blue-400" /> 
-                <span>Assessoria de Tráfego Pago (R$ 1.500/mês)</span>
+                <span>Assessoria de Branding e Growth Marketing (R$ 1.500/mês)</span>
               </label>
               <span className="text-xs font-black text-blue-400">R$ {trafficCost},00</span>
             </div>
@@ -628,7 +628,7 @@ export default function InteractiveCalculator() {
 
               {includeTraffic && trafficMonths > 0 ? (
                 <div className="flex justify-between text-gray-300 border-b border-gray-800/40 pb-2">
-                  <span className="font-bold text-white">Tráfego Pago ({trafficMonths}m)</span>
+                  <span className="font-bold text-white">Branding & Growth ({trafficMonths}m)</span>
                   <span className="font-black text-blue-400">R$ {formatMoney(trafficCost)}</span>
                 </div>
               ) : null}
