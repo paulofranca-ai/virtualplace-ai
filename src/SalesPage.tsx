@@ -44,223 +44,46 @@ import {
   Smartphone,
   Scissors,
   Bot,
-  Terminal
+  Terminal,
+  FolderCheck,
+  Code
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
 
-const COUNTRIES = [
-  { name: 'Brasil', code: '+55', flag: '🇧🇷' },
-  { name: 'Portugal', code: '+351', flag: '🇵🇹' },
-  { name: 'EUA', code: '+1', flag: '🇺🇸' },
-];
-
 export default function SalesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const checkoutStatus = searchParams.get('checkout_status');
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [isStripeLoading, setIsStripeLoading] = useState(false);
-  const [stripeError, setStripeError] = useState('');
-  
-  // Custom states for interactive elements
-  const [promoDate, setPromoDate] = useState('');
-
-  useEffect(() => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const formatted = tomorrow.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
-    setPromoDate(formatted);
-  }, []);
-
-  const handleStripeCheckout = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsStripeLoading(true);
-    setStripeError('');
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await response.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        setStripeError(data.error || 'Erro ao conectar ao Stripe.');
-        setIsStripeLoading(false);
-      }
-    } catch (err: any) {
-      console.error(err);
-      setStripeError('Erro ao iniciar conexão com o Stripe.');
-      setIsStripeLoading(false);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('submitting');
-    setErrorMessage('');
-    try {
-      const fullPhone = `${formData.countryCode} ${formData.phone}`;
-      
-      const payload: any = {
-        name: formData.name,
-        email: formData.email,
-        phone: fullPhone,
-        company: formData.company,
-        origem: 'LP-comercial',
-        created_at: new Date().toISOString()
-      };
-      if (formData.instagram) payload.instagram = formData.instagram;
-
-      const { error: supabaseError } = await supabase
-        .from('leads')
-        .insert([payload]);
-        
-      if (supabaseError) throw supabaseError;
-      
-      setStatus('success');
-      setFormData({ name: '', email: '', phone: '', countryCode: '+55', company: '', instagram: '' });
-      setTimeout(() => {
-        window.location.href = 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Enviei%20meus%20dados%20no%20site%20e%20gostaria%20de%20falar%20com%20um%20consultor.';
-      }, 2000);
-    } catch (error: any) {
-      console.error("Erro ao enviar lead:", error);
-      setErrorMessage(error?.message || 'Erro de conexão com o banco de dados.');
-      setStatus('error');
-      setTimeout(() => {
-        setStatus('idle');
-        setErrorMessage('');
-      }, 7000);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const benefits = [
-    {
-      title: "Atendimento Instantâneo 24/7",
-      description: "Qualifique e responda leads no WhatsApp em menos de 10 segundos. Transforme contatos frios em clientes prontos para comprar sem qualquer intervenção manual.",
-      badge: "Zero Fricção",
-      icon: Zap
-    },
-    {
-      title: "Redução Extrema de Custos",
-      description: "Substitua atendimentos lentos e softwares caros por agentes inteligentes treinados com a inteligência do seu negócio.",
-      badge: "Até 90% de Economia",
-      icon: Shield
-    },
-    {
-      title: "Branding e Growth Marketing",
-      description: "Campanhas profissionais e cirúrgicas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads aliadas ao posicionamento de marca, gerando leads qualificados para alimentar seus funis de IA continuamente.",
-      badge: "Escala Real",
-      icon: TrendingUp
-    },
-    {
-      title: "Automação de Conteúdo e Postagem",
-      description: "Sistemas integrados para planejar estratégias, gerar roteiros persuasivos e criar posts de forma totalmente autônoma e inteligente.",
-      badge: "Presença Digital",
-      icon: Brain
-    }
-  ];
-
-  const steps = [
-    {
-      number: "01",
-      title: "Diagnóstico de Conversão",
-      desc: "Analisamos seus anúncios, copywriting e estrutura atual de vendas para identificar gargalos.",
-      icon: Target
-    },
-    {
-      number: "02",
-      title: "Anúncios Cirúrgicos",
-      desc: "Ativamos campanhas no Meta, Google, TikTok e LinkedIn Ads focando no público comprador exato.",
-      icon: MousePointerClick
-    },
-    {
-      number: "03",
-      title: "Implantação do Agente de IA",
-      desc: "Treinamos e instalamos seus robôs de atendimento e qualificação no WhatsApp e Telegram.",
-      icon: Brain
-    },
-    {
-      number: "04",
-      title: "Vendas no Piloto Automático",
-      desc: "Seu ecossistema rodando 24 horas por dia com alta performance e o menor custo operacional.",
-      icon: Rocket
-    }
-  ];
-
-  const comparisons = [
-    {
-      activity: "Planejamento e Estratégia de Marketing",
-      withoutIA: "Processo lento de pesquisa que leva dias de planejamento para rascunhar ideias básicas.",
-      withIA: "Estruturação completa e personalizada em apenas 5 minutos com dados de mercado em tempo real.",
-      saved: "Economia de dias de trabalho"
-    },
-    {
-      activity: "Criação de um Post Simples para Redes Sociais",
-      withoutIA: "Designers e copywriters gastam cerca de 2 horas para pesquisar, redigir e desenhar uma única arte.",
-      withIA: "Geração instantânea em 15 minutos de carrosséis e copys de altíssimo apelo visual.",
-      saved: "8x mais rápido"
-    },
-    {
-      activity: "Edição e Tratamento de Fotos do Evento/Produto",
-      withoutIA: "Fotógrafo gasta dias de trabalho manual isolando, ajustando cores e exportando uma a uma.",
-      withIA: "Tratamento em lote com IA em apenas 30 minutos para mais de 8.000 fotos de altíssima definição.",
-      saved: "De dias para 30 minutos"
-    },
-    {
-      activity: "Desenvolvimento de Landing Pages de Alta Conversão",
-      withoutIA: "Semanas de reuniões, programadores caros, designers lentos e testes intermináveis.",
-      withIA: "Conclusão de páginas ultra otimizadas em apenas 10% do tempo tradicional, acelerando testes de anúncios.",
-      saved: "9x mais rápido"
-    }
-  ];
 
   const faqs = [
     { 
-      q: "Quanto tempo leva?", 
-      a: "Download imediato após pagamento, em poucos minutos você conecta com Claude Code, VSCode, Antigravity ou similares e já sai promptando. Mas só o tempo vai otimizar seu cérebro personalizado conforme vai precisando e criando agentes + habilidades." 
+      q: "O que é o Cérebro de IA do ParadoxTeam?", 
+      a: "É uma arquitetura com mais de 30 agentes especializados e arquivos de personas/regras prontas. Inclui tutorial completo em vídeo e scripts para plugar no Claude Code, AntiGravity, Cursor, VSCode e terminais." 
     },
     { 
-      q: "A inteligência artificial vai substituir meus funcionários humanos?", 
-      a: "Não, ela potencializa o trabalho humano. Os robôs cuidam das tarefas repetitivas de triagem e suporte 24h, liberando sua equipe humana para fechar os clientes mais valiosos e estratégicos." 
+      q: "Como funciona a instalação no Claude Code e AntiGravity?", 
+      a: "Você recebe o repositório organizado com arquivos .systemrules, prompts de alta precisão e scripts de inicialização rápida. Em menos de 5 minutos seu terminal está configurado." 
     },
     { 
-      q: "Como funcionam os custos operacionais com chaves de IA?", 
-      a: "Diferente de sistemas fechados que cobram taxas abusivas por mensagem, nós configuramos o sistema para usar chaves de API padrão. O custo é extremamente baixo, girando em torno de apenas R$ 100/mês para milhares de atendimentos." 
+      q: "Como funcionam os Serviços de Marketing Remotos?", 
+      a: "Nossa equipe gerencia suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads, além de estruturar copy persuasivo e funis de automação integrados à IA. 100% remoto com acompanhamento diário." 
     },
     { 
-      q: "O que está incluso na Consultoria de Branding e Growth Marketing de R$1.500 mensal?", 
-      a: "É a nossa assessoria mensal premium onde criamos, monitoramos e otimizamos diariamente suas campanhas no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads com estratégias de posicionamento e branding. Focamos em copywriting de alta conversão para atrair leads prontos para seus funis de IA." 
-    },
-    { 
-      q: "Como posso solicitar uma demonstração ou atendimento?", 
-      a: "Você pode falar diretamente com nossa equipe no WhatsApp pelo número +55 (49) 99105-2315. Nós tiramos suas dúvidas e apresentamos o ecossistema ideal para a sua empresa." 
-    },
-    { 
-      q: "Preciso ter conhecimento de programação ou tecnologia?", 
-      a: "Absolutamente nenhum. Nosso time entrega o ecossistema 100% configurado, testado e integrado. Você só acompanha o fluxo de leads, os relatórios de conversão e o faturamento." 
+      q: "Como posso orçar a Produção Audiovisual Sob Demanda?", 
+      a: "Oferecemos captação 4K com câmeras e drone no local, cobertura fotográfica de eventos e edição avulsa de vídeos com IA e efeitos visuais. Fale diretamente no WhatsApp para receber nossa tabela ou orçamento sob medida." 
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30 relative overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-emerald-400 selection:text-black relative overflow-x-hidden">
       <NeonBackground3D />
       
+      {/* Cyber Matrix Scanlines Overlay */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_bottom,rgba(0,255,102,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-0"></div>
+
       {checkoutStatus && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
           <motion.div 
@@ -280,866 +103,416 @@ export default function SalesPage() {
               )}
             </div>
             <div className="flex-1">
-              <h4 className="font-bold text-sm">
-                {checkoutStatus === 'success' ? 'Pagamento Aprovado!' : 'Pagamento Cancelado'}
+              <h4 className="font-bold text-sm font-mono">
+                {checkoutStatus === 'success' ? 'PAGAMENTO APROVADO!' : 'PAGAMENTO CANCELADO'}
               </h4>
               <p className="text-xs opacity-90 mt-1">
                 {checkoutStatus === 'success' 
-                  ? 'Parabéns! O seu Time de Agentes de IA foi configurado com sucesso. Prepare-se para colher resultados!' 
-                  : 'A transação do Stripe foi cancelada. Se precisar de suporte, voltar a qualquer momento.'}
+                  ? 'Acesso liberado ao ParadoxTeam! Prepare-se para colher resultados.' 
+                  : 'A transação foi cancelada. Volte a qualquer momento.'}
               </p>
               <button 
                 onClick={() => setSearchParams({})}
-                className="mt-3 text-xs font-semibold underline opacity-80 hover:opacity-100 cursor-pointer text-white"
+                className="mt-3 text-xs font-semibold underline opacity-80 hover:opacity-100 cursor-pointer text-white font-mono"
               >
-                Entendido
+                [ENTENDIDO]
               </button>
             </div>
           </motion.div>
         </div>
       )}
       
-      {/* 1. Navigation (Optimized for paid traffic - Logo + single CTA to reduce friction) */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="shrink-0 flex items-center">
+      {/* 1. Header Navigation Bar (Hacker Matrix Style) */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+          <div className="shrink-0 flex items-center gap-3">
             <img 
               src="https://i.imgur.com/w2iO5CR.png" 
               alt="Virtual Place Logo" 
-              className="h-[96px] md:h-[120px] w-auto object-contain" 
+              className="h-16 md:h-20 w-auto object-contain brightness-110" 
               referrerPolicy="no-referrer" 
             />
+            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black border border-gray-800 font-mono text-[10px] text-gray-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>CORE_ONLINE: 3 SOLUÇÕES ATIVAS</span>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+
+          <div className="flex flex-wrap items-center gap-2.5">
             <a 
               href="/agentes"
-              className="px-3 py-2 rounded-lg bg-black hover:bg-gray-900 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center gap-1.5 border border-gray-700 whitespace-nowrap"
+              className="px-3.5 py-2 rounded-xl bg-black hover:bg-gray-900 text-white font-mono font-bold text-xs uppercase tracking-tight transition-all shadow-[0_0_15px_rgba(0,255,102,0.15)] flex items-center gap-1.5 border border-emerald-500/40 hover:border-emerald-400 whitespace-nowrap"
             >
-              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> Cérebro IA (30+ Agentes)
             </a>
             <a 
               href="/precos"
-              className="text-xs md:text-sm font-black text-purple-400 hover:text-white uppercase tracking-tight hidden sm:inline-block transition-colors"
+              className="text-xs font-mono font-semibold text-gray-400 hover:text-white uppercase tracking-tight hidden sm:inline-block transition-colors px-2 py-1"
             >
-              Preços & Orçamentos
+              /Preços
             </a>
             <a 
               href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20consultor."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-tight transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)] flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase tracking-tight transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-1.5"
             >
-              <MessageSquare className="w-3.5 h-3.5" /> Falar no WhatsApp
+              <MessageSquare className="w-3.5 h-3.5 text-black" /> WhatsApp
             </a>
           </div>
         </div>
       </nav>
 
-      {/* 2. Hero Section (Above the Fold) */}
-      <section className="relative pt-48 pb-24 md:pt-56 md:pb-28 overflow-hidden border-b border-[#2563EB]/20">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2032&auto=format&fit=crop" 
-            alt="Virtual Place AI Marketing Background" 
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/75 via-[#0A0F1C]/90 to-[#0A0F1C]"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <span className="inline-block text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
-              CENTRAL DE TALENTOS - AGÊNCIA DE MARKETING
-            </span>
-            
-            {/* Impact Headline - Max 10-12 words */}
-            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight tracking-tight">
-              Escale seu Negócio com Estrutura Completa: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-purple-400">IA, Branding e Growth Marketing e Audiovisual</span>.
-            </h1>
-            
-            {/* Subheadline with core benefit + numeric proof */}
-            <p className="text-[#94A3B8] text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-              Unimos automação inteligente de vendas com IA, estratégias de branding e growth marketing de alta performance (Meta, Google, TikTok e LinkedIn Ads) e cobertura audiovisual profissional com gravação, fotografia e edição de vídeo. Atraia clientes qualificados e fortaleça sua marca com um ecossistema unificado.
-            </p>
+      {/* 2. Hero Section (Ultra Succinct, Dark Noir & Matrix Green) */}
+      <section className="relative pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden border-b border-gray-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-black border border-gray-800 font-mono text-[11px] text-gray-300 uppercase tracking-widest shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="text-white font-bold">ESTRUTURA DE ALTA CONVERSÃO & PERFORMANCE</span>
+          </div>
+          
+          {/* Headline - Direct & Punchy */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 text-white leading-tight uppercase font-sans tracking-tight max-w-4xl mx-auto">
+            Cérebro de IA com Tutorial, <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-white to-gray-400">
+              Marketing Remoto & Audiovisual
+            </span>.
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-gray-400 text-sm sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-sans">
+            Três frentes integradas para acelerar suas vendas: <strong>(1) Cérebro de IA (30+ agentes) com tutorial de instalação para Claude Code & AntiGravity</strong>, <strong>(2) Serviços de Marketing Remotos de alta conversão</strong> e <strong>(3) Produção Audiovisual sob demanda</strong> (gravação 4K, fotografia e edição).
+          </p>
 
-            {/* Scarcity Notice */}
-            <div className="mb-6 flex justify-center items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
-              <p className="text-xs font-black text-red-400 uppercase tracking-widest">
-                VAGAS LIMITADAS PARA DEMONSTRAÇÃO GRATUITA ESTA SEMANA (Promoção até {promoDate})
-              </p>
-            </div>
+          {/* Quick Action CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3.5 justify-center items-center max-w-2xl mx-auto mb-12">
+            <a 
+              href="/agentes"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs sm:text-sm uppercase flex items-center justify-center gap-2.5 transition-all shadow-[0_0_30px_rgba(255,255,255,0.25)] cursor-pointer"
+            >
+              <Terminal className="w-4 h-4 text-black" /> Cérebro IA + Tutorial (R$ 197 / R$ 997)
+            </a>
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20or%C3%A7ar%20servi%C3%A7os%20de%20Marketing%20Remoto%20ou%20Audiovisual." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-black hover:bg-gray-900 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 hover:text-emerald-300 font-mono font-bold text-xs sm:text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,255,102,0.15)] cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4 text-emerald-400" /> Orçar Marketing & Audiovisual
+            </a>
+          </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-3xl mx-auto mb-14">
-              <a 
-                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_25px_rgba(16,185,129,0.35)] cursor-pointer"
-              >
-                <MessageSquare className="w-5 h-5" /> Comece seu projeto agora
-              </a>
-              <a 
-                href="/agentes"
-                className="w-full sm:w-auto px-6 py-4.5 rounded-xl bg-black hover:bg-gray-900 text-white font-black text-xs md:text-sm uppercase flex items-center justify-center gap-2.5 transition-all shadow-[0_0_25px_rgba(0,0,0,0.8)] cursor-pointer border border-gray-700"
-              >
-                <Terminal className="w-5 h-5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
-              </a>
-            </div>
-
-            {/* Video Section - Kept Exactly as requested, placed right below */}
-            <div className="mt-10 max-w-3xl mx-auto">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
-                <PlayCircle className="w-4 h-4 text-[#00F0FF] animate-pulse" /> Assista nosso Aftermovie mais recente e contrate ainda hoje nossos Profissionais Indicados com selo FreelaPro da VirtualPlace.
-              </p>
-              
-              <div className="rounded-2xl overflow-hidden border-2 border-[#2563EB]/40 shadow-[0_0_45px_rgba(37,99,235,0.25)] aspect-video relative bg-black">
+          {/* Video Showcase (Aftermovie) */}
+          <div className="mt-8 max-w-3xl mx-auto">
+            <div className="p-1 rounded-2xl bg-gradient-to-r from-gray-800 via-emerald-500/40 to-gray-800 shadow-[0_0_40px_rgba(0,255,102,0.1)]">
+              <div className="rounded-xl overflow-hidden aspect-video relative bg-black">
                 <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/ZtC7aKaTD5w?autoplay=0&rel=0"
-                  title="SquadClawVirtual - Portfólio de Alta Performance"
+                  title="Portfólio de Alta Performance"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Seção de Benefícios / Resultados */}
-      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20">
-              VANTAGENS COMPETITIVAS
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight">
-              Máxima Conversão Sem Esforço
-            </h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto mt-2 text-sm md:text-base">
-              A automatização perfeita que conecta tráfego de alta performance a agentes virtuais que respondem em segundos.
+            <p className="text-[11px] font-mono text-gray-500 mt-3 flex items-center justify-center gap-1.5">
+              <PlayCircle className="w-3.5 h-3.5 text-emerald-400" /> Assista nosso Aftermovie & produção audiovisual de alta definição
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((b, idx) => (
-              <div 
-                key={idx}
-                className="p-8 rounded-2xl bg-[#050810] border border-[#2563EB]/20 hover:border-[#00F0FF]/50 transition-all group relative overflow-hidden"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center mb-6">
-                  <b.icon className="w-6 h-6 text-[#00F0FF]" />
-                </div>
-                <span className="text-[9px] font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 mb-3 inline-block">
-                  {b.badge}
+        </div>
+      </section>
+
+      {/* 3. OS 3 PILARES PRINCIPAIS (O QUE FAÇO & VENDO) */}
+      <section className="py-20 bg-black border-b border-gray-900 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center mb-14">
+            <span className="text-[10px] font-mono font-bold uppercase text-emerald-400 bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/30">
+              [ 03 SOLUÇÕES ESSENCIAIS ]
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-white mt-3 uppercase tracking-tight">
+              O Que Entregamos Para Sua Empresa
+            </h2>
+            <p className="text-gray-400 max-w-xl mx-auto mt-2 text-xs sm:text-sm">
+              Sem burocracia ou termos complexos: escolha o que precisa e ative sua operação hoje.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            
+            {/* PILAR 1: CÉREBRO DE IA + TUTORIAL */}
+            <div className="p-7 rounded-2xl bg-[#060911] border-2 border-emerald-500/40 hover:border-emerald-400 transition-all flex flex-col justify-between group shadow-[0_0_30px_rgba(0,255,102,0.1)] relative overflow-hidden">
+              <div className="absolute top-0 right-0">
+                <span className="text-[9px] font-mono font-bold uppercase text-black bg-emerald-400 px-3 py-1 rounded-bl-xl">
+                  HOT // DOWNLOAD
                 </span>
-                <h3 className="text-xl font-bold mb-3 text-white">{b.title}</h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed">{b.description}</p>
               </div>
-            ))}
+
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-black border border-gray-700 flex items-center justify-center mb-5 text-emerald-400">
+                  <Terminal className="w-6 h-6" />
+                </div>
+                
+                <h3 className="text-xl font-black text-white uppercase mb-2">
+                  1. Cérebro de IA + Tutorial
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                  Esquadrão completo de <strong>30+ Agentes Especializados</strong> (Marketing, Vendas, Design, Devs, Segurança e CFO) com <strong>tutorial passo a passo de instalação</strong> para Claude Code, AntiGravity, Cursor e Terminais.
+                </p>
+
+                <div className="space-y-2 mb-6 border-t border-gray-800 pt-4 font-mono text-[11px] text-gray-300">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Tutorial em vídeo & scripts para terminal</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Instalação Claude Code & AntiGravity</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>30+ Agentes com personas e .systemrules</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Acesso vitalício no Kiwify (R$ 197 / R$ 997)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <a 
+                  href="/agentes#planos"
+                  className="w-full py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-black font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,255,102,0.3)] cursor-pointer text-center"
+                >
+                  <Zap className="w-3.5 h-3.5 text-black" /> Acessar Cérebro & Planos
+                </a>
+              </div>
+            </div>
+
+            {/* PILAR 2: MARKETING REMOTO */}
+            <div className="p-7 rounded-2xl bg-[#060911] border border-gray-800 hover:border-gray-600 transition-all flex flex-col justify-between group shadow-xl">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-black border border-gray-700 flex items-center justify-center mb-5 text-white">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                
+                <h3 className="text-xl font-black text-white uppercase mb-2">
+                  2. Marketing Remoto
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                  Gestão estratégica de tráfego pago (Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads), Branding, Copywriting e Funis de Vendas automatizados. Operação 100% remota para acelerar seu faturamento.
+                </p>
+
+                <div className="space-y-2 mb-6 border-t border-gray-800 pt-4 font-mono text-[11px] text-gray-300">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Campanhas no Meta, Google & TikTok</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Posicionamento de Branding & Escala</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Copywriting de alta conversão</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Otimização diária e relatórios semanais</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <a 
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20Servi%C3%A7os%20de%20Marketing%20Remotos."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer text-center"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-black" /> Contratar Marketing
+                </a>
+              </div>
+            </div>
+
+            {/* PILAR 3: AUDIOVISUAL SOB DEMANDA */}
+            <div className="p-7 rounded-2xl bg-[#060911] border border-gray-800 hover:border-gray-600 transition-all flex flex-col justify-between group shadow-xl">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-black border border-gray-700 flex items-center justify-center mb-5 text-white">
+                  <Video className="w-6 h-6" />
+                </div>
+                
+                <h3 className="text-xl font-black text-white uppercase mb-2">
+                  3. Audiovisual Sob Demanda
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                  Produção audiovisual completa: gravação no local (Videomaker 4K, Drone), Fotografia profissional para eventos/marcas e Edição de vídeo (Cortes, Legendas, VFX e Narração com IA).
+                </p>
+
+                <div className="space-y-2 mb-6 border-t border-gray-800 pt-4 font-mono text-[11px] text-gray-300">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Gravação presencial 4K & Drone</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Fotografia em alta resolução tratada</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Edição avulsa (Simples, IA e VFX)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
+                    <span>Cobertura de feiras, palestras e aftermovies</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <a 
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20or%C3%A7ar%20Audiovisual%20Sob%20Demanda."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 rounded-xl bg-black hover:bg-gray-900 border border-gray-700 hover:border-white text-white font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer text-center"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" /> Orçar Audiovisual
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          <div className="mt-12 text-center">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-            >
-              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* COMPARATIVO: Sem IA vs Com Agentes AutoLead */}
-      <section className="py-24 bg-[#050810] border-b border-[#2563EB]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
-              MÉTRICAS DE PRODUTIVIDADE
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight">
-              Sem IA vs Com Agentes AutoLead
-            </h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto mt-2 text-sm">
-              Veja a diferença brutal no tempo de execução e na escala operacional de processos cruciais de marketing.
-            </p>
+      {/* 4. COMPARATIVO SUCCINTO: SEM ESTRUTURA vs COM NOSSA ESTRUTURA */}
+      <section className="py-16 bg-black border-b border-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center mb-10">
+            <h3 className="text-xl sm:text-3xl font-black text-white uppercase">
+              Operação Convencional vs Nosso Ecossistema
+            </h3>
+            <p className="text-gray-400 text-xs mt-1">Velocidade, economia de tempo e escala instantânea.</p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-gray-800 bg-[#0A0F1C]/80 shadow-2xl">
-            <table className="w-full text-left border-collapse min-w-[700px]">
+          <div className="overflow-x-auto rounded-2xl border border-gray-800 bg-[#060911] shadow-2xl">
+            <table className="w-full text-left border-collapse min-w-[600px] text-xs">
               <thead>
-                <tr className="border-b border-gray-800 bg-black/40">
-                  <th className="p-5 text-xs font-black uppercase text-[#94A3B8]">Processo / Atividade</th>
-                  <th className="p-5 text-xs font-black uppercase text-red-400">Operação Sem IA (Antes)</th>
-                  <th className="p-5 text-xs font-black uppercase text-[#00F0FF]">Com Agentes AutoLead</th>
-                  <th className="p-5 text-xs font-black uppercase text-purple-400 text-right">Resultado / Ganho</th>
+                <tr className="border-b border-gray-800 bg-black text-[11px] font-mono">
+                  <th className="p-4 uppercase text-gray-400">Atividade</th>
+                  <th className="p-4 uppercase text-red-400">Sem Nós (Manual / Lento)</th>
+                  <th className="p-4 uppercase text-emerald-400">Com Nosso Ecossistema</th>
+                  <th className="p-4 uppercase text-white text-right">Ganho</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-800">
-                {comparisons.map((c, idx) => (
-                  <tr key={idx} className="hover:bg-gray-900/30 transition-colors">
-                    <td className="p-5 text-sm font-extrabold text-[#F8FAFC]">{c.activity}</td>
-                    <td className="p-5 text-xs text-gray-400 leading-relaxed max-w-[240px]">{c.withoutIA}</td>
-                    <td className="p-5 text-xs text-[#F8FAFC] leading-relaxed max-w-[240px] font-medium">
-                      <span className="inline-flex items-center gap-1.5 text-[#00F0FF] font-extrabold mb-1 block">
-                        <Check className="w-3.5 h-3.5 text-[#00F0FF]" /> IA Ativa
-                      </span>
-                      {c.withIA}
-                    </td>
-                    <td className="p-5 text-xs font-black text-purple-400 text-right uppercase tracking-wider">{c.saved}</td>
-                  </tr>
-                ))}
+              <tbody className="divide-y divide-gray-800 text-gray-300">
+                <tr className="hover:bg-gray-900/40 transition-colors">
+                  <td className="p-4 font-bold text-white">Setup de Agentes & Automações</td>
+                  <td className="p-4 text-gray-400">Semanas configurando prompts soltos</td>
+                  <td className="p-4 text-emerald-300 font-mono">Minutos com tutorial Claude/AntiGravity</td>
+                  <td className="p-4 text-right font-mono font-bold text-white">Imediato</td>
+                </tr>
+                <tr className="hover:bg-gray-900/40 transition-colors">
+                  <td className="p-4 font-bold text-white">Anúncios & Gestão de Tráfego</td>
+                  <td className="p-4 text-gray-400">Dinheiro queimado sem segmentação</td>
+                  <td className="p-4 text-emerald-300 font-mono">Otimização diária focada em ROI</td>
+                  <td className="p-4 text-right font-mono font-bold text-white">Alta Conversão</td>
+                </tr>
+                <tr className="hover:bg-gray-900/40 transition-colors">
+                  <td className="p-4 font-bold text-white">Produção Audiovisual & Edição</td>
+                  <td className="p-4 text-gray-400">Dias esperando cortes e tratamento</td>
+                  <td className="p-4 text-emerald-300 font-mono">Entrega rápida com padrão 4K e VFX</td>
+                  <td className="p-4 text-right font-mono font-bold text-white">10x Mais Ágil</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="mt-8 text-center">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-            >
-              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* 4. Como Funciona */}
-      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
-              IMPLEMENTAÇÃO ACELERADA
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight">
-              4 Passos Para a Sua Máquina de Vendas
-            </h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto mt-2 text-sm">
-              Desenvolvemos, testamos e ativamos todo o ecossistema com suporte técnico contínuo.
-            </p>
+      {/* 5. PROVA SOCIAL & CASES */}
+      <section className="py-16 bg-black border-b border-gray-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase text-emerald-400 bg-emerald-950/40 px-2.5 py-0.5 rounded border border-emerald-500/30">
+                RESULTADOS REAIS
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-white mt-1 uppercase">
+                Métricas & Retorno Comprovado
+              </h3>
+            </div>
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Quero%20conhecer%20mais%20cases%20de%20sucesso."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-gray-400 hover:text-emerald-400 flex items-center gap-1 transition-colors self-start sm:self-auto"
+            >
+              <span>Ver mais no WhatsApp</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((s, idx) => (
-              <div key={idx} className="relative p-6 rounded-2xl bg-[#050810] border border-gray-800">
-                <div className="absolute top-4 right-4 text-3xl font-black text-gray-800 font-mono">
-                  {s.number}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+            {[1, 2, 3, 4, 5, 6].map((num) => (
+              <div
+                key={`res-${num}`}
+                className="rounded-xl overflow-hidden border border-gray-800 bg-[#060911] cursor-pointer group hover:border-emerald-500/50 transition-all"
+                onClick={() => setSelectedImage(`/Resultados${num}.png`)}
+              >
+                <div className="relative aspect-video overflow-hidden">
+                  <img 
+                    src={`/Resultados${num}.png`}
+                    alt={`Resultado ${num}`} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-70"></div>
+                  <div className="absolute bottom-2 left-2 flex items-center gap-1">
+                    <span className="text-[9px] font-mono font-bold uppercase text-emerald-400 bg-black/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                      Case #{num}
+                    </span>
+                  </div>
                 </div>
-                <div className="w-10 h-10 rounded-lg bg-purple-500/15 border border-purple-500/20 flex items-center justify-center mb-4">
-                  <s.icon className="w-5 h-5 text-[#00F0FF]" />
-                </div>
-                <h3 className="text-lg font-extrabold text-white mb-2">{s.title}</h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
-
-          <div className="mt-12 text-center">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-            >
-              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* LEAD MAGNET / DOWNLOAD GRATUITO DE GUIAS */}
-      <section className="py-24 bg-[#050810] border-b border-[#2563EB]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded border border-[#00F0FF]/30">
-              MATERIAIS EXCLUSIVOS E GRATUITOS
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight">
-              Acelere Seus Resultados Agora
-            </h2>
-            <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-sm">
-              Baixe gratuitamente os nossos guias práticos focados em divulgação, anúncios de alta performance e conversão automática.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Magnet 1 */}
-            <div className="p-6 rounded-2xl bg-[#0A0F1C] border border-gray-800 flex flex-col justify-between hover:border-[#00F0FF]/40 transition-all">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#00F0FF]/15 flex items-center justify-center text-[#00F0FF] border border-[#00F0FF]/30">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <span className="text-[9px] font-extrabold text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded border border-[#00F0FF]/30 uppercase tracking-widest">
-                    Prompts de IA
-                  </span>
-                </div>
-                <h3 className="text-lg font-black text-white mb-2">
-                  Prompts para Geração de Imagens de IA para Anúncios
-                </h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Descubra os melhores prompts e estruturas visuais para gerar imagens impactantes de alta conversão para seus anúncios patrocinados com Inteligência Artificial.
-                </p>
-              </div>
-              <a 
-                href="https://wa.me/5549991052315?text=Quero%20receber%20os%20Prompts%20para%20Gera%C3%A7%C3%A3o%20de%20Imagens%20de%20IA%20para%20An%C3%BAncios" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full py-3 rounded-xl bg-gray-900 hover:bg-[#00F0FF]/20 border border-gray-800 hover:border-[#00F0FF] text-gray-300 hover:text-[#00F0FF] transition-all text-xs font-black uppercase text-center flex items-center justify-center gap-1.5"
-              >
-                <ArrowDownToLine className="w-4 h-4" /> Baixar Prompts de Imagem
-              </a>
-            </div>
-
-            {/* Magnet 2 */}
-            <div className="p-6 rounded-2xl bg-[#0A0F1C] border border-gray-800 flex flex-col justify-between hover:border-purple-500/40 transition-all">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/15 flex items-center justify-center text-purple-400 border border-purple-500/30">
-                    <Building className="w-5 h-5" />
-                  </div>
-                  <span className="text-[9px] font-extrabold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/30 uppercase tracking-widest">
-                    Análise Grátis
-                  </span>
-                </div>
-                <h3 className="text-lg font-black text-white mb-2">
-                  Análise de Perfil Empresarial para Receber Anúncios Patrocinados
-                </h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Entenda os critérios essenciais para estruturar o perfil da sua empresa, otimizar sua presença digital e estar 100% pronto para receber campanhas de branding e growth marketing.
-                </p>
-              </div>
-              <a 
-                href="https://wa.me/5549991052315?text=Ol%C3%A1%2C%20quero%20solicitar%20a%20An%C3%A1lise%20de%20Perfil%20Empresarial%20para%20An%C3%BAncios" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full py-3 rounded-xl bg-gray-900 hover:bg-purple-500/20 border border-gray-800 hover:border-purple-500 text-gray-300 hover:text-purple-400 transition-all text-xs font-black uppercase text-center flex items-center justify-center gap-1.5"
-              >
-                <ArrowDownToLine className="w-4 h-4" /> Solicitar Análise de Perfil
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-12 text-center">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-            >
-              <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Prova Social, Estatísticas e Marcas */}
-      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20">
-              AUTORIDADE COMPROVADA
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight">
-              Eles Já Estão no Próximo Nível
-            </h2>
-            <p className="text-[#94A3B8] max-w-xl mx-auto mt-2 text-sm">
-              Mais de 60 marcas atendidas com branding e growth marketing de alta performance, fotografia profissional, audiovisual premium e IA integrada.
-            </p>
-          </div>
-
-          {/* Marcas Grid */}
-          <div className="mb-20 text-center">
-            <h3 className="text-sm font-black uppercase text-gray-400 tracking-wider mb-6">
-              Nossos Parceiros e Clientes de Sucesso:
-            </h3>
-            
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {[
-                { handle: '@gramatica_na_veia', url: 'https://www.instagram.com/gramatica_na_veia' },
-                { handle: '@portuguesplay', url: 'https://www.instagram.com/portuguesplay' },
-                { handle: '@andreluis.vsw', url: 'https://www.instagram.com/andreluis.vsw' },
-                { handle: '@luizoliveiraoficiall', url: 'https://www.instagram.com/luizoliveiraoficiall' },
-                { handle: '@z4.veiculos_', url: 'https://www.instagram.com/z4.veiculos_' },
-                { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis' },
-                { handle: '@regiao_amurc', url: 'https://www.instagram.com/regiao_amurc' },
-                { handle: '@culturaturismoamurc', url: 'https://www.instagram.com/culturaturismoamurc' }
-              ].map((ig, idx) => (
-                <a 
-                  key={idx}
-                  href={ig.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full border border-gray-800 text-gray-300 hover:text-[#00F0FF] hover:border-[#00F0FF] text-xs font-bold transition-all flex items-center gap-1.5"
-                >
-                  <Instagram className="w-3.5 h-3.5 shrink-0" />
-                  {ig.handle}
-                </a>
-              ))}
-              <div className="px-4 py-2 rounded-full border border-orange-500/30 text-orange-400 text-xs font-bold bg-orange-500/10">
-                + 61 projetos executados
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
-              {[
-                "Vendedor Imbatível", "Escolinha Lucrativa", 
-                "Curso Mike Bravo", "Avenida Pneus", 
-                "Associação dos Tropeiros", "NZ Motos", "THCElétrica", "Niles Mat Construção", 
-                "Lucas Sebbem Advogado", "CM Reparos Automotivos", "Souz Place", "Plantão do Gole", 
-                "Fava Cruz Produções", "Hotel Pinotti", "Lia Tattoer", "Vintage Barber Shop"
-              ].map((brand, idx) => (
-                <span key={idx} className="px-2.5 py-1 rounded bg-[#2563EB]/15 border border-[#2563EB]/25 text-[#94A3B8] text-[10px] font-semibold">
-                  {brand}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Depoimento em Vídeo Léo que já está no site */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-            <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-[10px] font-black uppercase text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
-                DEPOIMENTO DO NOSSO CLIENTE LÉO
-              </span>
-              <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
-                "Venho aqui falar do trabalho do Paulo, gestor de tráfego. Olha, gostei bastante, ele me ajudou em várias campanhas, conseguimos aí a ter ROI de 3x, 4x, alavancando também as minhas vendas."
-              </h3>
-              <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed">
-                Assista ao depoimento em vídeo gravado pelo nosso parceiro Léo, detalhando como a nossa estratégia de branding e growth marketing aliada ao atendimento de ponta destravou o crescimento financeiro do negócio.
-              </p>
-              <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex gap-3 items-center">
-                <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-black text-white text-sm shrink-0 border border-emerald-500/30">
-                  L
-                </div>
-                <div>
-                  <h5 className="font-extrabold text-xs text-white">Léo - Parceiro Comercial</h5>
-                  <p className="text-[10px] text-gray-400">Escala em Lançamentos, Branding e Growth</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] aspect-video relative bg-black">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/t93fNnIL0v0?autoplay=0&rel=0"
-                  title="Depoimento de Cliente Virtual Place Léo"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-
-          {/* Results Cases Grid - 9 Images with zoom functionality */}
-          <div className="pt-12 border-t border-gray-900">
-            <h4 className="text-center text-xs font-black uppercase tracking-widest text-gray-400 mb-8">
-              📊 RELATÓRIOS E COMPROVAÇÕES DE CONTAS EXECUTADAS (CLIQUE PARA AMPLIAR):
-            </h4>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                <div
-                  key={`res-${num}`}
-                  className="rounded-xl overflow-hidden border-2 border-gray-800 shadow-lg bg-[#050810] cursor-pointer group hover:border-[#00F0FF]/50 transition-all"
-                  onClick={() => setSelectedImage(`/Resultados${num}.png`)}
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img 
-                      src={`/Resultados${num}.png`}
-                      alt={`Resultado de Performance Virtual Place ${num}`} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C] to-transparent opacity-60"></div>
-                    <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#00F0FF] bg-black/80 px-2 py-0.5 rounded border border-[#00F0FF]/30">
-                        Case de Sucesso {num}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center">
-              <a 
-                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all font-black text-xs uppercase cursor-pointer shadow-lg"
-              >
-                <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Oferta Irresistível & Tabela de Valores (Planos atualizados) */}
-      <section id="oferta-irresistivel" className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20 tracking-wider">
-              SOLUÇÕES & SERVIÇOS
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight text-center">
-              Nossos Serviços Especializados
-            </h2>
-            <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-sm text-center">
-              Conheça em detalhes cada um dos nossos serviços de inteligência artificial, cobertura audiovisual e performance de vendas. Solicite o seu orçamento personalizado pelo WhatsApp.
-            </p>
-          </div>
-
-          {/* Lista de Serviços um abaixo do outro (sem preços) na ordem solicitada */}
-          <div className="space-y-4 max-w-5xl mx-auto mb-12">
-            
-            {/* 1. ParadoxTeam - Esquadrão de Agentes */}
-            <div className="p-6 rounded-2xl border border-gray-700 bg-black hover:border-gray-500 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center border border-gray-700 text-white shrink-0 group-hover:scale-105 transition-transform">
-                  <Terminal className="w-6 h-6 text-emerald-400" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      ParadoxTeam - Esquadrão de Agentes (30+ Agentes)
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
-                      Submundo da IA
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Esquadrão Completo: <strong>Marketing, Design, Vendas, Segurança, Devs e Assistente Financeiro Pessoal</strong>. Crie qualquer time de agentes autônomos e use nosso cérebro atualizado para plugar diretamente no seu projeto.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Marketing & Vendas 24/7</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Design & Devs Full-Stack</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Segurança & Finanças</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> ClaudeCode, AntiGravity & Kali Linux</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="/agentes#planos"
-                  className="px-4 py-2.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                >
-                  <Terminal className="w-3.5 h-3.5 text-black" /> Ver Planos do ParadoxTeam
-                </a>
-              </div>
-            </div>
-
-            {/* 2. Assessoria de Branding e Growth Marketing */}
-            <div className="p-6 rounded-2xl border border-blue-500/20 bg-[#050810] hover:border-blue-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center border border-blue-500/25 text-blue-400 shrink-0 group-hover:scale-105 transition-transform">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Assessoria de Branding e Growth Marketing (Meta, Google, TikTok & LinkedIn Ads)
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                      Posicionamento & Performance
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Gestão diária das suas campanhas patrocinadas (Meta, Google, TikTok e LinkedIn Ads) e posicionamento de marca focado em atração de clientes compradores e retorno de investimento. Otimização de anúncios, criação de públicos e relatórios transparentes.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Posicionamento & Criação de Públicos</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Assessoria%20de%20Branding%20e%20Growth%20Marketing."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-            {/* 3. Edição de Vídeo Avulsa */}
-            <div className="p-6 rounded-2xl border border-violet-500/20 bg-[#050810] hover:border-violet-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center border border-violet-500/25 text-violet-400 shrink-0 group-hover:scale-105 transition-transform">
-                  <Scissors className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Edição de Vídeo Avulsa (Somente Pós-Produção)
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded border border-violet-500/20">
-                      Edição & Pós
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Edição profissional para materiais e gravações que você já possui. Diferentes durações (1min, 3min, 30min, 1h) e níveis de complexidade (Cortes simples, Avançada com Narração IA inclusa e SuperAvançada com VFX).
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> Edição Simples (Cortes, Cor e Legendas)</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> Edição Avançada (Com Narração IA)</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> SuperAvançada (Animações 3D & VFX)</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeo."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-            {/* 4. Cobertura Audiovisual de Eventos */}
-            <div className="p-6 rounded-2xl border border-[#00F0FF]/20 bg-[#050810] hover:border-[#00F0FF]/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/25 text-[#00F0FF] shrink-0 group-hover:scale-105 transition-transform">
-                  <Video className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Cobertura de Eventos e Produção Audiovisual
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2 py-0.5 rounded border border-[#00F0FF]/20">
-                      Captação + Pós-Produção
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Gravação e edição de vídeos institucionais, comerciais, aftermovies e cobertura completa para feiras e congressos. Equipe técnica especializada, câmeras HD/4K e entrega dos arquivos brutos organizados.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Captação Profissional HD/4K</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Arquivos Brutos Inclusos</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Primeiras 4 Horas Inclusas por Minuto</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Cobertura%20de%20Eventos."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-            {/* 5. Cobertura Fotográfica Profissional */}
-            <div className="p-6 rounded-2xl border border-amber-500/20 bg-[#050810] hover:border-amber-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-amber-500/15 flex items-center justify-center border border-amber-500/25 text-amber-400 shrink-0 group-hover:scale-105 transition-transform">
-                  <Camera className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Cobertura Fotográfica Profissional
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                      Fotografia
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Fotógrafo dedicado no local cobrindo palestras, estandes, participantes, interação de público, marcas e fotos oficiais para assessoria de imprensa.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-amber-400" /> Fotos em Alta Resolução</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-amber-400" /> Tratamento e Edição de Cor</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Cobertura%20Fotogr%C3%A1fica."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-            {/* 6. StoryMaker (Stories & Reels Realtime) */}
-            <div className="p-6 rounded-2xl border border-pink-500/20 bg-[#050810] hover:border-pink-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-pink-500/15 flex items-center justify-center border border-pink-500/25 text-pink-400 shrink-0 group-hover:scale-105 transition-transform">
-                  <Smartphone className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      StoryMaker (Stories & Reels Realtime)
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded border border-pink-500/20">
-                      Social Media ao Vivo
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Cobertura mobile dedicada no estilo StoryMaker, gravando, editando e publicando conteúdos dinâmicos em tempo real diretamente nas redes sociais durante o andamento do seu evento.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-pink-400" /> Captação & Edição Mobile Rápida</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-pink-400" /> Publicação no Mesmo Dia</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20StoryMaker."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-            {/* 7. Meia Diária Extra de Captação */}
-            <div className="p-6 rounded-2xl border border-purple-500/20 bg-[#050810] hover:border-purple-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/25 text-purple-400 shrink-0 group-hover:scale-105 transition-transform">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                      Meia Diária Extra de Captação (4 Horas)
-                    </h3>
-                    <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                      Gravação Adicional
-                    </span>
-                  </div>
-                  <p className="text-[#94A3B8] text-xs leading-relaxed">
-                    Horas extras de gravação presencial no local do evento para cobrir múltiplos palcos, estandes em feiras estendidas ou bastidores adicionais.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-purple-400" /> Gravações no Local do Evento</span>
-                    <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-purple-400" /> Bloco de 4 Horas por Meia Diária</span>
-                  </div>
-                </div>
-              </div>
-              <div className="shrink-0 flex md:flex-col gap-2">
-                <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Meia%20Di%C3%A1ria%20Extra."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(16,185,129,0.25)]"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" /> Comece seu projeto agora
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Banner para página de preços / calculadora */}
-          <div className="text-center p-6 rounded-2xl bg-[#050810] border border-gray-800 max-w-2xl mx-auto mb-16">
-            <p className="text-xs text-gray-400 mb-3">Deseja simular valores e consultar nossa calculadora de orçamentos?</p>
-            <a 
-              href="/precos"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-600/20 hover:bg-purple-600 border border-purple-500/40 text-purple-300 hover:text-white font-bold text-xs uppercase transition-all"
-            >
-              <Calculator className="w-4 h-4" /> Acesse Nossa Tabela de Preços & Calculadora
-            </a>
-          </div>
-
-          {/* Interactive Form/CTA Block */}
-          <div id="conversion-cta-block" className="max-w-4xl mx-auto bg-[#050810] border border-gray-850 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.05)] relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-4">
-                  Comece Seu Projeto Agora
-                </h3>
-                <p className="text-[#94A3B8] text-xs md:text-sm leading-relaxed mb-6">
-                  Fale com nossa equipe diretamente no WhatsApp para cotação e alinhamento do seu projeto.
-                </p>
-                <ul className="space-y-3.5">
-                  <li className="flex items-start gap-2.5 text-xs text-gray-400">
-                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
-                    <span>Orçamento rápido e sem compromisso</span>
-                  </li>
-                  <li className="flex items-start gap-2.5 text-xs text-gray-400">
-                    <CheckCircle2 className="w-4 h-4 text-[#00F0FF] shrink-0 mt-0.5" />
-                    <span>Atendimento direto e personalizado via WhatsApp</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex flex-col gap-4 items-stretch justify-center">
-                <a 
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                >
-                  <MessageSquare className="w-4 h-4" /> Comece seu projeto agora
-                </a>
-
-                <a 
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20me%20candidatar%20como%20Freela." 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-4 rounded-xl border border-gray-800 bg-[#0A0F1C] hover:bg-gray-800 text-gray-300 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all text-center"
-                >
-                  <Briefcase className="w-4 h-4 text-gray-400" /> Quero ser contratado como Freela
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Objeções / FAQ */}
-      <section className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10">
+      {/* 6. FAQ DIRETO E SUCCINTO */}
+      <section className="py-16 bg-black border-b border-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
+          <div className="text-center mb-8">
+            <span className="text-[10px] font-mono font-bold uppercase text-gray-400">
               DÚVIDAS FREQUENTES
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-white mt-4 uppercase tracking-tight">
-              Objeções Eliminadas
-            </h2>
+            <h3 className="text-xl sm:text-2xl font-black text-white mt-1 uppercase">
+              Perguntas e Respostas
+            </h3>
           </div>
-          
-          <div className="space-y-4">
+
+          <div className="space-y-3">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="border border-gray-800 rounded-xl bg-[#050810] overflow-hidden">
+              <div key={idx} className="border border-gray-800 rounded-xl bg-[#060911] overflow-hidden">
                 <button 
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-[#0A0F1C]/50 transition-colors cursor-pointer"
+                  className="w-full px-5 py-4 text-left flex justify-between items-center hover:bg-gray-900/30 transition-colors cursor-pointer"
                 >
-                  <span className="font-bold text-sm md:text-base text-[#F8FAFC] pr-8">{faq.q}</span>
-                  {openFaq === idx ? <Minus className="w-4 h-4 text-[#00F0FF] shrink-0" /> : <Plus className="w-4 h-4 text-[#00F0FF] shrink-0" />}
+                  <span className="font-bold text-xs sm:text-sm text-white pr-4">{faq.q}</span>
+                  {openFaq === idx ? <Minus className="w-4 h-4 text-emerald-400 shrink-0" /> : <Plus className="w-4 h-4 text-emerald-400 shrink-0" />}
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 text-xs md:text-sm text-[#94A3B8] leading-relaxed border-t border-gray-800 pt-4">
+                  <div className="px-5 pb-4 text-xs text-gray-400 leading-relaxed border-t border-gray-800/80 pt-3 font-sans">
                     {faq.a}
                   </div>
                 )}
@@ -1149,45 +522,53 @@ export default function SalesPage() {
         </div>
       </section>
 
-      {/* 8. Seção Final com CTA forte + Garantia */}
-      <section className="py-24 bg-[#050810] relative text-center border-b border-[#2563EB]/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/15 px-3 py-1 rounded border border-[#00F0FF]/30 mb-6">
-            <Shield className="w-3.5 h-3.5 text-[#00F0FF]" /> GARANTIA DE SATISFAÇÃO & EFICIÊNCIA
-          </span>
-          
-          <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-6">
-            Não perca mais leads para a concorrência que já usa IA.
-          </h2>
-          
-          <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-base leading-relaxed mb-10">
-            Acelere sua captação de leads e expanda sua presença digital no mercado agora mesmo. Garantimos o funcionamento e a melhor entrega inteligente para o seu negócio decolar de forma sustentável.
-          </p>
+      {/* 7. BARRA FINAL DE CONVERSÃO RÁPIDA */}
+      <section className="py-16 bg-black text-center relative">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#060911] border border-gray-800 relative overflow-hidden shadow-2xl">
+            <span className="text-[10px] font-mono font-bold uppercase text-emerald-400 bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/30 inline-block mb-3">
+              [ INÍCIO IMEDIATO ]
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-3">
+              Pronto Para Escalar Seu Negócio?
+            </h3>
+            <p className="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto mb-6">
+              Adquira o cérebro com tutorial de instalação agora ou fale conosco pelo WhatsApp para orçar marketing e audiovisual.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto mb-10">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20meu%20projeto." 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all text-center shadow-[0_0_25px_rgba(16,185,129,0.35)]"
-            >
-              <MessageSquare className="w-5 h-5" /> Comece seu projeto agora
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <a 
+                href="/agentes#planos"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+              >
+                Comprar Cérebro IA (R$ 197)
+              </a>
+              <a 
+                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20consultor."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs uppercase flex items-center justify-center gap-1.5 transition-all shadow-[0_0_20px_rgba(0,255,102,0.2)]"
+              >
+                <MessageSquare className="w-3.5 h-3.5" /> Falar no WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-900 text-center text-gray-400 text-xs bg-[#0A0F1C]">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/precos" className="px-5 py-2 rounded-full border border-[#00F0FF]/40 text-[#00F0FF] font-semibold transition-all">Preços & Orçamentos</a>
-            <a href="https://lp.autolead.site/institucional" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
-            <a href="/agentes" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Compre Robôs de IA</a>
-            <a href="/loja" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Contrate Humanos</a>
-            <a href="/jobs" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela (Trabalhe Conosco)</a>
+      <footer className="py-10 border-t border-gray-900 text-center text-gray-500 text-xs bg-black font-mono">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="/agentes" className="text-emerald-400 hover:underline">/Cérebro_IA</a>
+            <span className="text-gray-700">|</span>
+            <a href="/precos" className="text-gray-400 hover:text-white">/Tabela_Preços</a>
+            <span className="text-gray-700">|</span>
+            <a href="/loja" className="text-gray-400 hover:text-white">/Humanos</a>
+            <span className="text-gray-700">|</span>
+            <a href="/jobs" className="text-gray-400 hover:text-white">/Seja_Freela</a>
           </div>
-          <p className="text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
+          <p className="text-gray-600 text-[11px]">PARADOXTEAM & VIRTUAL PLACE // TODOS OS DIREITOS RESERVADOS</p>
         </div>
       </footer>
 
@@ -1208,7 +589,7 @@ export default function SalesPage() {
                 target.src = target.src.replace('.png', '.jpg');
               }
             }}
-            alt="Relatório Zoomed Result Virtual Place" 
+            alt="Resultado" 
             className={`transition-all duration-300 ${isZoomed ? 'w-full max-w-none cursor-zoom-out' : 'w-full max-w-5xl cursor-zoom-in'} h-auto object-contain mt-10 mb-10 rounded-xl shadow-2xl`}
             onClick={(e) => {
               e.stopPropagation();

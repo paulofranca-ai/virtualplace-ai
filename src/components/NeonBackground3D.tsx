@@ -55,7 +55,7 @@ export default function NeonBackground3D() {
         x: Math.cos(theta) * Math.sin(phi) * 160,
         y: Math.sin(theta) * Math.sin(phi) * 160,
         z: Math.cos(phi) * 160,
-        color: i % 2 === 0 ? 'rgba(255, 255, 255, 0.85)' : 'rgba(150, 150, 150, 0.65)'
+        color: i % 2 === 0 ? 'rgba(0, 255, 102, 0.85)' : 'rgba(255, 255, 255, 0.8)'
       });
     }
 
@@ -89,7 +89,7 @@ export default function NeonBackground3D() {
         x,
         y,
         z,
-        color: i % 2 === 0 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(140, 140, 140, 0.6)'
+        color: i % 2 === 0 ? 'rgba(0, 255, 102, 0.9)' : 'rgba(255, 255, 255, 0.7)'
       });
     }
 
@@ -107,21 +107,18 @@ export default function NeonBackground3D() {
         const y = v * 120;
         const z = Math.sin(u * 2.5) * 12;
 
-        // Determinar cor da bandeira brasileira adaptada para monocromático
-        // Losango Amarelo
+        // Determinar cor da bandeira brasileira adaptada para matriz cyberpunk (verde matrix, branco, preto)
         const inRhombus = (Math.abs(u) / 0.78) + (Math.abs(v) / 0.58) <= 1.0;
-        // Círculo Azul
         const inCircle = (u * u) / (0.31 * 0.31) + (v * v) / (0.31 * 0.31) <= 1.0;
-        // Faixa Branca
         const inWhiteBand = inCircle && (v - u * 0.35 >= -0.05 && v - u * 0.35 <= 0.05);
 
-        let color = 'rgba(100, 100, 100, 0.7)'; // Cinza Médio (antigo Verde)
+        let color = 'rgba(0, 255, 102, 0.7)'; // Verde Matrix
         if (inWhiteBand) {
           color = 'rgba(255, 255, 255, 0.95)'; // Branco
         } else if (inCircle) {
-          color = 'rgba(40, 40, 40, 0.95)'; // Cinza Escuro (antigo Azul)
+          color = 'rgba(16, 185, 129, 0.95)'; // Emerald
         } else if (inRhombus) {
-          color = 'rgba(180, 180, 180, 0.95)'; // Cinza Claro (antigo Amarelo)
+          color = 'rgba(255, 255, 255, 0.85)'; // Branco
         }
 
         brazilPoints.push({ x, y, z, color });
@@ -139,7 +136,7 @@ export default function NeonBackground3D() {
         x: Math.cos(t + tOffset) * spiralRadius,
         y: (t - Math.PI * 2) * 65,
         z: Math.sin(t + tOffset) * spiralRadius,
-        color: isStrandA ? 'rgba(255, 255, 255, 0.85)' : 'rgba(130, 130, 130, 0.6)'
+        color: isStrandA ? 'rgba(0, 255, 102, 0.85)' : 'rgba(255, 255, 255, 0.75)'
       });
     }
 
@@ -281,11 +278,11 @@ export default function NeonBackground3D() {
           if (dist < 50) {
             const alpha = (1 - dist / 50) * 0.12;
             
-            // Cor gradiente suave para conexões adaptadas para monocromático (branco/cinza)
+            // Cor gradiente suave para conexões adaptadas para matriz cyberpunk (verde matrix e branco)
             if (activeShapeIdxVal === 2) {
-              ctx.strokeStyle = `rgba(180, 180, 180, ${alpha * 1.5})`;
+              ctx.strokeStyle = `rgba(0, 255, 102, ${alpha * 1.6})`;
             } else {
-              ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+              ctx.strokeStyle = `rgba(0, 255, 102, ${alpha * 0.9})`;
             }
 
             ctx.beginPath();
@@ -303,16 +300,14 @@ export default function NeonBackground3D() {
         const size = Math.max(1.0, (180 - p.sz) / 45);
         ctx.fillStyle = p.color;
 
-        // Ativa glow neon de acordo com a cor do ponto (adaptado para monocromático)
-        ctx.shadowBlur = size * 1.5;
-        if (p.color.includes('100, 100')) {
-          ctx.shadowColor = '#646464'; // Cinza médio
-        } else if (p.color.includes('180, 180')) {
-          ctx.shadowColor = '#b4b4b4'; // Cinza claro
-        } else if (p.color.includes('40, 40')) {
-          ctx.shadowColor = '#282828'; // Cinza escuro
+        // Ativa glow neon verde matrix e branco
+        ctx.shadowBlur = size * 2.0;
+        if (p.color.includes('0, 255, 102')) {
+          ctx.shadowColor = '#00FF66'; // Verde Matrix Neon
+        } else if (p.color.includes('16, 185, 129')) {
+          ctx.shadowColor = '#10B981'; // Emerald
         } else {
-          ctx.shadowColor = '#ffffff'; // Branco/Prata
+          ctx.shadowColor = '#ffffff'; // Branco puro
         }
 
         ctx.beginPath();
