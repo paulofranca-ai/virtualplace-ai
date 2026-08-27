@@ -1,194 +1,256 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Rocket, 
   Brain, 
   CheckCircle2, 
   ArrowRight, 
-  Loader2, 
-  Mail, 
-  Phone, 
-  User, 
-  Building, 
-  TrendingUp, 
-  Target, 
   Video, 
   Sparkles, 
-  Calculator, 
   Check, 
   Camera, 
-  HelpCircle, 
   ChevronDown, 
   Zap, 
-  FileText, 
-  Lock, 
-  Clock, 
-  ShieldCheck, 
-  Utensils, 
-  MapPin, 
-  DollarSign, 
-  Layers,
-  Smartphone,
+  Palette,
   Scissors,
+  Clapperboard,
+  Mic,
+  Type,
+  TrendingUp,
+  Terminal,
+  Layers,
+  Phone,
+  MessageSquare,
+  Users,
+  Database,
+  GraduationCap,
+  Award,
+  Settings,
+  ShieldCheck,
   Bot,
-  Terminal
+  Building2,
+  Globe2,
+  Workflow
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
-import InteractiveCalculator from './components/InteractiveCalculator';
 
 export default function PricesPage() {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'audiovisual' | 'traffic' | 'calculator'>('all');
-
-  // Interactive Calculator State
-  const [photoHours, setPhotoHours] = useState<number>(4);
-  const [includePhotographer, setIncludePhotographer] = useState<boolean>(true);
-
-  const [videoType, setVideoType] = useState<'none' | 'videomaker' | 'filmmaker'>('filmmaker');
-  const [videoHours, setVideoHours] = useState<number>(4);
-  
-  const [editMinutes, setEditMinutes] = useState<number>(2);
-  const [includeEditing, setIncludeEditing] = useState<boolean>(true);
-
-  const [trafficMonths, setTrafficMonths] = useState<number>(1);
-  const [includeTraffic, setIncludeTraffic] = useState<boolean>(false);
-
-  const [addTravelExp, setAddTravelExp] = useState<boolean>(true);
-  const [addFood, setAddFood] = useState<boolean>(true);
-
-  // Calculations
-  const photoTotal = includePhotographer ? photoHours * 120 : 0;
-  
-  const videoTotal = videoType === 'videomaker' 
-    ? videoHours * 80 
-    : videoType === 'filmmaker' 
-      ? videoHours * 160 
-      : 0;
-
-  const editingTotal = includeEditing ? editMinutes * 297 : 0;
-  const trafficTotal = includeTraffic ? trafficMonths * 1500 : 0;
-
-  const grandTotal = photoTotal + videoTotal + editingTotal + trafficTotal;
-
-  // Build WhatsApp Budget Link
-  const getWhatsAppBudgetLink = () => {
-    let msg = `Olá! Gostaria de formalizar um orçamento através da Tabela de Preços da VirtualPlace.\n\n`;
-    
-    msg += `📋 *RESUMO DO ORÇAMENTO:* \n`;
-    if (includePhotographer) {
-      msg += `📸 Cobertura Fotográfica: ${photoHours} hora(s) (R$ 120/h) = R$ ${photoTotal},00\n`;
-    }
-    if (videoType !== 'none') {
-      const vName = videoType === 'videomaker' ? 'Videomaker Mobile (R$ 80/h)' : 'Filmmaker Professional (R$ 160/h)';
-      msg += `🎥 Captação de Vídeo: ${vName} por ${videoHours} hora(s) = R$ ${videoTotal},00\n`;
-    }
-    if (includeEditing) {
-      msg += `✂️ Edição & Pós-Produção: ${editMinutes} minuto(s) final(is) (R$ 297/min) = R$ ${editingTotal},00\n`;
-    }
-    if (includeTraffic) {
-      msg += `📈 Assessoria de Branding e Growth Marketing: ${trafficMonths} mês(es) (R$ 1.500/mês) = R$ ${trafficTotal},00\n`;
-    }
-
-    msg += `\n*Ajustes de Logística:*\n`;
-    msg += `- Deslocamento/Viagem: ${addTravelExp ? 'Sim (a calcular/incluso)' : 'Não necessário'}\n`;
-    msg += `- Alimentação Equipe: ${addFood ? 'Sim (fornecida no local)' : 'Não necessário'}\n`;
-
-    msg += `\n💰 *VALOR TOTAL ESTIMADO:* R$ ${grandTotal},00\n\nPodemos confirmar a disponibilidade para a minha data?`;
-
-    return `https://wa.me/5549984101144?text=${encodeURIComponent(msg)}`;
-  };
-
-  // FAQ State
+  const [activeCategory, setActiveCategory] = useState<'all' | 'ia_crm' | 'audiovisual' | 'marketing' | 'jarvis'>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const services = [
+    {
+      id: 'consultoria_ia',
+      category: 'ia_crm',
+      title: 'Consultoria Estratégica em Inteligência Artificial',
+      subtitle: 'Automação de processos, agentes autônomos e eficiência operacional',
+      badge: 'Solução Corporativa',
+      badgeColor: 'border-emerald-500/30 text-emerald-400 bg-emerald-950/40',
+      icon: Brain,
+      iconColor: 'text-emerald-400',
+      description: 'Mapeamos os gargalos da sua empresa e implementamos ferramentas de IA para automatizar tarefas repetitivas, atendimento ao cliente, geração de conteúdo e análise de dados.',
+      features: [
+        'Diagnóstico completo de processos e oportunidades com IA',
+        'Criação e implantação de agentes personalizados para seu nicho',
+        'Integração de IA no WhatsApp e sistemas internos',
+        'Redução drástica de tempo operacional da sua equipe'
+      ],
+      ctaText: 'Solicitar Consultoria no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20em%20Intelig%C3%AAncia%20Artificial%20para%20minha%20empresa.'
+    },
+    {
+      id: 'crm_instalacao',
+      category: 'ia_crm',
+      title: 'Venda & Instalação Completa de CRM',
+      subtitle: 'Estruturação de funil de vendas, WhatsApp multiatendente e automação',
+      badge: 'Gestão de Vendas',
+      badgeColor: 'border-cyan-500/30 text-cyan-400 bg-cyan-950/40',
+      icon: Database,
+      iconColor: 'text-cyan-400',
+      description: 'Chega de perder clientes no WhatsApp! Configuramos e instalamos a plataforma de CRM ideal para o seu modelo de negócio, com funil visual, múltiplos atendentes no mesmo número e mensagens automáticas.',
+      features: [
+        'Escolha e configuração da ferramenta ideal (Kommo, RD Station, HubSpot, etc.)',
+        'Organização de funis de vendas (Lead, Contato, Proposta, Fechamento)',
+        'Integração direta com WhatsApp, formulários e redes sociais',
+        'Automações de boas-vindas, follow-up e recuperação de vendas'
+      ],
+      ctaText: 'Implantar CRM na Minha Empresa',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Venda%20e%20Instala%C3%A7%C3%A3o%20de%20CRM.'
+    },
+    {
+      id: 'treinamento_equipe',
+      category: 'ia_crm',
+      title: 'Treinamento de Equipe Interna (Hands-on)',
+      subtitle: 'Capacitação prática para seu time dominar IA, CRM e processos modernos',
+      badge: 'Capacitação',
+      badgeColor: 'border-purple-500/30 text-purple-400 bg-purple-950/40',
+      icon: GraduationCap,
+      iconColor: 'text-purple-400',
+      description: 'Treinamos seus colaboradores e equipe de atendimento/vendas para extrair o máximo das novas tecnologias, gerando resultados rápidos no dia a dia.',
+      features: [
+        'Treinamento prático de uso diário de ferramentas de IA (ChatGPT, Claude, etc.)',
+        'Capacitação do time comercial para operar o CRM e manter o funil atualizado',
+        'Técnicas de atendimento humanizado e ágil pelo WhatsApp',
+        'Material de apoio, checklists e suporte para tirar dúvidas pós-treinamento'
+      ],
+      ctaText: 'Agendar Treinamento de Equipe',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Quero%20agendar%20um%20Treinamento%20de%20Equipe%20Interna.'
+    },
+    {
+      id: 'audiovisual_videos',
+      category: 'audiovisual',
+      title: 'Produção & Edição de Vídeos (Audiovisual)',
+      subtitle: 'Gravação presencial no local ou somente edição remota dos seus brutos',
+      badge: 'Audiovisual Sob Medida',
+      badgeColor: 'border-cyan-500/30 text-cyan-400 bg-cyan-950/40',
+      icon: Video,
+      iconColor: 'text-cyan-400',
+      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Você escolhe se prefere apenas edição ou gravação completa.',
+      features: [
+        'Modalidades: Somente Edição ou Gravação Presencial + Edição',
+        'Opcional: Inteligência Artificial (Cenários e B-rolls)',
+        'Opcional: Efeitos Especiais & VFX Motion',
+        'Opcional: Estilo Cinematográfico (Color Grading de filme)',
+        'Opcional: Narração por Locutor Humano ou Voz de IA Neural',
+        'Opcional: Legendas e Lettering com letras de alto impacto'
+      ],
+      ctaText: 'Pedir Orçamento de Vídeo no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20e%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeos.'
+    },
+    {
+      id: 'artes_design',
+      category: 'audiovisual',
+      title: 'Artes Gráficas & Criativos de Alta Conversão',
+      subtitle: 'Design profissional para posts, anúncios, capas e identidade visual',
+      badge: 'Design de Alto Impacto',
+      badgeColor: 'border-emerald-500/30 text-emerald-400 bg-emerald-950/40',
+      icon: Palette,
+      iconColor: 'text-emerald-400',
+      description: 'Criativos que chamam atenção no feed do Instagram, geram cliques em campanhas de tráfego pago e elevam a percepção de valor da sua marca.',
+      features: [
+        'Posts individuais, carrosséis educativos e banners promocionais',
+        'Criativos otimizados para campanhas de Meta Ads e Google Ads',
+        'Capas de Reels, thumbnails para YouTube e destaques',
+        'Opcionais: Elementos gerados com IA e Lettering estilizado'
+      ],
+      ctaText: 'Pedir Orçamento de Artes no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Artes%20Gr%C3%A1ficas%20e%20Criativos.'
+    },
+    {
+      id: 'marketing_coproducao',
+      category: 'marketing',
+      title: 'Gestão de Tráfego Pago & Coprodução 6 em 7',
+      subtitle: 'Autoridade comprovada: +23 lançamentos executados no mercado digital',
+      badge: 'Coprodutor 6 em 7',
+      badgeColor: 'border-blue-500/30 text-blue-400 bg-blue-950/40',
+      icon: TrendingUp,
+      iconColor: 'text-blue-400',
+      description: 'Gerenciamos seus anúncios no Instagram, Facebook, Google e TikTok com foco em retorno real. Para infoprodutores, executamos lançamentos completos 6 em 7 (+ R$ 100k em 7 dias).',
+      features: [
+        'Estratégia para Comércios e Negócios Locais atraírem clientes da cidade',
+        'Coprodução e tráfego pago em escala para infoprodutores e criadores',
+        'Estruturação de funis de vendas, páginas de captura e VSLs',
+        'Otimização diária de verba e relatórios claros de ROI'
+      ],
+      ctaText: 'Falar sobre Tráfego & Lançamentos',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20Gest%C3%A3o%20de%20Tr%C3%A1fego%20e%20Coprodu%C3%A7%C3%A3o%206%20em%207.'
+    }
+  ];
 
   const faqs = [
     {
-      question: 'Como funciona o pagamento do Squad Jarvis IA (R$ 197)?',
-      answer: 'O pagamento é único e via Kiwify (Pix ou cartão em até 12x). Após a confirmação, você recebe o download imediato dos robôs, prompts e roteiros de vendas com acesso vitalício. Se preferir suporte anual dedicado e onboarding individual, você pode assinar o Plano de 1 Ano por R$ 997.'
+      question: 'Como funciona a Consultoria em IA e a Instalação de CRM?',
+      answer: 'Iniciamos com um alinhamento direto pelo WhatsApp ou chamada de vídeo. Diagnosticamos as rotinas manuais da sua empresa, indicamos o CRM ideal e configuramos as integrações e automações de IA necessárias para seu time atender mais rápido e vender mais.'
     },
     {
-      question: 'Como é calculada a diária/hora de gravação e fotografia?',
-      answer: 'Nossos profissionais possuem valor hora fixo e transparente (Fotógrafo R$ 120/h, Videomaker Mobile R$ 80/h, Filmmaker R$ 160/h). A contagem das horas é feita a partir da chegada da equipe no local do evento. Não há taxas ocultas.'
+      question: 'O Treinamento de Equipe pode ser feito de forma online ou presencial?',
+      answer: 'Sim! Realizamos treinamentos online ao vivo (gravados para consulta posterior) ou presenciais, ensinando seus funcionários a utilizarem ferramentas de IA, operarem o CRM e atenderem clientes no WhatsApp de forma eficiente e padronizada.'
     },
     {
-      question: 'Qual o prazo de entrega dos vídeos editados e fotos?',
-      answer: 'As fotos tratadas em alta resolução são entregues em até 48 horas úteis via link no Google Drive ou Pixieset. O Aftermovie e vídeos verticais editados possuem prazo padrão de 3 a 5 dias úteis após o término da captação.'
+      question: 'Como solicito um orçamento para Produção de Vídeos e Artes?',
+      answer: 'Basta clicar no botão de WhatsApp do serviço desejado e nos contar o que precisa (por exemplo: quantidade de vídeos, se já tem o material gravado ou se precisa de captação presencial, se deseja efeitos especiais, voz de IA ou locutor humano). Enviamos uma proposta personalizada em poucos minutos.'
     },
     {
-      question: 'O que está incluso na Assessoria de Branding e Growth Marketing (R$ 1.500/mês)?',
-      answer: 'Inclui gestão estratégica de anúncios no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads, posicionamento de marca, criação de copys e peças, configuração de píxels e tags, otimização diária de orçamentos, testes A/B de públicos e relatórios de métricas e ROI.'
+      question: 'Quem é o responsável pela gestão de Marketing e Lançamentos?',
+      answer: 'Nossa equipe é liderada por Coprodutor 6 em 7, com mais de 23 lançamentos executados no mercado digital (gerando lançamentos acima de R$ 100 mil de faturamento em apenas uma semana). Aplicamos essa mesma inteligência tanto para alavancar comércios e negócios locais quanto para infoprodutores do Brasil e do mundo.'
     },
     {
-      question: 'Como emitir nota fiscal e receber contrato formal?',
-      answer: 'Emitimos Nota Fiscal de Serviços Eletrônica (NFS-e) para todos os contratos corporativos e prestação de serviços de marketing/audiovisual. O contrato digital com assinatura jurídica é enviado via Clicksign ou DocuSign antes do início do projeto.'
+      question: 'Qual é o valor do Cérebro de IA (Squad Jarvis 30+ Agentes)?',
+      answer: 'O Cérebro de IA possui valor fixo transparente: R$ 197,00 em pagamento único para acesso vitalício via Kiwify (incluindo todos os 30+ robôs, scripts e tutorial em vídeo passo a passo para Claude Code, AntiGravity, Cursor e terminais) ou R$ 997,00 no plano anual com suporte e onboarding individual.'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30 relative overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-emerald-400 selection:text-black relative overflow-x-hidden">
       <NeonBackground3D />
 
+      {/* Cyber Scanline Overlay */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_bottom,rgba(0,255,102,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-0"></div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-xl font-black tracking-tight text-white uppercase">
-              VIRTUAL<span className="text-[#00F0FF]">PLACE</span>
-            </span>
+          <a href="/" className="flex items-center gap-3">
+            <img 
+              src="https://i.imgur.com/w2iO5CR.png" 
+              alt="Virtual Place Logo" 
+              className="h-12 md:h-14 w-auto object-contain brightness-110" 
+              referrerPolicy="no-referrer" 
+            />
           </a>
 
           <div className="flex flex-wrap justify-center gap-x-3 md:gap-x-4 gap-y-2 items-center">
-            <a href="/" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
-              Comercial
+            <a href="/" className="text-xs md:text-sm font-semibold text-gray-400 hover:text-white transition-colors">
+              Início
             </a>
-            <a href="/precos" className="text-xs md:text-sm font-semibold text-[#00F0FF] transition-colors">
-              Preços & Orçamentos
+            <a href="/precos" className="text-xs md:text-sm font-semibold text-emerald-400 transition-colors">
+              Serviços & Soluções
             </a>
             <a 
               href="/agentes" 
-              className="px-3 py-1 rounded-lg bg-black border border-gray-700 hover:bg-gray-900 text-white text-xs font-bold transition-all shadow-[0_0_12px_rgba(0,0,0,0.8)] flex items-center gap-1.5"
+              className="px-3 py-1 rounded-lg bg-black border border-emerald-500/40 hover:bg-gray-900 text-white text-xs font-bold transition-all shadow-[0_0_12px_rgba(0,255,102,0.15)] flex items-center gap-1.5"
             >
-              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> ParadoxTeam - Esquadrão de Agentes (30+ agents)
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" /> Cérebro IA (R$ 197)
             </a>
-            <a href="/loja" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
-              Contrate Humanos
-            </a>
-            <a href="/jobs" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
-              Seja um Freela
-            </a>
-            <a href="https://lp.autolead.site/institucional" className="text-xs md:text-sm font-semibold text-[#94A3B8] hover:text-[#00F0FF] transition-colors">
-              Institucional
+            <a 
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Virtual%20Place." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-black text-xs font-black uppercase transition-all shadow-[0_0_15px_rgba(0,255,102,0.25)] flex items-center gap-1"
+            >
+              <Phone className="w-3.5 h-3.5" /> WhatsApp
             </a>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 relative">
+      <section className="pt-32 pb-14 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto">
-            <span className="inline-block text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
-              CENTRAL DE PREÇOS, SERVIÇOS E ORÇAMENTOS
-            </span>
+            <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 font-mono text-[10px] sm:text-xs text-emerald-400 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>SOLUÇÕES COMPLETAS SOB MEDIDA</span>
+            </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tight leading-none mb-6">
-              Tabela Transparente <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-purple-400 to-[#2563EB]">
-                & Calculadora de Valores
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tight leading-tight mb-4">
+              Serviços, Consultoria <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-white to-gray-400">
+                & Inteligência de Vendas
               </span>
             </h1>
 
-            <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-8">
-              Confira os custos sem pegadinhas para Inteligência Artificial, Produção Audiovisual de Eventos, Fotografia e Gestão de Branding e Growth Marketing. Monte seu orçamento em tempo real.
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+              Atendemos comércios locais, empresas físicas e infoprodutores de todo o Brasil e do mundo. Solicite propostas sob medida direto pelo WhatsApp com atendimento humanizado e rápido.
             </p>
 
             {/* Category Filter Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {[
                 { id: 'all', label: 'Todos os Serviços', icon: Layers },
-                { id: 'ai', label: 'Robôs de IA (Jarvis)', icon: Brain },
-                { id: 'audiovisual', label: 'Audiovisual & Eventos', icon: Video },
-                { id: 'traffic', label: 'Branding e Growth Marketing', icon: TrendingUp },
-                { id: 'calculator', label: 'Simulador de Orçamento', icon: Calculator }
+                { id: 'ia_crm', label: 'Consultoria IA, CRM & Treinamento', icon: Brain },
+                { id: 'audiovisual', label: 'Audiovisual & Artes', icon: Video },
+                { id: 'marketing', label: 'Tráfego & Coprodução 6 em 7', icon: TrendingUp },
+                { id: 'jarvis', label: 'Cérebro IA Jarvis (R$ 197)', icon: Terminal }
               ].map((cat) => {
                 const Icon = cat.icon;
                 const active = activeCategory === cat.id;
@@ -196,10 +258,10 @@ export default function PricesPage() {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id as any)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-2 border ${
+                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-2 border cursor-pointer ${
                       active
-                        ? 'bg-[#00F0FF] text-[#0A0F1C] border-[#00F0FF] shadow-[0_0_20px_rgba(0,240,255,0.4)]'
-                        : 'bg-[#050810] text-[#94A3B8] border-gray-800 hover:border-gray-700 hover:text-white'
+                        ? 'bg-emerald-400 text-black border-emerald-400 shadow-[0_0_20px_rgba(0,255,102,0.3)]'
+                        : 'bg-[#060911] text-gray-400 border-gray-800 hover:border-gray-700 hover:text-white'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -212,579 +274,218 @@ export default function PricesPage() {
         </div>
       </section>
 
-      {/* Main Pricing & Services Presentation Section */}
-      {(activeCategory === 'all' || activeCategory === 'ai' || activeCategory === 'audiovisual' || activeCategory === 'traffic') && (
-        <section className="py-12 bg-[#0A0F1C] relative border-t border-b border-[#2563EB]/10">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-10">
-              <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20 tracking-wider">
-                CATÁLOGO DE SERVIÇOS
-              </span>
-              <h2 className="text-2xl md:text-4xl font-black text-white mt-3 uppercase tracking-tight">
-                Nossos Serviços e Soluções
-              </h2>
-              <p className="text-[#94A3B8] text-xs md:text-sm mt-1 max-w-xl mx-auto">
-                Conheça a nossa linha completa de soluções. Você pode simular valores e personalizar seu pacote na calculadora interativa abaixo.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              
-              {/* CARD 1: PARADOXTEAM - ESQUADRÃO DE AGENTES */}
-              {(activeCategory === 'all' || activeCategory === 'ai') && (
-                <div className="p-6 rounded-2xl border border-gray-700 bg-black hover:border-gray-500 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center border border-gray-700 text-white shrink-0 group-hover:scale-105 transition-transform">
-                      <Terminal className="w-6 h-6 text-emerald-400" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          ParadoxTeam - Esquadrão de Agentes (30+ Agentes)
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
-                          Submundo da IA
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Esquadrão Completo: <strong>Marketing, Design, Vendas, Segurança, Devs e Assistente Financeiro Pessoal</strong>. Crie qualquer time de agentes autônomos e use nosso cérebro atualizado para plugar no seu projeto.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Marketing & Vendas 24/7</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Design & Devs Full-Stack</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-white" /> Segurança & Finanças</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> ClaudeCode, AntiGravity & Kali Linux</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <a
-                      href="/agentes#planos"
-                      className="px-4 py-2.5 rounded-xl bg-white hover:bg-gray-200 text-black font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                    >
-                      <Terminal className="w-3.5 h-3.5 text-black" /> Ver Planos ParadoxTeam
-                    </a>
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/40 text-purple-300 hover:text-white font-bold text-[11px] uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 2: ASSESSORIA DE BRANDING E GROWTH MARKETING */}
-              {(activeCategory === 'all' || activeCategory === 'traffic') && (
-                <div className="p-6 rounded-2xl border border-blue-500/20 bg-[#050810] hover:border-blue-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center border border-blue-500/25 text-blue-400 shrink-0 group-hover:scale-105 transition-transform">
-                      <TrendingUp className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Assessoria de Branding e Growth Marketing (Meta, Google, TikTok & LinkedIn Ads)
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                          Posicionamento & Performance
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Gestão diária de anúncios patrocinados no Meta Ads (Instagram/Facebook), Google Ads, TikTok Ads e LinkedIn Ads aliada a estratégias de branding para atração constante de clientes qualificados.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Otimização Diária de Campanhas</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Posicionamento & Criação de Públicos</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 3: EDIÇÃO DE VÍDEO AVULSA */}
-              {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
-                <div className="p-6 rounded-2xl border border-violet-500/20 bg-[#050810] hover:border-violet-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center border border-violet-500/25 text-violet-400 shrink-0 group-hover:scale-105 transition-transform">
-                      <Scissors className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Edição de Vídeo Avulsa (Somente Pós-Produção)
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded border border-violet-500/20">
-                          Edição & Pós
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Edição profissional para vídeos que você já gravou. Diferentes durações (1min, 3min, 30min, 1h) e níveis (Cortes simples, Avançada com Narração IA inclusa e SuperAvançada com VFX).
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> Edição Simples (Cortes, Cor e Legendas)</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> Edição Avançada (Com Narração IA)</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-violet-400" /> SuperAvançada (Animações 3D & VFX)</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/30 text-violet-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 4: COBERTURA AUDIOVISUAL E EVENTOS */}
-              {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
-                <div className="p-6 rounded-2xl border border-[#00F0FF]/20 bg-[#050810] hover:border-[#00F0FF]/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/25 text-[#00F0FF] shrink-0 group-hover:scale-105 transition-transform">
-                      <Video className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Cobertura de Eventos e Produção Audiovisual
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-2 py-0.5 rounded border border-[#00F0FF]/20">
-                          Captação + Pós-Produção
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Gravação e edição de vídeos institucionais, comerciais, aftermovies e cobertura para feiras e congressos. Equipe técnica especializada, câmeras HD/4K e arquivos brutos inclusos.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Captação Profissional HD/4K</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Arquivos Brutos Inclusos</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-[#00F0FF]" /> Primeira Captação Inclusa por Minuto</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-[#00F0FF]/10 hover:bg-[#00F0FF]/20 border border-[#00F0FF]/30 text-[#00F0FF] font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 5: FOTÓGRAFO PROFISSIONAL */}
-              {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
-                <div className="p-6 rounded-2xl border border-amber-500/20 bg-[#050810] hover:border-amber-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/15 flex items-center justify-center border border-amber-500/25 text-amber-400 shrink-0 group-hover:scale-105 transition-transform">
-                      <Camera className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Cobertura Fotográfica Profissional
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                          Fotografia
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Fotógrafo dedicado no local cobrindo palestras, estandes, participantes, interação de público, marcas e fotos oficiais para imprensa.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-amber-400" /> Fotos em Alta Resolução</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-amber-400" /> Tratamento e Edição de Cor</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 6: STORYMAKER */}
-              {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
-                <div className="p-6 rounded-2xl border border-pink-500/20 bg-[#050810] hover:border-pink-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-pink-500/15 flex items-center justify-center border border-pink-500/25 text-pink-400 shrink-0 group-hover:scale-105 transition-transform">
-                      <Smartphone className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          StoryMaker (Stories & Reels Realtime)
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded border border-pink-500/20">
-                          Social Media ao Vivo
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Cobertura mobile dedicada no estilo StoryMaker, gravando, editando e publicando conteúdos dinâmicos em tempo real diretamente nas redes sociais durante o evento.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-pink-400" /> Captação & Edição Mobile Rápida</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-pink-400" /> Publicação no Mesmo Dia</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 text-pink-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* CARD 7: CAPTAÇÃO EXTRA */}
-              {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
-                <div className="p-6 rounded-2xl border border-purple-500/20 bg-[#050810] hover:border-purple-500/40 transition-all shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/25 text-purple-400 shrink-0 group-hover:scale-105 transition-transform">
-                      <Clock className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                          Meia Diária Extra de Captação (4 Horas)
-                        </h3>
-                        <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                          Gravação Adicional
-                        </span>
-                      </div>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        Horas extras de gravação presencial no local do evento para cobrir múltiplos palcos, estandes em feiras estendidas ou bastidores adicionais.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-gray-300 font-medium">
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-purple-400" /> Gravações no Local do Evento</span>
-                        <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-purple-400" /> Bloco de 4 Horas por Meia Diária</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex md:flex-col gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveCategory('calculator');
-                        const el = document.getElementById('simulador-orcamento');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-4 py-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-300 font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
-                    >
-                      <Calculator className="w-3.5 h-3.5" /> Simular na Calculadora
-                    </button>
-                  </div>
-                </div>
-              )}
-
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* INTERACTIVE BUDGET CALCULATOR SECTION */}
-      {(activeCategory === 'all' || activeCategory === 'calculator') && (
-        <section id="simulador-orcamento" className="py-20 bg-[#050810] relative border-b border-[#2563EB]/20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <InteractiveCalculator />
-          </div>
-        </section>
-      )}
-
-      {/* DETAILED PRICE TABLE SECTION */}
-      <section className="py-20 bg-[#0A0F1C] relative border-b border-[#2563EB]/10">
+      {/* Main Services Grid */}
+      <section className="py-12 bg-black relative border-t border-b border-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
-              TABELA CONSOLIDADA DE VALORES
-            </span>
-            <h2 className="text-2xl md:text-4xl font-black text-white mt-4 uppercase tracking-tight">
-              Visão Geral de Serviços e Escopo
-            </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services
+              .filter(s => activeCategory === 'all' || s.category === activeCategory)
+              .map((service) => {
+                const Icon = service.icon;
+                return (
+                  <div 
+                    key={service.id}
+                    className="p-7 rounded-2xl border border-gray-800 bg-[#060911] hover:border-emerald-500/40 transition-all shadow-xl flex flex-col justify-between group"
+                  >
+                    <div>
+                      <div className="flex items-start justify-between gap-3 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center border border-gray-700 text-emerald-400 shrink-0 group-hover:scale-105 transition-transform">
+                          <Icon className={`w-6 h-6 ${service.iconColor}`} />
+                        </div>
+                        <span className={`text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded border ${service.badgeColor}`}>
+                          {service.badge}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1">
+                        {service.title}
+                      </h3>
+                      <p className="text-emerald-400 text-xs font-semibold mb-3">
+                        {service.subtitle}
+                      </p>
+
+                      <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                        {service.description}
+                      </p>
+
+                      <div className="space-y-2 mb-6 border-t border-gray-800/80 pt-4 text-xs text-gray-300">
+                        {service.features.map((feat, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-gray-800/80">
+                      <a
+                        href={service.ctaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-black font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(0,255,102,0.2)] cursor-pointer text-center"
+                      >
+                        <MessageSquare className="w-4 h-4 text-black" />
+                        {service.ctaText}
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-gray-800 bg-[#050810] shadow-2xl">
-            <table className="w-full text-left text-xs text-gray-300">
-              <thead className="bg-[#0A0F1C] text-[#00F0FF] uppercase text-[10px] font-black tracking-wider border-b border-gray-800">
-                <tr>
-                  <th className="py-4 px-6">Serviço / Produto</th>
-                  <th className="py-4 px-6">Modalidade / Valor Base</th>
-                  <th className="py-4 px-6">Entrega / Formato</th>
-                  <th className="py-4 px-6">Formas de Pagamento</th>
-                  <th className="py-4 px-6 text-right">Ação</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-800/80">
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Brain className="w-4 h-4 text-purple-400 shrink-0" />
-                    Squad Jarvis IA (30 Robôs)
-                  </td>
-                  <td className="py-4 px-6 font-bold text-[#00F0FF]">
-                    R$ 197 <span className="text-[10px] text-gray-500 font-normal">(único)</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Download Imediato + Guia</td>
-                  <td className="py-4 px-6 text-gray-400">Kiwify (Pix ou até 12x)</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="https://pay.kiwify.com.br/2yfNvHR" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Comprar
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-teal-400 shrink-0" />
-                    Squad Jarvis IA (Suporte 1 Ano + Onboarding)
-                  </td>
-                  <td className="py-4 px-6 font-bold text-emerald-400">
-                    R$ 997 <span className="text-[10px] text-gray-500 font-normal">/ ano</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Acesso Anual + Onboarding 1x1</td>
-                  <td className="py-4 px-6 text-gray-400">Kiwify (Pix ou até 12x)</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="https://pay.kiwify.com.br/rViC8d1" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Assinar
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Camera className="w-4 h-4 text-purple-400 shrink-0" />
-                    Fotógrafo Profissional
-                  </td>
-                  <td className="py-4 px-6 font-bold text-white">
-                    R$ 120 <span className="text-[10px] text-gray-500 font-normal">/ hora</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Fotos em Alta Resolução em 48h</td>
-                  <td className="py-4 px-6 text-gray-400">Pix / Faturamento PJ (50%+50%)</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="#simulador-orcamento" 
-                      className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-[#00F0FF] font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Simular
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Video className="w-4 h-4 text-[#00F0FF] shrink-0" />
-                    Videomaker Mobile (Conteúdo Vertical)
-                  </td>
-                  <td className="py-4 px-6 font-bold text-white">
-                    R$ 80 <span className="text-[10px] text-gray-500 font-normal">/ hora</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Brutos + Takes para Reels</td>
-                  <td className="py-4 px-6 text-gray-400">Pix / Faturamento PJ</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="#simulador-orcamento" 
-                      className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-[#00F0FF] font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Simular
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Video className="w-4 h-4 text-blue-400 shrink-0" />
-                    Filmmaker Professional (Câmeras 4K)
-                  </td>
-                  <td className="py-4 px-6 font-bold text-white">
-                    R$ 160 <span className="text-[10px] text-gray-500 font-normal">/ hora</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Captação Cinematográfica 4K</td>
-                  <td className="py-4 px-6 text-gray-400">Pix / Faturamento PJ</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="#simulador-orcamento" 
-                      className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-[#00F0FF] font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Simular
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#00F0FF] shrink-0" />
-                    Edição e Pós-produção Audiovisual
-                  </td>
-                  <td className="py-4 px-6 font-bold text-white">
-                    R$ 297 <span className="text-[10px] text-gray-500 font-normal">/ min final</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Aftermovie / Vídeo Institucional em 3-5 dias</td>
-                  <td className="py-4 px-6 text-gray-400">Pix / Faturamento PJ</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="#simulador-orcamento" 
-                      className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-[#00F0FF] font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Simular
-                    </a>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-gray-900/50 transition-colors">
-                  <td className="py-4 px-6 font-bold text-white flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-blue-400 shrink-0" />
-                    Assessoria de Branding e Growth Marketing
-                  </td>
-                  <td className="py-4 px-6 font-bold text-[#00F0FF]">
-                    R$ 1.500 <span className="text-[10px] text-gray-500 font-normal">/ mês</span>
-                  </td>
-                  <td className="py-4 px-6 text-gray-400">Gestão diária Meta, Google, TikTok e LinkedIn Ads + Branding</td>
-                  <td className="py-4 px-6 text-gray-400">Mensal recorrente / Boleto PJ</td>
-                  <td className="py-4 px-6 text-right">
-                    <a 
-                      href="https://wa.me/5549984101144?text=Quero%20contratar%20Branding%20e%20Growth%20Marketing" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-[#2563EB] hover:bg-blue-600 text-white font-bold rounded text-[10px] uppercase inline-block"
-                    >
-                      Contratar
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <section className="py-20 bg-[#050810] relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <span className="text-[10px] font-black uppercase text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded border border-[#00F0FF]/20">
+      {/* SPECIAL CARD: CÉREBRO DE IA (SQUAD JARVIS) COM VALOR FIXO */}
+      {(activeCategory === 'all' || activeCategory === 'jarvis') && (
+        <section className="py-16 bg-black relative border-b border-gray-900">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#060911] border border-purple-500/40 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div className="lg:col-span-8">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-500/40 font-mono text-[10px] text-purple-300 uppercase mb-3">
+                    <Terminal className="w-3.5 h-3.5 text-purple-400" />
+                    <span>PRODUTO DIGITAL DE ACESSO IMEDIATO • CHECKOUT SEGURO</span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-2">
+                    Squad Jarvis IA (30+ Agentes + Tutorial em Vídeo)
+                  </h3>
+                  
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
+                    O único produto do nosso catálogo com valor pré-fixado. Você adquire o cérebro completo de 30+ agentes especializados (Marketing, Vendas, Programação, Finanças e Segurança) pronto para rodar em Claude Code, AntiGravity, Cursor e terminais, com vídeo tutorial passo a passo para iniciantes.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                      <span>30+ Agentes Prontos para Uso</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                      <span>Vídeo Tutorial Fácil de Instalar</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                      <span>Instalação em Menos de 5 Minutos</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                      <span>Acesso Vitalício via Kiwify</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-4 flex flex-col justify-center bg-black/60 p-6 rounded-xl border border-gray-800 text-center">
+                  <span className="text-[10px] font-mono text-gray-400 uppercase">Acesso Vitalício</span>
+                  <div className="text-3xl sm:text-4xl font-black text-purple-400 font-mono mt-1 mb-1">
+                    R$ 197,00
+                  </div>
+                  <p className="text-[11px] text-gray-400 mb-4">Pagamento único ou até 12x no cartão</p>
+
+                  <a
+                    href="https://pay.kiwify.com.br/2yfNvHR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)] cursor-pointer text-center mb-2"
+                  >
+                    <Zap className="w-4 h-4 text-white" /> Comprar via Kiwify
+                  </a>
+
+                  <a
+                    href="/agentes"
+                    className="text-[11px] font-mono text-gray-400 hover:text-purple-300 underline"
+                  >
+                    Ver detalhes de todos os 30+ robôs →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-black relative border-b border-gray-900">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <span className="text-[10px] font-mono font-bold uppercase text-emerald-400">
               DÚVIDAS FREQUENTES
             </span>
-            <h2 className="text-2xl md:text-4xl font-black text-white mt-4 uppercase tracking-tight">
-              Perguntas sobre Faturamento e Preços
+            <h2 className="text-xl sm:text-2xl font-black text-white mt-1 uppercase">
+              Perguntas e Respostas
             </h2>
           </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div 
-                  key={index}
-                  className="rounded-xl border border-gray-800 bg-[#0A0F1C] overflow-hidden transition-all"
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="border border-gray-800 rounded-xl bg-[#060911] overflow-hidden">
+                <button 
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full px-5 py-4 text-left flex justify-between items-center hover:bg-gray-900/30 transition-colors cursor-pointer"
                 >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full p-5 text-left flex justify-between items-center gap-4 text-sm font-bold text-white hover:text-[#00F0FF] transition-colors"
-                  >
-                    <span>{faq.question}</span>
-                    <ChevronDown className={`w-4 h-4 text-[#00F0FF] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  {isOpen && (
-                    <div className="p-5 pt-0 text-xs text-[#94A3B8] leading-relaxed border-t border-gray-800/60 mt-1">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                  <span className="font-bold text-xs sm:text-sm text-white pr-4">{faq.question}</span>
+                  <ChevronDown className={`w-4 h-4 text-emerald-400 shrink-0 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-4 text-xs text-gray-400 leading-relaxed border-t border-gray-800/80 pt-3 font-sans">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA BANNER */}
-      <section className="py-16 bg-[#0A0F1C] border-t border-gray-800 text-center relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
-            Precisa de um Projeto Personalizado?
-          </h2>
-          <p className="text-[#94A3B8] text-xs md:text-sm max-w-xl mx-auto mb-8">
-            Nossa equipe prepara uma proposta comercial sob medida para demandas corporativas de grande porte ou coberturas de eventos em todo o Brasil.
-          </p>
+      {/* Final CTA */}
+      <section className="py-16 bg-black text-center relative">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#060911] border border-gray-800 shadow-2xl">
+            <span className="text-[10px] font-mono font-bold uppercase text-emerald-400 bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/30 inline-block mb-3">
+              ATENDIMENTO PERSONALIZADO
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-3">
+              Vamos Conversar Sobre Seu Negócio?
+            </h3>
+            <p className="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto mb-6">
+              Nossa equipe está pronta para entender suas metas e desenhar uma proposta customizada sem burocracia.
+            </p>
 
-          <a
-            href="https://wa.me/5549984101144?text=Olá!%20Gostaria%20de%20solicitar%20uma%20proposta%20personalizada%20de%20marketing%20e%20audiovisual."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-[#0A0F1C] font-black text-xs uppercase tracking-wider hover:bg-cyan-300 transition-all shadow-[0_0_25px_rgba(0,240,255,0.4)]"
-          >
-            <Phone className="w-4 h-4" /> Solicitar Proposta Especial
-          </a>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <a 
+                href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20personalizado." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-black font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,255,102,0.3)] cursor-pointer"
+              >
+                <Phone className="w-4 h-4 text-black" /> Falar no WhatsApp Agora
+              </a>
+              <a 
+                href="/agentes" 
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-black hover:bg-gray-900 border border-gray-700 text-white font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <Terminal className="w-4 h-4 text-emerald-400" /> Conhecer o Cérebro de IA (R$ 197)
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-900 text-center text-gray-400 text-xs bg-[#0A0F1C]">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Comercial</a>
-            <a href="/precos" className="px-5 py-2 rounded-full border border-[#00F0FF]/40 text-[#00F0FF] font-semibold transition-all">Preços & Orçamentos</a>
-            <a href="https://lp.autolead.site/institucional" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Institucional</a>
-            <a href="/agentes" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Compre Robôs de IA</a>
-            <a href="/loja" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Contrate Humanos</a>
-            <a href="/jobs" className="px-5 py-2 rounded-full border border-[#2563EB]/20 hover:border-[#00F0FF] text-[#94A3B8] hover:text-[#00F0FF] font-semibold transition-all">Seja um Freela</a>
-          </div>
-
-          <div className="space-y-1">
-            <p className="font-bold text-[#F8FAFC]">VirtualPlace — Inteligência Artificial, Audiovisual & Marketing</p>
-            <p className="text-xs text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
+      <footer className="py-8 border-t border-gray-900 text-center text-gray-500 text-xs bg-black font-mono">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3">
+          <p className="text-gray-400 text-xs">VIRTUAL PLACE // CONSULTORIA EM IA, CRM, TREINAMENTO & AUDIOVISUAL</p>
+          <div className="flex flex-wrap justify-center gap-3 text-gray-500">
+            <a href="/" className="hover:text-emerald-400">Início</a>
+            <span>•</span>
+            <a href="/precos" className="hover:text-emerald-400">Serviços & Soluções</a>
+            <span>•</span>
+            <a href="/agentes" className="hover:text-emerald-400">Cérebro IA</a>
           </div>
         </div>
       </footer>

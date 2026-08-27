@@ -18,6 +18,10 @@ export default function App() {
         <Route path="/preços" element={<PricesPage />} />
         <Route path="/preco" element={<PricesPage />} />
         <Route path="/pricing" element={<PricesPage />} />
+        <Route path="/servicos" element={<PricesPage />} />
+        <Route path="/serviços" element={<PricesPage />} />
+        <Route path="/solucoes" element={<PricesPage />} />
+        <Route path="/soluções" element={<PricesPage />} />
         <Route path="/institucional" element={<InstitutionalPage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/checkout-simulado" element={<SimulatedCheckoutPage />} />
