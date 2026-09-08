@@ -123,35 +123,35 @@ export default function InstitutionalPage() {
               <div className="flex flex-wrap gap-4 justify-center">
                 <a 
                   href="/loja"
-                  className="px-6 py-3 rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 hover:bg-[#00F0FF]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                  className="px-6 py-3 rounded-full bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/50 hover:bg-[#00F0FF]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-sm"
                 >
                   <User className="w-4 h-4" />
                   CONTRATE HUMANOS
                 </a>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot?start=Quero_ser_contratado" target="_blank" rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-white border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
+                  className="px-6 py-3 rounded-full bg-[#2563EB]/20 text-gray-900 border border-[#2563EB]/50 hover:bg-[#2563EB]/30 font-bold flex items-center justify-center gap-2 transition-all text-xs"
                 >
                   <Briefcase className="w-4 h-4" />
                   SEJA CONTRATADO
                 </a>
                 <a 
                   href="/agentes"
-                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] border border-purple-400/30"
+                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-gray-900 hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-sm border border-purple-400/30"
                 >
-                  <Rocket className="w-4 h-4 text-cyan-300" />
+                  <Rocket className="w-4 h-4 text-blue-500" />
                   ESQUADRÃO DE IA PARA CLAUDECODE E ANTIGRAVITY (30+ AGENTS)
                 </a>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-white hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center"
+                  className="px-6 py-3 rounded-full border border-[#2563EB]/50 bg-[#2563EB]/10 text-gray-900 hover:bg-[#2563EB]/20 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center"
                 >
                   <Brain className="w-4 h-4" />
                   TESTE NOSSOS AGENTES GRATIS AGORA
                 </a>
                 <a 
                   href="https://agentes.autolead.site" target="_blank" rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full border border-[#00F0FF]/50 bg-[#00F0FF]/10 text-white hover:bg-[#00F0FF]/25 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-[0_0_15px_rgba(0,240,255,0.1)]"
+                  className="px-6 py-3 rounded-full border border-[#00F0FF]/50 bg-[#00F0FF]/10 text-gray-900 hover:bg-[#00F0FF]/25 font-bold flex items-center justify-center gap-2 transition-all text-xs text-center shadow-sm"
                 >
                   <Building className="w-4 h-4 text-[#00F0FF]" />
                   VEJA O ESCRITÓRIO VIRTUAL
@@ -198,16 +198,16 @@ export default function InstitutionalPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-[#2563EB]/30 bg-[#050810] p-8 shadow-[0_0_30px_rgba(37,99,235,0.1)]">
+              <div className="relative rounded-2xl overflow-hidden border border-[#2563EB]/30 bg-[#050810] p-8 shadow-sm">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500"></div>
-                <h3 className="text-xl font-bold mb-6 text-white">O Custo da Ineficiência</h3>
+                <h3 className="text-xl font-bold mb-6 text-gray-900">O Custo da Ineficiência</h3>
                 <div className="space-y-8">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-[#94A3B8]">Economia de tempo com Automação de IA*</span>
                       <span className="text-[#00F0FF] font-bold">~12.5h/semana</span>
                     </div>
-                    <div className="w-full bg-gray-800 rounded-full h-2">
+                    <div className="w-full bg-gray-200 rounded-full h-2">
                       <div className="bg-[#00F0FF] h-2 rounded-full" style={{ width: '90%' }}></div>
                     </div>
                     <p className="text-[10px] text-[#64748B] mt-2 italic">*Economia média reportada por gestores públicos em tarefas operacionais.</p>
@@ -223,7 +223,7 @@ export default function InstitutionalPage() {
                       <span className="text-[#94A3B8]">Desperdício anual por microgerenciamento**</span>
                       <span className="text-orange-400 font-bold">R$ 75.000,00</span>
                     </div>
-                    <div className="w-full bg-gray-800 rounded-full h-2">
+                    <div className="w-full bg-gray-200 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: '100%' }}></div>
                     </div>
                     <p className="text-[10px] text-[#64748B] mt-2 italic">**Simulação baseada em salário de R$ 20k (Prefeito/Secretário) perdendo 50h/mês.</p>
@@ -381,7 +381,7 @@ export default function InstitutionalPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-[0_0_30px_rgba(37,99,235,0.15)] aspect-video relative bg-black"
+              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-sm aspect-video relative bg-white"
             >
               <iframe
                 className="absolute inset-0 w-full h-full"
@@ -397,7 +397,7 @@ export default function InstitutionalPage() {
             <div className="mt-6 flex justify-center">
               <a
                 href="/loja"
-                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-[#2563EB] text-white hover:from-purple-600 hover:to-[#1D4ED8] font-black text-xs uppercase shadow-[0_0_20px_rgba(147,51,234,0.2)] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-[#2563EB] text-gray-900 hover:from-purple-600 hover:to-[#1D4ED8] font-black text-xs uppercase shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <User className="w-4 h-4" /> Contrate Nosso Time
               </a>
@@ -437,10 +437,10 @@ export default function InstitutionalPage() {
       <section id="oferta-irresistivel" className="py-24 bg-[#0A0F1C] border-b border-[#2563EB]/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-black uppercase text-purple-400 bg-purple-500/10 px-3 py-1 rounded border border-purple-500/20">
+            <span className="text-[10px] font-black uppercase text-purple-600 bg-purple-50 px-3 py-1 rounded border border-purple-500/20">
               VALORES CLAROS E TRANSPARENTES
             </span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mt-4 uppercase tracking-tight text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mt-4 uppercase tracking-tight text-center">
               Opções de Serviços e Baixo Ticket
             </h2>
             <p className="text-[#94A3B8] max-w-2xl mx-auto text-xs md:text-sm text-center">
@@ -462,12 +462,12 @@ export default function InstitutionalPage() {
                   <div className="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center border border-purple-500/30 text-[#00F0FF]">
                     <Brain className="w-6 h-6" />
                   </div>
-                  <span className="text-[9px] font-black uppercase text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded border border-purple-500/20">
+                  <span className="text-[9px] font-black uppercase text-purple-600 bg-purple-50 px-2.5 py-1 rounded border border-purple-500/20">
                     Download Imediato
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                <h3 className="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">
                   ParadoxTeam — Agentes IA
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
@@ -475,15 +475,15 @@ export default function InstitutionalPage() {
                 </p>
 
                 {/* Preço de R$197 */}
-                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-800 space-y-1">
-                  <div className="text-[11px] text-gray-400 line-through font-semibold">De R$ 997,00 por apenas</div>
+                <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-200 space-y-1">
+                  <div className="text-[11px] text-gray-500 line-through font-semibold">De R$ 997,00 por apenas</div>
                   <div className="flex items-baseline gap-1.5 my-1">
-                    <span className="text-sm font-black text-white">R$</span>
+                    <span className="text-sm font-black text-gray-900">R$</span>
                     <span className="text-4xl font-black text-[#00F0FF] tracking-tight">197</span>
-                    <span className="text-xs text-gray-400 font-medium">pagamento único</span>
+                    <span className="text-xs text-gray-500 font-medium">pagamento único</span>
                   </div>
-                  <p className="text-[10.5px] text-emerald-400 font-extrabold flex items-center gap-1.5 pt-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Acesso vitalício aos robôs
+                  <p className="text-[10.5px] text-green-600 font-extrabold flex items-center gap-1.5 pt-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" /> Acesso vitalício aos robôs
                   </p>
                   <p className="text-[10.5px] text-[#00F0FF] font-extrabold flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#00F0FF] shrink-0" /> Suporte por 30 dias via WhatsApp
@@ -495,7 +495,7 @@ export default function InstitutionalPage() {
                   <div className="flex items-center gap-1.5 text-[10px] font-black uppercase text-[#00F0FF]">
                     <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#00F0FF] animate-pulse" /> Plano de 1 Ano: Suporte Completo & Onboarding
                   </div>
-                  <p className="text-[11px] text-gray-300 mt-1 leading-relaxed font-medium">
+                  <p className="text-[11px] text-gray-600 mt-1 leading-relaxed font-medium">
                     Garanta 1 ano de suporte dedicado, atualizações contínuas de novos robôs de IA e onboarding individual exclusivo!
                   </p>
                 </div>
@@ -509,8 +509,8 @@ export default function InstitutionalPage() {
                     "Acesso aos melhores prompts do mercado",
                     "Manual simples de importação"
                   ].map((feat, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-gray-300">
-                      <Check className="w-4 h-4 text-purple-400 shrink-0" />
+                    <li key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                      <Check className="w-4 h-4 text-purple-600 shrink-0" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -518,12 +518,12 @@ export default function InstitutionalPage() {
               </div>
 
               {/* Botão de checkout Kiwify integrado */}
-              <div className="pt-5 border-t border-gray-800 space-y-3">
+              <div className="pt-5 border-t border-gray-200 space-y-3">
                 <a
                   href="https://pay.kiwify.com.br/2yfNvHR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
                 >
                   <Rocket className="w-4 h-4" /> Baixar Robôs por R$ 197
                 </a>
@@ -532,16 +532,16 @@ export default function InstitutionalPage() {
                   href="https://pay.kiwify.com.br/rViC8d1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
                 >
-                  <Sparkles className="w-4 h-4 text-white animate-pulse" /> Adquirir Plano de 1 Ano por R$ 997
+                  <Sparkles className="w-4 h-4 text-gray-900 animate-pulse" /> Adquirir Plano de 1 Ano por R$ 997
                 </a>
                 
                 <a 
                   href="https://wa.me/5549984101144?text=acabei%20de%20comprar%20o%20Jarvis%20da%20VirtualPlace%2C%20quero%20meu%20onboarding."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center text-[10.5px] text-gray-400 hover:text-white underline pt-2 transition-colors"
+                  className="block text-center text-[10.5px] text-gray-500 hover:text-gray-900 underline pt-2 transition-colors"
                 >
                   Comprar pelo WhatsApp e receber onboarding
                 </a>
@@ -549,7 +549,7 @@ export default function InstitutionalPage() {
             </div>
 
             {/* Plano 2: Cobertura de Vídeos e Audiovisual */}
-            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
+            <div className="p-8 rounded-2xl border border-gray-200 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/15 flex items-center justify-center border border-[#00F0FF]/25 text-[#00F0FF]">
@@ -560,7 +560,7 @@ export default function InstitutionalPage() {
                   </span>
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">
                   COBERTURA DE EVENTOS E PRODUÇÃO AUDIOVISUAL
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
@@ -569,30 +569,30 @@ export default function InstitutionalPage() {
 
                 {/* Opções de Preço por Hora */}
                 <div className="space-y-3.5 mb-8">
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-white uppercase">Videomaker Mobile</span>
+                      <span className="text-[11px] font-bold text-gray-900 uppercase">Videomaker Mobile</span>
                       <span className="text-xs font-black text-[#00F0FF]">R$ 80 / hora</span>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-white uppercase">Filmmaker Professional</span>
-                      <span className="text-xs font-black text-white">R$ 160 / hora</span>
+                      <span className="text-[11px] font-bold text-gray-900 uppercase">Filmmaker Professional</span>
+                      <span className="text-xs font-black text-gray-900">R$ 160 / hora</span>
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-800/80">
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-white uppercase">Fotógrafo</span>
+                      <span className="text-[11px] font-bold text-gray-900 uppercase">Fotógrafo</span>
                       <span className="text-xs font-black text-[#00F0FF]">R$ 120 / hora</span>
                     </div>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/20">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-white uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-[#00F0FF]" /> Edição</span>
+                      <span className="text-[11px] font-bold text-gray-900 uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-[#00F0FF]" /> Edição</span>
                       <span className="text-xs font-black text-[#00F0FF]">R$ 297 / minuto final</span>
                     </div>
                     <p className="text-[9px] text-[#94A3B8] mt-1">Edição e pós-produção audiovisual de alta performance, sonorização e correção de cores.</p>
@@ -601,10 +601,10 @@ export default function InstitutionalPage() {
               </div>
 
               {/* Botão de redirecionamento */}
-              <div className="pt-5 border-t border-gray-800 flex justify-center">
+              <div className="pt-5 border-t border-gray-200 flex justify-center">
                 <a
                   href="/loja"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-200 hover:border-white text-gray-600 hover:text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <Calculator className="w-4 h-4" /> Simular na Calculadora
                 </a>
@@ -612,7 +612,7 @@ export default function InstitutionalPage() {
             </div>
 
             {/* Plano 3: Consultoria e Assessoria de Branding e Growth Marketing (R$1.500) */}
-            <div className="p-8 rounded-2xl border border-gray-800 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
+            <div className="p-8 rounded-2xl border border-gray-200 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#2563EB]/15 flex items-center justify-center border border-[#2563EB]/25 text-[#00F0FF]">
@@ -623,7 +623,7 @@ export default function InstitutionalPage() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight">
+                <h3 className="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">
                   Branding & Growth Marketing
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
@@ -632,9 +632,9 @@ export default function InstitutionalPage() {
 
                 {/* Opções de Preço */}
                 <div className="space-y-3 mb-8">
-                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-800/80 hover:border-[#2563EB]/40 transition-all">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-200/80 hover:border-[#2563EB]/40 transition-all">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-black text-white uppercase">Assessoria Mensal</span>
+                      <span className="text-xs font-black text-gray-900 uppercase">Assessoria Mensal</span>
                       <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-500">/ mês</span></span>
                     </div>
                     <div className="text-[10px] text-[#94A3B8] leading-relaxed mt-3 space-y-1 block">
@@ -647,10 +647,10 @@ export default function InstitutionalPage() {
               </div>
 
               {/* Botão de redirecionamento */}
-              <div className="pt-5 border-t border-gray-800 flex justify-center">
+              <div className="pt-5 border-t border-gray-200 flex justify-center">
                 <a
                   href="/loja"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-800 hover:border-white text-gray-300 hover:text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-200 hover:border-white text-gray-600 hover:text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <Calculator className="w-4 h-4" /> Ver na Calculadora Completa
                 </a>
@@ -690,7 +690,7 @@ export default function InstitutionalPage() {
       {/* Form Section */}
       <section id="contact-form" className="py-24 relative bg-[#050810]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#0A0F1C] border border-[#2563EB]/30 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(37,99,235,0.1)] relative overflow-hidden">
+          <div className="bg-[#0A0F1C] border border-[#2563EB]/30 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <h2 className="text-3xl font-bold mb-4 text-[#F8FAFC]">Inicie a Transformação da sua Gestão</h2>
@@ -796,7 +796,7 @@ export default function InstitutionalPage() {
                 <button 
                   type="submit" 
                   disabled={status === 'submitting'}
-                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-70 mt-6"
+                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-gray-900 font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-70 mt-6"
                 >
                   {status === 'submitting' ? (
                     <><Loader2 className="w-5 h-5 animate-spin" /> Conectando...</>
@@ -812,13 +812,13 @@ export default function InstitutionalPage() {
               {/* Temporary direct CTA replacement for hidden form */}
               <div className="flex flex-col items-center justify-center p-8 bg-[#050810]/50 rounded-2xl border border-[#2563EB]/20">
                 <Brain className="w-16 h-16 text-[#00F0FF] mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-2 text-center">Pronto para começar?</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">Pronto para começar?</h3>
                 <p className="text-[#94A3B8] mb-8 text-center max-w-md">
                   Fale diretamente com nosso Agente de Inteligência Artificial no Telegram.
                 </p>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot?text=%2Fbot%20Ol%C3%A1%2C%20tenho%20interesse%20em%20saber%20sobre%20o%20trabalho%20da%20VirtualPlace%20para%20institui%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer"
-                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                  className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-gray-900 font-bold flex items-center justify-center gap-3 transition-all shadow-sm"
                 >
                   <Brain className="w-5 h-5" />
                   Iniciar Conversa com Agente
@@ -858,14 +858,14 @@ export default function InstitutionalPage() {
               Seja um Freela Credenciado (Trabalhe Conosco)
             </a>
           </div>
-          <p className="text-xs text-gray-400 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
+          <p className="text-xs text-gray-500 font-medium">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
         </div>
       </footer>
 
       {/* Image Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 flex items-start justify-center bg-black/95 p-4 overflow-y-auto cursor-zoom-out"
+          className="fixed inset-0 z-50 flex items-start justify-center bg-white/95 p-4 overflow-y-auto cursor-zoom-out"
           onClick={() => {
             setSelectedImage(null);
             setIsZoomed(false);
@@ -887,7 +887,7 @@ export default function InstitutionalPage() {
             }}
           />
           <button 
-            className="fixed top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/80 transition-colors z-[60]"
+            className="fixed top-4 right-4 text-gray-900 bg-white/50 rounded-full p-2 hover:bg-white/80 transition-colors z-[60]"
             onClick={() => {
               setSelectedImage(null);
               setIsZoomed(false);
