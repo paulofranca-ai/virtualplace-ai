@@ -28,6 +28,7 @@ export default function App() {
         <Route path="/comprar" element={<BuyAgentsPage />} />
         <Route path="/planos" element={<BuyAgentsPage />} />
         <Route path="/agentes" element={<BuyAgentsPage />} />
+        <Route path="/ia" element={<BuyAgentsPage />} />
         <Route path="/loja" element={<LojaPage />} />
       </Routes>
       <WhatsAppButton />

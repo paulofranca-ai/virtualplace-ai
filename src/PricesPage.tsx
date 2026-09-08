@@ -229,7 +229,7 @@ export default function PricesPage() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
           <a href="/" className="flex items-center gap-3">
             <img 
               src="https://i.imgur.com/w2iO5CR.png" 
@@ -238,6 +238,18 @@ export default function PricesPage() {
               referrerPolicy="no-referrer" 
             />
           </a>
+
+          {/* Centralizado no cabeçalho */}
+          <div className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+            <a 
+              href="https://instagram.com/virtualplace.agencia" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-base sm:text-lg font-bold text-black hover:text-green-600 transition-colors tracking-tight"
+            >
+              @virtualplace.agencia
+            </a>
+          </div>
 
           <div className="flex items-center gap-4">
             <a 

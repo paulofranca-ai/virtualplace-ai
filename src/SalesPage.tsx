@@ -1,165 +1,149 @@
 import React from 'react';
 import { PlayCircle, Award, Terminal, Star, ExternalLink, ChevronRight } from 'lucide-react';
-import NeonBackground3D from './components/NeonBackground3D';
 
 export default function SalesPage() {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-emerald-400 selection:text-white relative overflow-x-hidden">
-      <NeonBackground3D />
       
-      {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-          <div className="shrink-0 flex items-center gap-3">
-            <a href="/">
-              <img 
-                src="https://i.imgur.com/w2iO5CR.png" 
-                alt="Virtual Place Logo" 
-                className="h-12 md:h-16 w-auto object-contain brightness-110" 
-                referrerPolicy="no-referrer" 
-              />
-            </a>
-            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 border border-green-200 font-mono text-[10px] text-green-600">
-              <Award className="w-3 h-3 text-green-600" />
-              <span>COPRODUTOR 6 EM 7 • +23 LANÇAMENTOS EXECUTADOS</span>
-            </div>
-          </div>
-                    <div className="flex items-center gap-4">
-            <a 
-              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Virtual%20Place." 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-400 text-white text-xs font-black uppercase transition-all shadow-sm flex items-center gap-2"
-            >
-              Falar no WhatsApp
-            </a>
-          </div>
-        </div>
-      </nav>
+      {/* Header com Logo */}
+      <header className="pt-6 sm:pt-8 pb-3 text-center">
+        <a href="/" className="inline-block">
+          <img 
+            src="https://i.imgur.com/w2iO5CR.png" 
+            alt="Virtual Place Logo" 
+            className="h-10 sm:h-12 w-auto object-contain brightness-110 mx-auto" 
+            loading="eager"
+            decoding="async"
+            referrerPolicy="no-referrer" 
+          />
+        </a>
+      </header>
 
       {/* Main Content */}
-      <main className="pt-36 pb-20 md:pt-44 md:pb-24 relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <main className="pt-2 pb-16 md:pb-20 relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 text-black leading-tight uppercase font-sans tracking-tight max-w-4xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-black mb-5 text-black leading-tight uppercase font-sans tracking-tight max-w-4xl mx-auto">
           A internet é um lugar virtual. Nossa missão nela, é criar marcas e dar vida a elas, impulsionadas por tecnologia e criatividade humana
         </h1>
-        
-        <p className="text-gray-600 text-sm sm:text-lg leading-relaxed max-w-3xl mx-auto mb-10">
-          Seja você um <strong>comércio local</strong> que deseja lotar a agenda, uma <strong>empresa</strong> buscando estruturar processos, ou um <strong>infoprodutor</strong> escalando faturamentos: entregamos soluções completas.
-        </p>
 
         {/* Vídeo */}
-        <div className="mt-8 max-w-4xl mx-auto mb-12">
-          <div className="p-1 rounded-2xl bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 shadow-sm">
-            <div className="rounded-xl overflow-hidden aspect-video relative bg-white">
+        <div className="max-w-3xl mx-auto mb-6">
+          <div className="p-1 rounded-2xl bg-gray-200 shadow-sm">
+            <div className="rounded-xl overflow-hidden aspect-video relative bg-black">
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/SSwGhh99DOc?autoplay=0&rel=0"
                 title="Apresentação"
+                loading="lazy"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
           </div>
-          <p className="text-xs text-gray-500 mt-3 flex items-center justify-center gap-1.5">
+          <p className="text-xs text-gray-500 mt-2 flex items-center justify-center gap-1.5">
             <PlayCircle className="w-4 h-4 text-green-600" /> Assista ao vídeo de apresentação e qualidade das nossas produções
           </p>
         </div>
 
         {/* CTA Planos */}
-        <div className="mb-20">
+        <div className="mb-14 sm:mb-16">
           <a 
             href="#planos"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-black uppercase text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 text-base sm:text-lg font-black uppercase text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md transition-colors"
           >
             Ver Nossos Planos & Valores <ChevronRight className="w-5 h-5" />
           </a>
         </div>
 
         {/* Nossos Planos */}
-        <div id="planos" className="pt-4 mb-20 max-w-6xl mx-auto">
+        <div id="planos" className="scroll-mt-4 pt-4 mb-20 max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-black uppercase tracking-tight">
+              Nossos Planos & Valores
+            </h2>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left">
             
             {/* 1. Videomaker */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Videomaker 1h + Drone + 1min Editado Final</h3>
                 <p className="text-black text-sm mb-4 font-medium">Gravação presencial, tomadas aéreas e edição final.</p>
                 <div className="text-xl font-black text-black font-mono mb-4">R$ 150</div>
               </div>
-              <a href="https://pay.kiwify.com.br/cG8n7jh" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm text-center leading-tight">
+              <a href="https://pay.kiwify.com.br/cG8n7jh" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm text-center leading-tight">
                 COMPRAR GRAVAÇÃO E EDIÇÃO DE FILME / VÍDEO
               </a>
             </div>
 
             {/* 2. Transmissão ao vivo */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Transmissão ao Vivo</h3>
                 <p className="text-black text-sm mb-4 font-medium">Estrutura de streaming para seu evento ou podcast.</p>
                 <div className="text-xl font-black text-black font-mono mb-4">R$ 150 <span className="text-xs font-bold">/ hora</span></div>
               </div>
-              <a href="https://pay.kiwify.com.br/elj3ZQY" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm text-center leading-tight">
+              <a href="https://pay.kiwify.com.br/elj3ZQY" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm text-center leading-tight">
                 COMPRAR TRANSMISSÃO AO VIVO
               </a>
             </div>
 
             {/* 3. Stories tempo real */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Stories Tempo Real</h3>
                 <p className="text-black text-sm mb-4 font-medium">Cobertura dinâmica para suas redes sociais.</p>
                 <div className="text-xl font-black text-black font-mono mb-4">R$ 150 <span className="text-xs font-bold">/ hora</span></div>
               </div>
-              <a href="https://pay.kiwify.com.br/N51MmGe" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm text-center leading-tight">
+              <a href="https://pay.kiwify.com.br/N51MmGe" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm text-center leading-tight">
                 COMPRAR STORIES TEMPO REAL
               </a>
             </div>
 
             {/* 4. Arte divulgação */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Arte Divulgação</h3>
                 <p className="text-black text-sm mb-4 font-medium">Design profissional e criativos de alta conversão.</p>
                 <div className="text-xl font-black text-black font-mono mb-4">R$ 100 <span className="text-xs font-bold">/ arte</span></div>
               </div>
-              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o%20por%20R%24100." target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm text-center leading-tight">
+              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o%20por%20R%24100." target="_blank" rel="noopener noreferrer" className="w-full py-3 px-2 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm text-center leading-tight">
                 COMPRAR ARTE DIVULGAÇÃO
               </a>
             </div>
 
             {/* 5. Assessoria de tráfego */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Assessoria Tráfego</h3>
                 <p className="text-black text-sm mb-4 font-medium">Estratégias avançadas de anúncios patrocinados.</p>
               </div>
-              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Assessoria%20de%20Tr%C3%A1fego." target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm mt-4">
+              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Assessoria%20de%20Tr%C3%A1fego." target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm mt-4">
                 Consultar Whats
               </a>
             </div>
 
             {/* 6. Co produção info */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Coprodução Info</h3>
                 <p className="text-black text-sm mb-4 font-medium">Lançamentos de infoprodutos com foco em performance.</p>
               </div>
-              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Coprodu%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm mt-4">
+              <a href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Coprodu%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm mt-4">
                 Consultar Whats
               </a>
             </div>
 
             {/* 7. Cérebro Jarvis */}
-            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-xl flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-black text-black uppercase tracking-tight mb-2">Cérebro Jarvis IA</h3>
                 <p className="text-black text-sm mb-4 font-medium">Esquadrão com 30+ agentes autônomos. Acesso vitalício.</p>
                 <div className="text-xl font-black text-black font-mono mb-4">R$ 197</div>
               </div>
-              <a href="https://pay.kiwify.com.br/KmwA0O0" target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm mt-4">
+              <a href="/agentes" className="w-full py-3 rounded-xl bg-gray-900 hover:bg-black text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-colors shadow-sm mt-4 text-center">
                 Comprar Acesso
               </a>
             </div>
@@ -170,7 +154,7 @@ export default function SalesPage() {
 
         {/* Depoimento Léo */}
         <div className="max-w-3xl mx-auto mb-20 text-left">
-          <div className="p-8 sm:p-10 rounded-3xl bg-gray-50 border border-gray-200 shadow-xl relative">
+          <div className="p-8 sm:p-10 rounded-3xl bg-gray-50 border border-gray-200 shadow-sm relative">
             <div className="absolute -top-5 left-10">
               <div className="flex gap-1 bg-white p-2 rounded-lg shadow-sm border border-gray-100">
                 {[...Array(5)].map((_, i) => (
@@ -180,7 +164,7 @@ export default function SalesPage() {
             </div>
             
             <p className="text-gray-700 text-lg sm:text-xl font-medium italic mt-4 mb-8 leading-relaxed">
-              "Trabalhar com a equipe da Virtual Place foi um divisor de águas para meus lançamentos. Eles entregaram não só a qualidade visual absurda que eu precisava para os anúncios, mas também toda a inteligência por trás dos criativos."
+              "Eu recomendo o trabalho do Paulo, gestor de tráfego, tivemos retorno de 3x 4x nas campanhas de cursos e livros."
             </p>
             
             <div className="flex items-center gap-4">
@@ -197,9 +181,7 @@ export default function SalesPage() {
 
         {/* Curso de Marketing e Tráfego */}
         <div className="max-w-4xl mx-auto mb-20">
-          <div className="flex flex-col md:flex-row items-center justify-between p-8 sm:p-10 rounded-3xl bg-gray-900 border border-gray-800 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/20 transition-all" />
-            
+          <div className="flex flex-col md:flex-row items-center justify-between p-8 sm:p-10 rounded-3xl bg-gray-900 border border-gray-800 shadow-lg relative overflow-hidden">
             <div className="text-left md:max-w-lg mb-8 md:mb-0 relative z-10">
               <div className="inline-block text-[10px] font-mono font-bold uppercase text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-500/30 mb-4">
                 Para quem quer aprender do zero
@@ -221,7 +203,7 @@ export default function SalesPage() {
                 href="https://projeto-stark.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto px-8 py-4 rounded-xl bg-black hover:bg-gray-900 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:scale-105"
+                className="w-full md:w-auto px-8 py-4 rounded-xl bg-black hover:bg-gray-800 text-white font-black text-sm uppercase flex items-center justify-center gap-2 transition-colors shadow-md"
               >
                 Acessar o Curso Agora <ExternalLink className="w-4 h-4" />
               </a>
@@ -238,6 +220,8 @@ export default function SalesPage() {
             src="https://i.imgur.com/w2iO5CR.png" 
             alt="Virtual Place Logo" 
             className="h-8 w-auto object-contain opacity-50 grayscale" 
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer" 
           />
           <p>© {new Date().getFullYear()} Virtual Place. Todos os direitos reservados.</p>
