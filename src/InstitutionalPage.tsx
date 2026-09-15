@@ -136,7 +136,9 @@ export default function InstitutionalPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="/agentes"
+                  href="https://pay.kiwify.com.br/2yfNvHR"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-gray-900 hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-sm border border-purple-400/30"
                 >
                   <Rocket className="w-4 h-4 text-blue-500" />
@@ -357,7 +359,13 @@ export default function InstitutionalPage() {
                 ))}
                 
                 <div className="px-4 py-2 rounded-full border border-orange-500/50 text-orange-400 text-sm font-bold bg-orange-500/10 flex items-center gap-2">
-                  + 61 projetos executados
+                  + 70 projetos executados
+                </div>
+                <div className="px-4 py-2 rounded-full border border-purple-500/50 text-purple-400 text-sm font-bold bg-purple-500/10 flex items-center gap-2">
+                  + 23 lançamentos de infos
+                </div>
+                <div className="px-4 py-2 rounded-full border border-emerald-500/50 text-emerald-400 text-sm font-bold bg-emerald-500/10 flex items-center gap-2">
+                  + 400 veículos vendidos
                 </div>
               </div>
 
@@ -840,10 +848,12 @@ export default function InstitutionalPage() {
               Página Comercial
             </a>
             <a 
-              href="/agentes"
+              href="https://pay.kiwify.com.br/2yfNvHR"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
-              Compre Robôs de IA
+              Compre Robôs de IA (Kiwify)
             </a>
             <a 
               href="/loja"

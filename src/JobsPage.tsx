@@ -133,7 +133,9 @@ export default function JobsPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="/agentes"
+                  href="https://pay.kiwify.com.br/2yfNvHR"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] border border-purple-400/30"
                 >
                   <Rocket className="w-4 h-4 text-cyan-300" />
@@ -287,10 +289,12 @@ export default function JobsPage() {
               Institucional
             </a>
             <a 
-              href="/agentes"
+              href="https://pay.kiwify.com.br/2yfNvHR"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2 rounded-full border border-[#00F0FF]/30 hover:border-[#00F0FF] text-[#00F0FF] font-semibold transition-all hover:bg-[#00F0FF]/5"
             >
-              Compre Robôs de IA
+              Compre Robôs de IA (Kiwify)
             </a>
             <a 
               href="/loja"

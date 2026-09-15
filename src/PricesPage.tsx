@@ -125,22 +125,21 @@ export default function PricesPage() {
       badgeColor: 'border-blue-200 text-blue-600 bg-blue-50',
       icon: Video,
       iconColor: 'text-blue-600',
-      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Você escolhe se prefere apenas edição ou gravação completa.',
+      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Cada hora de gravação presencial inclui stories, brutos e aftermovie cinemático.',
       promoOffer: {
-        title: 'Vídeomaking 30s Edição + Promo Captação',
+        title: 'Gravação: Stories + Brutos + 1 min Aftermovie Cinemático',
         price: 'R$ 150,00 / hora',
-        ctaText: 'Contratar Vídeomaking (R$ 150/h)',
+        ctaText: 'Contratar Gravação (R$ 150/h)',
         ctaUrl: 'https://pay.kiwify.com.br/cG8n7jh'
       },
       features: [
-        'Promoção: Vídeomaking 30s Edição + Captação Presencial por R$ 150/hora',
+        'Por hora de gravação: Stories na hora + todos os brutos + 1 min de Aftermovie Cinemático',
+        'Entrega de todos os arquivos brutos sem corte para o seu acervo',
+        '1 minuto de aftermovie cinemático com color grading profissional por hora',
+        'Live streaming separada (TikTok, YouTube, Instagram e/ou Twitch) por mais R$ 150 / hora',
         'Contratação flexível: por hora de trabalho ou por minuto de vídeo finalizado',
-        'Modalidades: Somente Edição ou Gravação Presencial + Edição',
         'Opcional: Inteligência Artificial (Cenários e B-rolls)',
-        'Opcional: Efeitos Especiais & VFX Motion',
-        'Opcional: Estilo Cinematográfico (Color Grading de filme)',
-        'Opcional: Narração por Locutor Humano ou Voz de IA Neural',
-        'Opcional: Legendas e Lettering com letras de alto impacto'
+        'Opcional: Estilo Cinematográfico (Color Grading de filme)'
       ],
       ctaText: 'Pedir Orçamento Customizado no WhatsApp',
       ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20e%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeos.'
@@ -424,20 +423,23 @@ export default function PricesPage() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-              {/* Pacote 1 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Pacote 1: Gravação Completa Unificada */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
                 <div>
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2.5 py-0.5 rounded-full mb-2">
+                    Tudo em 1 Serviço
+                  </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Vídeomaking 30s + Captação
+                    Stories + Brutos + 1 min Aftermovie Cinemático
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Edição dinâmica de alta retenção (Reels/TikTok) + Captação presencial no seu local.
+                    Por hora de gravação: postagem de stories no local, 100% dos brutos entregues e 1 min de aftermovie cinemático para cada hora gravada.
                   </p>
                   <div className="text-2xl font-black text-blue-600 font-mono mb-4">
                     R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contrate por hora ou minuto final</div>
+                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Por hora de gravação presencial</div>
                   </div>
                 </div>
                 <a
@@ -446,23 +448,54 @@ export default function PricesPage() {
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
                 >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Pacote
+                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Gravação
                 </a>
               </div>
 
-              {/* Pacote 2 */}
+              {/* Pacote 2: Transmissão ao Vivo Separada */}
+              <div className="p-6 rounded-2xl bg-gray-50 border border-rose-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-rose-300 transition-all">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-rose-50 rounded-full blur-2xl pointer-events-none group-hover:bg-rose-500/20 transition-all" />
+                <div>
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-rose-600 bg-rose-100/60 px-2.5 py-0.5 rounded-full mb-2">
+                    Serviço Separado
+                  </div>
+                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
+                    Transmissão ao Vivo (Live)
+                  </h4>
+                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
+                    Live separada: Streaming profissional no TikTok, YouTube, Instagram e/ou Twitch para eventos, podcasts e lançamentos + Gravação inclusa.
+                  </p>
+                  <div className="text-2xl font-black text-rose-600 font-mono mb-4">
+                    + R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
+                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contratado separadamente por hora</div>
+                  </div>
+                </div>
+                <a
+                  href="https://pay.kiwify.com.br/elj3ZQY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
+                >
+                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Live Separada
+                </a>
+              </div>
+
+              {/* Pacote 3: Drone */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
                 <div>
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2.5 py-0.5 rounded-full mb-2">
+                    Aéreo 4K
+                  </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
                     Drone + 1min Editado
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Captação aérea com drone de alta resolução e edição de 1 minuto. (Despesas à parte)
+                    Captação aérea com drone de alta resolução e edição de 1 minuto. (Despesas de deslocamento à parte).
                   </p>
                   <div className="text-2xl font-black text-blue-600 font-mono mb-4">
                     R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contrate por hora ou minuto final</div>
+                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Captação e tomadas aéreas</div>
                   </div>
                 </div>
                 <a
@@ -471,81 +504,34 @@ export default function PricesPage() {
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
                 >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Pacote
+                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Drone
                 </a>
               </div>
 
-              {/* Pacote 3 */}
-              <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
-                <div>
-                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Transmissão ao Vivo
-                  </h4>
-                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Transmissão profissional em diversas redes simultaneamente + Gravação inclusa.
-                  </p>
-                  <div className="text-2xl font-black text-blue-600 font-mono mb-4">
-                    R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contrate por hora ou minuto final</div>
-                  </div>
-                </div>
-                <a
-                  href="https://pay.kiwify.com.br/elj3ZQY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
-                >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Pacote
-                </a>
-              </div>
-
-              {/* Pacote 4 */}
-              <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
-                <div>
-                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Stories em Tempo Real
-                  </h4>
-                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Cobertura de eventos e bastidores com gravação e postagem de stories no local.
-                  </p>
-                  <div className="text-2xl font-black text-blue-600 font-mono mb-4">
-                    R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contrate por hora ou minuto final</div>
-                  </div>
-                </div>
-                <a
-                  href="https://pay.kiwify.com.br/N51MmGe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
-                >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Pacote
-                </a>
-              </div>
-
-              {/* Pacote 5: Arte Estática */}
+              {/* Pacote 4: Arte Estática */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-green-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-green-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-green-600 bg-green-100/60 px-2.5 py-0.5 rounded-full mb-2">
+                    Design Gráfico
+                  </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
                     Arte Estática p/ Rede Social
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Design profissional de alta conversão para Instagram, anúncios e campanhas.
+                    Design profissional de alta conversão para Instagram, anúncios e campanhas promocionais.
                   </p>
                   <div className="text-2xl font-black text-green-600 font-mono mb-4">
                     R$ 100 <span className="text-sm text-gray-600 font-bold ml-1">/ arte</span>
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Arte%20Est%C3%A1tica%20por%20R%24100."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o%20por%20R%24100."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
+                  className="w-full py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-green-400" /> Solicitar Arte
+                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Arte
                 </a>
               </div>
             </div>
@@ -612,10 +598,12 @@ export default function PricesPage() {
                   </a>
 
                   <a
-                    href="/agentes"
-                    className="text-[11px] font-mono text-gray-500 hover:text-purple-300 underline"
+                    href="https://pay.kiwify.com.br/2yfNvHR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-mono text-purple-600 hover:text-purple-800 underline"
                   >
-                    Ver detalhes de todos os 30+ robôs →
+                    Ir direto para o Checkout Kiwify →
                   </a>
                 </div>
               </div>
@@ -681,10 +669,12 @@ export default function PricesPage() {
                 <Phone className="w-4 h-4 text-white" /> Falar no WhatsApp Agora
               </a>
               <a 
-                href="/agentes" 
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white hover:bg-gray-100 border border-gray-300 text-gray-900 font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                href="https://pay.kiwify.com.br/2yfNvHR" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <Terminal className="w-4 h-4 text-green-600" /> Conhecer o Cérebro de IA (R$ 197)
+                <Terminal className="w-4 h-4 text-white" /> Adquirir Cérebro IA Kiwify (R$ 197)
               </a>
             </div>
           </div>
@@ -700,7 +690,7 @@ export default function PricesPage() {
             <span>•</span>
             <a href="/precos" className="hover:text-green-600">Serviços & Soluções</a>
             <span>•</span>
-            <a href="/agentes" className="hover:text-green-600">Cérebro IA</a>
+            <a href="https://pay.kiwify.com.br/2yfNvHR" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">Cérebro IA</a>
           </div>
         </div>
       </footer>
