@@ -56,21 +56,21 @@ export default function SalesPage() {
             href="#planos"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 text-base sm:text-lg font-black uppercase text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md transition-colors"
           >
-            Ver Nossos Planos & Valores <ChevronRight className="w-5 h-5" />
+            Conhecer Nossos Planos & Serviços <ChevronRight className="w-5 h-5" />
           </a>
         </div>
 
-        {/* Nossos Planos & Valores */}
+        {/* Nossos Planos & Serviços */}
         <div id="planos" className="scroll-mt-4 pt-4 mb-20 max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
               Soluções Completas
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-black uppercase tracking-tight mt-3">
-              Nossos Planos & Valores
+              Nossos Planos & Serviços
             </h2>
             <p className="text-gray-500 text-sm mt-2 max-w-xl mx-auto">
-              Produção audiovisual, criativos e estratégias de tráfego com investimento acessível e alta conversão.
+              Produção audiovisual, criativos e estratégias de tráfego com atendimento exclusivo e alta conversão.
             </p>
           </div>
 

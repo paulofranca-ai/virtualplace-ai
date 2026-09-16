@@ -7,7 +7,7 @@ export interface ServiceItem {
   title: string;
   subtitle: string;
   description: string;
-  price: string;
+  price?: string;
   unit?: string;
   link: string;
   linkText: string;
@@ -150,16 +150,18 @@ export function ServiceCard({ service }: ServiceCardProps) {
         </div>
 
         <div>
-          {/* Price Tag */}
-          <div className="pt-4 border-t border-gray-100 flex items-baseline justify-between mb-4">
-            <div>
-              <span className="text-[11px] uppercase text-gray-400 block font-semibold">Investimento</span>
-              <div className="text-2xl font-black text-gray-900 font-mono tracking-tight">
-                {service.price}
-                {service.unit && <span className="text-xs font-semibold text-gray-500 font-sans ml-1">{service.unit}</span>}
+          {/* Price Tag (apenas se definido) */}
+          {service.price && (
+            <div className="pt-4 border-t border-gray-100 flex items-baseline justify-between mb-4">
+              <div>
+                <span className="text-[11px] uppercase text-gray-400 block font-semibold">Investimento</span>
+                <div className="text-2xl font-black text-gray-900 font-mono tracking-tight">
+                  {service.price}
+                  {service.unit && <span className="text-xs font-semibold text-gray-500 font-sans ml-1">{service.unit}</span>}
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Action Link / Button */}
           <a 

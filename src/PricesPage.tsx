@@ -48,7 +48,7 @@ interface ServiceItem {
   ctaUrl: string;
   promoOffer?: {
     title: string;
-    price: string;
+    price?: string;
     ctaText: string;
     ctaUrl: string;
   };
@@ -128,15 +128,14 @@ export default function PricesPage() {
       description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Cada hora de gravação presencial inclui stories, brutos e aftermovie cinemático.',
       promoOffer: {
         title: 'Gravação: Stories + Brutos + 1 min Aftermovie Cinemático',
-        price: 'R$ 150,00 / hora',
-        ctaText: 'Contratar Gravação (R$ 150/h)',
+        ctaText: 'Contratar Gravação',
         ctaUrl: 'https://pay.kiwify.com.br/cG8n7jh'
       },
       features: [
         'Por hora de gravação: Stories na hora + todos os brutos + 1 min de Aftermovie Cinemático',
         'Entrega de todos os arquivos brutos sem corte para o seu acervo',
         '1 minuto de aftermovie cinemático com color grading profissional por hora',
-        'Live streaming separada (TikTok, YouTube, Instagram e/ou Twitch) por mais R$ 150 / hora',
+        'Live streaming separada (TikTok, YouTube, Instagram e/ou Twitch)',
         'Contratação flexível: por hora de trabalho ou por minuto de vídeo finalizado',
         'Opcional: Inteligência Artificial (Cenários e B-rolls)',
         'Opcional: Estilo Cinematográfico (Color Grading de filme)'
@@ -156,9 +155,8 @@ export default function PricesPage() {
       description: 'Criativos que chamam atenção no feed do Instagram, geram cliques em campanhas de tráfego pago e elevam a percepção de valor da sua marca.',
       promoOffer: {
         title: 'Post Arte Estática p/ Rede Social',
-        price: 'R$ 100,00',
-        ctaText: 'Solicitar Arte (R$ 100)',
-        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Arte%20Est%C3%A1tica%20por%20R%24100.'
+        ctaText: 'Solicitar Arte de Divulgação',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20a%20Arte%20Est%C3%A1tica.'
       },
       features: [
         'Posts individuais, carrosséis educativos e banners promocionais',
@@ -174,14 +172,13 @@ export default function PricesPage() {
       category: 'marketing',
       title: 'Coprodução & Lançamentos para Infoprodutores',
       subtitle: 'Plano sob medida para especialistas que querem escalar vendas online',
-      badge: 'Valor a Combinar',
+      badge: 'Projeto Sob Medida',
       badgeColor: 'border-blue-200 text-blue-400 bg-blue-50',
       icon: TrendingUp,
       iconColor: 'text-blue-400',
       description: 'Estruturação completa para quem já vende conhecimento ou quer criar seu primeiro infoproduto. Temos experiência prática em +23 lançamentos reais (com múltiplos "6 em 7").',
       promoOffer: {
         title: 'Sessão Estratégica (Mapeamento)',
-        price: 'Projeto Sob Medida',
         ctaText: 'Agendar Call no Calendly',
         ctaUrl: 'https://calendly.com/'
       },
@@ -211,11 +208,11 @@ export default function PricesPage() {
     },
     {
       question: 'Quem é o responsável pela gestão de Marketing e Lançamentos?',
-      answer: 'Nossa equipe é liderada por Coprodutor 6 em 7, com mais de 23 lançamentos executados no mercado digital (gerando lançamentos acima de R$ 100 mil de faturamento em apenas uma semana). Aplicamos essa mesma inteligência tanto para alavancar comércios e negócios locais quanto para infoprodutores do Brasil e do mundo.'
+      answer: 'Nossa equipe é liderada por Coprodutor 6 em 7, com mais de 23 lançamentos executados com estratégias validadas de alto impacto no mercado digital. Aplicamos essa mesma inteligência tanto para alavancar comércios e negócios locais quanto para infoprodutores do Brasil e do mundo.'
     },
     {
-      question: 'Qual é o valor do Cérebro de IA (Squad Jarvis 30+ Agentes)?',
-      answer: 'O Cérebro de IA possui valor fixo transparente: R$ 197,00 em pagamento único para acesso vitalício via Kiwify (incluindo todos os 30+ robôs, scripts e tutorial em vídeo passo a passo para Claude Code, AntiGravity, Cursor e terminais) ou R$ 997,00 no plano anual com suporte e onboarding individual.'
+      question: 'Como funciona a aquisição do Cérebro de IA (Squad Jarvis 30+ Agentes)?',
+      answer: 'O Cérebro de IA é disponibilizado com acesso imediato e vitalício via Kiwify, incluindo todos os 30+ robôs, scripts prontos e tutorial em vídeo passo a passo para Claude Code, AntiGravity, Cursor e terminais, com opção de suporte e onboarding personalizado.'
     }
   ];
 
@@ -288,9 +285,9 @@ export default function PricesPage() {
               {[
                 { id: 'all', label: 'Todos os Serviços', icon: Layers },
                 { id: 'ia_crm', label: 'Consultoria IA, CRM & Treinamento', icon: Brain },
-                { id: 'audiovisual', label: 'Audiovisual (Promo R$ 150/h)', icon: Video },
+                { id: 'audiovisual', label: 'Audiovisual & Edição', icon: Video },
                 { id: 'marketing', label: 'Tráfego & Coprodução 6 em 7', icon: TrendingUp },
-                { id: 'jarvis', label: 'Cérebro IA Jarvis (R$ 197)', icon: Terminal }
+                { id: 'jarvis', label: 'Cérebro IA Jarvis', icon: Terminal }
               ].map((cat) => {
                 const Icon = cat.icon;
                 const active = activeCategory === cat.id;
@@ -358,10 +355,6 @@ export default function PricesPage() {
                             <span className="text-[9px] font-mono text-blue-500 bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Kiwify</span>
                           </div>
                           <div className="font-bold text-gray-900 text-xs">{service.promoOffer.title}</div>
-                          <div className="text-blue-600 font-mono font-black text-sm mt-0.5">
-                            {service.promoOffer.price}
-                            <span className="block text-[9px] text-cyan-500 uppercase font-bold mt-0.5 tracking-tight">Ou por minuto final</span>
-                          </div>
                         </div>
                       )}
 
@@ -416,10 +409,10 @@ export default function PricesPage() {
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 font-mono text-[10px] text-blue-500 uppercase mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                <span>OFERTAS EXCLUSIVAS DE AUDIOVISUAL & DESIGN • CHECKOUT KIWIFY</span>
+                <span>PACOTES DE AUDIOVISUAL & DESIGN • CONTRATAÇÃO DIRETA</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-tight">
-                Pacotes Promocionais
+                Pacotes & Soluções Audiovisuais
               </h3>
             </div>
 
@@ -437,9 +430,8 @@ export default function PricesPage() {
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
                     Por hora de gravação: postagem de stories no local, 100% dos brutos entregues e 1 min de aftermovie cinemático para cada hora gravada.
                   </p>
-                  <div className="text-2xl font-black text-blue-600 font-mono mb-4">
-                    R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Por hora de gravação presencial</div>
+                  <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
+                    Por Hora de Gravação
                   </div>
                 </div>
                 <a
@@ -465,9 +457,8 @@ export default function PricesPage() {
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
                     Live separada: Streaming profissional no TikTok, YouTube, Instagram e/ou Twitch para eventos, podcasts e lançamentos + Gravação inclusa.
                   </p>
-                  <div className="text-2xl font-black text-rose-600 font-mono mb-4">
-                    + R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Contratado separadamente por hora</div>
+                  <div className="text-xs font-bold text-rose-600 uppercase mb-4 tracking-wider bg-rose-100/50 py-1.5 px-2.5 rounded-lg inline-block">
+                    Serviço Separado por Hora
                   </div>
                 </div>
                 <a
@@ -493,9 +484,8 @@ export default function PricesPage() {
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
                     Captação aérea com drone de alta resolução e edição de 1 minuto. (Despesas de deslocamento à parte).
                   </p>
-                  <div className="text-2xl font-black text-blue-600 font-mono mb-4">
-                    R$ 150 <span className="text-sm text-gray-600 font-bold ml-1">/ hora</span>
-                    <div className="text-[9px] text-gray-500 uppercase font-bold mt-0.5 tracking-tight">Captação e tomadas aéreas</div>
+                  <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
+                    Captação Aérea por Hora
                   </div>
                 </div>
                 <a
@@ -521,12 +511,12 @@ export default function PricesPage() {
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
                     Design profissional de alta conversão para Instagram, anúncios e campanhas promocionais.
                   </p>
-                  <div className="text-2xl font-black text-green-600 font-mono mb-4">
-                    R$ 100 <span className="text-sm text-gray-600 font-bold ml-1">/ arte</span>
+                  <div className="text-xs font-bold text-green-600 uppercase mb-4 tracking-wider bg-green-100/50 py-1.5 px-2.5 rounded-lg inline-block">
+                    Design Gráfico por Arte
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o%20por%20R%24100."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
@@ -558,7 +548,7 @@ export default function PricesPage() {
                   </h3>
                   
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-5">
-                    O único produto do nosso catálogo com valor pré-fixado. Você adquire o cérebro completo de 30+ agentes especializados (Marketing, Vendas, Programação, Finanças e Segurança) pronto para rodar em Claude Code, AntiGravity, Cursor e terminais, com vídeo tutorial passo a passo para iniciantes.
+                    Você adquire o cérebro completo de 30+ agentes especializados (Marketing, Vendas, Programação, Finanças e Segurança) pronto para rodar em Claude Code, AntiGravity, Cursor e terminais, com vídeo tutorial passo a passo para iniciantes.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 mb-6">
@@ -583,10 +573,10 @@ export default function PricesPage() {
 
                 <div className="lg:col-span-4 flex flex-col justify-center bg-white/60 p-6 rounded-xl border border-gray-200 text-center">
                   <span className="text-[10px] font-mono text-gray-500 uppercase">Acesso Vitalício</span>
-                  <div className="text-3xl sm:text-4xl font-black text-purple-600 font-mono mt-1 mb-1">
-                    R$ 197,00
+                  <div className="text-2xl sm:text-3xl font-black text-purple-600 uppercase tracking-tight mt-1 mb-1">
+                    Acesso Imediato
                   </div>
-                  <p className="text-[11px] text-gray-500 mb-4">Pagamento único ou até 12x no cartão</p>
+                  <p className="text-[11px] text-gray-500 mb-4">Liberação instantânea com robôs e tutoriais</p>
 
                   <a
                     href="https://pay.kiwify.com.br/2yfNvHR"
@@ -594,7 +584,7 @@ export default function PricesPage() {
                     rel="noopener noreferrer"
                     className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center mb-2"
                   >
-                    <Zap className="w-4 h-4 text-gray-900" /> Comprar via Kiwify
+                    <Zap className="w-4 h-4 text-gray-900" /> Acessar via Kiwify
                   </a>
 
                   <a

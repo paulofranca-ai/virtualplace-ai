@@ -482,13 +482,11 @@ export default function InstitutionalPage() {
                   Baixe e implemente instantaneamente o nosso assistente mestre Jarvis e seu Esquadrão de <strong>30+ Agentes de IA</strong> programados para atuar nas principais frentes do seu negócio.
                 </p>
 
-                {/* Preço de R$197 */}
+                {/* Acesso Vitalício */}
                 <div className="mb-6 p-4 rounded-xl bg-[#0A0F1C] border border-gray-200 space-y-1">
-                  <div className="text-[11px] text-gray-500 line-through font-semibold">De R$ 997,00 por apenas</div>
+                  <div className="text-[11px] text-gray-400 font-semibold uppercase">Acesso Imediato</div>
                   <div className="flex items-baseline gap-1.5 my-1">
-                    <span className="text-sm font-black text-gray-900">R$</span>
-                    <span className="text-4xl font-black text-[#00F0FF] tracking-tight">197</span>
-                    <span className="text-xs text-gray-500 font-medium">pagamento único</span>
+                    <span className="text-2xl font-black text-[#00F0FF] tracking-tight uppercase">Vitalício</span>
                   </div>
                   <p className="text-[10.5px] text-green-600 font-extrabold flex items-center gap-1.5 pt-1">
                     <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" /> Acesso vitalício aos robôs
@@ -575,33 +573,33 @@ export default function InstitutionalPage() {
                   Equipe de filmagem, captação cinematográfica, aftermovie de eventos corporativos e captação móvel de altíssimo padrão.
                 </p>
 
-                {/* Opções de Preço por Hora */}
+                {/* Opções de Serviços */}
                 <div className="space-y-3.5 mb-8">
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-gray-900 uppercase">Videomaker Mobile</span>
-                      <span className="text-xs font-black text-[#00F0FF]">R$ 80 / hora</span>
+                      <span className="text-xs font-black text-[#00F0FF]">Sob Consulta</span>
                     </div>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-gray-900 uppercase">Filmmaker Professional</span>
-                      <span className="text-xs font-black text-gray-900">R$ 160 / hora</span>
+                      <span className="text-xs font-black text-gray-900">Sob Consulta</span>
                     </div>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-gray-900 uppercase">Fotógrafo</span>
-                      <span className="text-xs font-black text-[#00F0FF]">R$ 120 / hora</span>
+                      <span className="text-xs font-black text-[#00F0FF]">Sob Consulta</span>
                     </div>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/20">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-[11px] font-bold text-gray-900 uppercase flex items-center gap-1"><Sparkles className="w-3 h-3 text-[#00F0FF]" /> Edição</span>
-                      <span className="text-xs font-black text-[#00F0FF]">R$ 297 / minuto final</span>
+                      <span className="text-xs font-black text-[#00F0FF]">Sob Demanda</span>
                     </div>
                     <p className="text-[9px] text-[#94A3B8] mt-1">Edição e pós-produção audiovisual de alta performance, sonorização e correção de cores.</p>
                   </div>
@@ -611,15 +609,15 @@ export default function InstitutionalPage() {
               {/* Botão de redirecionamento */}
               <div className="pt-5 border-t border-gray-200 flex justify-center">
                 <a
-                  href="/loja"
+                  href="/precos"
                   className="w-full text-center py-3.5 px-4 rounded-xl bg-[#0A0F1C] border border-gray-200 hover:border-white text-gray-600 hover:text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <Calculator className="w-4 h-4" /> Simular na Calculadora
+                  <Calculator className="w-4 h-4" /> Ver Serviços & Soluções
                 </a>
               </div>
             </div>
 
-            {/* Plano 3: Consultoria e Assessoria de Branding e Growth Marketing (R$1.500) */}
+            {/* Plano 3: Consultoria e Assessoria de Branding e Growth Marketing */}
             <div className="p-8 rounded-2xl border border-gray-200 bg-[#050810] flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/30 transition-all shadow-2xl">
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -638,12 +636,12 @@ export default function InstitutionalPage() {
                   Gestão completa e diária das suas campanhas de anúncios patrocinados no Meta Ads, Google Ads, TikTok Ads e LinkedIn Ads aliada a posicionamento estratégico de marca.
                 </p>
 
-                {/* Opções de Preço */}
+                {/* Opções de Atendimento */}
                 <div className="space-y-3 mb-8">
                   <div className="p-4 rounded-xl bg-[#0A0F1C] border border-gray-200/80 hover:border-[#2563EB]/40 transition-all">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-black text-gray-900 uppercase">Assessoria Mensal</span>
-                      <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-500">/ mês</span></span>
+                      <span className="text-xs font-black text-gray-900 uppercase">Assessoria Contínua</span>
+                      <span className="text-sm font-black text-[#00F0FF]">Sob Medida</span>
                     </div>
                     <div className="text-[10px] text-[#94A3B8] leading-relaxed mt-3 space-y-1 block">
                       <div>• Otimização e testes de criativos diários.</div>
