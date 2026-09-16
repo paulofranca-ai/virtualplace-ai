@@ -570,7 +570,7 @@ export default function InstitutionalPage() {
                   COBERTURA DE EVENTOS E PRODUÇÃO AUDIOVISUAL
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Equipe de filmagem, captação cinematográfica, aftermovie de eventos corporativos e captação móvel de altíssimo padrão.
+                  Fotografia profissional e equipe de filmagem completa para eventos corporativos, atos políticos, comícios, festivais e festas em geral, com captação cinematográfica e aftermovie.
                 </p>
 
                 {/* Opções de Serviços */}
@@ -591,9 +591,10 @@ export default function InstitutionalPage() {
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-gray-200/80">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[11px] font-bold text-gray-900 uppercase">Fotógrafo</span>
+                      <span className="text-[11px] font-bold text-gray-900 uppercase">Fotografia Profissional para Eventos</span>
                       <span className="text-xs font-black text-[#00F0FF]">Sob Consulta</span>
                     </div>
+                    <p className="text-[9px] text-[#94A3B8] mt-1">Cobertura fotográfica para eventos corporativos, políticos e festas em geral com tratamento e galeria HD.</p>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#0A0F1C] border border-[#00F0FF]/20">

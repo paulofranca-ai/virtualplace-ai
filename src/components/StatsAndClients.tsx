@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Award, Car, Rocket, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Instagram, Award, Car, Rocket, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function StatsAndClients() {
@@ -9,27 +9,27 @@ export function StatsAndClients() {
       label: 'Projetos Executados',
       sublabel: 'Com excelência e entrega ponta a ponta',
       icon: Award,
-      color: 'text-blue-600',
-      bg: 'bg-blue-50',
-      border: 'border-blue-100'
+      color: 'text-cyan-400',
+      bg: 'bg-cyan-950/20',
+      border: 'border-cyan-500/20'
     },
     {
       value: '+23',
       label: 'Lançamentos de Infos',
       sublabel: 'Infoprodutos e coprodução escalada',
       icon: Rocket,
-      color: 'text-purple-600',
-      bg: 'bg-purple-50',
-      border: 'border-purple-100'
+      color: 'text-purple-400',
+      bg: 'bg-purple-950/20',
+      border: 'border-purple-500/20'
     },
     {
       value: '+400',
       label: 'Veículos Vendidos',
       sublabel: 'Campanhas para lojas automotivas locais',
       icon: Car,
-      color: 'text-emerald-600',
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-100'
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-950/20',
+      border: 'border-emerald-500/20'
     }
   ];
 
@@ -52,16 +52,16 @@ export function StatsAndClients() {
   ];
 
   return (
-    <section className="py-16 bg-white relative">
+    <section className="py-12 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Statistics Grid */}
         <div className="mb-16">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 px-3.5 py-1 rounded-full border border-cyan-500/20">
               Autoridade Comprovada
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-gray-900 uppercase tracking-tight mt-3">
+            <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight mt-4">
               Resultados Reais & Métricas Conquistadas
             </h2>
           </div>
@@ -76,22 +76,24 @@ export function StatsAndClients() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`p-6 rounded-3xl ${s.bg} border ${s.border} flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow`}
+                  className={`p-7 rounded-3xl ${s.bg} border ${s.border} backdrop-blur-md flex flex-col justify-between shadow-xl hover:border-white/30 transition-all group`}
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-                      <Icon className={`w-5 h-5 ${s.color}`} />
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                      <Icon className={`w-6 h-6 ${s.color}`} />
                     </span>
-                    <span className="text-[10px] font-mono font-bold uppercase text-gray-400">Verificado</span>
+                    <span className="text-[10px] font-mono font-bold uppercase text-neutral-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Verificado
+                    </span>
                   </div>
                   <div>
-                    <div className="text-3xl sm:text-4xl font-black text-gray-900 font-mono tracking-tight mb-1">
+                    <div className="text-4xl sm:text-5xl font-black text-white font-mono tracking-tight mb-2">
                       {s.value}
                     </div>
-                    <div className="text-sm font-bold text-gray-800 uppercase tracking-tight mb-1">
+                    <div className="text-sm font-black text-neutral-200 uppercase tracking-tight mb-1">
                       {s.label}
                     </div>
-                    <div className="text-xs text-gray-500 leading-relaxed">
+                    <div className="text-xs text-neutral-400 leading-relaxed">
                       {s.sublabel}
                     </div>
                   </div>
@@ -102,46 +104,46 @@ export function StatsAndClients() {
         </div>
 
         {/* Empresas @ que Trabalhei */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gray-50 border border-gray-200/80 shadow-sm">
+        <div className="p-8 sm:p-12 rounded-3xl bg-neutral-900/90 border border-neutral-800 shadow-2xl backdrop-blur-md">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-              <Instagram className="w-4 h-4 text-rose-500" />
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-pink-400 uppercase tracking-wider mb-2">
+              <Instagram className="w-4 h-4 text-pink-500" />
               <span>Portfólio de Contas e Perfis Gerenciados</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-gray-900 uppercase tracking-tight">
+            <h3 className="text-xl sm:text-3xl font-black text-white uppercase tracking-tight">
               Empresas & Especialistas que Confiaram no Nosso Trabalho
             </h3>
           </div>
 
           {/* Instagram Pills */}
-          <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-10">
             {instagramClients.map((client, idx) => (
               <a
                 key={idx}
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-4 py-2.5 rounded-2xl bg-white border border-gray-200 hover:border-gray-900 text-gray-800 text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow flex items-center gap-2"
+                className="group px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-pink-500/60 text-neutral-200 hover:text-white text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow-lg flex items-center gap-2.5 backdrop-blur-sm"
               >
-                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-[9px]">
-                  <Instagram className="w-3 h-3 text-white" />
+                <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-[10px]">
+                  <Instagram className="w-3.5 h-3.5 text-white" />
                 </div>
                 <span>{client.handle}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-pink-400 transition-colors" />
               </a>
             ))}
           </div>
 
           {/* Partner Brands Cloud */}
-          <div className="pt-6 border-t border-gray-200/60 text-center">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-4">
+          <div className="pt-8 border-t border-neutral-800 text-center">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-neutral-400 block mb-4">
               Mais de 70 Marcas, Negócios Locais e Profissionais Atendidos:
             </span>
             <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
               {partnerBrands.map((brand, idx) => (
                 <span 
                   key={idx} 
-                  className="px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-gray-600 text-xs font-medium shadow-xs"
+                  className="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/5 text-neutral-300 text-xs font-mono font-medium hover:border-white/20 transition-colors"
                 >
                   {brand}
                 </span>

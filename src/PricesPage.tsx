@@ -125,23 +125,49 @@ export default function PricesPage() {
       badgeColor: 'border-blue-200 text-blue-600 bg-blue-50',
       icon: Video,
       iconColor: 'text-blue-600',
-      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Cada hora de gravação presencial inclui stories, brutos e aftermovie cinemático.',
+      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Cada hora de gravação presencial inclui stories, brutos e aftermovie cinemático 4K.',
       promoOffer: {
-        title: 'Gravação: Stories + Brutos + 1 min Aftermovie Cinemático',
+        title: 'Gravação: Stories + Brutos + Aftermovie Cinemático 4K',
         ctaText: 'Contratar Gravação',
         ctaUrl: 'https://pay.kiwify.com.br/cG8n7jh'
       },
       features: [
-        'Por hora de gravação: Stories na hora + todos os brutos + 1 min de Aftermovie Cinemático',
+        'Por hora de gravação: Stories na hora + todos os brutos + Aftermovie Cinemático 4K',
         'Entrega de todos os arquivos brutos sem corte para o seu acervo',
-        '1 minuto de aftermovie cinemático com color grading profissional por hora',
+        'Aftermovie cinemático masterizado em 4K com color grading profissional',
         'Live streaming separada (TikTok, YouTube, Instagram e/ou Twitch)',
-        'Contratação flexível: por hora de trabalho ou por minuto de vídeo finalizado',
+        'Contratação flexível: por hora de trabalho ou por demanda de projeto',
         'Opcional: Inteligência Artificial (Cenários e B-rolls)',
         'Opcional: Estilo Cinematográfico (Color Grading de filme)'
       ],
       ctaText: 'Pedir Orçamento Customizado no WhatsApp',
       ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20e%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeos.'
+    },
+    {
+      id: 'fotografia_eventos',
+      category: 'audiovisual',
+      title: 'Fotografia Profissional para Eventos',
+      subtitle: 'Corporativos, Políticos e Festas em Geral',
+      badge: 'Corporativo • Político • Festas',
+      badgeColor: 'border-amber-200 text-amber-600 bg-amber-50',
+      icon: Camera,
+      iconColor: 'text-amber-600',
+      description: 'Cobertura fotográfica técnica e sensível para convenções empresariais, congressos corporativos, campanhas e eventos políticos, feiras, festivais e festas sociais em geral. Equipamentos full-frame de ponta e pós-produção com tratamento de cor refinado.',
+      promoOffer: {
+        title: 'Fotografia de Eventos Completa',
+        ctaText: 'Solicitar Orçamento Fotográfico',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.'
+      },
+      features: [
+        'Eventos corporativos: feiras, convenções de vendas, workshops, congressos e premiações',
+        'Eventos políticos: cobertura de atos públicos, comícios, posses, plenárias e assessoria de imagem',
+        'Festas em geral: comemorações empresariais, aniversários, confraternizações e festivais',
+        'Fotógrafo experiente equipado com lentes claras e iluminação dedicada',
+        'Tratamento individual e curadoria minuciosa de todas as fotos selecionadas',
+        'Entrega ágil via galeria online privativa em alta resolução para download e redes'
+      ],
+      ctaText: 'Pedir Orçamento de Fotografia no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.'
     },
     {
       id: 'artes_design',
@@ -416,7 +442,7 @@ export default function PricesPage() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {/* Pacote 1: Gravação Completa Unificada */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
@@ -425,10 +451,10 @@ export default function PricesPage() {
                     Tudo em 1 Serviço
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Stories + Brutos + 1 min Aftermovie Cinemático
+                    Stories + Brutos + Aftermovie Cinemático 4K
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Por hora de gravação: postagem de stories no local, 100% dos brutos entregues e 1 min de aftermovie cinemático para cada hora gravada.
+                    Por hora de gravação: postagem de stories no local, 100% dos brutos entregues e aftermovie cinemático masterizado em 4K HDR com color grading de cinema.
                   </p>
                   <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
                     Por Hora de Gravação
@@ -479,10 +505,10 @@ export default function PricesPage() {
                     Aéreo 4K
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Drone + 1min Editado
+                    Captação Aérea com Drone 4K
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Captação aérea com drone de alta resolução e edição de 1 minuto. (Despesas de deslocamento à parte).
+                    Captação aérea com drone em resolução 4K Ultra HD com planos cinematográficos e edição finalizada. (Despesas de deslocamento à parte).
                   </p>
                   <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
                     Captação Aérea por Hora
@@ -498,7 +524,34 @@ export default function PricesPage() {
                 </a>
               </div>
 
-              {/* Pacote 4: Arte Estática */}
+              {/* Pacote 4: Fotografia Profissional para Eventos */}
+              <div className="p-6 rounded-2xl bg-gray-50 border border-amber-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-amber-300 transition-all">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/20 transition-all" />
+                <div className="relative z-10">
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-amber-600 bg-amber-100/60 px-2.5 py-0.5 rounded-full mb-2">
+                    Eventos & Político
+                  </div>
+                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
+                    Fotografia Profissional
+                  </h4>
+                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
+                    Eventos corporativos, políticos e festas em geral. Equipamento full-frame, tratamento de cor refinado e galeria HD online.
+                  </p>
+                  <div className="text-xs font-bold text-amber-600 uppercase mb-4 tracking-wider bg-amber-100/50 py-1.5 px-2.5 rounded-lg inline-block">
+                    Por Evento ou Diária
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Corporativo%2C%20Pol%C3%ADtico%20ou%20Festas%20em%20Geral%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
+                >
+                  <Camera className="w-3.5 h-3.5 text-white" /> Solicitar Fotógrafo
+                </a>
+              </div>
+
+              {/* Pacote 5: Arte Estática */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-green-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-green-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">

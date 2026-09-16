@@ -478,7 +478,7 @@ export default function LojaPage() {
                           className="w-full accent-purple-500 cursor-pointer"
                         />
                         <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                          <span>1 min</span>
+                          <span>Mínimo</span>
                           <span>10 min</span>
                           <span>20 min</span>
                         </div>

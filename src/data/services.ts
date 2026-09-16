@@ -1,24 +1,44 @@
-import { Video, Radio, Smartphone, Palette, Target, Rocket, Cpu } from 'lucide-react';
+import { Video, Radio, Smartphone, Palette, Target, Rocket, Cpu, Camera } from 'lucide-react';
 import { ServiceItem } from '../components/ServiceCard';
 
 export const SERVICES: ServiceItem[] = [
   {
+    id: 'fotografia-eventos',
+    title: 'Fotografia Profissional para Eventos',
+    subtitle: 'Corporativos, Políticos e Festas em Geral',
+    description: 'Cobertura fotográfica completa e refinada para convenções corporativas, reuniões executivas, campanhas e eventos políticos, feiras, aniversários e festas sociais em geral. Equipamento profissional, tratamento cuidadoso de cor e entrega de galeria em alta resolução.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.',
+    linkText: 'Solicitar Fotografia',
+    category: 'Fotografia & Eventos',
+    accentColor: 'text-amber-600',
+    bgGradient: 'bg-gradient-to-br from-amber-100/70 via-yellow-50 to-orange-100/50',
+    icon: Camera,
+    badge: 'Corporativo • Político • Festas',
+    initialLikes: 254,
+    features: [
+      'Eventos corporativos, convenções, congressos e feiras',
+      'Eventos políticos: comícios, posses, plenárias e campanhas',
+      'Festas em geral: aniversários, celebrações e festivais',
+      'Tratamento profissional de imagem e galeria digital HD'
+    ]
+  },
+  {
     id: 'videomaker',
-    title: 'Gravação: Stories + Brutos + 1 min Aftermovie Cinemático',
+    title: 'Gravação: Stories + Brutos + Aftermovie Cinemático 4K',
     subtitle: 'Por Hora de Gravação',
-    description: 'Captação presencial completa por hora: inclui postagem de stories no local em tempo real, entrega de todos os arquivos brutos e 1 minuto de aftermovie cinemático editado e colorizado para cada hora gravada.',
+    description: 'Captação presencial completa por hora: inclui postagem de stories no local em tempo real, entrega de todos os arquivos brutos e aftermovie cinemático masterizado em 4K com edição e color grading profissional.',
     link: 'https://pay.kiwify.com.br/cG8n7jh',
     linkText: 'Contratar Gravação',
-    category: 'Audiovisual Completo',
+    category: 'Audiovisual Completo 4K',
     accentColor: 'text-blue-600',
     bgGradient: 'bg-gradient-to-br from-blue-100/70 via-indigo-50 to-blue-200/50',
     icon: Video,
-    badge: 'Mais Popular',
+    badge: 'Mais Popular • 4K HDR',
     initialLikes: 218,
     features: [
       'Stories gravados e postados na hora',
-      'Todos os arquivos brutos entregues',
-      '1 min de Aftermovie Cinemático por hora de gravação'
+      'Todos os arquivos brutos entregues sem compressão',
+      'Aftermovie Cinemático 4K com color grading de cinema'
     ]
   },
   {
