@@ -1,137 +1,123 @@
-import { Video, Radio, Smartphone, Palette, Target, Rocket, Cpu, Camera } from 'lucide-react';
+import { Video, Palette, Target, Rocket, Cpu, Camera } from 'lucide-react';
 import { ServiceItem } from '../components/ServiceCard';
 
 export const SERVICES: ServiceItem[] = [
   {
     id: 'fotografia-eventos',
-    title: 'Fotografia Profissional para Eventos',
-    subtitle: 'Corporativos, Políticos e Festas em Geral',
-    description: 'Cobertura fotográfica completa e refinada para convenções corporativas, reuniões executivas, campanhas e eventos políticos, feiras, aniversários e festas sociais em geral. Equipamento profissional, tratamento cuidadoso de cor e entrega de galeria em alta resolução.',
-    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.',
-    linkText: 'Solicitar Fotografia',
+    title: 'Fotografia em Volume',
+    subtitle: 'Milhares de Fotos por Evento',
+    description: 'Fotografia em volume com milhares de fotos por evento em altíssima resolução. Cobertura completa para Comercial, Institucional e Eventos em geral (convenções, feiras, eventos corporativos, atos públicos, formaturas e festas). Equipamento profissional de ponta e galeria digital para entrega imediata.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20em%20Volume%20%28Milhares%20de%20Fotos%20por%20Evento%20-%20Comercial%2C%20Institucional%20e%20Eventos%29.',
+    linkText: 'Solicitar Fotografia em Volume',
     category: 'Fotografia & Eventos',
     accentColor: 'text-amber-600',
     bgGradient: 'bg-gradient-to-br from-amber-100/70 via-yellow-50 to-orange-100/50',
     icon: Camera,
-    badge: 'Corporativo • Político • Festas',
-    initialLikes: 254,
+    badge: 'Milhares de Fotos por Evento',
+    initialLikes: 342,
     features: [
-      'Eventos corporativos, convenções, congressos e feiras',
-      'Eventos políticos: comícios, posses, plenárias e campanhas',
-      'Festas em geral: aniversários, celebrações e festivais',
-      'Tratamento profissional de imagem e galeria digital HD'
+      'Milhares de fotos registradas por evento',
+      'Comercial, Institucional e Eventos em geral',
+      'Equipamentos profissionais e tratamento de cor refinado',
+      'Galeria privativa online para download imediato em alta resolução'
     ]
   },
   {
     id: 'videomaker',
-    title: 'Gravação: Stories + Brutos + Aftermovie Cinemático 4K',
-    subtitle: 'Por Hora de Gravação',
-    description: 'Captação presencial completa por hora: inclui postagem de stories no local em tempo real, entrega de todos os arquivos brutos e aftermovie cinemático masterizado em 4K com edição e color grading profissional.',
+    title: '4K + Post em Alta Qualidade',
+    subtitle: 'Stories na Hora + Brutos + Aftermovie 4K',
+    description: 'Captação presencial completa em 4K + post em alta qualidade no local: inclui postagem de stories em tempo real, entrega de 100% dos arquivos brutos sem compressão e Aftermovie Cinemático masterizado em 4K HDR com edição e color grading de cinema.',
     link: 'https://pay.kiwify.com.br/cG8n7jh',
-    linkText: 'Contratar Gravação',
+    linkText: 'Contratar Produção 4K',
     category: 'Audiovisual Completo 4K',
     accentColor: 'text-blue-600',
     bgGradient: 'bg-gradient-to-br from-blue-100/70 via-indigo-50 to-blue-200/50',
     icon: Video,
-    badge: 'Mais Popular • 4K HDR',
-    initialLikes: 218,
+    badge: '4K + Post em Alta Qualidade',
+    initialLikes: 298,
     features: [
-      'Stories gravados e postados na hora',
-      'Todos os arquivos brutos entregues sem compressão',
-      'Aftermovie Cinemático 4K com color grading de cinema'
-    ]
-  },
-  {
-    id: 'live-stream',
-    title: 'Transmissão ao Vivo (Live)',
-    subtitle: 'Serviço Separado',
-    description: 'Transmissão ao vivo profissional para TikTok, Instagram, YouTube e/ou Twitch. Estrutura completa de streaming para eventos, podcasts, sets e lançamentos. Serviço contratado separadamente.',
-    link: 'https://pay.kiwify.com.br/elj3ZQY',
-    linkText: 'Contratar Transmissão',
-    category: 'Live Streaming Separado',
-    accentColor: 'text-rose-600',
-    bgGradient: 'bg-gradient-to-br from-rose-100/70 via-pink-50 to-rose-200/50',
-    icon: Radio,
-    badge: 'Ao Vivo Separado',
-    initialLikes: 124,
-    features: [
-      'Live separada sob demanda por hora',
-      'Transmissão TikTok, YouTube, Instagram e/ou Twitch',
-      'Mixer de áudio, multicâmera e gravação inclusa'
+      'Captação 4K 60fps com post em alta qualidade no local',
+      'Stories gravados e publicados na hora durante o evento',
+      '100% dos arquivos brutos entregues para seu acervo',
+      'Aftermovie Cinemático 4K masterizado com color grading profissional'
     ]
   },
   {
     id: 'arte-divulgacao',
-    title: 'Arte de Divulgação de Alta Conversão',
-    subtitle: 'Design Gráfico Estratégico',
-    description: 'Design profissional focado em conversão de anúncios, banners para feed/stories, outdoors e criativos com psicologia de consumo.',
-    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o.',
-    linkText: 'Solicitar Arte de Divulgação',
+    title: 'Artes Gráficas: R$ 100',
+    subtitle: 'Design de Alta Conversão por Arte',
+    description: 'Artes e criativos profissionais de alta conversão para Instagram (feed, stories, carrosséis), anúncios de tráfego pago, lançamentos e banners promocionais por apenas R$ 100 cada. Design estratégico com psicologia de consumo.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29.',
+    linkText: 'Solicitar Arte (R$ 100)',
     category: 'Design & Criativos',
     accentColor: 'text-amber-600',
     bgGradient: 'bg-gradient-to-br from-amber-100/70 via-orange-50 to-amber-200/50',
     icon: Palette,
-    initialLikes: 87,
+    badge: 'R$ 100 por Arte',
+    initialLikes: 148,
     features: [
-      'Formato 1:1, 4:5 e 9:16 adaptados',
-      'Copy persuasiva e visual impactante',
-      'Entrega em formatos PNG e PDF'
+      'Apenas R$ 100 por arte / criativo',
+      'Formatos 1:1, 4:5 e 9:16 adaptados para redes',
+      'Copy persuasiva e visual focado em cliques e vendas',
+      'Entrega em alta resolução PNG e PDF vetorial'
     ]
   },
   {
     id: 'assessoria-trafego',
-    title: 'Assessoria de Tráfego Pago',
-    subtitle: 'Escala em Meta & Google Ads',
-    description: 'Estratégias avançadas de anúncios patrocinados para atrair clientes prontos para comprar, com otimização diária de ROI e ROAS.',
-    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Assessoria%20de%20Tr%C3%A1fego.',
-    linkText: 'Consultar no WhatsApp',
+    title: 'Assessoria de Tráfego Pago: R$ 1.500',
+    subtitle: 'Redes Limitadas Apenas Pela Verba',
+    description: 'Gestão de tráfego pago com ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala. Campanhas em Meta Ads (Instagram/Facebook), Google Ads e TikTok Ads — redes sociais limitadas apenas pela verba do cliente.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29.',
+    linkText: 'Contratar Tráfego (R$ 1.500)',
     category: 'Tráfego Pago & Performance',
     accentColor: 'text-emerald-600',
     bgGradient: 'bg-gradient-to-br from-emerald-100/70 via-teal-50 to-emerald-200/50',
     icon: Target,
-    badge: 'Alta Performance',
-    initialLikes: 246,
+    badge: 'ROI 7,3x Comprovado • R$ 1.500',
+    initialLikes: 412,
     features: [
-      'Campanhas Meta Ads, Google Ads e TikTok',
-      'Públicos personalizados e Lookalike',
-      'Relatórios transparentes de conversão'
+      'Valor fixo de gestão: R$ 1.500 / mês',
+      'Redes sociais limitadas apenas pela verba do cliente',
+      'ROI 7,3x comprovado em 100k de vendas com alta lucratividade',
+      'Otimização diária de CPA, ROAS e relatórios transparentes'
+    ]
+  },
+  {
+    id: 'jarvis-ia',
+    title: 'Squads de IA: Troque Funcionários por Robôs',
+    subtitle: 'Posts, Vídeos, Artes e Tráfego com IA',
+    description: 'Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana com máxima produtividade e sem encargos.',
+    link: 'https://pay.kiwify.com.br/2yfNvHR',
+    linkText: 'Acessar Squads de IA',
+    category: 'IA & Automação 24/7',
+    accentColor: 'text-violet-600',
+    bgGradient: 'bg-gradient-to-br from-violet-100/70 via-purple-50 to-violet-200/50',
+    icon: Cpu,
+    badge: 'Troque Funcionários por Robôs',
+    initialLikes: 489,
+    features: [
+      'Troque funcionários por robôs autônomos 24/7',
+      'Geração de posts, vídeos, artes e estratégias completas de marketing',
+      'Análise preditiva de anúncios patrocinados via IA',
+      'Atendimento e fechamento de vendas no WhatsApp instantâneo'
     ]
   },
   {
     id: 'coproducao-info',
-    title: 'Coprodução de Infoprodutos',
-    subtitle: 'Parceria de Escala',
-    description: 'Lançamentos de infoprodutos com foco em performance total: tráfego, página de vendas, automação de checkout e esteira de produtos.',
-    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20Coprodu%C3%A7%C3%A3o.',
+    title: 'Coprodução de Infoprodutos & Lançamentos',
+    subtitle: 'Parceria de Escala e Alta Margem',
+    description: 'Lançamentos de infoprodutos e cursos com foco em performance total e alta lucratividade: estratégia validada, tráfego com ROI 7,3x, páginas de alta conversão e esteira de produtos escalável.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20Coprodu%C3%A7%C3%A3o%20de%20Infoprodutos.',
     linkText: 'Consultar no WhatsApp',
     category: 'Infoprodutos & Lançamentos',
     accentColor: 'text-indigo-600',
     bgGradient: 'bg-gradient-to-br from-indigo-100/70 via-blue-50 to-indigo-200/50',
     icon: Rocket,
-    initialLikes: 173,
+    initialLikes: 215,
     features: [
-      'Estratégia de lançamento semente e perpétuo',
-      'Gestão de tráfego e copy de alta conversão',
-      'Estrutura de membros e automações'
-    ]
-  },
-  {
-    id: 'jarvis-ia',
-    title: 'Cérebro Jarvis IA',
-    subtitle: 'Inteligência Artificial Autônoma',
-    description: 'Esquadrão inteligente com 30+ agentes autônomos treinados para marketing, vendas, atendimento ao cliente 24/7 e operações. Acesso vitalício.',
-    link: 'https://pay.kiwify.com.br/2yfNvHR',
-    linkText: 'Acessar via Kiwify',
-    category: 'IA & Automação 24/7',
-    accentColor: 'text-violet-600',
-    bgGradient: 'bg-gradient-to-br from-violet-100/70 via-purple-50 to-violet-200/50',
-    icon: Cpu,
-    badge: 'Inovação IA',
-    initialLikes: 389,
-    features: [
-      '30+ agentes de IA prontos para uso',
-      'Atendimento e qualificação instantânea',
-      'Acesso vitalício sem mensalidade'
+      'Estratégia de lançamento validada em +23 cases',
+      'Gestão de tráfego com alta margem e escala',
+      'Estrutura completa de checkout e esteira de vendas'
     ]
   }
 ];

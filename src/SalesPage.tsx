@@ -11,7 +11,8 @@ import {
   Disc3, 
   ArrowUpRight,
   ShieldCheck,
-  Zap
+  Zap,
+  Sliders
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ServiceCard } from './components/ServiceCard';
@@ -21,6 +22,7 @@ import { StatsAndClients } from './components/StatsAndClients';
 import { StudioMonitorVideo } from './components/StudioMonitorVideo';
 import { Cinema3DBackground } from './components/Cinema3DBackground';
 import { AgenciaLogo } from './components/AgenciaLogo';
+import { TrafegoCalculator } from './components/TrafegoCalculator';
 
 export default function SalesPage() {
   return (
@@ -54,6 +56,10 @@ export default function SalesPage() {
           {/* Center Agency Navigation */}
           <nav className="hidden md:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-neutral-300">
             <a href="#planos" className="hover:text-cyan-400 transition-colors">Serviços 4K</a>
+            <a href="#calculadora-trafego" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
+              <Sliders className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Calculadora Tráfego</span>
+            </a>
             <a href="/precos" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
               <span>Tabela Completa</span>
               <span className="text-[9px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.2 rounded">PRO</span>
@@ -97,7 +103,7 @@ export default function SalesPage() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest mb-6 backdrop-blur-md shadow-lg"
         >
           <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-          <span>AGÊNCIA CRIATIVA TOP TIER • AUDIOVISUAL 4K • AGENTES IA • TRÁFEGO</span>
+          <span>A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS • 4K + POST EM ALTA QUALIDADE</span>
         </motion.div>
 
         {/* Master Headline */}
@@ -115,9 +121,9 @@ export default function SalesPage() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
+          className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed font-normal"
         >
-          Produção cinematográfica em 4K Ultra HD, fotografia profissional para eventos e atos corporativos, esquadrões de IA de alta conversão e estratégias de tráfego com retorno comprovado.
+          A melhor entrega da região com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, squads de IA para automatizar tarefas e tráfego pago com ROI 7,3x comprovado em mais de 100k de vendas.
         </motion.p>
 
         {/* 4K Cinema Monitor Frame with Live Video Embed */}
@@ -139,8 +145,8 @@ export default function SalesPage() {
               <Video className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-black uppercase text-white">Audiovisual 4K</div>
-              <div className="text-[10px] text-neutral-400 font-mono">ProRes • ACES Color</div>
+              <div className="text-xs font-black uppercase text-white">4K + Post Alta Qualidade</div>
+              <div className="text-[10px] text-neutral-400 font-mono">Stories na hora • Aftermovie</div>
             </div>
           </div>
 
@@ -149,8 +155,8 @@ export default function SalesPage() {
               <Camera className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-black uppercase text-white">Fotografia Pro</div>
-              <div className="text-[10px] text-neutral-400 font-mono">Corporativo & Político</div>
+              <div className="text-xs font-black uppercase text-white">Fotografia em Volume</div>
+              <div className="text-[10px] text-neutral-400 font-mono">Milhares de fotos / evento</div>
             </div>
           </div>
 
@@ -160,7 +166,7 @@ export default function SalesPage() {
             </div>
             <div>
               <div className="text-xs font-black uppercase text-white">Squads de IA</div>
-              <div className="text-[10px] text-neutral-400 font-mono">Automação & Atendimento</div>
+              <div className="text-[10px] text-neutral-400 font-mono">Troque funcionários p/ robôs</div>
             </div>
           </div>
 
@@ -169,8 +175,8 @@ export default function SalesPage() {
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-black uppercase text-white">Tráfego Pago</div>
-              <div className="text-[10px] text-neutral-400 font-mono">ROI 3x a 4x Comprovado</div>
+              <div className="text-xs font-black uppercase text-white">Tráfego: R$ 1.500</div>
+              <div className="text-[10px] text-neutral-400 font-mono">ROI 7,3x em 100k de vendas</div>
             </div>
           </div>
         </div>
@@ -196,12 +202,12 @@ export default function SalesPage() {
             <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-4">
               Nossos Planos & Serviços
             </h2>
-            <p className="text-neutral-400 text-sm sm:text-base mt-2 max-w-xl mx-auto">
-              Produção audiovisual cinematográfica, fotografia de alto padrão, criativos e estratégias de tráfego com atendimento exclusivo.
+            <p className="text-neutral-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+              A melhor entrega da região com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes por R$ 100, squads de IA e tráfego pago por R$ 1.500.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
             {SERVICES.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
@@ -214,7 +220,7 @@ export default function SalesPage() {
                 Quer ver a Tabela Completa com todos os preços e opções?
               </h4>
               <p className="text-xs text-neutral-400 mt-1">
-                Consulte valores detalhados por hora, por diária e pacotes sob medida para empresas e eventos.
+                Consulte valores detalhados por projeto, por evento, artes por R$ 100 e tráfego pago de R$ 1.500 com redes limitadas apenas pela verba.
               </p>
             </div>
             <a
@@ -225,6 +231,11 @@ export default function SalesPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
+        </div>
+
+        {/* SIMULADOR DE TRÁFEGO PAGO & PREVISÃO DE RETORNO */}
+        <div className="mb-24">
+          <TrafegoCalculator />
         </div>
 
         {/* BEAT PLACE - Agência de Festas e DJs */}
@@ -249,7 +260,7 @@ export default function SalesPage() {
             </div>
             
             <p className="text-neutral-200 text-lg sm:text-xl font-medium italic mt-4 mb-8 leading-relaxed">
-              "Eu recomendo o trabalho do Paulo, gestor de tráfego, tivemos retorno de 3x 4x nas campanhas de cursos e livros."
+              "Eu recomendo o trabalho do Paulo, gestor de tráfego. Tivemos ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala contínua."
             </p>
             
             <div className="flex items-center gap-4">
@@ -258,7 +269,7 @@ export default function SalesPage() {
               </div>
               <div>
                 <h4 className="font-black text-white text-lg uppercase tracking-tight">Léo</h4>
-                <p className="text-sm text-neutral-400 font-mono">Cliente Especialista & Infoprodutor</p>
+                <p className="text-sm text-neutral-400 font-mono">Cliente Especialista & Infoprodutor (Case 100k • ROI 7,3x)</p>
               </div>
             </div>
           </div>

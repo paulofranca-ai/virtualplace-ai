@@ -1,6 +1,6 @@
 {
   "name": "SquadClawVirtual",
-  "description": "ParadoxTeam - Esquadrão de Agentes de IA, Branding & Growth e Audiovisual.",
+  "description": "Virtual Place Agência - Audiovisual 4K, Fotografia em Volume, Squads de IA e Tráfego Pago.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

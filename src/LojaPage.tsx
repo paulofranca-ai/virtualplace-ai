@@ -5,99 +5,98 @@ import {
   ArrowLeft, 
   Camera, 
   Video, 
-  Coins, 
   MapPin, 
   Utensils, 
   Ticket, 
   Sparkles, 
   Check, 
-  Phone, 
   Calculator, 
   Info,
   Layers,
   ArrowRight,
-  TrendingUp
+  TrendingUp,
+  Palette,
+  Bot
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
+import { TrafegoCalculator } from './components/TrafegoCalculator';
 
 export default function LojaPage() {
   const navigate = useNavigate();
 
-  // State for Calculator
-  const [photoMode, setPhotoMode] = useState<'hourly' | 'venda'>('hourly');
-  const [photoHours, setPhotoHours] = useState<number>(4);
+  // State for Project Estimator (No hourly pricing)
+  const [photoOption, setPhotoOption] = useState<'volume' | 'plataforma'>('volume');
+  const [photoEvents, setPhotoEvents] = useState<number>(1);
   const [photoQtyDigital, setPhotoQtyDigital] = useState<number>(20);
   const [photoQtyA4, setPhotoQtyA4] = useState<number>(5);
 
-  const [videoMode, setVideoMode] = useState<'filmmaker' | 'videomaker' | 'premium' | 'none'>('filmmaker');
-  const [videoHours, setVideoHours] = useState<number>(4);
-  const [videoMinutes, setVideoMinutes] = useState<number>(2);
+  const [videoOption, setVideoOption] = useState<'aftermovie' | 'reels' | 'none'>('aftermovie');
+  const [videoCount, setVideoCount] = useState<number>(1);
+
+  const [artesCount, setArtesCount] = useState<number>(3);
+  const [addTraffic, setAddTraffic] = useState<boolean>(true);
+  const [trafficMonths, setTrafficMonths] = useState<number>(1);
 
   const [addTravelExp, setAddTravelExp] = useState<boolean>(true);
   const [addFood, setAddFood] = useState<boolean>(true);
   const [addAccess, setAddAccess] = useState<boolean>(true);
 
-  // Paid Traffic States
-  const [addTraffic, setAddTraffic] = useState<boolean>(false);
-  const [trafficMonths, setTrafficMonths] = useState<number>(3); // 3 months default as typical cycle
-
-  // Math totals
-  const photoCost = photoMode === 'hourly' 
-    ? photoHours * 160 
+  // Math totals (No hourly calculations)
+  const photoCost = photoOption === 'volume'
+    ? photoEvents * 650 // Pacote de cobertura completa
     : (photoQtyDigital * 10) + (photoQtyA4 * 20);
 
-  const videoCost = videoMode === 'filmmaker' 
-    ? videoHours * 160 
-    : videoMode === 'videomaker' 
-      ? videoHours * 80 
-      : videoMode === 'premium'
-        ? videoMinutes * 297
-        : 0;
+  const videoCost = videoOption === 'aftermovie'
+    ? videoCount * 850 // Produção completa 4K 60fps
+    : videoOption === 'reels'
+      ? videoCount * 250 // Reels editado
+      : 0;
 
-  const trafficCost = addTraffic ? trafficMonths * 1500 : 0;
-  const totalCost = photoCost + videoCost + trafficCost;
+  const artesCost = artesCount * 100; // R$ 100 por arte
+  const trafficCost = addTraffic ? trafficMonths * 1500 : 0; // R$ 1.500 / mês
+  const totalCost = photoCost + videoCost + artesCost + trafficCost;
 
-  // Build WhatsApp Message Link dynamically
+  // Dynamic WhatsApp Link
   const getWhatsAppLink = () => {
-    let msg = `Olá! Estive no site da SquadClawVirtual e gostaria de fazer um orçamento de Audiovisual.\n\n`;
+    let msg = `Olá! Estive no site da VIRTUAL PLACE AGÊNCIA e gostaria de solicitar um orçamento personalizado.\n\n`;
     
-    if (photoMode === 'hourly') {
-      msg += `📸 Cobertura Fotográfica: Plano por Hora (${photoHours} hora(s)) - Est. R$ ${photoHours * 160},00\n`;
+    if (photoOption === 'volume') {
+      msg += `📸 Fotografia em Volume: ${photoEvents} evento(s) - Milhares de fotos em alta qualidade (Est. R$ ${photoCost},00)\n`;
     } else {
-      msg += `📸 Venda de Fotos Particulares (Est. ${photoQtyDigital} digitais e ${photoQtyA4} impressões A4)\n`;
+      msg += `📸 Venda Direta por Reconhecimento Facial (Fotto/Banlek): Est. ${photoQtyDigital} digitais e ${photoQtyA4} impressões A4\n`;
     }
 
-    if (videoMode !== 'none') {
-      const videoTypeStr = videoMode === 'filmmaker' 
-        ? 'Filmmaker Profissional (R$160/hora)' 
-        : videoMode === 'videomaker'
-          ? 'Videomaker Mobile (R$80/hora)'
-          : 'Edição Profissional (R$297/minuto final)';
-      const quantityStr = videoMode === 'premium' ? `${videoMinutes} minuto(s) final(is)` : `${videoHours} hora(s)`;
-      msg += `🎥 Captação de Vídeo: ${videoTypeStr} (${quantityStr}) - Est. R$ ${videoCost},00\n`;
+    if (videoOption !== 'none') {
+      const vDesc = videoOption === 'aftermovie' 
+        ? `Aftermovie Cinemático 4K 60fps (Sony ZV-E10)` 
+        : `Vídeo Reels/Carrossel em Alta Qualidade`;
+      msg += `🎥 Audiovisual: ${videoCount} produção(ões) (${vDesc}) - Est. R$ ${videoCost},00\n`;
+    }
+
+    if (artesCount > 0) {
+      msg += `🎨 Design & Criativos: ${artesCount} arte(s) a R$ 100 cada - Est. R$ ${artesCost},00\n`;
     }
 
     if (addTraffic) {
-      msg += `📈 Assessoria de Branding e Growth Marketing: Ativada por ${trafficMonths} mês(meses) (Meta Ads, Google, TikTok, LinkedIn) - Est. R$ ${trafficCost},00\n`;
+      msg += `📈 Gestão de Tráfego Pago: ${trafficMonths} mês(meses) (R$ 1.500/mês) - Est. R$ ${trafficCost},00\n`;
     }
-    msg += `\n`;
     
-    msg += `Logística despesas adicionais inclusas:\n`;
-    if (addTravelExp) msg += `- Adicional deslocamento/despesas\n`;
-    if (addFood) msg += `- Alimentação para equipe fornecida\n`;
-    if (addAccess) msg += `- Ingressos/acesso total ao evento\n`;
+    msg += `\nDespesas logísticas:\n`;
+    if (addTravelExp) msg += `- Deslocamento/despesas alinhadas\n`;
+    if (addFood) msg += `- Alimentação da equipe inclusa\n`;
+    if (addAccess) msg += `- Credencial/acesso ao evento\n`;
     
     msg += `\nTotal estimado: R$ ${totalCost},00`;
     
-    return `https://wa.me/5549984101144?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/5549991052315?text=${encodeURIComponent(msg)}`;
   };
 
   return (
-    <div id="loja-root" className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-[#00F0FF]/30 relative overflow-x-hidden">
+    <div id="loja-root" className="min-h-screen bg-[#0A0F1C] text-[#F8FAFC] font-sans selection:bg-emerald-400 selection:text-black relative overflow-x-hidden">
       <NeonBackground3D />
 
       {/* Header */}
-      <nav id="loja-nav" className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-[#2563EB]/20">
+      <nav id="loja-nav" className="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button 
@@ -105,24 +104,33 @@ export default function LojaPage() {
               onClick={() => navigate('/')}
               className="flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-400 hover:text-white transition-all cursor-pointer"
             >
-              <ArrowLeft className="w-4 h-4 text-[#00F0FF]" /> Início
+              <ArrowLeft className="w-4 h-4 text-emerald-400" /> Início
             </button>
             <a 
               href="/precos"
-              className="text-xs md:text-sm font-semibold text-[#00F0FF] hover:text-white transition-all hidden sm:inline-block"
+              className="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all hidden sm:inline-block"
             >
-              Tabela de Preços
+              Catálogo Geral
             </a>
           </div>
-          <div className="text-[#F8FAFC] font-bold text-lg tracking-tighter uppercase font-mono">
-            SquadClaw<span className="text-[#00F0FF]">Virtual</span>
+
+          <div className="text-center">
+            <a 
+              href="https://instagram.com/virtualplace.agencia" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm sm:text-base font-black tracking-tight text-white hover:text-emerald-400 transition-colors uppercase font-mono"
+            >
+              VIRTUAL PLACE <span className="text-emerald-400">AGÊNCIA</span>
+            </a>
           </div>
+
           <a 
             id="loja-nav-cta"
             href={getWhatsAppLink()} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-4 py-1.5 rounded-full bg-[#00F0FF] text-[#0A0F1C] hover:bg-[#00D8E6] font-bold text-[11px] uppercase transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+            className="px-4 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-[11px] uppercase transition-all shadow-sm"
           >
             Orçamento
           </a>
@@ -139,183 +147,230 @@ export default function LojaPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-block px-4 py-1 rounded-full bg-[#00F0FF]/10 border border-[#00F0FF]/30 text-[#00F0FF] text-[9px] font-black uppercase tracking-widest mb-4">
-              ✨ Audiovisual de Alta Performance
+            <div className="inline-block px-4 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4 font-mono">
+              ✨ A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS
             </div>
             <h1 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
-              Tabela de Serviços de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#2563EB]">Audiovisual & Coberturas</span>
+              Tabela de Serviços & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Soluções da Agência</span>
             </h1>
-            <p className="text-[#94A3B8] text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-              Descubra os valores oficiais e transparentes para coberturas fotográficas profissionais e filmagens de Aftermovie. Combine o melhor da tecnologia audiovisual com a SquadClawVirtual.
+            <p className="text-gray-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+              Fotografia em volume com milhares de fotos por evento, gravações em 4K 60fps com Sony ZV-E10, tráfego pago com ROI comprovado de 7,3x e squads de IA para automatizar o seu negócio.
             </p>
           </motion.div>
         </div>
 
-        {/* Catalog of Services Grid (Two main options specified by user) */}
-        <div id="loja-catalog-grid" className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        {/* Catalog of Services Grid */}
+        <div id="loja-catalog-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-16">
           
-          {/* Card 1: Cobertura Fotográfica */}
-          <div id="loja-card-photo" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#00F0FF]/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#00F0FF]/5 rounded-full blur-2xl pointer-events-none"></div>
+          {/* Card 1: Fotografia em Volume */}
+          <div id="loja-card-photo" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-xl">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none"></div>
             
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center mb-6 border border-[#00F0FF]/25">
-                <Camera className="w-6 h-6 text-[#00F0FF]" />
+              <div className="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 border border-emerald-500/25">
+                <Camera className="w-5 h-5 text-emerald-400" />
               </div>
-              <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
-                Cobertura Fotográfica Professional
+              <span className="text-[10px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                Alto Volume
+              </span>
+              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
+                Fotografia em Volume
               </h2>
-              <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                Garanta fotos de altíssima definição tratadas, ideais para fomento, portfólio, engajamento e registro inesquecível da sua marca e evento.
+              <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                Milhares de fotos por evento. Comercial, Institucional e Eventos em geral com tratamento profissional e entrega rápida.
               </p>
 
-              {/* Pricing Options details */}
-              <div className="space-y-4 mb-8">
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/50 transition-all">
+              <div className="space-y-3 mb-6">
+                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-emerald-500/30">
                   <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Opção 1: Por hora contratada</span>
-                    <span className="text-[#00F0FF] font-black">R$ 160 / hora</span>
+                    <span>Cobertura Completa</span>
+                    <span className="text-emerald-400 font-black">Por Evento</span>
                   </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Você garante cobertura flexível de acordo com a duração exata do seu evento e recebe todas as fotos registradas e editadas profissionalmente.
+                  <p className="text-[11px] text-gray-400 leading-relaxed">
+                    Milhares de fotos tratadas, iluminação dedicada e link em nuvem para download em alta resolução.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-gray-800">
+                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-gray-800">
                   <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Opção 2: Venda direta do site (Fotto/Banlek)</span>
-                    <span className="text-purple-400 font-black">Sob Demanda</span>
+                    <span>Venda via Plataforma</span>
+                    <span className="text-cyan-400 font-black">Sob Demanda</span>
                   </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed space-y-1.5">
-                    <span>• Fotos sem custo de hora/diária para a organização.</span><br />
-                    <span>• Venda de Foto pelo site por <strong className="text-white">R$10 cada digital</strong> download na hora.</span><br />
-                    <span>• Impressão física opcional por <strong className="text-white">R$20 cada folha A4</strong>.</span><br />
-                    <span>• Bônus: Fotos gerais gratuitas do evento e da diretoria incluídas.</span><br />
-                    <span>• Plataforma com reconhecimento facial inteligente.</span>
+                  <p className="text-[11px] text-gray-400 leading-relaxed">
+                    Reconhecimento facial com download imediato por R$ 10 digital e R$ 20 impressão A4.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-800/60">
-              <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Despesas Logísticas Necessárias:</h4>
-              <div className="grid grid-cols-3 gap-2 text-[10px] text-gray-400">
-                <div className="flex items-center gap-1"><MapPin className="w-3 h-3 text-red-400" /> Deslocamento</div>
-                <div className="flex items-center gap-1"><Utensils className="w-3 h-3 text-amber-500" /> Alimentação</div>
-                <div className="flex items-center gap-1"><Ticket className="w-3 h-3 text-purple-400" /> Ingressos/Acesso</div>
+            <div className="pt-4 border-t border-gray-800/80">
+              <span className="text-[10px] font-mono text-gray-400 block mb-1">Acesso e Despesas:</span>
+              <div className="flex gap-2 text-[10px] text-gray-400">
+                <span>• Deslocamento</span>
+                <span>• Alimentação</span>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Vídeo Aftermovie & Captação */}
-          <div id="loja-card-video" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-[#2563EB]/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#2563EB]/5 rounded-full blur-2xl pointer-events-none"></div>
+          {/* Card 2: Audiovisual 4K 60fps */}
+          <div id="loja-card-video" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-cyan-500/40 transition-all shadow-xl">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
             
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-6 border border-[#2563EB]/25">
-                <Video className="w-6 h-6 text-[#2563EB]" />
+              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 border border-cyan-500/25">
+                <Video className="w-5 h-5 text-cyan-400" />
               </div>
-              <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
-                Captação Audiovisual Profissional
+              <span className="text-[10px] font-mono uppercase font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
+                Sony ZV-E10 • 4K 60fps
+              </span>
+              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
+                Gravação & Pós 4K
               </h2>
-              <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                Vídeos de alta energia para carrosséis, Reels ou YouTube. Produzidos com equipamentos modernos de gravação terrestre e aérea.
+              <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                4K + post em alta qualidade. Aftermovies cinemáticos, vídeos para anúncios e Reels de alto engajamento.
               </p>
 
-              {/* Pricing Options details */}
-              <div className="space-y-3.5 mb-8">
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-purple-500/20 bg-[#0A0F1C]/40 hover:border-purple-500/50 transition-all">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-blue-400" /> Videomaker Mobile</span>
-                    <span className="text-sm font-black text-white">R$ 80 <span className="text-[10px] font-normal text-gray-400">/ hora</span></span>
+              <div className="space-y-3 mb-6">
+                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-cyan-500/30">
+                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
+                    <span>Aftermovie Cinemático</span>
+                    <span className="text-cyan-400 font-black">4K 60fps</span>
                   </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Focado em mídias rápidas e carrosséis dinâmicos usando iPhones de última geração e setups portáteis.
+                  <p className="text-[11px] text-gray-400 leading-relaxed">
+                    Color grading refinado de cinema, sound design imersivo e cortes rítmicos.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/50 transition-all">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-black text-[#00F0FF] uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Filmmaker Professional</span>
-                    <span className="text-sm font-black text-[#00F0FF]">R$ 160 <span className="text-[10px] font-normal text-gray-400">/ hora</span></span>
+                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-gray-800">
+                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
+                    <span>Reels & Criativos</span>
+                    <span className="text-purple-400 font-black">Alta Conversão</span>
                   </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Captação cinematográfica premium usando câmeras profissionais dedicadas, lentes cinema e drones de alta definição.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-purple-500/30 bg-purple-500/5 hover:border-purple-500/50 transition-all">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-black text-purple-400 uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-purple-400" /> Edição</span>
-                    <span className="text-sm font-black text-purple-400">R$ 297 <span className="text-[10px] font-normal text-gray-400">/ minuto final</span></span>
-                  </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Edição e pós-produção audiovisual completa com cortes rítmicos, sonorização e correção de cores de alta performance.
+                  <p className="text-[11px] text-gray-400 leading-relaxed">
+                    Captação dinâmica focada em retenção nos 3 primeiros segundos para anúncios e orgânico.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-800/60">
-              <div className="bg-[#2563EB]/10 border border-[#2563EB]/30 rounded-lg p-3 text-[10px] text-gray-300 flex items-start gap-2">
-                <Info className="w-3.5 h-3.5 text-[#00F0FF] shrink-0 mt-0.5" />
-                <span>
-                  Cada projeto acompanha nossa consultoria de roteirização rápida para reter atenção nos primeiros 3 segundos de reprodução.
-                </span>
-              </div>
+            <div className="pt-4 border-t border-gray-800/80">
+              <span className="text-[10px] font-mono text-cyan-400 block text-xs font-bold">
+                Entrega em Alta Resolução HDR
+              </span>
             </div>
           </div>
 
-          {/* Card 3: Assessoria de Branding e Growth Marketing */}
-          <div id="loja-card-traffic" className="p-8 rounded-2xl border border-gray-800 bg-[#0F172A]/50 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-xl">
+          {/* Card 3: Artes Estáticas */}
+          <div id="loja-card-artes" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/40 transition-all shadow-xl">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div>
+              <div className="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5 border border-amber-500/25">
+                <Palette className="w-5 h-5 text-amber-400" />
+              </div>
+              <span className="text-[10px] font-mono uppercase font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                Design Gráfico
+              </span>
+              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
+                Artes Profissionais
+              </h2>
+              <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                Design gráfico de alto impacto para divulgação de eventos, carrosséis, promoções e criativos de anúncios.
+              </p>
+
+              <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-amber-500/30 mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-bold text-white uppercase">Preço Fixo</span>
+                  <span className="text-xl font-black text-amber-400">R$ 100</span>
+                </div>
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  Por arte finalizada em alta definição para feed, stories e banners de campanha.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-800/80">
+              <span className="text-[10px] font-mono text-gray-400 block text-xs">
+                Pronto para Meta Ads & Impressão
+              </span>
+            </div>
+          </div>
+
+          {/* Card 4: Tráfego Pago */}
+          <div id="loja-card-traffic" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-xl">
             <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
             
             <div>
-              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/25">
-                <TrendingUp className="w-6 h-6 text-purple-400" />
+              <div className="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5 border border-purple-500/25">
+                <TrendingUp className="w-5 h-5 text-purple-400" />
               </div>
-              <h2 className="text-xl font-extrabold text-white mb-2 uppercase tracking-tight">
-                Assessoria de Branding e Growth Marketing
+              <span className="text-[10px] font-mono uppercase font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                ROI 7,3x Comprovado
+              </span>
+              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
+                Gestão de Tráfego
               </h2>
-              <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                Gestão e otimização de anúncios nas principais redes de anúncios (Meta, Google, TikTok e LinkedIn Ads) aliada a estratégias de branding focada em tração, geração de leads e vendas recorrentes.
+              <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                Tráfego pago ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade, margem e escala.
               </p>
 
-              {/* Pricing Options details */}
-              <div className="space-y-3 mb-8">
-                <div className="p-4 rounded-xl bg-[#0A0F1C]/70 border border-[#00F0FF]/30 bg-[#00F0FF]/5 hover:border-[#00F0FF]/60 transition-all">
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-xs font-black text-white uppercase flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" /> Gestão Mensal</span>
-                    <span className="text-sm font-black text-[#00F0FF]">R$ 1.500 <span className="text-[10px] font-normal text-gray-400">/mês</span></span>
-                  </div>
-                  <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                    Estratégia, configuração de pixel, remarketing e análise contínua de criativos de alta conversão para maximizar o seu ROAS.
-                  </p>
+              <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-purple-500/30 mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-bold text-white uppercase">Gestão Mensal</span>
+                  <span className="text-xl font-black text-purple-400">R$ 1.500</span>
                 </div>
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  Redes sociais limitadas apenas pela sua verba (Meta, Google, TikTok, YouTube).
+                </p>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-800/60">
-              <div className="bg-purple-950/20 border border-purple-500/30 rounded-lg p-3 text-[10px] text-gray-300 flex items-start gap-2">
-                <Info className="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5" />
-                <span>
-                  Plano ideal para quem quer expandir marcas institucionais, políticos em campanha e negócios locais de forma automatizada e constante.
-                </span>
-              </div>
+            <div className="pt-4 border-t border-gray-800/80">
+              <span className="text-[10px] font-mono text-purple-400 block text-xs font-bold">
+                Estratégia 6 em 7 Validada
+              </span>
             </div>
           </div>
 
         </div>
 
-        {/* Estimador de Projetos (Real-time Calculator) */}
-        <div id="loja-calculator-section" className="max-w-4xl mx-auto p-8 rounded-2xl border border-[#2563EB]/30 bg-[#060913] shadow-[0_0_50px_rgba(37,99,235,0.06)] relative overflow-hidden mb-12">
+        {/* Squads de IA Highlight */}
+        <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-gradient-to-r from-purple-950/40 via-[#0A0F1C] to-purple-950/20 border border-purple-500/30 mb-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+              <Bot className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                PRODUTIVIDADE EXPONENCIAL
+              </span>
+              <h3 className="text-base font-black text-white uppercase mt-1">
+                Squads de IA: Troque Funcionários por Robôs
+              </h3>
+              <p className="text-xs text-gray-400 mt-0.5">
+                Faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial.
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://pay.kiwify.com.br/2yfNvHR"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase transition-all shadow-sm flex items-center gap-2"
+          >
+            Acessar Squads Kiwify →
+          </a>
+        </div>
+
+        {/* Real-time Project Estimator */}
+        <div id="loja-calculator-section" className="max-w-4xl mx-auto p-8 rounded-2xl border border-gray-800 bg-[#060913] shadow-2xl relative overflow-hidden mb-12">
           <div className="absolute top-0 right-0 p-6 text-gray-800 pointer-events-none opacity-10">
             <Calculator className="w-32 h-32" />
           </div>
 
           <div className="relative z-10">
-            <span className="text-[10px] font-bold text-[#00F0FF] bg-[#00F0FF]/15 px-2.5 py-0.5 rounded uppercase font-mono tracking-wider">
-              Calculadora Dinâmica de Escopo
+            <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/15 px-2.5 py-0.5 rounded uppercase font-mono tracking-wider">
+              Simulador de Escopo
             </span>
             <h3 className="text-xl md:text-2xl font-black text-white mt-1.5 mb-6 uppercase tracking-tight">
               Monte seu Orçamento Estimado
@@ -326,50 +381,50 @@ export default function LojaPage() {
               {/* Photo settings column */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <Camera className="w-4 h-4 text-[#00F0FF]" /> 1. Configurações Fotografia
+                  <Camera className="w-4 h-4 text-emerald-400" /> 1. Fotografia
                 </h4>
                 
                 <div className="flex gap-2">
                   <button 
-                    onClick={() => setPhotoMode('hourly')}
-                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
-                      photoMode === 'hourly' 
-                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                    onClick={() => setPhotoOption('volume')}
+                    className={`flex-1 py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
+                      photoOption === 'volume' 
+                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Por Hora (R$160/h)
+                    Volume / Evento
                   </button>
                   <button 
-                    onClick={() => setPhotoMode('venda')}
-                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
-                      photoMode === 'venda' 
-                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                    onClick={() => setPhotoOption('plataforma')}
+                    className={`flex-1 py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
+                      photoOption === 'plataforma' 
+                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Venda de fotos (Site)
+                    Site (Fotto/Banlek)
                   </button>
                 </div>
 
-                {photoMode === 'hourly' ? (
+                {photoOption === 'volume' ? (
                   <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                    <label className="text-[11px] text-gray-400 block mb-1">Horas estimadas de cobertura: <strong>{photoHours} hora(s)</strong></label>
+                    <label className="text-[11px] text-gray-400 block mb-1">Quantidade de eventos/diárias: <strong>{photoEvents} evento(s)</strong></label>
                     <input 
                       type="range" 
                       min="1" 
-                      max="40" 
-                      value={photoHours} 
-                      onChange={(e) => setPhotoHours(parseInt(e.target.value))}
-                      className="w-full accent-[#00F0FF] cursor-pointer"
+                      max="10" 
+                      value={photoEvents} 
+                      onChange={(e) => setPhotoEvents(parseInt(e.target.value))}
+                      className="w-full accent-emerald-400 cursor-pointer"
                     />
                     <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                      <span>1 hora</span>
-                      <span>20 horas</span>
-                      <span>40 horas</span>
+                      <span>1 evento</span>
+                      <span>5 eventos</span>
+                      <span>10 eventos</span>
                     </div>
-                    <div className="text-right text-xs font-extrabold text-[#00F0FF] mt-2">
-                      Subtotal: R$ {photoHours * 160},00
+                    <div className="text-right text-xs font-extrabold text-emerald-400 mt-2">
+                      Subtotal: R$ {photoEvents * 650},00
                     </div>
                   </div>
                 ) : (
@@ -382,7 +437,7 @@ export default function LojaPage() {
                         max="100" 
                         value={photoQtyDigital} 
                         onChange={(e) => setPhotoQtyDigital(parseInt(e.target.value))}
-                        className="w-full accent-[#00F0FF] cursor-pointer"
+                        className="w-full accent-emerald-400 cursor-pointer"
                       />
                       <div className="flex justify-between text-[9px] text-gray-500">
                         <span>1 un (R$10)</span>
@@ -397,14 +452,14 @@ export default function LojaPage() {
                         max="30" 
                         value={photoQtyA4} 
                         onChange={(e) => setPhotoQtyA4(parseInt(e.target.value))}
-                        className="w-full accent-purple-500 cursor-pointer"
+                        className="w-full accent-cyan-400 cursor-pointer"
                       />
                       <div className="flex justify-between text-[9px] text-gray-500">
                         <span>Min (R$20/un)</span>
                         <span>30 un</span>
                       </div>
                     </div>
-                    <div className="text-right text-xs font-extrabold text-[#00F0FF] pt-1">
+                    <div className="text-right text-xs font-extrabold text-emerald-400 pt-1">
                       Subtotal Estimado: R$ {(photoQtyDigital * 10) + (photoQtyA4 * 20)},00
                     </div>
                   </div>
@@ -414,47 +469,36 @@ export default function LojaPage() {
               {/* Video settings column */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <Video className="w-4 h-4 text-purple-400" /> 2. Configurações Captação Vídeo
+                  <Video className="w-4 h-4 text-cyan-400" /> 2. Gravação 4K
                 </h4>
 
                 <div className="flex flex-col gap-2">
                   <button 
-                    onClick={() => setVideoMode('filmmaker')}
+                    onClick={() => setVideoOption('aftermovie')}
                     className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoMode === 'filmmaker' 
-                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                      videoOption === 'aftermovie' 
+                        ? 'bg-cyan-500/15 border-cyan-500 text-cyan-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Filmmaker Professional</span>
-                    <span>R$ 160 / h</span>
+                    <span>Aftermovie 4K Cinemático</span>
+                    <span>R$ 850 / prod.</span>
                   </button>
                   <button 
-                    onClick={() => setVideoMode('videomaker')}
+                    onClick={() => setVideoOption('reels')}
                     className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoMode === 'videomaker' 
-                        ? 'bg-purple-950/25 border-purple-500 text-purple-300' 
+                      videoOption === 'reels' 
+                        ? 'bg-cyan-500/15 border-cyan-500 text-cyan-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Videomaker Mobile</span>
-                    <span>R$ 80 / h</span>
+                    <span>Reels / Carrossel em Alta Qualidade</span>
+                    <span>R$ 250 / prod.</span>
                   </button>
                   <button 
-                    onClick={() => setVideoMode('premium')}
+                    onClick={() => setVideoOption('none')}
                     className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoMode === 'premium' 
-                        ? 'bg-purple-950/30 border-purple-500 text-[#00F0FF]' 
-                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    <span>Edição Profissional</span>
-                    <span>R$ 297 / min final</span>
-                  </button>
-                  <button 
-                    onClick={() => setVideoMode('none')}
-                    className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoMode === 'none' 
+                      videoOption === 'none' 
                         ? 'bg-red-950/15 border-red-900/40 text-red-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
@@ -464,70 +508,66 @@ export default function LojaPage() {
                   </button>
                 </div>
 
-                {videoMode !== 'none' ? (
+                {videoOption !== 'none' ? (
                   <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 mt-2">
-                    {videoMode === 'premium' ? (
-                      <>
-                        <label className="text-[11px] text-gray-400 block mb-1">Minutos finais de vídeo estimado: <strong>{videoMinutes} minuto(s)</strong></label>
-                        <input 
-                          type="range" 
-                          min="1" 
-                          max="20" 
-                          value={videoMinutes} 
-                          onChange={(e) => setVideoMinutes(parseInt(e.target.value))}
-                          className="w-full accent-purple-500 cursor-pointer"
-                        />
-                        <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                          <span>Mínimo</span>
-                          <span>10 min</span>
-                          <span>20 min</span>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <label className="text-[11px] text-gray-400 block mb-1">Horas estimadas de captação: <strong>{videoHours} hora(s)</strong></label>
-                        <input 
-                          type="range" 
-                          min="1" 
-                          max="40" 
-                          value={videoHours} 
-                          onChange={(e) => setVideoHours(parseInt(e.target.value))}
-                          className="w-full accent-purple-500 cursor-pointer"
-                        />
-                        <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                          <span>1 hora</span>
-                          <span>20 horas</span>
-                          <span>40 horas</span>
-                        </div>
-                      </>
-                    )}
-                    <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
+                    <label className="text-[11px] text-gray-400 block mb-1">Quantidade de produções: <strong>{videoCount}</strong></label>
+                    <input 
+                      type="range" 
+                      min="1" 
+                      max="10" 
+                      value={videoCount} 
+                      onChange={(e) => setVideoCount(parseInt(e.target.value))}
+                      className="w-full accent-cyan-400 cursor-pointer"
+                    />
+                    <div className="text-right text-xs font-extrabold text-cyan-400 mt-2">
                       Subtotal: R$ {videoCost},00
                     </div>
                   </div>
                 ) : (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-8 text-gray-500 text-[10.5px]">
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-6 text-gray-500 text-[10.5px]">
                     <p>Nenhuma captação de vídeo selecionada no estimador.</p>
                   </div>
                 )}
               </div>
 
-              {/* Paid Traffic settings column */}
+              {/* Artes & Tráfego Pago column */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Assessoria de Branding e Growth Marketing
+                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Artes & Tráfego Pago
                 </h4>
 
+                {/* Artes */}
+                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[11px] text-gray-300 font-bold uppercase flex items-center gap-1">
+                      <Palette className="w-3 h-3 text-amber-400" /> Artes Estáticas (R$ 100/un)
+                    </span>
+                    <span className="text-xs font-black text-amber-400">{artesCount} un</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    min="0" 
+                    max="20" 
+                    value={artesCount} 
+                    onChange={(e) => setArtesCount(parseInt(e.target.value))}
+                    className="w-full accent-amber-400 cursor-pointer"
+                  />
+                  <div className="text-right text-xs font-bold text-amber-400 mt-1">
+                    R$ {artesCost},00
+                  </div>
+                </div>
+
+                {/* Tráfego Pago */}
                 <div className="flex gap-2">
                   <button 
                     onClick={() => setAddTraffic(true)}
                     className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-center ${
                       addTraffic 
-                        ? 'bg-[#00F0FF]/15 border-[#00F0FF] text-[#00F0FF]' 
+                        ? 'bg-purple-500/15 border-purple-500 text-purple-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Ativar (R$1.500/mês)
+                    Tráfego (R$ 1.500/mês)
                   </button>
                   <button 
                     onClick={() => setAddTraffic(false)}
@@ -537,12 +577,12 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Sem Assessoria
+                    Sem Tráfego
                   </button>
                 </div>
 
-                {addTraffic ? (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
+                {addTraffic && (
+                  <div className="p-3.5 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
                     <label className="text-[11px] text-gray-400 block mb-1">Período de assessoria: <strong>{trafficMonths} {trafficMonths === 1 ? 'mês' : 'meses'}</strong></label>
                     <input 
                       type="range" 
@@ -550,20 +590,11 @@ export default function LojaPage() {
                       max="12" 
                       value={trafficMonths} 
                       onChange={(e) => setTrafficMonths(parseInt(e.target.value))}
-                      className="w-full accent-purple-500 cursor-pointer"
+                      className="w-full accent-purple-400 cursor-pointer"
                     />
-                    <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                      <span>1 mês</span>
-                      <span>6 meses</span>
-                      <span>12 meses</span>
+                    <div className="text-right text-xs font-extrabold text-purple-400 mt-1">
+                      Subtotal: R$ {trafficCost},00
                     </div>
-                    <div className="text-right text-xs font-extrabold text-purple-400 mt-2">
-                      Subtotal: R$ {trafficMonths * 1500},00
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-8 text-gray-500 text-[10.5px]">
-                    <p>Otimize sua divulgação local com anúncios patrocinados no Meta Ads (Facebook/Instagram), Google Ads, TikTok Ads e LinkedIn Ads.</p>
                   </div>
                 )}
               </div>
@@ -572,7 +603,7 @@ export default function LojaPage() {
 
             {/* Logistics obligations */}
             <div className="mb-6">
-              <span className="text-[10px] text-gray-400 font-mono block mb-2 uppercase">Logística & Despesas de Projeto (Obrigatório):</span>
+              <span className="text-[10px] text-gray-400 font-mono block mb-2 uppercase">Logística & Despesas de Projeto:</span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <button 
                   onClick={() => setAddTravelExp(!addTravelExp)}
@@ -611,7 +642,7 @@ export default function LojaPage() {
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
-                    <Ticket className="w-3.5 h-3.5" /> Ingressos acesso total
+                    <Ticket className="w-3.5 h-3.5" /> Ingressos / Acesso total
                   </span>
                   <span>{addAccess ? 'Ativado ✓' : 'Pendente'}</span>
                 </button>
@@ -623,9 +654,9 @@ export default function LojaPage() {
               <div>
                 <span className="text-[10px] uppercase font-mono text-gray-400 block mb-0.5">Total Estimado do Projeto</span>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-sm font-bold text-[#00F0FF]">R$</span>
+                  <span className="text-sm font-bold text-emerald-400">R$</span>
                   <span className="text-3xl font-extrabold text-white tracking-tight">{totalCost},00</span>
-                  <span className="text-[10px] font-mono text-gray-400 font-bold uppercase">(Apenas base preliminar)</span>
+                  <span className="text-[10px] font-mono text-gray-400 font-bold uppercase">(Orçamento acessível sob medida)</span>
                 </div>
               </div>
 
@@ -634,25 +665,30 @@ export default function LojaPage() {
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#2563EB] hover:from-[#00D8E6] hover:to-[#1D4ED8] text-white font-black flex items-center justify-center gap-3 transition-all text-xs uppercase shadow-[0_0_25px_rgba(0,240,255,0.3)] select-none cursor-pointer"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-black flex items-center justify-center gap-3 transition-all text-xs uppercase shadow-sm select-none cursor-pointer"
               >
-                <span>🚀 Fechar Escopo no WhatsApp</span> <ArrowRight className="w-4 h-4 ml-1" />
+                <span>Fechar Escopo no WhatsApp</span> <ArrowRight className="w-4 h-4 ml-1" />
               </a>
             </div>
 
           </div>
         </div>
 
+        {/* Embedded Advanced Traffic Calculator */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <TrafegoCalculator />
+        </div>
+
         {/* Informações de Plataformas */}
         <div id="loja-platforms" className="max-w-4xl mx-auto rounded-xl p-6 bg-[#0E1527]/50 border border-gray-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-lg bg-cyan-900/20 border border-cyan-500/30 flex items-center justify-center shrink-0 text-[#00F0FF]">
+            <div className="w-12 h-12 rounded-lg bg-emerald-950/20 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
               <Layers className="w-6 h-6" />
             </div>
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-0.5">Plataformas de Galerias de Fotos Ativas</h4>
-              <p className="text-[11px] text-[#94A3B8] leading-relaxed">
-                Utilizamos as galerias profissionais mais robustas e confiáveis do território nacional para hospedar o acervo do seu evento: <strong className="text-white">Fotto</strong> e <strong className="text-white">Banlek</strong>.
+              <p className="text-[11px] text-gray-400 leading-relaxed">
+                Utilizamos as galerias profissionais mais robustas e confiáveis do território nacional para hospedar o acervo do seu evento: <strong className="text-white">Fotto</strong> e <strong className="text-white">Banlek</strong> com reconhecimento facial.
               </p>
             </div>
           </div>
@@ -665,8 +701,8 @@ export default function LojaPage() {
       </main>
 
       {/* Mini Footer */}
-      <footer id="loja-footer" className="py-8 border-t border-gray-800/80 text-center text-gray-400 text-xs bg-[#0A0F1C]/50 relative z-10">
-        <p>VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
+      <footer id="loja-footer" className="py-8 border-t border-gray-800/80 text-center text-gray-400 text-xs bg-[#0A0F1C]/50 relative z-10 font-mono">
+        <p>VIRTUAL PLACE AGÊNCIA // CONSULTORIA EM IA, CRM, AUDIOVISUAL 4K & TRÁFEGO PAGO</p>
       </footer>
     </div>
   );

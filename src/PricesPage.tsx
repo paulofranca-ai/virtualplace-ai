@@ -29,9 +29,13 @@ import {
   Bot,
   Building2,
   Globe2,
-  Workflow
+  Workflow,
+  Sliders,
+  Flame,
+  Target
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
+import { TrafegoCalculator } from './components/TrafegoCalculator';
 
 interface ServiceItem {
   id: string;
@@ -119,99 +123,151 @@ export default function PricesPage() {
     {
       id: 'audiovisual_videos',
       category: 'audiovisual',
-      title: 'Produção & Edição de Vídeos (Audiovisual)',
-      subtitle: 'Gravação presencial no local ou somente edição remota dos seus brutos',
-      badge: 'Promoção Ativa',
+      title: '4K + Post em Alta Qualidade',
+      subtitle: 'Stories na Hora + Brutos + Aftermovie Cinemático 4K',
+      badge: '4K + Post na Hora',
       badgeColor: 'border-blue-200 text-blue-600 bg-blue-50',
       icon: Video,
       iconColor: 'text-blue-600',
-      description: 'Vídeos verticais para Reels, TikTok e Shorts, anúncios comerciais para Meta/Google, VSLs para lançamentos e institucionais. Cada hora de gravação presencial inclui stories, brutos e aftermovie cinemático 4K.',
+      description: 'Produção audiovisual completa em 4K + post em alta qualidade no local: inclui postagem de stories em tempo real durante o evento, entrega de 100% dos arquivos brutos sem compressão e Aftermovie Cinemático masterizado em 4K HDR com color grading de cinema.',
       promoOffer: {
-        title: 'Gravação: Stories + Brutos + Aftermovie Cinemático 4K',
-        ctaText: 'Contratar Gravação',
+        title: 'Gravação: Stories na Hora + Brutos + Aftermovie Cinemático 4K',
+        ctaText: 'Contratar Produção 4K',
         ctaUrl: 'https://pay.kiwify.com.br/cG8n7jh'
       },
       features: [
-        'Por hora de gravação: Stories na hora + todos os brutos + Aftermovie Cinemático 4K',
+        'Captação 4K 60fps com post em alta qualidade durante o evento',
+        'Stories gravados e publicados na hora durante a cobertura',
         'Entrega de todos os arquivos brutos sem corte para o seu acervo',
         'Aftermovie cinemático masterizado em 4K com color grading profissional',
-        'Live streaming separada (TikTok, YouTube, Instagram e/ou Twitch)',
-        'Contratação flexível: por hora de trabalho ou por demanda de projeto',
+        'Opcional: Captação aérea com Drone 4K Ultra HD',
         'Opcional: Inteligência Artificial (Cenários e B-rolls)',
-        'Opcional: Estilo Cinematográfico (Color Grading de filme)'
+        'A melhor entrega da região com orçamentos acessíveis'
       ],
-      ctaText: 'Pedir Orçamento Customizado no WhatsApp',
-      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20e%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeos.'
+      ctaText: 'Pedir Orçamento de Produção 4K no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20Audiovisual%204K%20%2B%20Post%20em%20Alta%20Qualidade.'
     },
     {
       id: 'fotografia_eventos',
       category: 'audiovisual',
-      title: 'Fotografia Profissional para Eventos',
-      subtitle: 'Corporativos, Políticos e Festas em Geral',
-      badge: 'Corporativo • Político • Festas',
+      title: 'Fotografia em Volume',
+      subtitle: 'Milhares de Fotos por Evento • Comercial, Institucional e Eventos',
+      badge: 'Milhares de Fotos por Evento',
       badgeColor: 'border-amber-200 text-amber-600 bg-amber-50',
       icon: Camera,
       iconColor: 'text-amber-600',
-      description: 'Cobertura fotográfica técnica e sensível para convenções empresariais, congressos corporativos, campanhas e eventos políticos, feiras, festivais e festas sociais em geral. Equipamentos full-frame de ponta e pós-produção com tratamento de cor refinado.',
+      description: 'Fotografia em volume com milhares de fotos por evento em altíssima resolução. Cobertura completa para Comercial, Institucional e Eventos em geral (convenções, feiras, eventos corporativos, atos públicos, formaturas e festas). Equipamentos full-frame de ponta e pós-produção com tratamento de cor refinado.',
       promoOffer: {
-        title: 'Fotografia de Eventos Completa',
+        title: 'Fotografia em Volume: Milhares de Fotos por Evento',
         ctaText: 'Solicitar Orçamento Fotográfico',
-        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.'
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20em%20Volume%20%28Milhares%20de%20Fotos%20por%20Evento%20-%20Comercial%2C%20Institucional%20e%20Eventos%29.'
       },
       features: [
-        'Eventos corporativos: feiras, convenções de vendas, workshops, congressos e premiações',
-        'Eventos políticos: cobertura de atos públicos, comícios, posses, plenárias e assessoria de imagem',
-        'Festas em geral: comemorações empresariais, aniversários, confraternizações e festivais',
-        'Fotógrafo experiente equipado com lentes claras e iluminação dedicada',
-        'Tratamento individual e curadoria minuciosa de todas as fotos selecionadas',
-        'Entrega ágil via galeria online privativa em alta resolução para download e redes'
+        'Milhares de fotos registradas por evento em alta resolução',
+        'Comercial, Institucional e Eventos em geral',
+        'Equipamentos profissionais e tratamento de cor de alto nível',
+        'Entrega ágil via galeria privativa online para download e compartilhamento',
+        'A melhor entrega da região com orçamentos acessíveis'
       ],
       ctaText: 'Pedir Orçamento de Fotografia no WhatsApp',
-      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Eventos%20Corporativos%2C%20Pol%C3%ADticos%20ou%20Festas%20em%20Geral%29.'
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20em%20Volume%20%28Milhares%20de%20Fotos%20por%20Evento%29.'
     },
     {
       id: 'artes_design',
       category: 'audiovisual',
-      title: 'Artes Gráficas & Criativos de Alta Conversão',
-      subtitle: 'Design profissional para posts, anúncios, capas e identidade visual',
-      badge: 'Design de Alto Impacto',
+      title: 'Artes Gráficas: R$ 100',
+      subtitle: 'Design de Alta Conversão por Arte (R$ 100)',
+      badge: 'R$ 100 por Arte',
       badgeColor: 'border-green-200 text-green-600 bg-green-50',
       icon: Palette,
       iconColor: 'text-green-600',
-      description: 'Criativos que chamam atenção no feed do Instagram, geram cliques em campanhas de tráfego pago e elevam a percepção de valor da sua marca.',
+      description: 'Artes e criativos profissionais de alta conversão para Instagram (feed, stories, carrosséis), anúncios de tráfego pago, lançamentos e banners promocionais por apenas R$ 100 cada arte.',
       promoOffer: {
-        title: 'Post Arte Estática p/ Rede Social',
-        ctaText: 'Solicitar Arte de Divulgação',
-        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20a%20Arte%20Est%C3%A1tica.'
+        title: 'Arte Gráfica Profissional (R$ 100 cada)',
+        price: 'R$ 100',
+        ctaText: 'Solicitar Arte (R$ 100)',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29.'
       },
       features: [
+        'Apenas R$ 100 por arte / criativo',
         'Posts individuais, carrosséis educativos e banners promocionais',
         'Criativos otimizados para campanhas de Meta Ads e Google Ads',
-        'Capas de Reels, thumbnails para YouTube e destaques',
-        'Opcionais: Elementos gerados com IA e Lettering estilizado'
+        'Formatos 1:1, 4:5 e 9:16 adaptados com psicologia de consumo',
+        'Entrega rápida em alta resolução PNG e PDF vetorial'
       ],
-      ctaText: 'Pedir Orçamento de Artes no WhatsApp',
-      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Artes%20Gr%C3%A1ficas%20e%20Criativos.'
+      ctaText: 'Solicitar Artes por R$ 100 no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29.'
+    },
+    {
+      id: 'trafego_pago_gestao',
+      category: 'marketing',
+      title: 'Assessoria de Tráfego Pago: R$ 1.500',
+      subtitle: 'Redes Sociais Limitadas Apenas Pela Verba',
+      badge: 'ROI 7,3x Comprovado • R$ 1.500',
+      badgeColor: 'border-emerald-300 text-emerald-600 bg-emerald-50',
+      icon: Target,
+      iconColor: 'text-emerald-600',
+      description: 'Gestão de tráfego pago com ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala. Campanhas em Meta Ads (Instagram/Facebook), Google Ads e TikTok Ads — redes sociais limitadas apenas pela verba do cliente.',
+      promoOffer: {
+        title: 'Gestão de Tráfego Pago: R$ 1.500 / mês',
+        price: 'R$ 1.500/mês',
+        ctaText: 'Contratar Tráfego (R$ 1.500)',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29.'
+      },
+      features: [
+        'Valor fixo de gestão: R$ 1.500 / mês',
+        'Redes sociais limitadas apenas pela sua verba de anúncio',
+        'ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade',
+        'Otimização diária de CPA, ROAS e relatórios transparentes de conversão',
+        'Simulador interativo de retorno e recomendação de verba integrado'
+      ],
+      ctaText: 'Contratar Gestão de Tráfego por R$ 1.500',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29.'
+    },
+    {
+      id: 'squads_ia',
+      category: 'jarvis',
+      title: 'Squads de IA: Troque Funcionários por Robôs',
+      subtitle: 'Posts, Vídeos, Artes, Marketing e Análises com IA',
+      badge: 'Troque Funcionários por Robôs',
+      badgeColor: 'border-purple-300 text-purple-600 bg-purple-50',
+      icon: Bot,
+      iconColor: 'text-purple-600',
+      description: 'Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana sem encargos ou atrasos.',
+      promoOffer: {
+        title: 'Squads de IA Autônomos (30+ Agentes)',
+        ctaText: 'Acessar Squads de IA',
+        ctaUrl: 'https://pay.kiwify.com.br/2yfNvHR'
+      },
+      features: [
+        'Troque funcionários por robôs inteligentes e reduza custos',
+        'Geração autônoma de posts, vídeos e artes publicitárias',
+        'Estratégias de marketing digital completas e funis automáticos',
+        'Análises preditivas de anúncios patrocinados via IA',
+        'Atendimento e qualificação instantânea no WhatsApp 24/7'
+      ],
+      ctaText: 'Acessar Squads de IA na Kiwify',
+      ctaUrl: 'https://pay.kiwify.com.br/2yfNvHR'
     },
     {
       id: 'marketing_coproducao',
       category: 'marketing',
       title: 'Coprodução & Lançamentos para Infoprodutores',
-      subtitle: 'Plano sob medida para especialistas que querem escalar vendas online',
+      subtitle: 'Plano sob medida para especialistas que querem alta margem e escala',
       badge: 'Projeto Sob Medida',
-      badgeColor: 'border-blue-200 text-blue-400 bg-blue-50',
+      badgeColor: 'border-blue-200 text-blue-600 bg-blue-50',
       icon: TrendingUp,
-      iconColor: 'text-blue-400',
-      description: 'Estruturação completa para quem já vende conhecimento ou quer criar seu primeiro infoproduto. Temos experiência prática em +23 lançamentos reais (com múltiplos "6 em 7").',
+      iconColor: 'text-blue-600',
+      description: 'Estruturação completa para quem já vende conhecimento ou quer criar seu próximo curso escalável com ROI 7,3x comprovado em mais de 100k de vendas.',
       promoOffer: {
-        title: 'Sessão Estratégica (Mapeamento)',
-        ctaText: 'Agendar Call no Calendly',
-        ctaUrl: 'https://calendly.com/'
+        title: 'Sessão Estratégica de Lançamento',
+        ctaText: 'Falar com Coprodutor',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Sou%20infoprodutor%20e%20gostaria%20de%20conversar%20sobre%20Coprodu%C3%A7%C3%A3o%20e%20Lançamentos.'
       },
       features: [
-        'Planejamento do lançamento ou funil perpétuo',
-        'Criação de páginas de captura, vendas e VSL',
-        'Gestão de tráfego avançada (Meta, Google, TikTok Ads)',
+        'Planejamento do lançamento ou funil perpétuo de alta margem',
+        'Criação de páginas de captura, vendas e VSL de alta conversão',
+        'Gestão de tráfego avançada com ROI 7,3x comprovado',
         'Parceria focada em retorno financeiro escalável'
       ],
       ctaText: 'Tirar dúvidas rápidas no WhatsApp',
@@ -225,20 +281,24 @@ export default function PricesPage() {
       answer: 'Iniciamos com um alinhamento direto pelo WhatsApp ou chamada de vídeo. Diagnosticamos as rotinas manuais da sua empresa, indicamos o CRM ideal e configuramos as integrações e automações de IA necessárias para seu time atender mais rápido e vender mais.'
     },
     {
-      question: 'O Treinamento de Equipe pode ser feito de forma online ou presencial?',
-      answer: 'Sim! Realizamos treinamentos online ao vivo (gravados para consulta posterior) ou presenciais, ensinando seus funcionários a utilizarem ferramentas de IA, operarem o CRM e atenderem clientes no WhatsApp de forma eficiente e padronizada.'
+      question: 'Como funciona a Assessoria de Tráfego Pago por R$ 1.500?',
+      answer: 'A taxa de gestão da agência é de R$ 1.500 mensais fixos. As redes sociais (Meta Ads/Instagram, Google Ads e TikTok Ads) são limitadas apenas pela verba de anúncios do cliente. O cliente define o orçamento ou utiliza nossa calculadora para saber a verba ideal baseada no seu ticket e produto.'
     },
     {
-      question: 'Como solicito um orçamento para Produção de Vídeos e Artes?',
-      answer: 'Basta clicar no botão de WhatsApp do serviço desejado e nos contar o que precisa (por exemplo: quantidade de vídeos, se já tem o material gravado ou se precisa de captação presencial, se deseja efeitos especiais, voz de IA ou locutor humano). Enviamos uma proposta personalizada em poucos minutos.'
+      question: 'Quanto custam as Artes Gráficas?',
+      answer: 'Nossas artes gráficas e criativos de alta conversão têm valor de apenas R$ 100 cada arte, com entrega em alta resolução adaptada para feed, stories, carrosséis ou anúncios patrocinados.'
     },
     {
-      question: 'Quem é o responsável pela gestão de Marketing e Lançamentos?',
-      answer: 'Nossa equipe é liderada por Coprodutor 6 em 7, com mais de 23 lançamentos executados com estratégias validadas de alto impacto no mercado digital. Aplicamos essa mesma inteligência tanto para alavancar comércios e negócios locais quanto para infoprodutores do Brasil e do mundo.'
+      question: 'Como funciona a Fotografia em Volume?',
+      answer: 'Realizamos cobertura completa com milhares de fotos por evento para Comercial, Institucional e Eventos em geral. Todas as fotos são tratadas e entregues em galeria privativa online para download imediato.'
     },
     {
-      question: 'Como funciona a aquisição do Cérebro de IA (Squad Jarvis 30+ Agentes)?',
-      answer: 'O Cérebro de IA é disponibilizado com acesso imediato e vitalício via Kiwify, incluindo todos os 30+ robôs, scripts prontos e tutorial em vídeo passo a passo para Claude Code, AntiGravity, Cursor e terminais, com opção de suporte e onboarding personalizado.'
+      question: 'O que está incluso na produção 4K + Post em Alta Qualidade?',
+      answer: 'Inclui captação 4K 60fps no local, postagens de stories em tempo real durante o evento, entrega de 100% dos arquivos brutos sem corte e Aftermovie Cinemático masterizado em 4K HDR com color grading profissional.'
+    },
+    {
+      question: 'O que são os Squads de IA?',
+      answer: 'São robôs inteligentes autônomos treinados para trocar funcionários por robôs: criam posts, vídeos, artes, estratégias de marketing e fazem análises de anúncios patrocinados 24/7 sem encargos.'
     }
   ];
 
@@ -254,15 +314,14 @@ export default function PricesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
           <a href="/" className="flex items-center gap-3">
             <img 
-              src="https://i.imgur.com/w2iO5CR.png" 
-              alt="Virtual Place Logo" 
-              className="h-12 md:h-14 w-auto object-contain brightness-110" 
-              referrerPolicy="no-referrer" 
+              src="/logo-agencia.png" 
+              alt="AGÊNCIA VIRTUAL PLACE" 
+              className="h-10 sm:h-12 w-auto object-contain rounded-lg border border-gray-200" 
             />
           </a>
 
           {/* Centralizado no cabeçalho */}
-          <div className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+          <div className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto hidden sm:block">
             <a 
               href="https://instagram.com/virtualplace.agencia" 
               target="_blank" 
@@ -273,7 +332,14 @@ export default function PricesPage() {
             </a>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <a 
+              href="#calculadora" 
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-500/30 text-emerald-700 bg-emerald-50 text-xs font-bold uppercase hover:bg-emerald-100 transition-colors"
+            >
+              <Sliders className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Calculadora de Tráfego</span>
+            </a>
             <a 
               href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Virtual%20Place." 
               target="_blank" 
@@ -292,28 +358,28 @@ export default function PricesPage() {
           <div className="max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-green-50 border border-green-200 font-mono text-[10px] sm:text-xs text-green-600 uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-green-600" />
-              <span>SOLUÇÕES COMPLETAS SOB MEDIDA</span>
+              <span>A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-gray-900 uppercase tracking-tight leading-tight mb-4">
               Serviços, Consultoria <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-white to-gray-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600">
                 & Inteligência de Vendas
               </span>
             </h1>
 
             <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
-              Atendemos comércios locais, empresas físicas e infoprodutores de todo o Brasil e do mundo. Solicite propostas sob medida direto pelo WhatsApp com atendimento humanizado e rápido.
+              A melhor entrega da região com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume, artes por R$ 100, squads de IA e assessoria de tráfego pago por R$ 1.500 com redes limitadas apenas pela verba.
             </p>
 
             {/* Category Filter Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {[
                 { id: 'all', label: 'Todos os Serviços', icon: Layers },
-                { id: 'ia_crm', label: 'Consultoria IA, CRM & Treinamento', icon: Brain },
-                { id: 'audiovisual', label: 'Audiovisual & Edição', icon: Video },
-                { id: 'marketing', label: 'Tráfego & Coprodução 6 em 7', icon: TrendingUp },
-                { id: 'jarvis', label: 'Cérebro IA Jarvis', icon: Terminal }
+                { id: 'audiovisual', label: 'Audiovisual 4K & Design', icon: Video },
+                { id: 'marketing', label: 'Tráfego Pago (R$ 1.500)', icon: Target },
+                { id: 'jarvis', label: 'Squads de IA', icon: Bot },
+                { id: 'ia_crm', label: 'Consultoria IA & CRM', icon: Brain }
               ].map((cat) => {
                 const Icon = cat.icon;
                 const active = activeCategory === cat.id;
@@ -323,7 +389,7 @@ export default function PricesPage() {
                     onClick={() => setActiveCategory(cat.id as any)}
                     className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-2 border cursor-pointer ${
                       active
-                        ? 'bg-emerald-400 text-white border-emerald-400 shadow-sm'
+                        ? 'bg-emerald-500 text-white border-emerald-500 shadow-sm'
                         : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-900'
                     }`}
                   >
@@ -349,7 +415,7 @@ export default function PricesPage() {
                 return (
                   <div 
                     key={service.id}
-                    className="p-7 rounded-2xl border border-gray-200 bg-gray-50 hover:border-green-200 transition-all shadow-xl flex flex-col justify-between group"
+                    className="p-7 rounded-2xl border border-gray-200 bg-gray-50 hover:border-green-300 transition-all shadow-xl flex flex-col justify-between group"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-3 mb-4">
@@ -368,7 +434,7 @@ export default function PricesPage() {
                         {service.subtitle}
                       </p>
 
-                      <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                      <p className="text-gray-600 text-xs leading-relaxed mb-4">
                         {service.description}
                       </p>
 
@@ -376,9 +442,13 @@ export default function PricesPage() {
                         <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 mb-5 text-xs">
                           <div className="flex items-center justify-between gap-2 mb-1">
                             <span className="font-bold uppercase text-[10px] text-blue-600 flex items-center gap-1">
-                              <Sparkles className="w-3 h-3 text-blue-600" /> OFERTA EM DESTAQUE
+                              <Sparkles className="w-3 h-3 text-blue-600" /> DESTAQUE DA AGÊNCIA
                             </span>
-                            <span className="text-[9px] font-mono text-blue-500 bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Kiwify</span>
+                            {service.promoOffer.price && (
+                              <span className="text-xs font-mono font-black text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
+                                {service.promoOffer.price}
+                              </span>
+                            )}
                           </div>
                           <div className="font-bold text-gray-900 text-xs">{service.promoOffer.title}</div>
                         </div>
@@ -413,7 +483,7 @@ export default function PricesPage() {
                         className={`w-full py-3 rounded-xl font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer text-center ${
                           service.promoOffer
                             ? 'bg-white hover:bg-gray-100 border border-gray-300 text-gray-600 hover:text-gray-900 text-[11px]'
-                            : 'bg-emerald-400 hover:bg-emerald-300 text-white shadow-sm'
+                            : 'bg-emerald-500 hover:bg-emerald-400 text-white shadow-sm'
                         }`}
                       >
                         <MessageSquare className="w-4 h-4" />
@@ -429,35 +499,35 @@ export default function PricesPage() {
       </section>
 
       {/* SPECIAL CARD: PACOTES AUDIOVISUAIS PROMOCIONAIS */}
-      {(activeCategory === 'all' || activeCategory === 'audiovisual') && (
+      {(activeCategory === 'all' || activeCategory === 'audiovisual' || activeCategory === 'marketing') && (
         <section className="py-16 bg-white relative border-b border-gray-200">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 font-mono text-[10px] text-blue-500 uppercase mb-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 font-mono text-[10px] text-blue-600 uppercase mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                <span>PACOTES DE AUDIOVISUAL & DESIGN • CONTRATAÇÃO DIRETA</span>
+                <span>SOLUÇÕES ESSENCIAIS • A MELHOR ENTREGA DA REGIÃO</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-tight">
-                Pacotes & Soluções Audiovisuais
+                Pacotes & Soluções em Destaque
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-              {/* Pacote 1: Gravação Completa Unificada */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Pacote 1: 4K + Post em Alta Qualidade */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div>
                   <div className="inline-block text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    Tudo em 1 Serviço
+                    4K + Post na Hora
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Stories + Brutos + Aftermovie Cinemático 4K
+                    4K + Post em Alta Qualidade
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Por hora de gravação: postagem de stories no local, 100% dos brutos entregues e aftermovie cinemático masterizado em 4K HDR com color grading de cinema.
+                    Captação presencial 4K com postagem de stories no local, 100% dos brutos entregues e aftermovie cinemático masterizado em 4K HDR com color grading de cinema.
                   </p>
                   <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    Por Hora de Gravação
+                    Stories + Brutos + Aftermovie 4K
                   </div>
                 </div>
                 <a
@@ -466,121 +536,102 @@ export default function PricesPage() {
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
                 >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Gravação
+                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Produção 4K
                 </a>
               </div>
 
-              {/* Pacote 2: Transmissão ao Vivo Separada */}
-              <div className="p-6 rounded-2xl bg-gray-50 border border-rose-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-rose-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-rose-50 rounded-full blur-2xl pointer-events-none group-hover:bg-rose-500/20 transition-all" />
-                <div>
-                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-rose-600 bg-rose-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    Serviço Separado
-                  </div>
-                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Transmissão ao Vivo (Live)
-                  </h4>
-                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Live separada: Streaming profissional no TikTok, YouTube, Instagram e/ou Twitch para eventos, podcasts e lançamentos + Gravação inclusa.
-                  </p>
-                  <div className="text-xs font-bold text-rose-600 uppercase mb-4 tracking-wider bg-rose-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    Serviço Separado por Hora
-                  </div>
-                </div>
-                <a
-                  href="https://pay.kiwify.com.br/elj3ZQY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
-                >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Live Separada
-                </a>
-              </div>
-
-              {/* Pacote 3: Drone */}
-              <div className="p-6 rounded-2xl bg-gray-50 border border-blue-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all" />
-                <div>
-                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    Aéreo 4K
-                  </div>
-                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Captação Aérea com Drone 4K
-                  </h4>
-                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Captação aérea com drone em resolução 4K Ultra HD com planos cinematográficos e edição finalizada. (Despesas de deslocamento à parte).
-                  </p>
-                  <div className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-wider bg-blue-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    Captação Aérea por Hora
-                  </div>
-                </div>
-                <a
-                  href="https://pay.kiwify.com.br/f0SV5xQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center"
-                >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Drone
-                </a>
-              </div>
-
-              {/* Pacote 4: Fotografia Profissional para Eventos */}
+              {/* Pacote 2: Fotografia em Volume */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-amber-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-amber-300 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/20 transition-all" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">
                   <div className="inline-block text-[10px] font-mono font-bold uppercase text-amber-600 bg-amber-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    Eventos & Político
+                    Milhares de Fotos
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Fotografia Profissional
+                    Fotografia em Volume
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Eventos corporativos, políticos e festas em geral. Equipamento full-frame, tratamento de cor refinado e galeria HD online.
+                    Milhares de fotos por evento para Comercial, Institucional e Eventos em geral. Equipamento full-frame, tratamento de cor refinado e galeria digital.
                   </p>
                   <div className="text-xs font-bold text-amber-600 uppercase mb-4 tracking-wider bg-amber-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    Por Evento ou Diária
+                    Comercial, Institucional e Eventos
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20Profissional%20%28Corporativo%2C%20Pol%C3%ADtico%20ou%20Festas%20em%20Geral%29."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Fotografia%20em%20Volume%20%28Milhares%20de%20Fotos%20por%20Evento%20-%20Comercial%2C%20Institucional%20e%20Eventos%29."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
                 >
-                  <Camera className="w-3.5 h-3.5 text-white" /> Solicitar Fotógrafo
+                  <Camera className="w-3.5 h-3.5 text-white" /> Solicitar Fotografia
                 </a>
               </div>
 
-              {/* Pacote 5: Arte Estática */}
+              {/* Pacote 3: Artes: R$ 100 */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-green-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-green-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">
                   <div className="inline-block text-[10px] font-mono font-bold uppercase text-green-600 bg-green-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    Design Gráfico
+                    R$ 100 por Arte
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Arte Estática p/ Rede Social
+                    Artes Gráficas: R$ 100
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Design profissional de alta conversão para Instagram, anúncios e campanhas promocionais.
+                    Design profissional de alta conversão para Instagram (feed/stories/carrossel), anúncios e campanhas promocionais por apenas R$ 100 cada.
                   </p>
                   <div className="text-xs font-bold text-green-600 uppercase mb-4 tracking-wider bg-green-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    Design Gráfico por Arte
+                    R$ 100 / Arte
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20a%20Arte%20de%20Divulga%C3%A7%C3%A3o."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
                 >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Contratar Arte
+                  <Zap className="w-3.5 h-3.5 text-white" /> Solicitar Arte (R$ 100)
                 </a>
               </div>
+
+              {/* Pacote 4: Tráfego Pago: R$ 1.500 */}
+              <div className="p-6 rounded-2xl bg-gray-50 border border-emerald-300 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-400 transition-all">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none transition-all" />
+                <div className="relative z-10">
+                  <div className="inline-block text-[10px] font-mono font-bold uppercase text-emerald-600 bg-emerald-100 px-2.5 py-0.5 rounded-full mb-2">
+                    ROI 7,3x Comprovado
+                  </div>
+                  <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
+                    Tráfego Pago: R$ 1.500
+                  </h4>
+                  <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
+                    ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade, margem e escala. Redes sociais limitadas apenas pela sua verba.
+                  </p>
+                  <div className="text-xs font-bold text-emerald-600 uppercase mb-4 tracking-wider bg-emerald-100 py-1.5 px-2.5 rounded-lg inline-block">
+                    R$ 1.500 / mês
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
+                >
+                  <Target className="w-3.5 h-3.5 text-white" /> Contratar Tráfego
+                </a>
+              </div>
+
             </div>
           </div>
         </section>
       )}
+
+      {/* CALCULADORA DE TRÁFEGO PAGO EMBARCADA */}
+      <section id="calculadora" className="py-16 bg-neutral-900 text-white relative border-b border-gray-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <TrafegoCalculator />
+        </div>
+      </section>
 
       {/* SPECIAL CARD: CÉREBRO DE IA (SQUAD JARVIS) COM VALOR FIXO */}
       {(activeCategory === 'all' || activeCategory === 'jarvis') && (
@@ -593,33 +644,33 @@ export default function PricesPage() {
                 <div className="lg:col-span-8">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-200 font-mono text-[10px] text-purple-300 uppercase mb-3">
                     <Terminal className="w-3.5 h-3.5 text-purple-600" />
-                    <span>PRODUTO DIGITAL DE ACESSO IMEDIATO • CHECKOUT SEGURO</span>
+                    <span>SQUADS DE IA • TROQUE FUNCIONÁRIOS POR ROBÔS</span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Squad Jarvis IA (30+ Agentes + Tutorial em Vídeo)
+                    Squads de IA: Troque Funcionários por Robôs
                   </h3>
                   
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-5">
-                    Você adquire o cérebro completo de 30+ agentes especializados (Marketing, Vendas, Programação, Finanças e Segurança) pronto para rodar em Claude Code, AntiGravity, Cursor e terminais, com vídeo tutorial passo a passo para iniciantes.
+                    Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana sem encargos trabalhistas.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 mb-6">
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>30+ Agentes Prontos para Uso</span>
+                      <span>Criação de Posts, Vídeos e Artes</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Vídeo Tutorial Fácil de Instalar</span>
+                      <span>Estratégias de Marketing Automatizadas</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Instalação em Menos de 5 Minutos</span>
+                      <span>Análises de Anúncios Patrocinados</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Acesso Vitalício via Kiwify</span>
+                      <span>Atendimento WhatsApp 24/7 Autônomo</span>
                     </div>
                   </div>
                 </div>
@@ -627,17 +678,17 @@ export default function PricesPage() {
                 <div className="lg:col-span-4 flex flex-col justify-center bg-white/60 p-6 rounded-xl border border-gray-200 text-center">
                   <span className="text-[10px] font-mono text-gray-500 uppercase">Acesso Vitalício</span>
                   <div className="text-2xl sm:text-3xl font-black text-purple-600 uppercase tracking-tight mt-1 mb-1">
-                    Acesso Imediato
+                    Squads de IA
                   </div>
-                  <p className="text-[11px] text-gray-500 mb-4">Liberação instantânea com robôs e tutoriais</p>
+                  <p className="text-[11px] text-gray-500 mb-4">Liberação instantânea com tutoriais</p>
 
                   <a
                     href="https://pay.kiwify.com.br/2yfNvHR"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center mb-2"
+                    className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center mb-2"
                   >
-                    <Zap className="w-4 h-4 text-gray-900" /> Acessar via Kiwify
+                    <Zap className="w-4 h-4 text-white" /> Acessar Squads de IA
                   </a>
 
                   <a
@@ -699,7 +750,7 @@ export default function PricesPage() {
               Vamos Conversar Sobre Seu Negócio?
             </h3>
             <p className="text-gray-500 text-xs sm:text-sm max-w-lg mx-auto mb-6">
-              Nossa equipe está pronta para entender suas metas e desenhar uma proposta customizada sem burocracia.
+              A melhor entrega da região com orçamentos acessíveis. Nossa equipe está pronta para entender suas metas e desenhar uma proposta customizada sem burocracia.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -707,17 +758,17 @@ export default function PricesPage() {
                 href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20personalizado." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
               >
                 <Phone className="w-4 h-4 text-white" /> Falar no WhatsApp Agora
               </a>
               <a 
                 href="https://pay.kiwify.com.br/2yfNvHR" 
-                target="_blank"
+                target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <Terminal className="w-4 h-4 text-white" /> Adquirir Cérebro IA Kiwify (R$ 197)
+                <Terminal className="w-4 h-4 text-white" /> Squads de IA Kiwify
               </a>
             </div>
           </div>
@@ -727,13 +778,15 @@ export default function PricesPage() {
       {/* Footer */}
       <footer className="py-8 border-t border-gray-200 text-center text-gray-500 text-xs bg-white font-mono">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3">
-          <p className="text-gray-500 text-xs">VIRTUAL PLACE // CONSULTORIA EM IA, CRM, TREINAMENTO & AUDIOVISUAL</p>
+          <p className="text-gray-500 text-xs">VIRTUAL PLACE AGÊNCIA // CONSULTORIA EM IA, CRM, AUDIOVISUAL 4K & TRÁFEGO PAGO</p>
           <div className="flex flex-wrap justify-center gap-3 text-gray-500">
             <a href="/" className="hover:text-green-600">Início</a>
             <span>•</span>
             <a href="/precos" className="hover:text-green-600">Serviços & Soluções</a>
             <span>•</span>
-            <a href="https://pay.kiwify.com.br/2yfNvHR" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">Cérebro IA</a>
+            <a href="#calculadora" className="hover:text-green-600">Calculadora de Tráfego</a>
+            <span>•</span>
+            <a href="https://pay.kiwify.com.br/2yfNvHR" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">Squads de IA</a>
           </div>
         </div>
       </footer>
