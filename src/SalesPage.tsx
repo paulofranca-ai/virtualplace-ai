@@ -255,7 +255,7 @@ export default function SalesPage() {
           <StatsAndClients />
         </div>
 
-        {/* Depoimento Léo & Vídeo de Resultados 4K */}
+        {/* Depoimento Léo & Vídeo */}
         <motion.div 
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -273,7 +273,7 @@ export default function SalesPage() {
             </div>
             
             <p className="text-neutral-200 text-lg sm:text-xl font-medium italic mt-4 mb-8 leading-relaxed">
-              "Eu recomendo o trabalho do Paulo, gestor de tráfego. Tivemos ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala contínua."
+              "Recomendo com certeza o trabalho do Paulo e da agência. Uma parceria de muita confiança, dedicação total e entrega de alto nível para o nosso projeto."
             </p>
             
             <div className="flex items-center gap-4">
@@ -282,21 +282,17 @@ export default function SalesPage() {
               </div>
               <div>
                 <h4 className="font-black text-white text-lg uppercase tracking-tight">Léo</h4>
-                <p className="text-sm text-neutral-400 font-mono">Cliente Especialista & Infoprodutor (Case 100k • ROI 7,3x)</p>
+                <p className="text-sm text-neutral-400 font-mono">Português Play</p>
               </div>
             </div>
           </div>
 
-          {/* Vídeo do Depoimento no frame 4K */}
+          {/* Vídeo do Depoimento */}
           <div className="mt-8 rounded-3xl overflow-hidden bg-black shadow-2xl border border-neutral-800 aspect-video relative">
-            <div className="absolute top-3 left-4 z-20 flex items-center gap-2 text-[10px] font-mono text-cyan-400 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span>PRODUÇÃO & RESULTADOS REAIS</span>
-            </div>
             <iframe
-              className="absolute inset-0 w-full h-full z-10"
+              className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/QW9InbF3eZE?autoplay=0&rel=0"
-              title="Depoimento e Resultados de Lançamento"
+              title="Depoimento Léo - Português Play"
               loading="lazy"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -304,7 +300,7 @@ export default function SalesPage() {
             />
           </div>
           <p className="text-xs text-neutral-500 mt-3 text-center flex items-center justify-center gap-1.5 font-mono">
-            <PlayCircle className="w-4 h-4 text-cyan-400" /> Assista aos bastidores e resultados com a nossa agência
+            <PlayCircle className="w-4 h-4 text-cyan-400" /> Depoimento do Léo (Português Play)
           </p>
         </motion.div>
 

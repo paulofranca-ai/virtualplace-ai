@@ -71,30 +71,17 @@ export const OTHER_PORTFOLIO_VIDEOS: PortfolioVideoItem[] = [
     specs: ['Motion Graphics', 'Color Grading', 'Sound Design']
   },
   {
-    id: 'case-trafego-100k',
+    id: 'depoimento-leo',
     youtubeId: 'QW9InbF3eZE',
-    title: 'Case de Sucesso: 100k em Vendas com ROI 7,3x em Tráfego',
-    shortTitle: 'Case Tráfego 100k (ROI 7,3x)',
-    client: 'Lançamento Digital',
+    title: 'Depoimento: Léo (Português Play)',
+    shortTitle: 'Depoimento Léo',
+    client: 'Português Play',
     location: 'Brasil',
-    year: '2025',
-    badge: 'Case de Vendas • Tráfego',
-    badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
-    description: 'Bastidores reais de estratégia de tráfego patrocinado gerando mais de R$ 100.000 em faturamento com retorno sobre investimento de 7,3x.',
-    specs: ['Meta & Google Ads', 'Funis de Conversão', 'ROI 7,3x']
-  },
-  {
-    id: 'depoimento-lideranca',
-    youtubeId: 't93fNnIL0v0',
-    title: 'Depoimento Oficial: Confiabilidade, Pontualidade & Entrega',
-    shortTitle: 'Depoimento de Parceiro',
-    client: 'Liderança Pública & Associações',
-    location: 'Santa Catarina',
     year: '2025',
     badge: 'Depoimento Real',
     badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-    description: 'Relato espontâneo de liderança e parceiros regionais sobre o profissionalismo, pontualidade de entrega e impacto visual gerado.',
-    specs: ['Entrevista', 'Áudio Lapela', 'Avaliação 5 Estrelas']
+    description: 'Relato do Léo sobre a parceria, compromisso com os prazos e qualidade das entregas da Virtual Place.',
+    specs: ['Depoimento', 'Parceria', 'Avaliação 5 Estrelas']
   }
 ];
 
@@ -267,7 +254,7 @@ export function VideoPortfolioSection({
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {OTHER_PORTFOLIO_VIDEOS.map((video, idx) => (
             <motion.div
               key={video.id}
