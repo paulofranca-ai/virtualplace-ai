@@ -3,138 +3,98 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { 
   ArrowLeft, 
-  Shield, 
-  CheckCircle, 
+  CheckCircle2, 
   Sparkles, 
   Lock,
-  Bot,
   Zap,
-  Calendar,
-  Layers,
   FolderCheck,
-  Star,
-  MessageSquare,
-  TrendingUp,
-  Palette,
-  DollarSign,
-  ShieldCheck,
-  Code2,
-  Wallet,
-  Cpu,
-  Flame,
-  CheckCircle2,
-  Terminal,
-  Server,
-  Workflow,
-  Target,
-  FileCode2,
-  Share2,
+  FolderOpen,
+  BookOpen,
+  Laptop,
   Check,
   ChevronRight,
-  Radio,
-  ExternalLink
+  ShieldCheck,
+  Terminal,
+  Cpu,
+  Brain,
+  Video,
+  FileCode2,
+  HelpCircle,
+  PlayCircle,
+  Layers,
+  ArrowRight
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
-import KaliTerminal from './components/KaliTerminal';
-import ParadoxHackerGallery from './components/ParadoxHackerGallery';
 
 export default function BuyAgentsPage() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'all' | 'vendas' | 'marketing' | 'design' | 'devs' | 'seguranca' | 'financeiro'>('all');
+  const [activeFolderTab, setActiveFolderTab] = useState<'todos' | 'obsidian' | 'skills' | 'opensource' | 'curso'>('todos');
 
-  const agentSquads = [
+  const folderItems = [
     {
-      id: 'marketing',
-      title: 'Marketing & Tráfego (Growth Infiltration)',
-      badge: 'Escala 10x',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
-      icon: TrendingUp,
-      agents: [
-        { name: 'Copywriter Estrategista Neuro-Persuasivo', role: 'Escreve VSLs hipnóticas, cartas de vendas, e-mails e criativos virais de conversão extrema.' },
-        { name: 'Gestor de Tráfego & Media Buyer IA', role: 'Briefings cirúrgicos de Meta Ads, Google Ads e TikTok com segmentação de público e testes A/B.' },
-        { name: 'Infiltrador SEO & Autoridade Orgânica', role: 'Gera artigos massivos de autoridade otimizados para motores de busca e ranqueamento topo 1.' },
-        { name: 'Growth Hacker de Viral Loops', role: 'Ganchos para Reels, TikTok, Shorts e engenharia reversa de retenção algorítmica.' },
+      id: 'obsidian',
+      title: 'Segundo Cérebro com Obsidian',
+      badge: 'Cofre Digital & Memória',
+      icon: Brain,
+      color: 'border-purple-500/30 text-purple-400 bg-purple-950/20',
+      description: 'Templates e estrutura de anotações interconectadas. Suas ideias, clientes, processos e histórico de projetos organizados para que a IA consulte sempre com contexto real.',
+      highlights: [
+        'Cofre pronto para abrir no Obsidian (gratuito e offline)',
+        'Modelos de notas para reuniões, projetos, clientes e rotinas',
+        'Conexão bidirecional: a IA lê o cofre e nunca perde o contexto',
+        'Privacidade total: seus dados ficam salvos no seu computador'
       ]
     },
     {
-      id: 'design',
-      title: 'Design & Visual (Visual Matrix)',
-      badge: 'Pixel Perfect Noir',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
-      icon: Palette,
-      agents: [
-        { name: 'Diretor de Arte Prompt Master', role: 'Engenharia de prompts avançada para Midjourney v6, Leonardo, Flux Pro e ComfyUI.' },
-        { name: 'Designer de Landing Pages High-Ticket', role: 'Estruturação de wireframes e design UI/UX de altíssima persuasão visual.' },
-        { name: 'Especialista em Branding & Dark Aesthetics', role: 'Cria manuais de marca, paletas de cores magnéticas e tipografia de alto impacto.' },
-        { name: 'Roteirista de Motion & Aftermovie Noir', role: 'Storyboards dinâmicos para vídeos, trailers cinematográficos e anúncios institucionais.' },
-      ]
-    },
-    {
-      id: 'vendas',
-      title: 'Vendas & Negociação (Ghost Closer 24/7)',
-      badge: 'Fechamento Automático',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
-      icon: DollarSign,
-      agents: [
-        { name: 'Closer de WhatsApp 24/7', role: 'Qualifica leads, quebra objeções profundas com PNL e fecha pagamentos no piloto automático.' },
-        { name: 'Hunter de Prospecção Ativa B2B', role: 'Gera scripts frios hiper-personalizados para abordagem de decisores e CEOs no LinkedIn.' },
-        { name: 'Agente de Follow-up Perpétuo', role: 'Recupera vendas perdidas, boletos pendentes e reativa clientes antigos sem soar invasivo.' },
-        { name: 'Consultor de Upsell & Ticket Máximo', role: 'Identifica o timing exato para ofertar serviços adicionais e aumentar o LTV da carteira.' },
-      ]
-    },
-    {
-      id: 'devs',
-      title: 'Desenvolvedores & Automações (Red Team Devs)',
-      badge: 'Full-Stack Turbo',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
-      icon: Code2,
-      agents: [
-        { name: 'Arquiteto de Software & APIs', role: 'Modela bancos de dados escaláveis, cria microsserviços REST/GraphQL e integrações seguras.' },
-        { name: 'Dev Front-end React / TypeScript / Vite', role: 'Escreve interfaces responsivas modernas, com transições suaves e zero código duplicado.' },
-        { name: 'Especialista em Webhooks, n8n & Evolution API', role: 'Conecta CRMs, Typebots, WhatsApp e gateways de pagamento sem atrito.' },
-        { name: 'Code Reviewer & Refactoring Specialist', role: 'Audita código, limpa dependências pesadas e acelera builds em produção.' },
-      ]
-    },
-    {
-      id: 'seguranca',
-      title: 'Segurança & Governança (Token Armor & Shield)',
-      badge: 'Defesa 360°',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
+      id: 'skills',
+      title: 'Skills Seguras & Blindadas',
+      badge: 'Instruções Calibradas',
       icon: ShieldCheck,
-      agents: [
-        { name: 'Auditor de Vulnerabilidades & Endpoints', role: 'Verifica brechas em APIs, proteção de chaves de ambiente e controle de acessos.' },
-        { name: 'Compliance & LGPD Advisor', role: 'Garante termos de uso e privacidade em conformidade com as leis de dados vigentes.' },
-        { name: 'Supervisor Anti-Prompt Injection', role: 'Blindagem de agentes para impedir que usuários mal-intencionados desviem o comportamento da IA.' },
-        { name: 'Guardião de Tokens & Otimizador de Custos', role: 'Comprime prompts e gerencia chamadas de API para reduzir gastos em até 80%.' },
+      color: 'border-emerald-500/30 text-emerald-400 bg-emerald-950/20',
+      description: 'Arquivos de regras e diretrizes (.systemrules e prompts avançados) que impedem alucinações, loops infinitos ou consumo excessivo de tokens.',
+      highlights: [
+        'Skills pré-testadas para Claude Code, AntiGravity e VS Code',
+        'Blindagem contra erros e respostas genéricas',
+        'Economia de até 70% de tokens nas interações diárias',
+        'Comportamento focado em execução de tarefas práticas'
       ]
     },
     {
-      id: 'financeiro',
-      title: 'Assistente Financeiro Pessoal (Shadow CFO)',
-      badge: 'Controle Lucrativo',
-      color: 'from-gray-700 to-gray-900',
-      borderColor: 'border-gray-300',
-      icon: Wallet,
-      agents: [
-        { name: 'CFO Virtual & Planejador de Lucro', role: 'Planejamento de fluxo de caixa, precificação de serviços e projeção de margem líquida.' },
-        { name: 'Analista de CAC, LTV & Payback', role: 'Mede o custo de aquisição e retenção para prever exatamente quando reinvestir.' },
-        { name: 'Gerenciador de Metas & Retiradas', role: 'Organiza relatórios mensais e traça plano de distribuição de lucros para sócios.' },
-        { name: 'Estrategista Tributário Inteligente', role: 'Orientações ágeis sobre emissão de notas, enquadramento e redução lícita de impostos.' },
+      id: 'opensource',
+      title: 'Projetos Open Source Filtrados',
+      badge: 'Curadoria Limpa',
+      icon: FileCode2,
+      color: 'border-cyan-500/30 text-cyan-400 bg-cyan-950/20',
+      description: 'Seleção criteriosa dos melhores códigos e repositórios abertos do mundo. Todos testados, limpos de bugs e organizados para rodar de imediato.',
+      highlights: [
+        'Curadoria dos melhores projetos do GitHub prontos para uso',
+        'Elimina o risco de instalar códigos maliciosos ou quebrados',
+        'Arquivos de configuração prontos (.env.example, scripts rápidos)',
+        'Exemplos de automações comerciais e web sem dor de cabeça'
+      ]
+    },
+    {
+      id: 'curso',
+      title: 'Curso Passo a Passo em Vídeo',
+      badge: 'Didática para Leigos',
+      icon: Video,
+      color: 'border-amber-500/30 text-amber-400 bg-amber-950/20',
+      description: 'Aulas gravadas em linguagem simples mostrando do zero como baixar a pasta, abrir no Claude Code, AntiGravity ou VS Code e configurar o Obsidian.',
+      highlights: [
+        'Do clique do mouse até a primeira tarefa concluída com IA',
+        'Sem termos difíceis de programação: focado no resultado',
+        'Como usar o Obsidian como segundo cérebro diário',
+        'Suporte para tirar dúvidas durante o aprendizado'
       ]
     }
   ];
 
-  const filteredSquads = activeTab === 'all' 
-    ? agentSquads 
-    : agentSquads.filter(s => s.id === activeTab);
+  const filteredItems = activeFolderTab === 'todos' 
+    ? folderItems 
+    : folderItems.filter(item => item.id === activeFolderTab);
 
   return (
-    <div className="min-h-screen bg-[#04060A] text-gray-900 flex flex-col items-center justify-start py-8 px-4 sm:px-6 lg:px-8 font-sans relative overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-[#06080F] text-white flex flex-col items-center justify-start py-8 px-4 sm:px-6 lg:px-8 font-sans relative overflow-x-hidden scroll-smooth">
       
       {/* Dynamic Background */}
       <NeonBackground3D />
@@ -144,299 +104,381 @@ export default function BuyAgentsPage() {
 
       <div className="w-full max-w-5xl z-10 relative">
         
-        {/* Top Hacker Navigation Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
+        {/* Top Header Navigation */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
           <div className="flex items-center gap-3">
             <button 
               onClick={() => navigate('/')}
-              className="group flex items-center gap-2 text-xs text-gray-600 hover:text-gray-900 transition-colors self-start border border-gray-300 bg-white/70 hover:bg-white/10 px-4 py-1.5 rounded-full font-mono cursor-pointer shadow-sm"
+              className="group flex items-center gap-2 text-xs text-neutral-400 hover:text-white transition-colors border border-white/15 bg-white/5 hover:bg-white/10 px-4 py-1.5 rounded-full font-mono cursor-pointer shadow-sm"
               id="back-button"
             >
               <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-              [← INÍCIO]
+              <span>← Voltar ao Início</span>
             </button>
-            <a 
-              href="/precos"
-              className="text-xs font-mono text-gray-500 hover:text-gray-900 transition-colors hidden sm:inline"
-            >
-              /tabela-precos
-            </a>
+            <span className="text-xs font-mono text-neutral-400">
+              Virtual Place • IA Aplicada
+            </span>
           </div>
 
-          <div className="flex items-center gap-2 bg-white/90 border border-gray-300 px-3.5 py-1.5 rounded-full text-[11px] font-mono text-gray-600 shadow-md">
-            <Radio className="w-3.5 h-3.5 text-green-600 animate-pulse" />
-            <span className="font-bold">PARADOX_TEAM // 30+ AGENTS ONLINE</span>
+          <div className="flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 px-3.5 py-1.5 rounded-full text-[11px] font-mono text-purple-300 shadow-md">
+            <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            <span className="font-bold uppercase tracking-wider">WORKSPACE COMPLETO + CURSO EM VÍDEO</span>
           </div>
         </div>
 
-        {/* Hero Section: Branding ParadoxTeam - Esquadrão de Agentes */}
-        <div className="text-center mb-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white border border-gray-300 font-mono text-[10px] sm:text-xs text-gray-900 uppercase tracking-widest shadow-xl">
-            <Terminal className="w-3.5 h-3.5 text-green-600" />
-            <span>PARADOXTEAM — ESQUADRÃO DE AGENTES DE IA</span>
+        {/* Hero Section: Fácil para Leigos */}
+        <div className="text-center mb-12 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white/5 border border-purple-500/30 font-mono text-[11px] text-purple-300 uppercase tracking-widest shadow-xl">
+            <FolderCheck className="w-4 h-4 text-purple-400" />
+            <span>PASTA PRONTA + SEGUNDO CÉREBRO NO OBSIDIAN</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 mb-5 leading-tight uppercase font-sans">
-            O Submundo da IA: <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
-              Esquadrão de Agentes Autônomos
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-5 leading-tight uppercase font-sans">
+            Otimize o Uso de IA <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-emerald-400">
+              Sem Precisar Ser Programador
             </span>
           </h1>
 
-          <p className="text-gray-500 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-sans">
-            <strong>Marketing, Design, Vendas, Segurança, Devs e Assistente Financeiro Pessoal.</strong> O cérebro multi-agente atualizado que opera nos bastidores de grandes operações, pronto para você plugar no Claude Code, AntiGravity, Cursor e Terminais.
+          <p className="text-neutral-300 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-sans font-normal">
+            Você vai receber uma <strong>pasta organizada pronta</strong> para conectar diretamente no <strong>Claude Code</strong>, <strong>AntiGravity</strong> ou <strong>VS Code</strong>. Armazene todo o conhecimento do seu negócio em um <strong>Segundo Cérebro com Obsidian</strong>, com curso passo a passo em vídeo, projetos Open Source filtrados e skills seguras já testadas.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-3.5 mt-8">
             <a 
               href="#planos"
-              className="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-black text-xs uppercase tracking-tight transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-black font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-purple-500/20 flex items-center gap-2 cursor-pointer"
             >
-              <Zap className="w-4 h-4 text-white" />
-              Acessar Esquadrão Agora (R$ 197 / R$ 997)
+              <Zap className="w-4 h-4 text-black" />
+              <span>Garantir Minha Pasta (A Partir de R$ 197)</span>
             </a>
             <a 
-              href="#terminal"
-              className="px-6 py-3.5 rounded-xl bg-white/80 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-300 font-mono text-xs uppercase tracking-tight transition-all flex items-center gap-2 cursor-pointer"
+              href="#como-funciona"
+              className="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/15 font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
             >
-              <Terminal className="w-4 h-4 text-green-600" />
-              Testar Terminal Kali
+              <BookOpen className="w-4 h-4 text-cyan-400" />
+              <span>Como Funciona para Leigos</span>
             </a>
           </div>
         </div>
 
-        {/* 1. Terminal Kali Linux Interativo em Tempo Real */}
-        <div id="terminal" className="mb-14 scroll-mt-10">
-          <KaliTerminal />
+        {/* 1. SEÇÃO EXPLICATIVA: COMO FUNCIONA PARA LEIGOS (EM 3 PASSOS SIMPLES) */}
+        <div id="como-funciona" className="mb-14 scroll-mt-20 p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 rounded-full inline-block mb-2">
+              DESCOMPLICADO & DIRETO AO PONTO
+            </span>
+            <h3 className="text-2xl font-black text-white uppercase">
+              Como Funciona na Prática?
+            </h3>
+            <p className="text-xs text-neutral-400 mt-1">
+              Esqueça comandos difíceis ou tutoriais técnicos confusos. O processo foi criado para qualquer pessoa usar no dia a dia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-5 rounded-xl bg-[#090D18] border border-white/10 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-mono font-bold mb-4">
+                  01
+                </div>
+                <h4 className="text-base font-bold text-white mb-2">
+                  Você Baixa a Pasta Pronta
+                </h4>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  Ao finalizar sua inscrição, você recebe um arquivo limpo e organizado com todas as pastas já estruturadas: regras, prompts, skills e projetos prontos.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-purple-300 font-mono flex items-center gap-1.5">
+                <FolderOpen className="w-3.5 h-3.5 text-purple-400" />
+                <span>Download imediato no seu PC</span>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#090D18] border border-white/10 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono font-bold mb-4">
+                  02
+                </div>
+                <h4 className="text-base font-bold text-white mb-2">
+                  Conecta no Claude Code, AntiGravity ou VS Code
+                </h4>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  Você simplesmente abre essa pasta no seu aplicativo favorito. Mostramos na tela como fazer isso com 2 cliques. A IA lê a pasta automaticamente e ganha superpoderes.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-cyan-300 font-mono flex items-center gap-1.5">
+                <Laptop className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Compatível com as principais IDEs</span>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#090D18] border border-white/10 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono font-bold mb-4">
+                  03
+                </div>
+                <h4 className="text-base font-bold text-white mb-2">
+                  Segundo Cérebro no Obsidian
+                </h4>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  Seus arquivos, notas de clientes, ideias e materiais ficam guardados no Obsidian. A IA usa esse segundo cérebro para responder sempre com precisão cirúrgica.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-emerald-300 font-mono flex items-center gap-1.5">
+                <Brain className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Memória contínua da sua empresa</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* 2. Galeria Noir Hacker: Jovens de moletom com notebook nas ruas à noite */}
-        <ParadoxHackerGallery />
-
-        {/* 3. MODO MEGABRAIN: Interactive Squad Explorer */}
-        <div className="mb-14 p-6 sm:p-8 rounded-2xl border border-gray-200 bg-gray-50/90 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
-          
+        {/* 2. O QUE VEM DENTRO DA PASTA (EXPLORADOR DINÂMICO) */}
+        <div className="mb-14 p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-gray-900 bg-white px-2.5 py-0.5 rounded border border-gray-300">
-                  🧠 ARQUITETURA MULTI-AGENTES
-                </span>
-                <span className="text-xs text-gray-500 font-mono">30+ Robôs Integrados</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-black text-gray-900 mt-1 uppercase">
-                Departamentos do ParadoxTeam
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-400 bg-purple-950/40 border border-purple-500/30 px-3 py-1 rounded-full inline-block mb-1">
+                CONTEÚDO DO PACOTE
+              </span>
+              <h3 className="text-2xl font-black text-white uppercase mt-1">
+                O Que Tem Dentro da Pasta?
               </h3>
+              <p className="text-xs text-neutral-400">
+                Veja detalhadamente cada módulo que você vai baixar para o seu computador.
+              </p>
             </div>
 
             {/* Tabs Filter */}
-            <div className="flex flex-wrap gap-1.5 bg-white p-1.5 rounded-xl border border-gray-200 font-mono">
+            <div className="flex flex-wrap gap-1.5 bg-black/40 p-1.5 rounded-xl border border-white/10 font-mono">
               <button 
-                onClick={() => setActiveTab('all')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'all' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
+                onClick={() => setActiveFolderTab('todos')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeFolderTab === 'todos' ? 'bg-purple-600 text-white shadow' : 'text-neutral-400 hover:text-white'}`}
               >
-                Todos (30+)
+                Tudo Incluso
               </button>
               <button 
-                onClick={() => setActiveTab('marketing')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'marketing' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
+                onClick={() => setActiveFolderTab('obsidian')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeFolderTab === 'obsidian' ? 'bg-purple-600 text-white shadow' : 'text-neutral-400 hover:text-white'}`}
               >
-                Marketing
+                Obsidian
               </button>
               <button 
-                onClick={() => setActiveTab('design')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'design' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
+                onClick={() => setActiveFolderTab('skills')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeFolderTab === 'skills' ? 'bg-purple-600 text-white shadow' : 'text-neutral-400 hover:text-white'}`}
               >
-                Design
+                Skills
               </button>
               <button 
-                onClick={() => setActiveTab('vendas')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'vendas' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
+                onClick={() => setActiveFolderTab('opensource')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeFolderTab === 'opensource' ? 'bg-purple-600 text-white shadow' : 'text-neutral-400 hover:text-white'}`}
               >
-                Vendas
+                Open Source
               </button>
               <button 
-                onClick={() => setActiveTab('devs')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'devs' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
+                onClick={() => setActiveFolderTab('curso')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeFolderTab === 'curso' ? 'bg-purple-600 text-white shadow' : 'text-neutral-400 hover:text-white'}`}
               >
-                Devs
-              </button>
-              <button 
-                onClick={() => setActiveTab('seguranca')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'seguranca' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
-              >
-                Segurança
-              </button>
-              <button 
-                onClick={() => setActiveTab('financeiro')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'financeiro' ? 'bg-white text-white shadow' : 'text-gray-500 hover:text-gray-900'}`}
-              >
-                Financeiro
+                Curso Vídeo
               </button>
             </div>
           </div>
 
-          {/* Grid de Esquadrões */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredSquads.map((squad) => {
-              const Icon = squad.icon;
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {filteredItems.map((item) => {
+              const Icon = item.icon;
               return (
                 <div 
-                  key={squad.id}
-                  className="p-5 rounded-xl bg-white/90 border border-gray-200 hover:border-gray-500 transition-all flex flex-col justify-between group shadow-xl"
+                  key={item.id}
+                  className="p-6 rounded-xl bg-[#080B15] border border-white/10 hover:border-purple-500/40 transition-all flex flex-col justify-between group shadow-xl"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-900">
-                        <Icon className="w-4 h-4" />
+                      <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white">
+                        <Icon className="w-5 h-5 text-purple-400" />
                       </div>
-                      <span className="text-[10px] font-mono font-bold uppercase text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200">
-                        {squad.badge}
+                      <span className={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded border ${item.color}`}>
+                        {item.badge}
                       </span>
                     </div>
 
-                    <h4 className="text-base font-black text-gray-900 mb-3">
-                      {squad.title}
+                    <h4 className="text-lg font-black text-white mb-2">
+                      {item.title}
                     </h4>
 
-                    <div className="space-y-2.5">
-                      {squad.agents.map((agent, i) => (
-                        <div key={i} className="border-l-2 border-gray-300 pl-2.5 py-0.5 group-hover:border-white transition-colors">
-                          <p className="text-xs font-bold text-gray-200">{agent.name}</p>
-                          <p className="text-[11px] text-gray-500 leading-tight mt-0.5">{agent.role}</p>
+                    <p className="text-xs text-neutral-400 leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+
+                    <div className="space-y-2 border-t border-white/10 pt-3">
+                      {item.highlights.map((point, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{point}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-[10px] text-gray-500 font-mono group-hover:text-gray-900 transition-colors">
-                    <span>[PRONTO PARA PLUGAR]</span>
-                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+                    <span>ARQUIVO PRONTO INCLUSO</span>
+                    <span className="text-purple-400 font-bold flex items-center gap-1">
+                      Ver no Curso →
+                    </span>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Banner de Plug-and-Play */}
-          <div className="mt-8 p-5 rounded-xl bg-white border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Banner de Compatibilidade Universal */}
+          <div className="mt-8 p-5 rounded-xl bg-gradient-to-r from-purple-950/40 via-black to-cyan-950/40 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gray-100 border border-gray-300 flex items-center justify-center shrink-0">
-                <Workflow className="w-5 h-5 text-gray-900" />
+              <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                <Terminal className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs font-bold text-gray-900 font-mono uppercase">Como plugar no seu projeto?</p>
-                <p className="text-[11px] text-gray-500">Você recebe a pasta estruturada com prompts, personas, instruções de sistema (.systemrules) e scripts de inicialização rápida.</p>
+                <p className="text-xs font-bold text-white font-mono uppercase">Onde posso conectar a pasta?</p>
+                <p className="text-[11px] text-neutral-400">Funciona no <strong>Claude Code</strong>, <strong>AntiGravity</strong>, <strong>VS Code</strong>, <strong>Cursor</strong> e em qualquer terminal. Você escolhe onde se sente mais confortável.</p>
               </div>
             </div>
             <a 
               href="#planos"
-              className="px-5 py-2.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-black text-xs uppercase tracking-tight whitespace-nowrap shadow-lg cursor-pointer transition-all"
+              className="px-5 py-2.5 rounded-lg bg-white text-black hover:bg-neutral-200 font-black text-xs uppercase tracking-wider whitespace-nowrap shadow-lg transition-all shrink-0"
             >
-              Ver Planos & Ativar
+              Baixar Agora
             </a>
           </div>
         </div>
 
-        {/* 4. IDEs Compatíveis Section */}
-        <div className="mb-14 p-6 sm:p-8 rounded-2xl border border-gray-200 bg-gray-50/60 backdrop-blur-md">
+        {/* 3. COMPARATIVO: SEM O KIT VS. COM O KIT */}
+        <div className="max-w-4xl mx-auto mb-16 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
           <div className="text-center sm:text-left mb-6">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-900 bg-white border border-gray-300 px-3 py-1 rounded-full inline-block mb-2">
-              ⚡ COMPATIBILIDADE UNIVERSAL
+            <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1 rounded-full inline-block mb-2">
+              COMPARAÇÃO REAL
             </span>
-            <h3 className="text-xl sm:text-2xl font-black text-gray-900 uppercase">
-              Feito para Claude Code, AntiGravity, VSCode, Cursor e Kali Linux
+            <h3 className="text-2xl font-black text-white uppercase">
+              Por Que Usar Essa Pasta Muda Tudo?
             </h3>
-            <p className="text-gray-500 text-xs mt-1">
-              Plugue em qualquer ambiente de desenvolvimento ou use diretamente nos seus chats e automações.
+            <p className="text-neutral-400 text-xs mt-1">
+              Entenda a diferença prática entre usar IA de forma amadora e usar o ecossistema pronto.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl bg-white border border-gray-200 flex items-start gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-white mt-1 shrink-0"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {/* Sem a Pasta */}
+            <div className="bg-[#0A0D15] border border-red-500/30 rounded-xl p-5 text-left flex flex-col justify-between">
               <div>
-                <h5 className="text-xs font-bold text-gray-900">VSCode & Terminais</h5>
-                <p className="text-[11px] text-gray-500 mt-0.5">Workspaces prontos com arquivos .env e snippets de automação direta.</p>
+                <span className="text-[10px] font-bold text-red-400 bg-red-950/40 px-2.5 py-1 rounded uppercase font-mono border border-red-500/30">
+                  Usando IA sem o Kit (Frustração)
+                </span>
+                <h4 className="text-base font-bold mt-3 mb-4 text-white">IA Genérica & Sem Memória</h4>
+                
+                <div className="space-y-3 text-xs text-neutral-400">
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <span className="text-red-400 font-bold">✕</span>
+                    <span>Toda vez precisa explicar quem você é, sua empresa e suas regras do zero.</span>
+                  </div>
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <span className="text-red-400 font-bold">✕</span>
+                    <span>Respostas genéricas, rasas e que parecem texto de robô padrão.</span>
+                  </div>
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <span className="text-red-400 font-bold">✕</span>
+                    <span>Perde horas pesquisando no GitHub códigos quebrados ou perigosos.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-red-400 font-bold">✕</span>
+                    <span>Gasta créditos e tokens em vão com respostas que não servem para nada.</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-gray-200 flex items-start gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1 shrink-0"></div>
+            {/* Com a Pasta */}
+            <div className="bg-[#0A0D15] border border-emerald-500/40 rounded-xl p-5 text-left relative flex flex-col justify-between shadow-lg shadow-emerald-500/5">
               <div>
-                <h5 className="text-xs font-bold text-gray-900">AntiGravity IDE</h5>
-                <p className="text-[11px] text-gray-500 mt-0.5">Execução multi-agente sem bloqueios de limite com economia de tokens.</p>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white border border-gray-200 flex items-start gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-white mt-1 shrink-0"></div>
-              <div>
-                <h5 className="text-xs font-bold text-gray-900">Cursor & Claude Code</h5>
-                <p className="text-[11px] text-gray-500 mt-0.5">Compatibilidade com CLI nativo e regras de sistema .cursorrules.</p>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white border border-gray-200 flex items-start gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1 shrink-0"></div>
-              <div>
-                <h5 className="text-xs font-bold text-gray-900">WhatsApp & Webhooks</h5>
-                <p className="text-[11px] text-gray-500 mt-0.5">Integração com n8n, Typebot e Evolution API para atendimento 24h.</p>
+                <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 px-2.5 py-1 rounded uppercase font-mono border border-emerald-500/30">
+                  Com Nossa Pasta + Obsidian (Alta Performance)
+                </span>
+                <h4 className="text-base font-bold mt-3 mb-4 text-white">Segundo Cérebro Ativo & Skills</h4>
+                
+                <div className="space-y-3 text-xs text-neutral-300">
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>A IA lê suas notas no Obsidian e já sabe todo o contexto e suas preferências.</span>
+                  </div>
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Skills seguras evitam alucinações e garantem respostas precisas e rápidas.</span>
+                  </div>
+                  <div className="flex items-start gap-2 border-b border-white/5 pb-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Projetos Open Source limpos e testados prontos para você rodar sem risco.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Curso em vídeo ensinando exatamente o que fazer, passo a passo, em poucos minutos.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 5. Cards de Exibição dos Planos (197 vs 997) */}
-        <div id="planos" className="scroll-mt-10 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto mb-16">
+        {/* 4. SEÇÃO DE PLANOS (R$ 197 VS R$ 997) */}
+        <div id="planos" className="scroll-mt-20 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto mb-16">
           
-          {/* PLANO 1: R$ 197,00 (Agente Vitalício + 30 Dias de Suporte) */}
-          <div className="p-8 rounded-2xl border border-gray-300 bg-gray-50 hover:border-gray-500 transition-all flex flex-col justify-between relative shadow-2xl overflow-hidden">
+          {/* PLANO 1: R$ 197,00 (Plano Essencial Vitalício + 30 Dias de Suporte) */}
+          <div className="p-8 rounded-2xl border border-white/20 bg-[#0A0E1A] hover:border-purple-500/50 transition-all flex flex-col justify-between relative shadow-2xl">
             <div className="flex flex-col h-full justify-between">
               <div>
-                <div className="flex items-center gap-2 mb-1 text-[11px] font-mono text-gray-600 font-bold uppercase tracking-widest">
-                  <Bot className="w-3.5 h-3.5 text-gray-900" /> Acesso Vitalício Básico
+                <div className="flex items-center gap-2 mb-2 text-[11px] font-mono text-purple-400 font-bold uppercase tracking-widest">
+                  <FolderCheck className="w-4 h-4" /> Plano Essencial
                 </div>
-                <h2 className="text-2xl font-black text-gray-900 mb-2 uppercase">
-                  Esquadrão Vitalício + 30 Dias Suporte
+                <h2 className="text-2xl font-black text-white mb-2 uppercase">
+                  Pasta Completa + Curso + 30 Dias Suporte
                 </h2>
-                <p className="text-xs text-gray-500 mb-6 font-medium">
-                  Ideal para quem deseja implementar o ParadoxTeam no seu negócio com acesso permanente e 30 dias de suporte técnico.
+                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
+                  Ideal para quem quer organizar seu segundo cérebro com Obsidian, conectar a pasta no Claude Code ou AntiGravity e otimizar sua rotina sem complicação.
                 </p>
 
-                <div className="bg-white p-4 rounded-xl border border-gray-200 mb-6">
-                  <span className="text-[10px] uppercase font-mono text-gray-500 block mb-1">Pagamento Único</span>
+                <div className="bg-black/50 p-4 rounded-xl border border-white/10 mb-6">
+                  <span className="text-[10px] uppercase font-mono text-neutral-400 block mb-1">Acesso Vitalício • Pagamento Único</span>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-sm font-bold text-gray-500 font-mono">R$</span>
-                    <span className="text-4xl font-extrabold text-gray-900 tracking-tight font-mono">197,00</span>
-                    <span className="text-xs font-mono text-green-600 font-bold">/ vitalício</span>
+                    <span className="text-sm font-bold text-neutral-400 font-mono">R$</span>
+                    <span className="text-4xl font-black text-white tracking-tight font-mono">197,00</span>
+                    <span className="text-xs font-mono text-emerald-400 font-bold">/ vitalício</span>
                   </div>
-                  <p className="text-[10px] text-gray-500 mt-2.5 flex items-center gap-1 font-mono">
-                    <CheckCircle className="w-3 h-3 text-green-600 shrink-0" /> Sem mensalidades! Parcelado em até 12x via Kiwify
+                  <p className="text-[10px] text-neutral-400 mt-2 flex items-center gap-1 font-mono">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" /> Sem mensalidades! Parcelado em até 12x via Kiwify
                   </p>
                 </div>
 
-                <div className="space-y-2.5 mb-8 border-t border-gray-200 pt-4">
-                  <div className="flex items-center gap-2 text-[11px] text-gray-200">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span><strong>Acesso Vitalício</strong> ao ParadoxTeam de 30+ Agentes</span>
+                <div className="space-y-3 mb-8 border-t border-white/10 pt-4 text-xs">
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Acesso Vitalício</strong> à Pasta Completa Estruturada</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-200">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span><strong>Suporte técnico por 30 dias</strong> via WhatsApp</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Segundo Cérebro no Obsidian</strong> configurado com templates</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-600">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span>Todos os arquivos de Prompts e Personas inclusos</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Projetos Open Source Filtrados</strong> e testados para rodar</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-600">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span>Vídeo-aulas gravadas passo a passo para setup</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Skills Seguras</strong> pré-calibradas para evitar alucinações</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-600">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span>Guia de Integração para WhatsApp e IDEs</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Curso Passo a Passo em Vídeo</strong> gravado para leigos</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>30 Dias de Suporte Técnico</strong> via WhatsApp</span>
                   </div>
                 </div>
               </div>
@@ -446,72 +488,73 @@ export default function BuyAgentsPage() {
                   href="https://pay.kiwify.com.br/2yfNvHR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-sm text-xs text-center uppercase cursor-pointer"
+                  className="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-purple-600/30 text-xs text-center uppercase cursor-pointer"
                 >
-                  🚀 ADQUIRIR ESQUADRÃO (R$ 197)
+                  <Zap className="w-4 h-4" />
+                  <span>BAIXAR PASTA POR R$ 197</span>
                 </a>
                 
-                <div className="flex gap-2 items-center justify-center text-[10px] text-gray-500 mt-2 font-mono">
-                  <Lock className="w-3 h-3 text-green-600" />
-                  <span>Pagamento Seguro via Kiwify</span>
+                <div className="flex gap-2 items-center justify-center text-[10px] text-neutral-400 font-mono">
+                  <Lock className="w-3 h-3 text-emerald-400" />
+                  <span>Pagamento Seguro e Imediato via Kiwify</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* PLANO 2: R$ 997,00 (Acesso Vitalício + Suporte 1 Ano + Pasta Pessoal com Jarvis da Agência) */}
-          <div className="p-8 rounded-2xl border-2 border-white bg-white hover:border-gray-300 transition-all flex flex-col justify-between relative shadow-sm overflow-hidden">
+          {/* PLANO 2: R$ 997,00 (Acesso Vitalício + Suporte 1 Ano + Pasta Pessoal do Produtor) */}
+          <div className="p-8 rounded-2xl border-2 border-cyan-400/60 bg-[#0A0E1A] hover:border-cyan-400 transition-all flex flex-col justify-between relative shadow-2xl shadow-cyan-500/10">
             {/* Tag de Destaque */}
             <div className="absolute top-0 right-0">
-              <span className="text-[9px] uppercase font-mono bg-white text-white font-black px-3.5 py-1.5 rounded-bl-xl shadow-md inline-block">
-                🔥 PLANO COMPLETO — PASTA DO PRODUTOR
+              <span className="text-[10px] uppercase font-mono bg-cyan-400 text-black font-black px-3.5 py-1.5 rounded-bl-xl shadow-md inline-block tracking-wider">
+                ⭐ PLANO VIP COMPLETO
               </span>
             </div>
 
             <div className="flex flex-col h-full justify-between">
               <div>
-                <div className="flex items-center gap-2 mb-1 text-[11px] font-mono text-green-600 font-bold uppercase tracking-widest">
-                  <Zap className="w-3.5 h-3.5 text-green-600" /> Acesso Vitalício VIP + Jarvis Agência
+                <div className="flex items-center gap-2 mb-2 text-[11px] font-mono text-cyan-400 font-bold uppercase tracking-widest">
+                  <Sparkles className="w-4 h-4 text-cyan-400" /> Plano VIP Agência
                 </div>
-                <h2 className="text-2xl font-black text-gray-900 mb-2 uppercase">
-                  Esquadrão VIP + 1 Ano Suporte + Pasta Pessoal
+                <h2 className="text-2xl font-black text-white mb-2 uppercase">
+                  Pasta Pessoal do Produtor + 1 Ano Suporte
                 </h2>
-                <p className="text-xs text-gray-600 mb-6 font-medium leading-relaxed">
-                  A experiência subterrânea completa: acesso vitalício, <strong>1 ano de suporte prioritário</strong> e acesso direto à <strong>pasta pessoal do produtor</strong> com a versão mais recente do Jarvis da Agência.
+                <p className="text-xs text-neutral-300 mb-6 leading-relaxed">
+                  Tenha acesso à <strong>pasta pessoal que o próprio produtor usa na agência Virtual Place</strong>, com automações avançadas, além de <strong>1 ano inteiro de suporte prioritário</strong> e onboarding 1x1.
                 </p>
 
-                <div className="bg-[#080C14] p-4 rounded-xl border border-gray-300 mb-6">
-                  <span className="text-[10px] uppercase font-mono text-gray-500 block mb-1">Pagamento Único</span>
+                <div className="bg-black/50 p-4 rounded-xl border border-white/10 mb-6">
+                  <span className="text-[10px] uppercase font-mono text-neutral-400 block mb-1">Acesso Vitalício VIP • Pagamento Único</span>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-sm font-bold text-gray-500 font-mono">R$</span>
-                    <span className="text-4xl font-extrabold text-gray-900 tracking-tight font-mono">997,00</span>
-                    <span className="text-xs font-mono text-green-600 font-bold">/ vitalício</span>
+                    <span className="text-sm font-bold text-neutral-400 font-mono">R$</span>
+                    <span className="text-4xl font-black text-cyan-400 tracking-tight font-mono">997,00</span>
+                    <span className="text-xs font-mono text-emerald-400 font-bold">/ vitalício</span>
                   </div>
-                  <p className="text-[10px] text-green-600 font-mono font-semibold mt-2.5 flex items-center gap-1">
-                    <CheckCircle className="w-3 h-3 shrink-0" /> Parcelado em até 12x no cartão via Kiwify
+                  <p className="text-[10px] text-emerald-400 font-mono font-semibold mt-2 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 shrink-0" /> Parcelado em até 12x no cartão via Kiwify
                   </p>
                 </div>
 
-                <div className="space-y-2.5 mb-8 border-t border-gray-200 pt-4">
-                  <div className="flex items-start gap-2 text-[11px] text-green-600 font-bold">
-                    <FolderCheck className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                    <span><strong>Pasta Pessoal do Produtor</strong> com a última versão do Jarvis da Agência</span>
+                <div className="space-y-3 mb-8 border-t border-white/10 pt-4 text-xs">
+                  <div className="flex items-start gap-2 text-cyan-300 font-bold">
+                    <FolderCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <span><strong>Pasta Pessoal do Produtor</strong> com automações da Agência Virtual Place</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-900 font-bold">
-                    <CheckCircle className="w-3.5 h-3.5 text-gray-900 shrink-0" />
-                    <span><strong>Suporte Prioritário por 1 Ano Inteiro</strong> (12 meses)</span>
+                  <div className="flex items-start gap-2 text-white font-bold">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>1 Ano Inteiro de Suporte Prioritário</strong> direto com nossa equipe</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-200">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span><strong>Acesso Vitalício</strong> a todos os robôs e atualizações futuras</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span><strong>Onboarding Individual 1x1</strong> para deixar tudo pronto para você</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-200">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span>Onboarding 1x1 e auxílio direto na integração</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Tudo incluso do Plano Essencial (Obsidian + Open Source + Skills)</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[11px] text-gray-200">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" />
-                    <span>Prompts avançados e esteira de automação comercial</span>
+                  <div className="flex items-start gap-2 text-neutral-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Atualizações futuras de novos projetos e skills sem custo</span>
                   </div>
                 </div>
               </div>
@@ -521,14 +564,15 @@ export default function BuyAgentsPage() {
                   href="https://pay.kiwify.com.br/rViC8d1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-black flex items-center justify-center gap-2.5 transition-all shadow-sm text-xs text-center uppercase cursor-pointer"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-black flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-cyan-500/25 text-xs text-center uppercase cursor-pointer"
                 >
-                  ✨ ADQUIRIR PLANO VIP AGÊNCIA (R$ 997)
+                  <Sparkles className="w-4 h-4 text-black" />
+                  <span>GARANTIR PLANO VIP AGÊNCIA (R$ 997)</span>
                 </a>
                 
-                <div className="flex gap-2 items-center justify-center text-[10px] text-gray-500 mt-3 font-mono">
-                  <Lock className="w-3 h-3 text-green-600" />
-                  <span>Processamento Garantido por Kiwify SSL</span>
+                <div className="flex gap-2 items-center justify-center text-[10px] text-neutral-400 mt-3 font-mono">
+                  <Lock className="w-3 h-3 text-emerald-400" />
+                  <span>Processamento Seguro e Garantido via Kiwify SSL</span>
                 </div>
               </div>
             </div>
@@ -536,122 +580,58 @@ export default function BuyAgentsPage() {
 
         </div>
 
-        {/* 6. MÓDULO COMPARATIVO FINANCEIRO E DE PERFORMANCE */}
-        <div className="max-w-4xl mx-auto mb-16 bg-white/80 border border-gray-200 rounded-2xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden">
-          <div className="text-center sm:text-left mb-6">
-            <span className="text-[9px] font-mono font-bold tracking-widest text-gray-900 bg-gray-100 border border-gray-300 px-3 py-1 rounded-full inline-block mb-2">
-              📊 POR QUE ESTE É O MELHOR INVESTIMENTO?
-            </span>
-            <h3 className="text-xl sm:text-2xl font-black text-gray-900 uppercase">
-              Custo vs. Produtividade Sem Limites
-            </h3>
-            <p className="text-gray-500 text-xs mt-1">
-              Desenvolvemos uma estrutura focada em eliminar travas operacionais e acelerar seus resultados.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mb-8">
-            <div className="bg-[#05070D] border border-red-900/40 rounded-xl p-5 text-left">
-              <span className="text-[10px] font-bold text-red-400 bg-red-950/40 px-2 py-0.5 rounded uppercase font-mono">
-                Caminho Tradicional (Alto Custo)
-              </span>
-              <h4 className="text-sm font-black mt-2 mb-4 text-gray-900">Equipe CLT ou Vários Softwares</h4>
-              
-              <div className="space-y-3.5 text-xs">
-                <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <span className="text-gray-500">Salário CLT de Atendente / Dev / Designer:</span>
-                  <span className="font-mono font-bold text-red-400">R$ 48.000+ /ano</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <span className="text-gray-500">Assinaturas separadas de ferramentas:</span>
-                  <span className="font-mono font-semibold text-red-300">R$ 800+ /mês recorrente</span>
-                </div>
-                <div className="flex justify-between items-center pb-1">
-                  <span className="text-gray-500">Disponibilidade de equipe humana:</span>
-                  <span className="font-mono text-red-300">Apenas em horário comercial</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-[#05070D] border border-gray-300 rounded-xl p-5 text-left relative">
-              <span className="text-[10px] font-bold text-gray-900 bg-gray-200 px-2 py-0.5 rounded uppercase font-mono">
-                ParadoxTeam (Acesso Vitalício)
-              </span>
-              <h4 className="text-sm font-black mt-2 mb-4 text-gray-900">Ecossistema Chave-na-Mão Autônomo</h4>
-              
-              <div className="space-y-3.5 text-xs">
-                <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <span className="text-gray-500">Licença Vitalícia R$ 197 ou R$ 997:</span>
-                  <span className="font-mono font-bold text-green-600">Sem mensalidades</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <span className="text-gray-500">Disponibilidade dos 30+ agentes:</span>
-                  <span className="font-mono font-bold text-green-600">24h por dia, 7 dias por semana</span>
-                </div>
-                <div className="flex justify-between items-center pb-1">
-                  <span className="text-gray-500">Última versão Jarvis da Agência:</span>
-                  <span className="font-mono font-bold text-gray-900">Prompts de alta conversão</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 text-left font-mono">
-            <h4 className="text-xs font-black text-gray-900 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <Layers className="w-4 h-4 text-gray-900" /> COMPREENSÃO CRÍTICA: CLAUDE COWORKING VS. ANTIGRAVITY & VSCODE
-            </h4>
-            <p className="text-[11px] text-gray-500 leading-relaxed mb-3 font-sans">
-              Por que não utilizar apenas o Claude Teams ou Coworking nativo? Eles aplicam limitações sérias sobre o volume de tokens e mensagens quando você produz em escala.
-            </p>
-            <p className="text-[11px] text-gray-500 leading-relaxed font-sans">
-              O ecossistema fornecido na licença te ensina a configurar IDEs modernas (como o <strong>AntiGravity</strong> ou <strong>VSCode</strong>) para conectar outros planos e chaves de API reservas. Assim, você aproveita o melhor do Claude Code e dos modelos mais avançados sem paradas de fluxo de trabalho.
-            </p>
-          </div>
-        </div>
-
-        {/* 7. FAQ */}
-        <div className="max-w-2xl mx-auto border-t border-gray-200 pt-10 pb-16">
-          <h3 className="text-lg font-bold text-center mb-6 text-gray-900 flex items-center justify-center gap-2 uppercase font-mono">
-            <Terminal className="w-4 h-4 text-green-600" /> Perguntas Frequentes
+        {/* 5. FAQ DESCOMPLICADO PARA LEIGOS */}
+        <div className="max-w-3xl mx-auto border-t border-white/10 pt-10 pb-16">
+          <h3 className="text-xl font-bold text-center mb-6 text-white flex items-center justify-center gap-2 uppercase font-mono">
+            <HelpCircle className="w-5 h-5 text-purple-400" /> Dúvidas Frequentes
           </h3>
           <div className="space-y-4">
-            <div className="bg-white/90 border border-gray-200 p-4 rounded-xl">
-              <h4 className="text-xs font-bold text-gray-900 mb-1">Qual a diferença entre os planos de R$ 197 e R$ 997?</h4>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                Ambos incluem <strong>Acesso Vitalício</strong> aos robôs do ParadoxTeam. O plano de R$ 197 inclui 30 dias de suporte técnico. O plano de R$ 997 inclui <strong>1 Ano de Suporte Prioritário</strong>, onboarding 1x1 e o diferencial exclusivo: a <strong>pasta pessoal do produtor</strong> com a versão mais recente do Jarvis da Agência.
+            <div className="bg-white/5 border border-white/10 p-5 rounded-xl">
+              <h4 className="text-sm font-bold text-white mb-1.5">Eu não sei programar e sou leigo, vou conseguir usar?</h4>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                Com certeza! Esse produto foi criado especificamente para pessoas que não são desenvolvedoras. O curso em vídeo mostra clique por clique onde clicar, como abrir a pasta no Claude Code, AntiGravity ou VS Code e como usar no dia a dia.
               </p>
             </div>
-            <div className="bg-white/90 border border-gray-200 p-4 rounded-xl">
-              <h4 className="text-xs font-bold text-gray-900 mb-1">Como funciona a personalização dos agentes para o meu nicho?</h4>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                Cada agente possui um arquivo de configuração com variáveis simples onde você insere o nome da sua empresa, serviços, preços e tom de voz. O agente adapta todas as respostas imediatamente.
+
+            <div className="bg-white/5 border border-white/10 p-5 rounded-xl">
+              <h4 className="text-sm font-bold text-white mb-1.5">O que é o Segundo Cérebro com Obsidian?</h4>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                O Obsidian é um aplicativo gratuito, rápido e seguro para você guardar anotações, documentos e ideias no seu computador. Nós entregamos um cofre configurado para que a inteligência artificial leia essas anotações e entenda seu negócio como se fosse um assistente pessoal experiente.
               </p>
             </div>
-            <div className="bg-white/90 border border-gray-200 p-4 rounded-xl">
-              <h4 className="text-xs font-bold text-gray-900 mb-1">O que é a Pasta Pessoal do Produtor?</h4>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                É a pasta de arquivos e prompts que o próprio produtor utiliza no dia a dia da agência, contendo os robôs Jarvis configurados com os fluxos mais recentes e testados de alta conversão.
+
+            <div className="bg-white/5 border border-white/10 p-5 rounded-xl">
+              <h4 className="text-sm font-bold text-white mb-1.5">O que são as "Skills Seguras" e os "Projetos Open Source Filtrados"?</h4>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                São instruções e modelos já calibrados para que a IA não cometa erros básicos, não alucine e não gaste seus créditos em respostas inúteis. E a curadoria de projetos Open Source reúne códigos e ferramentas públicas já testados, limpos e livres de vulnerabilidades.
               </p>
             </div>
-            <div className="bg-white/90 border border-gray-200 p-4 rounded-xl">
-              <h4 className="text-xs font-bold text-gray-900 mb-1">Como vou receber o acesso após o pagamento?</h4>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                Assim que a Kiwify aprovar o seu pagamento, você receberá automaticamente em seu e-mail o link para baixar os arquivos, prompts e o acesso às vídeo-aulas de implementação imediata.
+
+            <div className="bg-white/5 border border-white/10 p-5 rounded-xl">
+              <h4 className="text-sm font-bold text-white mb-1.5">Qual a diferença entre o plano de R$ 197 e R$ 997?</h4>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                Ambos dão <strong>acesso vitalício</strong> à pasta com Obsidian, skills seguras, projetos open source e ao curso em vídeo. O plano de R$ 197 inclui 30 dias de suporte técnico via WhatsApp. Já o plano de R$ 997 inclui <strong>1 Ano de Suporte Prioritário</strong>, onboarding individual 1x1 e o acesso exclusivo à <strong>pasta pessoal do produtor</strong> com todas as automações internas da agência.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-5 rounded-xl">
+              <h4 className="text-sm font-bold text-white mb-1.5">Como recebo o acesso após o pagamento?</h4>
+              <p className="text-xs text-neutral-300 leading-relaxed">
+                Assim que seu pagamento for aprovado pela Kiwify, você recebe imediatamente no seu e-mail o link para download da pasta e o acesso à área de membros com as vídeo-aulas gravadas.
               </p>
             </div>
           </div>
         </div>
 
-        {/* 8. Footer */}
-        <footer className="mt-16 pt-8 pb-12 border-t border-gray-200 text-center text-gray-500 text-xs">
+        {/* 6. Footer */}
+        <footer className="mt-8 pt-8 pb-12 border-t border-white/10 text-center text-neutral-400 text-xs">
           <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <a href="/" className="px-5 py-2 rounded-full border border-gray-200 hover:border-white text-gray-500 hover:text-gray-900 font-semibold transition-all">Comercial</a>
-            <a href="/precos" className="px-5 py-2 rounded-full border border-gray-200 hover:border-white text-gray-500 hover:text-gray-900 font-semibold transition-all">Preços & Orçamentos</a>
-            <a href="https://lp.autolead.site/institucional" className="px-5 py-2 rounded-full border border-gray-200 hover:border-white text-gray-500 hover:text-gray-900 font-semibold transition-all">Institucional</a>
-            <a href="/loja" className="px-5 py-2 rounded-full border border-gray-200 hover:border-white text-gray-500 hover:text-gray-900 font-semibold transition-all">Contrate Humanos</a>
-            <a href="/jobs" className="px-5 py-2 rounded-full border border-gray-200 hover:border-white text-gray-500 hover:text-gray-900 font-semibold transition-all">Seja um Freela</a>
+            <a href="/" className="px-5 py-2 rounded-full border border-white/10 hover:border-white text-neutral-400 hover:text-white font-semibold transition-all">Página Inicial 4K</a>
+            <a href="/#portfolio-videos" className="px-5 py-2 rounded-full border border-white/10 hover:border-white text-neutral-400 hover:text-white font-semibold transition-all">Portfólio de Vídeos</a>
+            <a href="/institucional" className="px-5 py-2 rounded-full border border-white/10 hover:border-white text-neutral-400 hover:text-white font-semibold transition-all">Institucional</a>
+            <a href="https://wa.me/5549991052315" target="_blank" rel="noopener noreferrer" className="px-5 py-2 rounded-full border border-white/10 hover:border-white text-neutral-400 hover:text-white font-semibold transition-all">Suporte no WhatsApp</a>
           </div>
-          <p className="text-gray-500 font-mono text-[11px]">VIRTUAL PLACE - CNPJ: 31.509.856/0001-10 - 2018 - Todos os direitos reservados</p>
+          <p className="text-neutral-500 font-mono text-[11px]">VIRTUAL PLACE AGÊNCIA • CNPJ: 31.509.856/0001-10 • Todos os direitos reservados</p>
         </footer>
 
       </div>

@@ -84,22 +84,23 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     id: 'jarvis-ia',
-    title: 'Squads de IA: Troque Funcionários por Robôs',
-    subtitle: 'Posts, Vídeos, Artes e Tráfego com IA',
-    description: 'Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana com máxima produtividade e sem encargos.',
-    link: 'https://pay.kiwify.com.br/2yfNvHR',
-    linkText: 'Acessar Squads de IA',
-    category: 'IA & Automação 24/7',
+    title: 'Kit Produtividade IA: Pasta Pronta + Segundo Cérebro Obsidian',
+    subtitle: 'Conecte no Claude Code, AntiGravity ou VS Code',
+    description: 'Compre uma pasta organizada pronta e conecte no Claude Code, AntiGravity ou VS Code para otimizar o uso de IA. Armazene um segundo cérebro com Obsidian, acompanhado de curso passo a passo em vídeo, projetos Open Source filtrados e skills seguras testadas.',
+    link: '/agentes',
+    linkText: 'Conhecer o Kit de IA (R$ 197)',
+    category: 'Inteligência Artificial & Produtividade',
     accentColor: 'text-violet-600',
     bgGradient: 'bg-gradient-to-br from-violet-100/70 via-purple-50 to-violet-200/50',
     icon: Cpu,
-    badge: 'Troque Funcionários por Robôs',
+    badge: 'Pasta Pronta + Obsidian + Curso',
     initialLikes: 489,
     features: [
-      'Troque funcionários por robôs autônomos 24/7',
-      'Geração de posts, vídeos, artes e estratégias completas de marketing',
-      'Análise preditiva de anúncios patrocinados via IA',
-      'Atendimento e fechamento de vendas no WhatsApp instantâneo'
+      'Pasta estruturada pronta para Claude Code, AntiGravity e VS Code',
+      'Segundo Cérebro com Obsidian para contexto e notas do seu negócio',
+      'Projetos Open Source filtrados e livres de falhas',
+      'Skills seguras pré-configuradas para evitar erros de IA',
+      'Curso passo a passo em vídeo gravado para leigos'
     ]
   },
   {

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Rocket, Brain, CheckCircle2, ArrowRight, Loader2, Mail, Phone, User, Building, TrendingUp, Target, PlayCircle, Award, Instagram, Shield, Clock, Zap, Plus, Minus, X, Briefcase, Video, Sparkles, Calculator, Check } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import NeonBackground3D from './components/NeonBackground3D';
+import { VideoPortfolioSection } from './components/VideoPortfolioSection';
 
 const COUNTRIES = [
   { name: 'Brasil', code: '+55', flag: '🇧🇷' },
@@ -136,13 +137,11 @@ export default function InstitutionalPage() {
                   SEJA CONTRATADO
                 </a>
                 <a 
-                  href="https://pay.kiwify.com.br/2yfNvHR"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-gray-900 hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-sm border border-purple-400/30"
+                  href="/agentes"
+                  className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white hover:from-purple-500 hover:to-cyan-400 font-bold flex items-center justify-center gap-2 transition-all text-xs shadow-sm border border-purple-400/30"
                 >
-                  <Rocket className="w-4 h-4 text-blue-500" />
-                  ESQUADRÃO DE IA PARA CLAUDECODE E ANTIGRAVITY (30+ AGENTS)
+                  <Rocket className="w-4 h-4 text-cyan-300" />
+                  KIT PRODUTIVIDADE IA (PASTA PRONTA + OBSIDIAN + CURSO)
                 </a>
                 <a 
                   href="https://t.me/VirtualPlaceIAbot" target="_blank" rel="noopener noreferrer"
@@ -384,25 +383,13 @@ export default function InstitutionalPage() {
               </div>
             </div>
 
-            {/* Testimonial Video */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden border border-[#2563EB]/30 shadow-sm aspect-video relative bg-white"
-            >
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/t93fNnIL0v0?autoplay=0&rel=0"
-                title="Depoimento Cliente"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </motion.div>
+            {/* Portfólio de Vídeos 4K com Destaque na Cavalgada 2026 e Miniaturas em Popup */}
+            <div className="mb-14">
+              <VideoPortfolioSection embedded={true} />
+            </div>
 
-            {/* Botão Contrate Nosso Time abaixo do depoimento */}
-            <div className="mt-6 flex justify-center">
+            {/* Botão Contrate Nosso Time */}
+            <div className="mt-4 mb-10 flex justify-center">
               <a
                 href="/loja"
                 className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-[#2563EB] text-gray-900 hover:from-purple-600 hover:to-[#1D4ED8] font-black text-xs uppercase shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
@@ -476,10 +463,10 @@ export default function InstitutionalPage() {
                 </div>
 
                 <h3 className="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">
-                  ParadoxTeam — Agentes IA
+                  Kit Produtividade IA & Obsidian
                 </h3>
                 <p className="text-[#94A3B8] text-xs leading-relaxed mb-6">
-                  Baixe e implemente instantaneamente o nosso assistente mestre Jarvis e seu Esquadrão de <strong>30+ Agentes de IA</strong> programados para atuar nas principais frentes do seu negócio.
+                  Compre uma <strong>pasta organizada pronta</strong> e conecte no Claude Code, AntiGravity ou VS Code. Otimize seu uso de IA com <strong>segundo cérebro no Obsidian</strong>, curso passo a passo em vídeo, projetos Open Source filtrados e skills seguras.
                 </p>
 
                 {/* Acesso Vitalício */}
@@ -489,7 +476,7 @@ export default function InstitutionalPage() {
                     <span className="text-2xl font-black text-[#00F0FF] tracking-tight uppercase">Vitalício</span>
                   </div>
                   <p className="text-[10.5px] text-green-600 font-extrabold flex items-center gap-1.5 pt-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" /> Acesso vitalício aos robôs
+                    <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" /> Pasta completa com templates e skills
                   </p>
                   <p className="text-[10.5px] text-[#00F0FF] font-extrabold flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#00F0FF] shrink-0" /> Suporte por 30 dias via WhatsApp
@@ -499,21 +486,21 @@ export default function InstitutionalPage() {
                 {/* Oferta de Upsell de R$ 997 */}
                 <div className="mb-6 p-3.5 rounded-xl bg-purple-950/40 border border-purple-500/30 text-left">
                   <div className="flex items-center gap-1.5 text-[10px] font-black uppercase text-[#00F0FF]">
-                    <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#00F0FF] animate-pulse" /> Plano de 1 Ano: Suporte Completo & Onboarding
+                    <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#00F0FF] animate-pulse" /> Plano VIP Agência: Pasta do Produtor + 1 Ano Suporte
                   </div>
                   <p className="text-[11px] text-gray-600 mt-1 leading-relaxed font-medium">
-                    Garanta 1 ano de suporte dedicado, atualizações contínuas de novos robôs de IA e onboarding individual exclusivo!
+                    Acesso à pasta pessoal do produtor com automações da agência Virtual Place, 1 ano de suporte prioritário e onboarding individual 1x1!
                   </p>
                 </div>
 
                 {/* Recursos */}
                 <ul className="space-y-2 mb-8">
                   {[
-                    "Assistente Master Jarvis inteligente",
-                    "30 SubAgentes de IA prontos",
-                    "Roteiros de vendas para WhatsApp",
-                    "Acesso aos melhores prompts do mercado",
-                    "Manual simples de importação"
+                    "Pasta estruturada para Claude Code, AntiGravity e VS Code",
+                    "Segundo Cérebro com Obsidian para memória contínua",
+                    "Projetos Open Source filtrados e livres de falhas",
+                    "Skills seguras calibradas contra alucinações de IA",
+                    "Curso passo a passo em vídeo gravado para leigos"
                   ].map((feat, i) => (
                     <li key={i} className="flex items-center gap-2 text-xs text-gray-600">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
@@ -529,22 +516,22 @@ export default function InstitutionalPage() {
                   href="https://pay.kiwify.com.br/2yfNvHR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
                 >
-                  <Rocket className="w-4 h-4" /> Baixar Robôs por R$ 197
+                  <Rocket className="w-4 h-4" /> Baixar Pasta & Curso por R$ 197
                 </a>
 
                 <a
                   href="https://pay.kiwify.com.br/rViC8d1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-gray-900 font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
+                  className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all cursor-pointer block shadow-sm"
                 >
-                  <Sparkles className="w-4 h-4 text-gray-900 animate-pulse" /> Adquirir Plano de 1 Ano por R$ 997
+                  <Sparkles className="w-4 h-4 text-white animate-pulse" /> Plano VIP Agência por R$ 997
                 </a>
                 
                 <a 
-                  href="https://wa.me/5549984101144?text=acabei%20de%20comprar%20o%20Jarvis%20da%20VirtualPlace%2C%20quero%20meu%20onboarding."
+                  href="https://wa.me/5549984101144?text=Ol%C3%A1%21%20Acabei%20de%20adquirir%20o%20Kit%20de%20Produtividade%20IA%20da%20Virtual%20Place%20e%20gostaria%20do%20meu%20onboarding."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center text-[10.5px] text-gray-500 hover:text-gray-900 underline pt-2 transition-colors"

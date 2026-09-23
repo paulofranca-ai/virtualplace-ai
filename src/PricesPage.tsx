@@ -32,7 +32,8 @@ import {
   Workflow,
   Sliders,
   Flame,
-  Target
+  Target,
+  Film
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
 import { TrafegoCalculator } from './components/TrafegoCalculator';
@@ -142,7 +143,7 @@ export default function PricesPage() {
         'Aftermovie cinemático masterizado em 4K com color grading profissional',
         'Opcional: Captação aérea com Drone 4K Ultra HD',
         'Opcional: Inteligência Artificial (Cenários e B-rolls)',
-        'A melhor entrega da região com orçamentos acessíveis'
+        'Qualidade cinematográfica com orçamentos acessíveis'
       ],
       ctaText: 'Pedir Orçamento de Produção 4K no WhatsApp',
       ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Produ%C3%A7%C3%A3o%20Audiovisual%204K%20%2B%20Post%20em%20Alta%20Qualidade.'
@@ -167,7 +168,7 @@ export default function PricesPage() {
         'Comercial, Institucional e Eventos em geral',
         'Equipamentos profissionais e tratamento de cor de alto nível',
         'Entrega ágil via galeria privativa online para download e compartilhamento',
-        'A melhor entrega da região com orçamentos acessíveis'
+        'Alta capacidade de cobertura com orçamentos acessíveis'
       ],
       ctaText: 'Pedir Orçamento de Fotografia no WhatsApp',
       ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Fotografia%20em%20Volume%20%28Milhares%20de%20Fotos%20por%20Evento%29.'
@@ -227,27 +228,27 @@ export default function PricesPage() {
     {
       id: 'squads_ia',
       category: 'jarvis',
-      title: 'Squads de IA: Troque Funcionários por Robôs',
-      subtitle: 'Posts, Vídeos, Artes, Marketing e Análises com IA',
-      badge: 'Troque Funcionários por Robôs',
+      title: 'Kit Produtividade IA: Pasta Pronta + Segundo Cérebro Obsidian',
+      subtitle: 'Conecte no Claude Code, AntiGravity ou VS Code • Curso + Skills Seguras',
+      badge: 'Pasta Pronta + Obsidian + Curso',
       badgeColor: 'border-purple-300 text-purple-600 bg-purple-50',
       icon: Bot,
       iconColor: 'text-purple-600',
-      description: 'Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana sem encargos ou atrasos.',
+      description: 'Compre uma pasta organizada pronta e conecte no Claude Code, AntiGravity ou VS Code para otimizar o uso de IA. Armazene um segundo cérebro com Obsidian, acompanhado de curso passo a passo em vídeo, projetos Open Source filtrados e skills seguras já testadas.',
       promoOffer: {
-        title: 'Squads de IA Autônomos (30+ Agentes)',
-        ctaText: 'Acessar Squads de IA',
+        title: 'Kit Completo com Pasta + Obsidian + Curso',
+        ctaText: 'Acessar Kit na Kiwify (R$ 197)',
         ctaUrl: 'https://pay.kiwify.com.br/2yfNvHR'
       },
       features: [
-        'Troque funcionários por robôs inteligentes e reduza custos',
-        'Geração autônoma de posts, vídeos e artes publicitárias',
-        'Estratégias de marketing digital completas e funis automáticos',
-        'Análises preditivas de anúncios patrocinados via IA',
-        'Atendimento e qualificação instantânea no WhatsApp 24/7'
+        'Pasta estruturada pronta para Claude Code, AntiGravity e VS Code',
+        'Segundo Cérebro com Obsidian para contexto e notas do seu negócio',
+        'Seleção de projetos Open Source filtrados e livres de bugs',
+        'Skills seguras pré-calibradas para evitar alucinações e desperdício de tokens',
+        'Curso passo a passo em vídeo gravado especialmente para leigos'
       ],
-      ctaText: 'Acessar Squads de IA na Kiwify',
-      ctaUrl: 'https://pay.kiwify.com.br/2yfNvHR'
+      ctaText: 'Conhecer Todos os Detalhes do Kit',
+      ctaUrl: '/agentes'
     },
     {
       id: 'marketing_coproducao',
@@ -297,8 +298,8 @@ export default function PricesPage() {
       answer: 'Inclui captação 4K 60fps no local, postagens de stories em tempo real durante o evento, entrega de 100% dos arquivos brutos sem corte e Aftermovie Cinemático masterizado em 4K HDR com color grading profissional.'
     },
     {
-      question: 'O que são os Squads de IA?',
-      answer: 'São robôs inteligentes autônomos treinados para trocar funcionários por robôs: criam posts, vídeos, artes, estratégias de marketing e fazem análises de anúncios patrocinados 24/7 sem encargos.'
+      question: 'Como funciona o Kit de Produtividade com IA, Obsidian e Pasta Pronta?',
+      answer: 'Você compra uma pasta organizada e a conecta diretamente no Claude Code, AntiGravity ou VS Code. Ela vem com o Segundo Cérebro configurado no Obsidian, projetos Open Source filtrados e testados, skills seguras pré-calibradas e um curso passo a passo em vídeo gravado especialmente para pessoas leigas.'
     }
   ];
 
@@ -358,7 +359,7 @@ export default function PricesPage() {
           <div className="max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-green-50 border border-green-200 font-mono text-[10px] sm:text-xs text-green-600 uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-green-600" />
-              <span>A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS</span>
+              <span>ORÇAMENTOS ACESSÍVEIS & ALTA QUALIDADE TÉCNICA</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-gray-900 uppercase tracking-tight leading-tight mb-4">
@@ -369,7 +370,7 @@ export default function PricesPage() {
             </h1>
 
             <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
-              A melhor entrega da região com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume, artes por R$ 100, squads de IA e assessoria de tráfego pago por R$ 1.500 com redes limitadas apenas pela verba.
+              Soluções completas com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume, artes por R$ 100, squads de IA e assessoria de tráfego pago por R$ 1.500 com redes limitadas apenas pela verba.
             </p>
 
             {/* Category Filter Pills */}
@@ -505,7 +506,7 @@ export default function PricesPage() {
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 font-mono text-[10px] text-blue-600 uppercase mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                <span>SOLUÇÕES ESSENCIAIS • A MELHOR ENTREGA DA REGIÃO</span>
+                <span>SOLUÇÕES ESSENCIAIS • ORÇAMENTOS ACESSÍVEIS</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-tight">
                 Pacotes & Soluções em Destaque
@@ -622,6 +623,30 @@ export default function PricesPage() {
               </div>
 
             </div>
+
+            {/* Banner Portfólio de Vídeos 4K */}
+            <div className="mt-8 p-6 rounded-2xl bg-neutral-900 border border-neutral-800 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                  <Film className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-base">
+                    Quer ver nossas produções em vídeo 4K na prática?
+                  </h4>
+                  <p className="text-xs text-neutral-400 mt-0.5">
+                    Confira o portfólio completo com Cavalgada do Tropeiro 2026, edição 2025, cases e aftermovies gravados com Sony ZV-E10.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="/#portfolio-videos"
+                className="px-6 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-black text-xs uppercase tracking-wider shrink-0 flex items-center gap-2 transition-all shadow-md shadow-cyan-500/20"
+              >
+                <span>Assistir ao Portfólio 4K</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </section>
       )}
@@ -643,52 +668,54 @@ export default function PricesPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                 <div className="lg:col-span-8">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-200 font-mono text-[10px] text-purple-300 uppercase mb-3">
-                    <Terminal className="w-3.5 h-3.5 text-purple-600" />
-                    <span>SQUADS DE IA • TROQUE FUNCIONÁRIOS POR ROBÔS</span>
+                    <Terminal className="w-3.5 h-3.5 text-purple-400" />
+                    <span>KIT PRODUTIVIDADE IA • PASTA PRONTA + SEGUNDO CÉREBRO</span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Squads de IA: Troque Funcionários por Robôs
+                    Kit Produtividade IA: Pasta Pronta + Segundo Cérebro Obsidian
                   </h3>
                   
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-5">
-                    Troque funcionários por robôs: faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial 24 horas por dia, 7 dias por semana sem encargos trabalhistas.
+                    Compre uma pasta organizada pronta e conecte no Claude Code, AntiGravity ou VS Code para otimizar o uso de inteligência artificial. Armazene um segundo cérebro com Obsidian, acompanhado de curso passo a passo em vídeo gravado para leigos, projetos Open Source filtrados e skills seguras.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 mb-6">
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Criação de Posts, Vídeos e Artes</span>
+                      <span>Pasta para Claude Code, AntiGravity e VS Code</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Estratégias de Marketing Automatizadas</span>
+                      <span>Segundo Cérebro no Obsidian com Templates</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Análises de Anúncios Patrocinados</span>
+                      <span>Projetos Open Source Filtrados e Testados</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      <span>Atendimento WhatsApp 24/7 Autônomo</span>
+                      <span>Skills Seguras Pré-Calibradas sem Erros</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-purple-600 shrink-0" />
+                      <span>Curso Passo a Passo em Vídeo para Leigos</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="lg:col-span-4 flex flex-col justify-center bg-white/60 p-6 rounded-xl border border-gray-200 text-center">
-                  <span className="text-[10px] font-mono text-gray-500 uppercase">Acesso Vitalício</span>
+                  <span className="text-[10px] font-mono text-gray-500 uppercase">A partir de R$ 197 • Vitalício</span>
                   <div className="text-2xl sm:text-3xl font-black text-purple-600 uppercase tracking-tight mt-1 mb-1">
-                    Squads de IA
+                    Kit IA & Obsidian
                   </div>
-                  <p className="text-[11px] text-gray-500 mb-4">Liberação instantânea com tutoriais</p>
+                  <p className="text-[11px] text-gray-500 mb-4">Pasta completa + vídeo aulas + suporte</p>
 
                   <a
-                    href="https://pay.kiwify.com.br/2yfNvHR"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/agentes"
                     className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center mb-2"
                   >
-                    <Zap className="w-4 h-4 text-white" /> Acessar Squads de IA
+                    <Zap className="w-4 h-4 text-white" /> Ver Detalhes do Kit
                   </a>
 
                   <a
@@ -697,7 +724,7 @@ export default function PricesPage() {
                     rel="noopener noreferrer"
                     className="text-[11px] font-mono text-purple-600 hover:text-purple-800 underline"
                   >
-                    Ir direto para o Checkout Kiwify →
+                    Ir direto para o Checkout Kiwify (R$ 197) →
                   </a>
                 </div>
               </div>
@@ -750,7 +777,7 @@ export default function PricesPage() {
               Vamos Conversar Sobre Seu Negócio?
             </h3>
             <p className="text-gray-500 text-xs sm:text-sm max-w-lg mx-auto mb-6">
-              A melhor entrega da região com orçamentos acessíveis. Nossa equipe está pronta para entender suas metas e desenhar uma proposta customizada sem burocracia.
+              Soluções sob medida com orçamentos acessíveis. Nossa equipe está pronta para entender suas metas e desenhar uma proposta customizada sem burocracia.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">

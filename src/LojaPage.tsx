@@ -148,7 +148,7 @@ export default function LojaPage() {
             transition={{ duration: 0.5 }}
           >
             <div className="inline-block px-4 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4 font-mono">
-              ✨ A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS
+              ✨ SOLUÇÕES COMPLETAS COM ORÇAMENTOS ACESSÍVEIS
             </div>
             <h1 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
               Tabela de Serviços & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Soluções da Agência</span>
@@ -342,23 +342,21 @@ export default function LojaPage() {
             </div>
             <div>
               <span className="text-[10px] font-mono font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                PRODUTIVIDADE EXPONENCIAL
+                PRODUTIVIDADE COM IA & OBSIDIAN
               </span>
               <h3 className="text-base font-black text-white uppercase mt-1">
-                Squads de IA: Troque Funcionários por Robôs
+                Kit Produtividade IA: Pasta Pronta + Segundo Cérebro
               </h3>
               <p className="text-xs text-gray-400 mt-0.5">
-                Faça posts, vídeos, artes, estratégias de marketing e análises de anúncios patrocinados usando inteligência artificial.
+                Conecte no Claude Code, AntiGravity ou VS Code com Segundo Cérebro no Obsidian, curso em vídeo, projetos Open Source filtrados e skills seguras.
               </p>
             </div>
           </div>
           <a
-            href="https://pay.kiwify.com.br/2yfNvHR"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/agentes"
             className="shrink-0 px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase transition-all shadow-sm flex items-center gap-2"
           >
-            Acessar Squads Kiwify →
+            Ver Kit IA (R$ 197) →
           </a>
         </div>
 

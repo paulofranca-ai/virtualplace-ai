@@ -12,17 +12,19 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Zap,
-  Sliders
+  Sliders,
+  Film
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ServiceCard } from './components/ServiceCard';
 import { SERVICES } from './data/services';
 import { BeatPlaceSection } from './components/BeatPlaceSection';
 import { StatsAndClients } from './components/StatsAndClients';
-import { StudioMonitorVideo } from './components/StudioMonitorVideo';
+import { VideoPortfolioSection } from './components/VideoPortfolioSection';
 import { Cinema3DBackground } from './components/Cinema3DBackground';
 import { AgenciaLogo } from './components/AgenciaLogo';
 import { TrafegoCalculator } from './components/TrafegoCalculator';
+import { AnimatedDeliveriesHeadline } from './components/AnimatedDeliveriesHeadline';
 
 export default function SalesPage() {
   return (
@@ -55,14 +57,18 @@ export default function SalesPage() {
 
           {/* Center Agency Navigation */}
           <nav className="hidden md:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-neutral-300">
+            <a href="#portfolio-videos" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
+              <Film className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Portfólio 4K</span>
+            </a>
             <a href="#planos" className="hover:text-cyan-400 transition-colors">Serviços 4K</a>
             <a href="#calculadora-trafego" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
               <Sliders className="w-3.5 h-3.5 text-cyan-400" />
               <span>Calculadora Tráfego</span>
             </a>
-            <a href="/precos" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
-              <span>Tabela Completa</span>
-              <span className="text-[9px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.2 rounded">PRO</span>
+            <a href="/agentes" className="hover:text-purple-400 transition-colors flex items-center gap-1 text-purple-300">
+              <Bot className="w-3.5 h-3.5 text-purple-400" />
+              <span>Kit IA & Obsidian</span>
             </a>
             <a href="https://bplace-five.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors flex items-center gap-1">
               <span>Beat Place</span>
@@ -103,18 +109,11 @@ export default function SalesPage() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest mb-6 backdrop-blur-md shadow-lg"
         >
           <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-          <span>A MELHOR ENTREGA DA REGIÃO COM ORÇAMENTOS ACESSÍVEIS • 4K + POST EM ALTA QUALIDADE</span>
+          <span>PRODUÇÃO 4K • POST EM ALTA QUALIDADE • ORÇAMENTOS ACESSÍVEIS</span>
         </motion.div>
 
-        {/* Master Headline */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.15] uppercase tracking-tight max-w-4xl mx-auto bg-gradient-to-b from-white via-neutral-100 to-neutral-400 bg-clip-text text-transparent"
-        >
-          A internet é um lugar virtual. Nossa missão nela, é criar marcas e dar vida a elas, impulsionadas por tecnologia e criatividade humana.
-        </motion.h1>
+        {/* Master Animated Headline with rotating deliverables */}
+        <AnimatedDeliveriesHeadline />
 
         {/* Sub-headline */}
         <motion.p
@@ -123,66 +122,79 @@ export default function SalesPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed font-normal"
         >
-          A melhor entrega da região com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, squads de IA para automatizar tarefas e tráfego pago com ROI 7,3x comprovado em mais de 100k de vendas.
+          Soluções completas com orçamentos acessíveis: produção audiovisual 4K, fotografia em alta escala, tráfego pago com ROI 7,3x, squads de inteligência artificial, talentos freelas, DJs para eventos, design profissional e sites de alta conversão.
         </motion.p>
 
-        {/* 4K Cinema Monitor Frame with Live Video Embed */}
+        {/* 4K Cinema Monitor Frame with Live Interactive Video Portfolio */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          id="portfolio-videos"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="scroll-mt-24 mb-14"
         >
-          <StudioMonitorVideo 
-            youtubeUrl="https://www.youtube.com/embed/SSwGhh99DOc?autoplay=0&rel=0"
-            title="Apresentação Oficial Virtual Place 4K"
-          />
+          <VideoPortfolioSection embedded={true} initialVideoId="OkQzNAAGdeU" />
         </motion.div>
 
         {/* Agency 4 Pillars Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-14 text-left">
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3 group hover:border-cyan-500/40 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
-              <Video className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-black uppercase text-white">4K + Post Alta Qualidade</div>
-              <div className="text-[10px] text-neutral-400 font-mono">Stories na hora • Aftermovie</div>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3 group hover:border-amber-500/40 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
-              <Camera className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-black uppercase text-white">Fotografia em Volume</div>
-              <div className="text-[10px] text-neutral-400 font-mono">Milhares de fotos / evento</div>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3 group hover:border-purple-500/40 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-              <Bot className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-black uppercase text-white">Squads de IA</div>
-              <div className="text-[10px] text-neutral-400 font-mono">Troque funcionários p/ robôs</div>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3 group hover:border-emerald-500/40 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <TrendingUp className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-black uppercase text-white">Tráfego: R$ 1.500</div>
-              <div className="text-[10px] text-neutral-400 font-mono">ROI 7,3x em 100k de vendas</div>
-            </div>
-          </div>
+          {[
+            {
+              icon: Video,
+              title: '4K + Post Alta Qualidade',
+              sub: 'Stories na hora • Aftermovie',
+              color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 hover:border-cyan-500/40'
+            },
+            {
+              icon: Camera,
+              title: 'Fotografia em Volume',
+              sub: 'Milhares de fotos / evento',
+              color: 'text-amber-400 bg-amber-500/10 border-amber-500/20 hover:border-amber-500/40'
+            },
+            {
+              icon: Bot,
+              title: 'Squads de IA',
+              sub: 'Troque funcionários p/ robôs',
+              color: 'text-purple-400 bg-purple-500/10 border-purple-500/20 hover:border-purple-500/40'
+            },
+            {
+              icon: TrendingUp,
+              title: 'Tráfego: R$ 1.500',
+              sub: 'ROI 7,3x em 100k de vendas',
+              color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20 hover:border-emerald-500/40'
+            }
+          ].map((item, idx) => {
+            const ItemIcon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className={`p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3 group transition-all ${item.color.split(' ').pop()}`}
+              >
+                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${item.color.split(' ').slice(0, 3).join(' ')}`}>
+                  <ItemIcon className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-black uppercase text-white">{item.title}</div>
+                  <div className="text-[10px] text-neutral-400 font-mono">{item.sub}</div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA Hero Button */}
-        <div className="mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
+        >
           <a 
             href="#planos"
             className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 text-base sm:text-lg font-black uppercase tracking-wider text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all cursor-pointer"
@@ -191,11 +203,17 @@ export default function SalesPage() {
             <span>Explorar Serviços & Soluções 4K</span> 
             <ChevronRight className="w-5 h-5" />
           </a>
-        </div>
+        </motion.div>
 
         {/* Nossos Planos & Serviços (3D Interactive Tilt Cards) */}
         <div id="planos" className="scroll-mt-24 pt-4 mb-24 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-12"
+          >
             <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1 rounded-full">
               Catálogo de Soluções 4K & Estratégia
             </span>
@@ -203,33 +221,22 @@ export default function SalesPage() {
               Nossos Planos & Serviços
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-              A melhor entrega da região com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes por R$ 100, squads de IA e tráfego pago por R$ 1.500.
+              Soluções completas com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes por R$ 100, squads de IA e tráfego pago por R$ 1.500.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            {SERVICES.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+            {SERVICES.map((service, idx) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <ServiceCard service={service} />
+              </motion.div>
             ))}
-          </div>
-
-          {/* Banner Tabela Completa */}
-          <div className="mt-10 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-            <div>
-              <h4 className="text-lg font-black text-white uppercase tracking-tight">
-                Quer ver a Tabela Completa com todos os preços e opções?
-              </h4>
-              <p className="text-xs text-neutral-400 mt-1">
-                Consulte valores detalhados por projeto, por evento, artes por R$ 100 e tráfego pago de R$ 1.500 com redes limitadas apenas pela verba.
-              </p>
-            </div>
-            <a
-              href="/precos"
-              className="px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors shrink-0 flex items-center gap-2"
-            >
-              <span>Ver Tabela Completa</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
 
@@ -249,7 +256,13 @@ export default function SalesPage() {
         </div>
 
         {/* Depoimento Léo & Vídeo de Resultados 4K */}
-        <div className="max-w-3xl mx-auto mb-20 text-left">
+        <motion.div 
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mx-auto mb-20 text-left"
+        >
           <div className="p-8 sm:p-10 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-2xl relative">
             <div className="absolute -top-5 left-10">
               <div className="flex gap-1 bg-black p-2 rounded-xl shadow-md border border-neutral-800">
@@ -293,7 +306,7 @@ export default function SalesPage() {
           <p className="text-xs text-neutral-500 mt-3 text-center flex items-center justify-center gap-1.5 font-mono">
             <PlayCircle className="w-4 h-4 text-cyan-400" /> Assista aos bastidores e resultados com a nossa agência
           </p>
-        </div>
+        </motion.div>
 
       </main>
 
@@ -311,8 +324,9 @@ export default function SalesPage() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-[11px] text-neutral-400">
+            <a href="#portfolio-videos" className="hover:text-cyan-400 transition-colors">Portfólio 4K</a>
             <a href="#planos" className="hover:text-white transition-colors">Serviços 4K</a>
-            <a href="/precos" className="hover:text-white transition-colors">Tabela de Preços</a>
+            <a href="/agentes" className="hover:text-cyan-400 transition-colors">Kit IA & Obsidian</a>
             <a href="/institucional" className="hover:text-white transition-colors">Institucional</a>
             <a href="https://bplace-five.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Beat Place</a>
             <a href="https://wa.me/5549991052315" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Suporte VIP WhatsApp</a>
