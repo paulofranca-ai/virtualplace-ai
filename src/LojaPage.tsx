@@ -74,11 +74,11 @@ export default function LojaPage() {
     }
 
     if (artesCount > 0) {
-      msg += `🎨 Design & Criativos: ${artesCount} arte(s) a R$ 100 cada - Est. R$ ${artesCost},00\n`;
+      msg += `🎨 Design & Criativos: ${artesCount} arte(s) - Orçamento sob consulta\n`;
     }
 
     if (addTraffic) {
-      msg += `📈 Gestão de Tráfego Pago: ${trafficMonths} mês(meses) (R$ 1.500/mês) - Est. R$ ${trafficCost},00\n`;
+      msg += `📈 Gestão de Tráfego Pago: ${trafficMonths} mês(meses) - Orçamento sob consulta\n`;
     }
     
     msg += `\nDespesas logísticas:\n`;
@@ -280,11 +280,11 @@ export default function LojaPage() {
 
               <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-amber-500/30 mb-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-white uppercase">Preço Fixo</span>
-                  <span className="text-xl font-black text-amber-400">R$ 100</span>
+                  <span className="text-xs font-bold text-white uppercase">Investimento</span>
+                  <span className="text-sm font-black text-amber-400 font-mono">Sob Consulta</span>
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
-                  Por arte finalizada em alta definição para feed, stories e banners de campanha.
+                  Artes finalizadas em alta definição para feed, stories e banners de campanha.
                 </p>
               </div>
             </div>
@@ -316,8 +316,8 @@ export default function LojaPage() {
 
               <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-purple-500/30 mb-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-white uppercase">Gestão Mensal</span>
-                  <span className="text-xl font-black text-purple-400">R$ 1.500</span>
+                  <span className="text-xs font-bold text-white uppercase">Gestão Estratégica</span>
+                  <span className="text-sm font-black text-purple-400 font-mono">Sob Consulta</span>
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
                   Redes sociais limitadas apenas pela sua verba (Meta, Google, TikTok, YouTube).
@@ -538,7 +538,7 @@ export default function LojaPage() {
                 <div className="p-3.5 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-[11px] text-gray-300 font-bold uppercase flex items-center gap-1">
-                      <Palette className="w-3 h-3 text-amber-400" /> Artes Estáticas (R$ 100/un)
+                      <Palette className="w-3 h-3 text-amber-400" /> Artes Estáticas
                     </span>
                     <span className="text-xs font-black text-amber-400">{artesCount} un</span>
                   </div>
@@ -551,7 +551,7 @@ export default function LojaPage() {
                     className="w-full accent-amber-400 cursor-pointer"
                   />
                   <div className="text-right text-xs font-bold text-amber-400 mt-1">
-                    R$ {artesCost},00
+                    {artesCount > 0 ? `${artesCount} artes selecionadas` : 'Nenhuma selecionada'}
                   </div>
                 </div>
 
@@ -565,7 +565,7 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Tráfego (R$ 1.500/mês)
+                    Tráfego (Sob Consulta)
                   </button>
                   <button 
                     onClick={() => setAddTraffic(false)}

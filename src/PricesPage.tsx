@@ -176,54 +176,54 @@ export default function PricesPage() {
     {
       id: 'artes_design',
       category: 'audiovisual',
-      title: 'Artes Gráficas: R$ 100',
-      subtitle: 'Design de Alta Conversão por Arte (R$ 100)',
-      badge: 'R$ 100 por Arte',
+      title: 'Artes Gráficas & Criativos',
+      subtitle: 'Design de Alta Conversão',
+      badge: 'Design Estratégico',
       badgeColor: 'border-green-200 text-green-600 bg-green-50',
       icon: Palette,
       iconColor: 'text-green-600',
-      description: 'Artes e criativos profissionais de alta conversão para Instagram (feed, stories, carrosséis), anúncios de tráfego pago, lançamentos e banners promocionais por apenas R$ 100 cada arte.',
+      description: 'Artes e criativos profissionais de alta conversão para Instagram (feed, stories, carrosséis), anúncios de tráfego pago, lançamentos e banners promocionais. Design estratégico com psicologia de consumo.',
       promoOffer: {
-        title: 'Arte Gráfica Profissional (R$ 100 cada)',
-        price: 'R$ 100',
-        ctaText: 'Solicitar Arte (R$ 100)',
-        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29.'
+        title: 'Arte Gráfica Profissional',
+        price: 'Sob Consulta',
+        ctaText: 'Solicitar Arte no WhatsApp',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Artes%20Gr%C3%A1ficas%20e%20Criativos.'
       },
       features: [
-        'Apenas R$ 100 por arte / criativo',
+        'Artes e criativos personalizados para a sua marca',
         'Posts individuais, carrosséis educativos e banners promocionais',
         'Criativos otimizados para campanhas de Meta Ads e Google Ads',
         'Formatos 1:1, 4:5 e 9:16 adaptados com psicologia de consumo',
         'Entrega rápida em alta resolução PNG e PDF vetorial'
       ],
-      ctaText: 'Solicitar Artes por R$ 100 no WhatsApp',
-      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29.'
+      ctaText: 'Solicitar Artes no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Artes%20Gr%C3%A1ficas%20e%20Criativos.'
     },
     {
       id: 'trafego_pago_gestao',
       category: 'marketing',
-      title: 'Assessoria de Tráfego Pago: R$ 1.500',
+      title: 'Assessoria de Tráfego Pago',
       subtitle: 'Redes Sociais Limitadas Apenas Pela Verba',
-      badge: 'ROI 7,3x Comprovado • R$ 1.500',
+      badge: 'ROI 7,3x Comprovado',
       badgeColor: 'border-emerald-300 text-emerald-600 bg-emerald-50',
       icon: Target,
       iconColor: 'text-emerald-600',
       description: 'Gestão de tráfego pago com ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala. Campanhas em Meta Ads (Instagram/Facebook), Google Ads e TikTok Ads — redes sociais limitadas apenas pela verba do cliente.',
       promoOffer: {
-        title: 'Gestão de Tráfego Pago: R$ 1.500 / mês',
-        price: 'R$ 1.500/mês',
-        ctaText: 'Contratar Tráfego (R$ 1.500)',
-        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29.'
+        title: 'Gestão de Tráfego Pago Especializada',
+        price: 'Sob Consulta',
+        ctaText: 'Consultar Tráfego no WhatsApp',
+        ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20%28ROI%207%2C3x%20comprovado%29.'
       },
       features: [
-        'Valor fixo de gestão: R$ 1.500 / mês',
+        'Gestão estratégica personalizada para o seu negócio',
         'Redes sociais limitadas apenas pela sua verba de anúncio',
         'ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade',
         'Otimização diária de CPA, ROAS e relatórios transparentes de conversão',
         'Simulador interativo de retorno e recomendação de verba integrado'
       ],
-      ctaText: 'Contratar Gestão de Tráfego por R$ 1.500',
-      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29.'
+      ctaText: 'Consultar Gestão de Tráfego no WhatsApp',
+      ctaUrl: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20%28ROI%207%2C3x%20comprovado%29.'
     },
     {
       id: 'squads_ia',
@@ -282,12 +282,12 @@ export default function PricesPage() {
       answer: 'Iniciamos com um alinhamento direto pelo WhatsApp ou chamada de vídeo. Diagnosticamos as rotinas manuais da sua empresa, indicamos o CRM ideal e configuramos as integrações e automações de IA necessárias para seu time atender mais rápido e vender mais.'
     },
     {
-      question: 'Como funciona a Assessoria de Tráfego Pago por R$ 1.500?',
-      answer: 'A taxa de gestão da agência é de R$ 1.500 mensais fixos. As redes sociais (Meta Ads/Instagram, Google Ads e TikTok Ads) são limitadas apenas pela verba de anúncios do cliente. O cliente define o orçamento ou utiliza nossa calculadora para saber a verba ideal baseada no seu ticket e produto.'
+      question: 'Como funciona a Assessoria de Tráfego Pago?',
+      answer: 'A gestão estratégica de tráfego da agência tem orçamento personalizado conforme o modelo e momento do seu negócio. As redes sociais (Meta Ads/Instagram, Google Ads e TikTok Ads) são limitadas apenas pela verba de anúncios do cliente. O cliente define o orçamento ou utiliza nossa calculadora para saber a verba ideal baseada no seu ticket e produto.'
     },
     {
-      question: 'Quanto custam as Artes Gráficas?',
-      answer: 'Nossas artes gráficas e criativos de alta conversão têm valor de apenas R$ 100 cada arte, com entrega em alta resolução adaptada para feed, stories, carrosséis ou anúncios patrocinados.'
+      question: 'Como funcionam as Artes Gráficas e Criativos?',
+      answer: 'Nossas artes gráficas e criativos de alta conversão são orçadas sob demanda ou em pacotes personalizados, com entrega em alta resolução adaptada para feed, stories, carrosséis ou anúncios patrocinados.'
     },
     {
       question: 'Como funciona a Fotografia em Volume?',
@@ -370,7 +370,7 @@ export default function PricesPage() {
             </h1>
 
             <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
-              Soluções completas com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume, artes por R$ 100, squads de IA e assessoria de tráfego pago por R$ 1.500 com redes limitadas apenas pela verba.
+              Soluções completas com orçamentos acessíveis: produção audiovisual 4K + post em alta qualidade, fotografia em volume, artes gráficas personalizadas, squads de IA e assessoria de tráfego pago com redes limitadas apenas pela verba.
             </p>
 
             {/* Category Filter Pills */}
@@ -378,7 +378,7 @@ export default function PricesPage() {
               {[
                 { id: 'all', label: 'Todos os Serviços', icon: Layers },
                 { id: 'audiovisual', label: 'Audiovisual 4K & Design', icon: Video },
-                { id: 'marketing', label: 'Tráfego Pago (R$ 1.500)', icon: Target },
+                { id: 'marketing', label: 'Tráfego Pago', icon: Target },
                 { id: 'jarvis', label: 'Squads de IA', icon: Bot },
                 { id: 'ia_crm', label: 'Consultoria IA & CRM', icon: Brain }
               ].map((cat) => {
@@ -568,34 +568,34 @@ export default function PricesPage() {
                 </a>
               </div>
 
-              {/* Pacote 3: Artes: R$ 100 */}
+              {/* Pacote 3: Artes */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-green-200 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-green-300 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">
                   <div className="inline-block text-[10px] font-mono font-bold uppercase text-green-600 bg-green-100/60 px-2.5 py-0.5 rounded-full mb-2">
-                    R$ 100 por Arte
+                    Design Estratégico
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Artes Gráficas: R$ 100
+                    Artes Gráficas & Criativos
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
-                    Design profissional de alta conversão para Instagram (feed/stories/carrossel), anúncios e campanhas promocionais por apenas R$ 100 cada.
+                    Design profissional de alta conversão para Instagram (feed/stories/carrossel), anúncios e campanhas promocionais com psicologia de consumo.
                   </p>
                   <div className="text-xs font-bold text-green-600 uppercase mb-4 tracking-wider bg-green-100/50 py-1.5 px-2.5 rounded-lg inline-block">
-                    R$ 100 / Arte
+                    Sob Consulta
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20Artes%20Gr%C3%A1ficas%20%28R%24%20100%20cada%29."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Artes%20Gr%C3%A1ficas%20e%20Criativos."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
                 >
-                  <Zap className="w-3.5 h-3.5 text-white" /> Solicitar Arte (R$ 100)
+                  <Zap className="w-3.5 h-3.5 text-white" /> Solicitar Arte no WhatsApp
                 </a>
               </div>
 
-              {/* Pacote 4: Tráfego Pago: R$ 1.500 */}
+              {/* Pacote 4: Tráfego Pago */}
               <div className="p-6 rounded-2xl bg-gray-50 border border-emerald-300 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:border-emerald-400 transition-all">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none transition-all" />
                 <div className="relative z-10">
@@ -603,22 +603,22 @@ export default function PricesPage() {
                     ROI 7,3x Comprovado
                   </div>
                   <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight mb-2">
-                    Tráfego Pago: R$ 1.500
+                    Assessoria de Tráfego Pago
                   </h4>
                   <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
                     ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade, margem e escala. Redes sociais limitadas apenas pela sua verba.
                   </p>
                   <div className="text-xs font-bold text-emerald-600 uppercase mb-4 tracking-wider bg-emerald-100 py-1.5 px-2.5 rounded-lg inline-block">
-                    R$ 1.500 / mês
+                    Sob Consulta
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20de%20R%24%201.500%20%28ROI%207%2C3x%20comprovado%29."
+                  href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20%28ROI%207%2C3x%20comprovado%29."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[11px] uppercase flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer text-center relative z-10"
                 >
-                  <Target className="w-3.5 h-3.5 text-white" /> Contratar Tráfego
+                  <Target className="w-3.5 h-3.5 text-white" /> Consultar Tráfego no WhatsApp
                 </a>
               </div>
 
@@ -811,7 +811,7 @@ export default function PricesPage() {
             <span>•</span>
             <a href="/precos" className="hover:text-green-600">Serviços & Soluções</a>
             <span>•</span>
-            <a href="#calculadora" className="hover:text-green-600">Calculadora de Tráfego</a>
+            <a href="/calculadora" className="hover:text-green-600">Calculadora de Tráfego (/calculadora)</a>
             <span>•</span>
             <a href="https://pay.kiwify.com.br/2yfNvHR" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">Squads de IA</a>
           </div>

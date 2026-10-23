@@ -7,6 +7,7 @@ import SimulatedCheckoutPage from './SimulatedCheckoutPage';
 import BuyAgentsPage from './BuyAgentsPage';
 import LojaPage from './LojaPage';
 import PricesPage from './PricesPage';
+import CalculadoraPage from './CalculadoraPage';
 import { WhatsAppButton } from './components/WhatsAppButton';
 
 export default function App() {
@@ -14,6 +15,9 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SalesPage />} />
+        <Route path="/calculadora" element={<CalculadoraPage />} />
+        <Route path="/calculadora-trafego" element={<CalculadoraPage />} />
+        <Route path="/simulador" element={<CalculadoraPage />} />
         <Route path="/precos" element={<PricesPage />} />
         <Route path="/preços" element={<PricesPage />} />
         <Route path="/preco" element={<PricesPage />} />

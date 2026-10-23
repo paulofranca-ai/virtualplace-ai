@@ -36,10 +36,10 @@ const BUSINESS_TYPES: Record<string, BusinessTypeConfig> = {
     id: 'curso_infoproduto',
     name: 'Curso Online / Infoproduto',
     category: 'Educação & Escala Digital',
-    description: 'Case comprovado de ROI 7,3x em mais de 100k de vendas com alta margem e escala contínua.',
+    description: 'Estratégia de escala para captação contínua de alunos com anúncios segmentados, alta margem e conversão digital.',
     defaultTicket: 497,
     ticketPresets: [97, 197, 497, 997, 1997],
-    baseRoas: 7.3,
+    baseRoas: 4.8,
     minBudget: 1000,
     recommendedBudget: 3000,
     platforms: { meta: 65, google: 25, tiktok: 10 },
@@ -182,7 +182,7 @@ export function TrafegoCalculator() {
       `💰 Verba de Anúncios: R$ ${adBudget.toLocaleString('pt-BR')}/mês\n` +
       `🌐 Plataformas: ${platformMode === 'multichannel' ? 'Multicanal Recomendado' : platformMode.toUpperCase()}\n` +
       `📈 Previsão: ~${calculations.vendasEstimadas} vendas | Fat. Estimado: R$ ${calculations.faturamentoEstimado.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} | ROAS ${calculations.effectiveRoas.toFixed(1)}x\n` +
-      `💼 Quero contratar a Gestão de Tráfego por R$ 1.500/mês!`;
+      `💼 Quero consultar a Gestão de Tráfego Personalizada!`;
     return `https://wa.me/5549991052315?text=${encodeURIComponent(text)}`;
   }, [activeConfig, ticket, adBudget, platformMode, calculations]);
 
@@ -197,7 +197,7 @@ export function TrafegoCalculator() {
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-widest">
             <Target className="w-3.5 h-3.5 text-cyan-400" />
-            GESTÃO DE TRÁFEGO PAGO • R$ 1.500 / MÊS
+            GESTÃO DE TRÁFEGO PAGO • ALTA PERFORMANCE
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-widest">
             <Flame className="w-3.5 h-3.5 text-emerald-400" />
@@ -209,7 +209,7 @@ export function TrafegoCalculator() {
           Calculadora de Retorno & Recomendação de Verba
         </h3>
         <p className="text-neutral-400 text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-          Nossa gestão é fixa em <strong className="text-white">R$ 1.500/mês</strong> e as redes sociais são <strong className="text-cyan-300">limitadas apenas pela sua verba de anúncio</strong>. Simule abaixo o faturamento, volume de vendas e recomendação ideal de investimento por plataforma.
+          Nossa gestão de tráfego é personalizada e as redes sociais são <strong className="text-cyan-300">limitadas apenas pela sua verba de anúncio</strong>. Simule abaixo o faturamento, volume de vendas e recomendação ideal de investimento por plataforma.
         </p>
       </div>
 
@@ -499,29 +499,40 @@ export function TrafegoCalculator() {
             {/* Resumo de Custos do Contrato */}
             <div className="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-xs space-y-1.5 font-mono mb-6">
               <div className="flex justify-between text-neutral-300">
-                <span>Gestão da Agência (Mensal):</span>
-                <span className="text-white font-bold">R$ 1.500,00</span>
+                <span>Gestão da Agência:</span>
+                <span className="text-cyan-300 font-bold">Sob Consulta / Personalizada</span>
               </div>
               <div className="flex justify-between text-neutral-300">
                 <span>Verba de Anúncios (Sua escolha):</span>
                 <span className="text-white font-bold">R$ {adBudget.toLocaleString('pt-BR')},00</span>
               </div>
               <div className="border-t border-cyan-500/20 pt-1.5 flex justify-between text-cyan-300 font-bold">
-                <span>Investimento Total no Mês:</span>
-                <span>R$ {calculations.investimentoTotal.toLocaleString('pt-BR')},00</span>
+                <span>Previsão de Faturamento:</span>
+                <span className="text-emerald-400">~R$ {calculations.faturamentoEstimado.toLocaleString('pt-BR', { maximumFractionDigits: 0 })},00</span>
               </div>
             </div>
 
-            {/* CTA Button */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-300 hover:from-cyan-300 hover:to-emerald-300 text-black font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xl shadow-cyan-500/20 hover:scale-[1.02] cursor-pointer text-center"
-            >
-              <span>Contratar Gestão por R$ 1.500</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            {/* CTA Buttons: WhatsApp + /precos */}
+            <div className="flex flex-col sm:flex-row items-stretch gap-3">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-4 px-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-300 hover:from-cyan-300 hover:to-emerald-300 text-black font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xl shadow-cyan-500/20 hover:scale-[1.02] cursor-pointer text-center"
+              >
+                <span>Consultar no WhatsApp</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="/precos"
+                className="py-4 px-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
+                title="Ver tabela completa de preços"
+              >
+                <span>Tabela /precos</span>
+                <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+              </a>
+            </div>
 
             <div className="text-center mt-3">
               <span className="text-[10px] text-neutral-400 font-mono">

@@ -27,38 +27,25 @@ export interface PortfolioVideoItem {
   specs: string[];
 }
 
-// Cavalgada 2026 é o destaque principal. Os outros vídeos aparecem logo abaixo em miniaturas menores para abrir em popup.
+// Cavalgada do Tropeiro é o destaque principal (BXAlAHQZ0Nw)
 export const FEATURED_VIDEO: PortfolioVideoItem = {
-  id: 'tropeiro-2026',
-  youtubeId: 'OkQzNAAGdeU',
-  title: 'Cavalgada Dia do Tropeiro 2026 - AMURC & Associação dos Tropeiros',
-  shortTitle: 'Cavalgada do Tropeiro 2026 (Destaque)',
-  client: 'AMURC & Associação dos Tropeiros',
+  id: 'cavalgada-tropeiro-destaque',
+  youtubeId: 'BXAlAHQZ0Nw',
+  title: 'Cavalgada do Tropeiro - Cobertura Oficial 4K',
+  shortTitle: 'Cavalgada do Tropeiro (Destaque)',
+  client: 'Associação dos Tropeiros & AMURC',
   location: 'Curitibanos, SC',
   year: '2026',
   badge: 'Destaque Principal • 4K 60fps',
   badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
-  description: 'Cobertura cinematográfica completa em 4K HDR para a Cavalgada do Dia do Tropeiro 2026, reunindo centenas de cavaleiros, famílias e lideranças regionais de Santa Catarina com captação profissional Sony ZV-E10.',
+  description: 'Cobertura cinematográfica completa em 4K HDR para a Cavalgada do Tropeiro, reunindo centenas de cavaleiros, famílias e lideranças regionais de Santa Catarina com captação profissional Sony ZV-E10.',
   specs: ['Sony ZV-E10', 'Captação 4K 60fps', 'Color Grading de Cinema', 'Áudio Masterizado', 'Aftermovie Oficial']
 };
 
-// Demais produções (sem repetição de depoimento e sem categorias)
+// Demais produções na ordem exata solicitada pelo cliente
 export const OTHER_PORTFOLIO_VIDEOS: PortfolioVideoItem[] = [
   {
-    id: 'tropeiro-2025',
-    youtubeId: 'g-o083FkYEI',
-    title: 'Cavalgada Dia do Tropeiro 2025 - Tradição & Cultura Tropeira',
-    shortTitle: 'Cavalgada do Tropeiro 2025',
-    client: 'Associação dos Tropeiros & AMURC',
-    location: 'Curitibanos, SC',
-    year: '2025',
-    badge: 'Edição 2025 • Tradição',
-    badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
-    description: 'Cobertura completa da edição anterior com planos de campo abertos, ritmo dinâmico e registro histórico da cultura tropeira catarinense.',
-    specs: ['Captação Dinâmica', 'Pós-Produção 4K', 'Trilha Sincronizada']
-  },
-  {
-    id: 'institucional-apresentacao',
+    id: 'video-sswghh99doc',
     youtubeId: 'SSwGhh99DOc',
     title: 'Showreel & Apresentação Oficial Virtual Place 4K',
     shortTitle: 'Apresentação Oficial 4K',
@@ -71,17 +58,121 @@ export const OTHER_PORTFOLIO_VIDEOS: PortfolioVideoItem[] = [
     specs: ['Motion Graphics', 'Color Grading', 'Sound Design']
   },
   {
-    id: 'depoimento-leo',
-    youtubeId: 'QW9InbF3eZE',
-    title: 'Depoimento: Léo (Português Play)',
-    shortTitle: 'Depoimento Léo',
-    client: 'Português Play',
+    id: 'video-ztc7akatd5w',
+    youtubeId: 'ZtC7aKaTD5w',
+    title: 'Produção Audiovisual Publicitária & Comercial 4K',
+    shortTitle: 'Comercial Publicitário 4K',
+    client: 'Comercial & Negócios',
+    location: 'Brasil',
+    year: '2026',
+    badge: 'Publicitário 4K',
+    badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+    description: 'Filme publicitário com foco em posicionamento de marca, iluminação de cinema e cortes dinâmicos de alta conversão.',
+    specs: ['Sony ZV-E10', 'Captação Comercial', 'Color Grade']
+  },
+  {
+    id: 'video-okqznaagdeu',
+    youtubeId: 'OkQzNAAGdeU',
+    title: 'Cavalgada Dia do Tropeiro - Edição Especial SC',
+    shortTitle: 'Cavalgada do Tropeiro SC',
+    client: 'AMURC & Associação dos Tropeiros',
+    location: 'Curitibanos, SC',
+    year: '2026',
+    badge: 'Edição Especial',
+    badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
+    description: 'Registro das tradições campeiras com planos abertos de campo, captação aérea e enquadramentos de alta fidelidade.',
+    specs: ['Tradição Campeira', 'Resolução 4K', 'Pós-Produção']
+  },
+  {
+    id: 'video-ahh5etpg1eg',
+    youtubeId: 'AHh5eTPg1eg',
+    title: 'Cobertura Audiovisual Completa de Eventos',
+    shortTitle: 'Cobertura de Eventos',
+    client: 'Eventos & Marcas',
     location: 'Brasil',
     year: '2025',
-    badge: 'Depoimento Real',
+    badge: 'Evento ao Vivo',
+    badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
+    description: 'Captação dinâmica com entrega rápida de stories, reels verticais e aftermovie em alta definição.',
+    specs: ['Stories na Hora', 'Reels Verticais', 'Aftermovie']
+  },
+  {
+    id: 'video-nni4p7e8-yc',
+    youtubeId: 'nnI4p7e8-yc',
+    title: 'Aftermovie Cinematográfico & Trilha Sincronizada',
+    shortTitle: 'Aftermovie 4K',
+    client: 'Festivais & Celebrações',
+    location: 'Brasil',
+    year: '2025',
+    badge: 'Aftermovie Oficial',
     badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-    description: 'Relato do Léo sobre a parceria, compromisso com os prazos e qualidade das entregas da Virtual Place.',
-    specs: ['Depoimento', 'Parceria', 'Avaliação 5 Estrelas']
+    description: 'Edição rítmica alinhada à trilha sonora com momentos marcantes, iluminação cênica e emoção do público.',
+    specs: ['Edição Rítmica', 'Áudio Masterizado', '4K 60fps']
+  },
+  {
+    id: 'video-g-o083fkeyei',
+    youtubeId: 'g-o083FkYEI',
+    title: 'Cavalgada Dia do Tropeiro - Tradição & Cultura Tropeira',
+    shortTitle: 'Cavalgada do Tropeiro 2025',
+    client: 'Associação dos Tropeiros & AMURC',
+    location: 'Curitibanos, SC',
+    year: '2025',
+    badge: 'Cultura & Tradição',
+    badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
+    description: 'Cobertura com planos de campo abertos, ritmo dinâmico e registro histórico da cultura tropeira catarinense.',
+    specs: ['Captação Dinâmica', 'Pós-Produção 4K', 'Trilha Sincronizada']
+  },
+  {
+    id: 'video-v68eoufxqta',
+    youtubeId: 'v68eouFXqtA',
+    title: 'Vídeo Institucional Corporativo para Empresas',
+    shortTitle: 'Vídeo Corporativo',
+    client: 'Corporativo & Negócios',
+    location: 'Brasil',
+    year: '2025',
+    badge: 'Institucional',
+    badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40',
+    description: 'Apresentação corporativa de estrutura empresarial, equipe e autoridade de marca para atração de clientes.',
+    specs: ['Vídeo Corporativo', 'Autoridade de Marca', 'Fotografia 4K']
+  },
+  {
+    id: 'video-5gwidfe6ssa',
+    youtubeId: '5GwIdfe6SsA',
+    title: 'Captação Externa Audiovisual & Produção em Campo',
+    shortTitle: 'Produção em Campo',
+    client: 'Regional SC',
+    location: 'Santa Catarina',
+    year: '2025',
+    badge: 'Captação Externa',
+    badgeColor: 'bg-teal-500/20 text-teal-300 border-teal-500/40',
+    description: 'Captação com estabilização fluida, lentes de cinema e direção de fotografia adaptada à iluminação natural.',
+    specs: ['Lentes de Cinema', 'Estabilização Gimbal', 'HDR Color']
+  },
+  {
+    id: 'video-0plxh5p4kqm',
+    youtubeId: '0PlxH5p4kQM',
+    title: 'Campanha Promocional & Conteúdo Audiovisual',
+    shortTitle: 'Campanha Promocional',
+    client: 'Comércio & Serviços',
+    location: 'Brasil',
+    year: '2025',
+    badge: 'Campanha Promocional',
+    badgeColor: 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/40',
+    description: 'Peças publicitárias desenvolvidas para veiculação multiplataforma com alto engajamento visual e apelo comercial.',
+    specs: ['Multiplataforma', 'Alta Conversão', 'Design Sonoro']
+  },
+  {
+    id: 'video-sq1pgh0imoy',
+    youtubeId: 'Sq1pGH0imOY',
+    title: 'Teaser de Alto Impacto & Chamada Promocional',
+    shortTitle: 'Teaser de Impacto',
+    client: 'Lançamentos & Eventos',
+    location: 'Brasil',
+    year: '2025',
+    badge: 'Teaser Oficial',
+    badgeColor: 'bg-orange-500/20 text-orange-300 border-orange-500/40',
+    description: 'Teasers rápidos e impactantes para despertar curiosidade imediata e acelerar a venda de ingressos e produtos.',
+    specs: ['Cortes Rápidos', 'Graves Potentes', 'Retenção Máxima']
   }
 ];
 
@@ -98,6 +189,13 @@ export function VideoPortfolioSection({
   embedded = false,
   initialVideoId
 }: VideoPortfolioSectionProps) {
+  const allVideos = [FEATURED_VIDEO, ...OTHER_PORTFOLIO_VIDEOS];
+  const initialMatch = initialVideoId 
+    ? allVideos.find(v => v.youtubeId === initialVideoId) || FEATURED_VIDEO
+    : FEATURED_VIDEO;
+
+  // Vídeo ativo no monitor principal
+  const [activeFeatured, setActiveFeatured] = useState<PortfolioVideoItem>(initialMatch);
   // Estado do popup modal do vídeo
   const [popupVideo, setPopupVideo] = useState<PortfolioVideoItem | null>(null);
 
@@ -139,7 +237,7 @@ export function VideoPortfolioSection({
         </p>
       </motion.div>
 
-      {/* 2. VÍDEO EM DESTAQUE: CAVALGADA 2026 (Monitor Sony 4K) */}
+      {/* 2. VÍDEO EM DESTAQUE: CAVALGADA DO TROPEIRO (Monitor Sony 4K) */}
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +249,7 @@ export function VideoPortfolioSection({
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" />
             <span className="text-xs font-mono font-black uppercase tracking-wider text-rose-400">
-              EM DESTAQUE: CAVALGADA DO TROPEIRO 2026
+              EM DESTAQUE: {activeFeatured.shortTitle}
             </span>
           </div>
           <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline">
@@ -160,11 +258,11 @@ export function VideoPortfolioSection({
         </div>
 
         <StudioMonitorVideo 
-          youtubeUrl={`https://www.youtube.com/embed/${FEATURED_VIDEO.youtubeId}?autoplay=0&rel=0`}
-          title={FEATURED_VIDEO.title}
+          youtubeUrl={`https://www.youtube.com/embed/${activeFeatured.youtubeId}?autoplay=0&rel=0`}
+          title={activeFeatured.title}
         />
 
-        {/* Ficha Técnica da Cavalgada 2026 */}
+        {/* Ficha Técnica do Vídeo Ativo */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -174,28 +272,28 @@ export function VideoPortfolioSection({
         >
           <div className="space-y-2 max-w-2xl text-left">
             <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
-              <span className={`px-2.5 py-0.5 rounded-full font-bold uppercase border ${FEATURED_VIDEO.badgeColor}`}>
-                {FEATURED_VIDEO.badge}
+              <span className={`px-2.5 py-0.5 rounded-full font-bold uppercase border ${activeFeatured.badgeColor}`}>
+                {activeFeatured.badge}
               </span>
               <span className="flex items-center gap-1 text-neutral-400">
-                <MapPin className="w-3 h-3 text-red-400" /> {FEATURED_VIDEO.location}
+                <MapPin className="w-3 h-3 text-red-400" /> {activeFeatured.location}
               </span>
               <span className="text-neutral-600">•</span>
               <span className="flex items-center gap-1 text-neutral-400">
-                <Calendar className="w-3 h-3 text-amber-400" /> {FEATURED_VIDEO.year}
+                <Calendar className="w-3 h-3 text-amber-400" /> {activeFeatured.year}
               </span>
             </div>
 
             <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white">
-              {FEATURED_VIDEO.title}
+              {activeFeatured.title}
             </h3>
             
             <p className="text-xs leading-relaxed text-neutral-400">
-              {FEATURED_VIDEO.description}
+              {activeFeatured.description}
             </p>
 
             <div className="flex flex-wrap gap-1.5 pt-1">
-              {FEATURED_VIDEO.specs.map((spec, i) => (
+              {activeFeatured.specs.map((spec, i) => (
                 <span 
                   key={i} 
                   className="text-[10px] font-mono px-2 py-0.5 rounded-md border bg-neutral-950 border-neutral-800 text-neutral-300 flex items-center gap-1"
@@ -209,7 +307,7 @@ export function VideoPortfolioSection({
 
           <div className="shrink-0 w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-2">
             <a
-              href={`https://wa.me/5549991052315?text=${encodeURIComponent('Olá! Assisti ao vídeo da Cavalgada 2026 no portfólio da Virtual Place e gostaria de solicitar um orçamento para o meu evento/empresa.')}`}
+              href={`https://wa.me/5549991052315?text=${encodeURIComponent(`Olá! Assisti ao vídeo "${activeFeatured.title}" no portfólio da Virtual Place e gostaria de solicitar um orçamento para o meu evento/empresa.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-xl font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer text-center bg-cyan-400 hover:bg-cyan-300 text-black shadow-cyan-500/20"
@@ -219,7 +317,7 @@ export function VideoPortfolioSection({
             </a>
 
             <a
-              href={`https://youtu.be/${FEATURED_VIDEO.youtubeId}`}
+              href={`https://youtu.be/${activeFeatured.youtubeId}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-xl text-[11px] font-bold font-mono uppercase flex items-center justify-center gap-1.5 transition-colors text-neutral-400 hover:text-white bg-neutral-950 border border-neutral-800"
@@ -231,7 +329,7 @@ export function VideoPortfolioSection({
         </motion.div>
       </motion.div>
 
-      {/* 3. OUTROS VÍDEOS EM TAMANHO MENOR (Miniaturas para dar play no Popup Modal) */}
+      {/* 3. OUTROS VÍDEOS EM TAMANHO MENOR (Miniaturas para dar play no Popup Modal ou Monitor) */}
       <div className="max-w-5xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 25 }}

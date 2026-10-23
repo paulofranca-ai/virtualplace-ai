@@ -13,17 +13,19 @@ import {
   ShieldCheck,
   Zap,
   Sliders,
-  Film
+  Film,
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ServiceCard } from './components/ServiceCard';
 import { SERVICES } from './data/services';
 import { BeatPlaceSection } from './components/BeatPlaceSection';
+import { AutoLeadSection } from './components/AutoLeadSection';
 import { StatsAndClients } from './components/StatsAndClients';
 import { VideoPortfolioSection } from './components/VideoPortfolioSection';
 import { Cinema3DBackground } from './components/Cinema3DBackground';
 import { AgenciaLogo } from './components/AgenciaLogo';
-import { TrafegoCalculator } from './components/TrafegoCalculator';
 import { AnimatedDeliveriesHeadline } from './components/AnimatedDeliveriesHeadline';
 
 export default function SalesPage() {
@@ -56,13 +58,16 @@ export default function SalesPage() {
           </a>
 
           {/* Center Agency Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-neutral-300">
+          <nav className="hidden md:flex items-center gap-5 text-xs font-mono uppercase tracking-wider text-neutral-300">
             <a href="#portfolio-videos" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
               <Film className="w-3.5 h-3.5 text-cyan-400" />
               <span>Portfólio 4K</span>
             </a>
+            <a href="/precos" className="hover:text-cyan-400 transition-colors text-cyan-400 font-bold flex items-center gap-1 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-lg">
+              <span>Tabela /precos</span>
+            </a>
             <a href="#planos" className="hover:text-cyan-400 transition-colors">Serviços 4K</a>
-            <a href="#calculadora-trafego" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
+            <a href="/calculadora" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-neutral-300">
               <Sliders className="w-3.5 h-3.5 text-cyan-400" />
               <span>Calculadora Tráfego</span>
             </a>
@@ -77,13 +82,21 @@ export default function SalesPage() {
             <a href="#cases" className="hover:text-cyan-400 transition-colors">Resultados</a>
           </nav>
 
-          {/* Direct WhatsApp VIP Button */}
-          <div className="flex items-center gap-3">
+          {/* Action Buttons: WhatsApp + Preços */}
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Live Agency Status Pill */}
-            <div className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono font-bold text-emerald-400">
+            <div className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono font-bold text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>AGÊNCIA ATIVA • PRODUÇÕES 4K DISPONÍVEIS</span>
+              <span>4K DISPONÍVEL</span>
             </div>
+
+            <a
+              href="/precos"
+              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-cyan-400 transition-all cursor-pointer text-center"
+              title="Abrir página /precos"
+            >
+              /precos
+            </a>
 
             <a
               href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Virtual%20Place%20e%20gostaria%20de%20um%20atendimento%20para%20produ%C3%A7%C3%A3o."
@@ -122,7 +135,7 @@ export default function SalesPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed font-normal"
         >
-          Soluções completas com orçamentos acessíveis: produção audiovisual 4K, fotografia em alta escala, tráfego pago com ROI 7,3x, squads de inteligência artificial, talentos freelas, DJs para eventos, design profissional e sites de alta conversão.
+          Soluções completas com orçamentos acessíveis: produção audiovisual 4K, fotografia em alta escala, assessoria estratégica de tráfego pago, squads de inteligência artificial, talentos freelas, DJs para eventos, design profissional e sites de alta conversão.
         </motion.p>
 
         {/* 4K Cinema Monitor Frame with Live Interactive Video Portfolio */}
@@ -134,7 +147,7 @@ export default function SalesPage() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="scroll-mt-24 mb-14"
         >
-          <VideoPortfolioSection embedded={true} initialVideoId="OkQzNAAGdeU" />
+          <VideoPortfolioSection embedded={true} initialVideoId="BXAlAHQZ0Nw" />
         </motion.div>
 
         {/* Agency 4 Pillars Bar */}
@@ -160,8 +173,8 @@ export default function SalesPage() {
             },
             {
               icon: TrendingUp,
-              title: 'Tráfego: R$ 1.500',
-              sub: 'ROI 7,3x em 100k de vendas',
+              title: 'Tráfego Pago',
+              sub: 'Campanhas & Escala Digital',
               color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20 hover:border-emerald-500/40'
             }
           ].map((item, idx) => {
@@ -187,21 +200,31 @@ export default function SalesPage() {
           })}
         </div>
 
-        {/* CTA Hero Button */}
+        {/* CTA Hero Buttons: Preços + WhatsApp */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
+          className="mb-20 flex flex-wrap items-center justify-center gap-3.5"
         >
           <a 
-            href="#planos"
-            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 text-base sm:text-lg font-black uppercase tracking-wider text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all cursor-pointer"
+            href="/precos"
+            className="inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-4 text-sm sm:text-base font-black uppercase tracking-wider text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all cursor-pointer"
           >
             <Zap className="w-5 h-5 text-black fill-black" />
-            <span>Explorar Serviços & Soluções 4K</span> 
-            <ChevronRight className="w-5 h-5" />
+            <span>Ver Tabela de Preços (/precos)</span> 
+            <ChevronRight className="w-4 h-4" />
+          </a>
+
+          <a 
+            href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20Virtual%20Place."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 text-sm sm:text-base font-black uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 rounded-2xl shadow-xl shadow-emerald-600/20 hover:scale-[1.02] transition-all cursor-pointer"
+          >
+            <span>Chamar no WhatsApp</span>
+            <ChevronRight className="w-4 h-4" />
           </a>
         </motion.div>
 
@@ -214,14 +237,23 @@ export default function SalesPage() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12"
           >
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1 rounded-full">
-              Catálogo de Soluções 4K & Estratégia
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1 rounded-full">
+                Catálogo de Soluções 4K & Estratégia
+              </span>
+              <a 
+                href="/precos"
+                className="text-[11px] font-mono font-bold uppercase tracking-widest text-white hover:text-cyan-300 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1 rounded-full transition-colors flex items-center gap-1"
+              >
+                <span>Acessar /precos</span>
+                <ChevronRight className="w-3 h-3 text-cyan-400" />
+              </a>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
               Nossos Planos & Serviços
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-              Soluções completas com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes por R$ 100, squads de IA e tráfego pago por R$ 1.500.
+              Soluções completas com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes gráficas personalizadas, squads de IA e assessoria de tráfego pago.
             </p>
           </motion.div>
 
@@ -240,9 +272,59 @@ export default function SalesPage() {
           </div>
         </div>
 
-        {/* SIMULADOR DE TRÁFEGO PAGO & PREVISÃO DE RETORNO */}
+        {/* SIMULADOR DE TRÁFEGO PAGO (Botão & Card para /calculadora) */}
+        <motion.div 
+          id="calculadora-trafego" 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-24 scroll-mt-24"
+        >
+          <div className="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-neutral-800 shadow-2xl relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4">
+                <Sliders className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Simulador Estratégico Interativo</span>
+              </div>
+              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-3">
+                Calculadora de Tráfego Pago & Retorno
+              </h3>
+              <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-4">
+                Simule seu orçamento em anúncios, alcance estimado, leads qualificados e potencial de retorno para o segmento do seu negócio em uma página exclusiva.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-neutral-400">
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Projeção por Nicho</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> Meta & Google Ads</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-amber-400" /> Dados Analíticos Reais</span>
+              </div>
+            </div>
+
+            <div className="relative z-10 shrink-0 w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3">
+              <a
+                href="/calculadora"
+                className="px-7 py-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-black font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-xl shadow-cyan-500/25 hover:scale-[1.02] transition-all cursor-pointer text-center"
+              >
+                <Sliders className="w-4 h-4 text-black" />
+                <span>Abrir Calculadora de Tráfego</span>
+                <ChevronRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="/precos"
+                className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer text-center"
+              >
+                <span>Ver Tabela /precos</span>
+                <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* AUTOLEAD - Ecossistema & Portal de Venda de Carros */}
         <div className="mb-24">
-          <TrafegoCalculator />
+          <AutoLeadSection />
         </div>
 
         {/* BEAT PLACE - Agência de Festas e DJs */}
@@ -263,26 +345,51 @@ export default function SalesPage() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl mx-auto mb-20 text-left"
         >
-          <div className="p-8 sm:p-10 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-2xl relative">
-            <div className="absolute -top-5 left-10">
-              <div className="flex gap-1 bg-black p-2 rounded-xl shadow-md border border-neutral-800">
+          <div className="p-6 sm:p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-2xl relative">
+            {/* Header: Avatar, Nome e Estrelas */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center font-black text-cyan-400 text-xl shadow-inner shrink-0">
+                  L
+                </div>
+                <div>
+                  <h4 className="font-black text-white text-lg uppercase tracking-tight">Léo</h4>
+                  <p className="text-sm text-cyan-400 font-mono font-semibold">Português Play</p>
+                </div>
+              </div>
+
+              {/* 5 Estrelas */}
+              <div className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-black/60 border border-neutral-800 self-start sm:self-auto">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
             </div>
-            
-            <p className="text-neutral-200 text-lg sm:text-xl font-medium italic mt-4 mb-8 leading-relaxed">
-              "Recomendo com certeza o trabalho do Paulo e da agência. Uma parceria de muita confiança, dedicação total e entrega de alto nível para o nosso projeto."
-            </p>
-            
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center font-black text-cyan-400 text-xl shadow-inner">
-                L
+
+            {/* Métricas Reais do Cliente com a Agência (Sem dados falsos) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 max-w-xl mx-auto">
+              <div className="p-5 rounded-2xl bg-black/40 border border-white/5 hover:border-cyan-500/30 transition-colors text-center">
+                <div className="text-3xl sm:text-4xl font-black text-cyan-400 font-mono tracking-tight mb-1">
+                  +10
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-neutral-200 uppercase leading-snug">
+                  Campanhas de Marketing
+                </div>
+                <div className="text-[11px] text-neutral-400 font-mono mt-1">
+                  Lançamentos de cursos e livros com este cliente
+                </div>
               </div>
-              <div>
-                <h4 className="font-black text-white text-lg uppercase tracking-tight">Léo</h4>
-                <p className="text-sm text-neutral-400 font-mono">Português Play</p>
+
+              <div className="p-5 rounded-2xl bg-black/40 border border-white/5 hover:border-emerald-500/30 transition-colors text-center">
+                <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono tracking-tight mb-1">
+                  R$ 60k+
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-neutral-200 uppercase leading-snug">
+                  Verba de Cliente
+                </div>
+                <div className="text-[11px] text-neutral-400 font-mono mt-1">
+                  Valor investido em venda de carros e campanhas
+                </div>
               </div>
             </div>
           </div>
@@ -320,6 +427,8 @@ export default function SalesPage() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-[11px] text-neutral-400">
+            <a href="/precos" className="text-cyan-400 font-bold hover:underline">Tabela de Preços (/precos)</a>
+            <a href="/calculadora" className="hover:text-cyan-400 transition-colors">Calculadora Tráfego</a>
             <a href="#portfolio-videos" className="hover:text-cyan-400 transition-colors">Portfólio 4K</a>
             <a href="#planos" className="hover:text-white transition-colors">Serviços 4K</a>
             <a href="/agentes" className="hover:text-cyan-400 transition-colors">Kit IA & Obsidian</a>
