@@ -8,15 +8,14 @@ import {
   MapPin, 
   Utensils, 
   Ticket, 
-  Sparkles, 
-  Check, 
   Calculator, 
-  Info,
   Layers,
   ArrowRight,
   TrendingUp,
   Palette,
-  Bot
+  Bot,
+  Smartphone,
+  Sparkles
 } from 'lucide-react';
 import NeonBackground3D from './components/NeonBackground3D';
 import { TrafegoCalculator } from './components/TrafegoCalculator';
@@ -24,61 +23,83 @@ import { TrafegoCalculator } from './components/TrafegoCalculator';
 export default function LojaPage() {
   const navigate = useNavigate();
 
-  // State for Project Estimator (No hourly pricing)
-  const [photoOption, setPhotoOption] = useState<'volume' | 'plataforma'>('volume');
-  const [photoEvents, setPhotoEvents] = useState<number>(1);
+  // State for Project Estimator with unified pricing
+  const [includeCampanha30Dias, setIncludeCampanha30Dias] = useState<boolean>(false);
+  const [photoOption, setPhotoOption] = useState<'ensaio' | 'avulsa' | 'none'>('ensaio');
+  const [photoDays, setPhotoDays] = useState<number>(1);
   const [photoQtyDigital, setPhotoQtyDigital] = useState<number>(20);
-  const [photoQtyA4, setPhotoQtyA4] = useState<number>(5);
+  const [photoQtyImpressa, setPhotoQtyImpressa] = useState<number>(5);
 
-  const [videoOption, setVideoOption] = useState<'aftermovie' | 'reels' | 'none'>('aftermovie');
-  const [videoCount, setVideoCount] = useState<number>(1);
+  // Unified per-minute video pricing
+  const [videoOption, setVideoOption] = useState<'celular' | 'camera' | 'none'>('camera');
+  const [videoMinutes, setVideoMinutes] = useState<number>(1);
+  const [addDrone, setAddDrone] = useState<boolean>(false);
+  const [droneMinutes, setDroneMinutes] = useState<number>(1);
 
-  const [artesCount, setArtesCount] = useState<number>(3);
+  // Avulsos R$ 1.500
+  const [addSocialMedia, setAddSocialMedia] = useState<boolean>(false);
   const [addTraffic, setAddTraffic] = useState<boolean>(true);
-  const [trafficMonths, setTrafficMonths] = useState<number>(1);
+  const [addProjetosIA, setAddProjetosIA] = useState<boolean>(false);
 
   const [addTravelExp, setAddTravelExp] = useState<boolean>(true);
   const [addFood, setAddFood] = useState<boolean>(true);
   const [addAccess, setAddAccess] = useState<boolean>(true);
 
-  // Math totals (No hourly calculations)
-  const photoCost = photoOption === 'volume'
-    ? photoEvents * 650 // Pacote de cobertura completa
-    : (photoQtyDigital * 10) + (photoQtyA4 * 20);
+  // Math totals
+  const campanhaCost = includeCampanha30Dias ? 5000 : 0;
 
-  const videoCost = videoOption === 'aftermovie'
-    ? videoCount * 850 // Produção completa 4K 60fps
-    : videoOption === 'reels'
-      ? videoCount * 250 // Reels editado
+  const photoCost = photoOption === 'ensaio'
+    ? photoDays * 500 // Ensaio R$ 500 a diária
+    : photoOption === 'avulsa'
+      ? (photoQtyDigital * 14) + (photoQtyImpressa * 25)
       : 0;
 
-  const artesCost = artesCount * 100; // R$ 100 por arte
-  const trafficCost = addTraffic ? trafficMonths * 1500 : 0; // R$ 1.500 / mês
-  const totalCost = photoCost + videoCost + artesCost + trafficCost;
+  const baseVideoCost = videoOption === 'camera'
+    ? videoMinutes * 550 // Vídeo com câmera R$ 550/min
+    : videoOption === 'celular'
+      ? videoMinutes * 250 // Vídeo com celular R$ 250/min
+      : 0;
+
+  const droneCost = (videoOption !== 'none' && addDrone) ? droneMinutes * 300 : 0; // Adicional drone R$ 300/min
+  const videoCost = baseVideoCost + droneCost;
+
+  const socialMediaCost = addSocialMedia ? 1500 : 0;
+  const trafficCost = addTraffic ? 1500 : 0;
+  const projetosIACost = addProjetosIA ? 1500 : 0;
+
+  const totalCost = campanhaCost + photoCost + videoCost + socialMediaCost + trafficCost + projetosIACost;
 
   // Dynamic WhatsApp Link
   const getWhatsAppLink = () => {
-    let msg = `Olá! Estive no site da VIRTUAL PLACE AGÊNCIA e gostaria de solicitar um orçamento personalizado.\n\n`;
+    let msg = `Olá! Estive no site da VIRTUAL PLACE AGÊNCIA e gostaria de solicitar um orçamento.\n\n`;
     
-    if (photoOption === 'volume') {
-      msg += `📸 Fotografia em Volume: ${photoEvents} evento(s) - Milhares de fotos em alta qualidade (Est. R$ ${photoCost},00)\n`;
-    } else {
-      msg += `📸 Venda Direta por Reconhecimento Facial (Fotto/Banlek): Est. ${photoQtyDigital} digitais e ${photoQtyA4} impressões A4\n`;
+    if (includeCampanha30Dias) {
+      msg += `🚀 Campanha de Marketing 30 Dias: R$ 5.000,00\n`;
+    }
+
+    if (photoOption === 'ensaio') {
+      msg += `📸 Fotografia (Ensaio/Diária): ${photoDays} diária(s) (R$ ${photoCost},00)\n`;
+    } else if (photoOption === 'avulsa') {
+      msg += `📸 Fotos Avulsas: ${photoQtyDigital} digitais (R$ 14/un) e ${photoQtyImpressa} impressas (R$ 25/un) (R$ ${photoCost},00)\n`;
     }
 
     if (videoOption !== 'none') {
-      const vDesc = videoOption === 'aftermovie' 
-        ? `Aftermovie Cinemático 4K 60fps (Sony ZV-E10)` 
-        : `Vídeo Reels/Carrossel em Alta Qualidade`;
-      msg += `🎥 Audiovisual: ${videoCount} produção(ões) (${vDesc}) - Est. R$ ${videoCost},00\n`;
+      const vDesc = videoOption === 'camera' 
+        ? `Vídeo com Câmera (R$ 550/min)` 
+        : `Vídeo com Celular (R$ 250/min)`;
+      msg += `🎥 Audiovisual: ${videoMinutes} min de ${vDesc}${addDrone ? ` + ${droneMinutes} min Adicional Drone (R$ 300/min)` : ''} (R$ ${videoCost},00)\n`;
     }
 
-    if (artesCount > 0) {
-      msg += `🎨 Design & Criativos: ${artesCount} arte(s) - Orçamento sob consulta\n`;
+    if (addSocialMedia) {
+      msg += `📱 Social Media (Captação semanal + conteúdo mensal de todos os eventos): R$ 1.500,00\n`;
     }
 
     if (addTraffic) {
-      msg += `📈 Gestão de Tráfego Pago: ${trafficMonths} mês(meses) - Orçamento sob consulta\n`;
+      msg += `📈 Assessoria de Tráfego Pago: R$ 1.500,00\n`;
+    }
+
+    if (addProjetosIA) {
+      msg += `🤖 Projetos com IA (Consultoria, Treinamento + Suporte e Execução + Mensal): R$ 1.500,00\n`;
     }
     
     msg += `\nDespesas logísticas:\n`;
@@ -110,7 +131,7 @@ export default function LojaPage() {
               href="/precos"
               className="text-xs md:text-sm font-semibold text-emerald-400 hover:text-white transition-all hidden sm:inline-block"
             >
-              Catálogo Geral
+              Tabela Oficial
             </a>
           </div>
 
@@ -130,7 +151,7 @@ export default function LojaPage() {
             href={getWhatsAppLink()} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-4 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-[11px] uppercase transition-all shadow-sm"
+            className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-[11px] uppercase transition-all shadow-sm"
           >
             Orçamento
           </a>
@@ -141,223 +162,204 @@ export default function LojaPage() {
       <main id="loja-main" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         
         {/* Page Hero */}
-        <div id="loja-hero" className="max-w-4xl mx-auto text-center mb-16">
+        <div id="loja-hero" className="max-w-4xl mx-auto text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-block px-4 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4 font-mono">
-              ✨ SOLUÇÕES COMPLETAS COM ORÇAMENTOS ACESSÍVEIS
+            <div className="text-emerald-400 text-xs font-black uppercase tracking-widest mb-3 font-mono">
+              TABELA DE SERVIÇOS & PREÇOS UNIFICADOS
             </div>
             <h1 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
-              Tabela de Serviços & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Soluções da Agência</span>
+              Pacotes, Avulsos & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Vídeos por Minutagem</span>
             </h1>
             <p className="text-gray-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-              Fotografia em volume com milhares de fotos por evento, gravações em 4K 60fps com Sony ZV-E10, tráfego pago com ROI comprovado de 7,3x e squads de IA para automatizar o seu negócio.
+              Campanha completa de 30 dias por R$ 5.000, pacotes avulsos mensais de R$ 1.500 (Social Media, Tráfego Pago e Projetos com IA) e produção audiovisual unificada por minutagem.
             </p>
           </motion.div>
         </div>
 
-        {/* Catalog of Services Grid */}
+        {/* Highlight Banner: Campanha de Marketing 30 Dias - R$ 5.000 */}
+        <div className="max-w-7xl mx-auto mb-8 p-6 sm:p-8 rounded-2xl border-2 border-emerald-400/70 bg-gradient-to-r from-emerald-950/40 via-[#0A0F1C] to-emerald-950/20 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <span className="text-xs font-mono uppercase font-bold text-emerald-400 tracking-wider">
+              PACOTE COMPLETO • 30 DIAS
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase mt-1">
+              Campanha de Marketing 30 Dias
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
+              Planejamento + execução de campanhas de anúncios • Artes e Vídeos de Divulgação + Vídeo Cinemático Pós-Evento.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 shrink-0">
+            <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono">
+              R$ 5.000
+            </div>
+            <a
+              href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Quero%20contratar%20a%20Campanha%20de%20Marketing%20de%2030%20Dias%20%28R%24%205.000%29."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs uppercase transition-all"
+            >
+              Contratar Campanha 30 Dias
+            </a>
+          </div>
+        </div>
+
+        {/* Catalog Grid: Valores Avulsos (R$ 1.500) & Minutagem */}
         <div id="loja-catalog-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-16">
           
-          {/* Card 1: Fotografia em Volume */}
-          <div id="loja-card-photo" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none"></div>
-            
-            <div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 border border-emerald-500/25">
-                <Camera className="w-5 h-5 text-emerald-400" />
-              </div>
-              <span className="text-[10px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                Alto Volume
-              </span>
-              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
-                Fotografia em Volume
-              </h2>
-              <p className="text-gray-400 text-xs leading-relaxed mb-5">
-                Milhares de fotos por evento. Comercial, Institucional e Eventos em geral com tratamento profissional e entrega rápida.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-emerald-500/30">
-                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Cobertura Completa</span>
-                    <span className="text-emerald-400 font-black">Por Evento</span>
-                  </div>
-                  <p className="text-[11px] text-gray-400 leading-relaxed">
-                    Milhares de fotos tratadas, iluminação dedicada e link em nuvem para download em alta resolução.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-gray-800">
-                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Venda via Plataforma</span>
-                    <span className="text-cyan-400 font-black">Sob Demanda</span>
-                  </div>
-                  <p className="text-[11px] text-gray-400 leading-relaxed">
-                    Reconhecimento facial com download imediato por R$ 10 digital e R$ 20 impressão A4.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-gray-800/80">
-              <span className="text-[10px] font-mono text-gray-400 block mb-1">Acesso e Despesas:</span>
-              <div className="flex gap-2 text-[10px] text-gray-400">
-                <span>• Deslocamento</span>
-                <span>• Alimentação</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Audiovisual 4K 60fps */}
+          {/* Card 1: Vídeos por Minutagem Unificados */}
           <div id="loja-card-video" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-cyan-500/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
-            
             <div>
-              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 border border-cyan-500/25">
+              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 border border-cyan-500/25">
                 <Video className="w-5 h-5 text-cyan-400" />
               </div>
-              <span className="text-[10px] font-mono uppercase font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
-                Sony ZV-E10 • 4K 60fps
+              <span className="text-[11px] font-mono uppercase font-bold text-cyan-400">
+                Preços por Minutagem
               </span>
-              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
-                Gravação & Pós 4K
+              <h2 className="text-lg font-black text-white mt-1 mb-2 uppercase tracking-tight">
+                Audiovisual Unificado
               </h2>
-              <p className="text-gray-400 text-xs leading-relaxed mb-5">
-                4K + post em alta qualidade. Aftermovies cinemáticos, vídeos para anúncios e Reels de alto engajamento.
+              <p className="text-gray-400 text-xs leading-relaxed mb-4">
+                Valores unificados por minuto de vídeo editado em altíssima qualidade:
               </p>
 
-              <div className="space-y-3 mb-6">
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-cyan-500/30">
-                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Aftermovie Cinemático</span>
-                    <span className="text-cyan-400 font-black">4K 60fps</span>
-                  </div>
-                  <p className="text-[11px] text-gray-400 leading-relaxed">
-                    Color grading refinado de cinema, sound design imersivo e cortes rítmicos.
-                  </p>
+              <div className="space-y-2.5 mb-5">
+                <div className="p-3 rounded-xl bg-[#0A0F1C]/80 border border-gray-800 flex items-center justify-between">
+                  <span className="text-xs font-bold text-white uppercase flex items-center gap-1.5">
+                    <Smartphone className="w-3.5 h-3.5 text-emerald-400" /> Vídeo c/ Celular
+                  </span>
+                  <span className="text-emerald-400 font-black font-mono text-sm">R$ 250/min</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/80 border border-gray-800">
-                  <div className="font-bold text-xs text-white mb-1 uppercase flex items-center justify-between">
-                    <span>Reels & Criativos</span>
-                    <span className="text-purple-400 font-black">Alta Conversão</span>
-                  </div>
-                  <p className="text-[11px] text-gray-400 leading-relaxed">
-                    Captação dinâmica focada em retenção nos 3 primeiros segundos para anúncios e orgânico.
-                  </p>
+                <div className="p-3 rounded-xl bg-[#0A0F1C]/80 border border-cyan-500/30 flex items-center justify-between">
+                  <span className="text-xs font-bold text-white uppercase flex items-center gap-1.5">
+                    <Camera className="w-3.5 h-3.5 text-cyan-400" /> Vídeo c/ Câmera
+                  </span>
+                  <span className="text-cyan-400 font-black font-mono text-sm">R$ 550/min</span>
+                </div>
+
+                <div className="p-3 rounded-xl bg-[#0A0F1C]/80 border border-gray-800 flex items-center justify-between">
+                  <span className="text-xs font-bold text-white uppercase flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Adicional Drone
+                  </span>
+                  <span className="text-amber-400 font-black font-mono text-sm">R$ 300/min</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 border-t border-gray-800/80">
-              <span className="text-[10px] font-mono text-cyan-400 block text-xs font-bold">
-                Entrega em Alta Resolução HDR
+              <span className="text-xs font-mono text-cyan-400 block font-bold">
+                Captação + Edição Profissional
               </span>
             </div>
           </div>
 
-          {/* Card 3: Artes Estáticas */}
-          <div id="loja-card-artes" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
-            
+          {/* Card 2: Social Media Avulso R$ 1.500 */}
+          <div id="loja-card-social" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-xl">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5 border border-amber-500/25">
-                <Palette className="w-5 h-5 text-amber-400" />
+              <div className="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 border border-emerald-500/25">
+                <Camera className="w-5 h-5 text-emerald-400" />
               </div>
-              <span className="text-[10px] font-mono uppercase font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                Design Gráfico
+              <span className="text-[11px] font-mono uppercase font-bold text-emerald-400">
+                Valor Avulso Mensal
               </span>
-              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
-                Artes Profissionais
+              <h2 className="text-lg font-black text-white mt-1 mb-2 uppercase tracking-tight">
+                Social Media & Eventos
               </h2>
               <p className="text-gray-400 text-xs leading-relaxed mb-5">
-                Design gráfico de alto impacto para divulgação de eventos, carrosséis, promoções e criativos de anúncios.
+                Social Media com captação semanal e conteúdo mensal de todos os eventos da sua marca.
               </p>
 
-              <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-amber-500/30 mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-white uppercase">Investimento</span>
-                  <span className="text-sm font-black text-amber-400 font-mono">Sob Consulta</span>
+              <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-emerald-500/30 mb-6">
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-xs font-bold text-white uppercase">Plano Mensal</span>
+                  <span className="text-lg font-black text-emerald-400 font-mono">R$ 1.500</span>
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
-                  Artes finalizadas em alta definição para feed, stories e banners de campanha.
+                  Captação presencial toda semana + cobertura e conteúdo mensal de todos os eventos.
                 </p>
               </div>
             </div>
 
             <div className="pt-4 border-t border-gray-800/80">
-              <span className="text-[10px] font-mono text-gray-400 block text-xs">
-                Pronto para Meta Ads & Impressão
+              <span className="text-xs font-mono text-gray-400 block">
+                Fotografia Ensaio: R$ 500/diária | Avulsa: R$ 14 dig. / R$ 25 imp.
               </span>
             </div>
           </div>
 
-          {/* Card 4: Tráfego Pago */}
+          {/* Card 3: Assessoria de Tráfego Pago R$ 1.500 */}
           <div id="loja-card-traffic" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-purple-500/40 transition-all shadow-xl">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
-            
             <div>
-              <div className="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5 border border-purple-500/25">
+              <div className="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 border border-purple-500/25">
                 <TrendingUp className="w-5 h-5 text-purple-400" />
               </div>
-              <span className="text-[10px] font-mono uppercase font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                ROI 7,3x Comprovado
+              <span className="text-[11px] font-mono uppercase font-bold text-purple-400">
+                6 em 3 (100k em 3 dias)
               </span>
-              <h2 className="text-lg font-black text-white mt-2 mb-2 uppercase tracking-tight">
-                Gestão de Tráfego
+              <h2 className="text-lg font-black text-white mt-1 mb-2 uppercase tracking-tight">
+                Assessoria de Tráfego Pago
               </h2>
               <p className="text-gray-400 text-xs leading-relaxed mb-5">
-                Tráfego pago ROI 7,3x comprovado em 100k de vendas de cursos com alta lucratividade, margem e escala.
+                Gestão de tráfego pago com resultado comprovado de 6 em 3 (100k em 3 dias) em lançamentos e +R$ 60k investidos em vendas automotivas.
               </p>
 
               <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-purple-500/30 mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-white uppercase">Gestão Estratégica</span>
-                  <span className="text-sm font-black text-purple-400 font-mono">Sob Consulta</span>
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-xs font-bold text-white uppercase">Assessoria Mensal</span>
+                  <span className="text-lg font-black text-purple-400 font-mono">R$ 1.500</span>
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
-                  Redes sociais limitadas apenas pela sua verba (Meta, Google, TikTok, YouTube).
+                  Meta Ads, Google Ads, TikTok Ads e YouTube orientados a leads e conversão.
                 </p>
               </div>
             </div>
 
             <div className="pt-4 border-t border-gray-800/80">
-              <span className="text-[10px] font-mono text-purple-400 block text-xs font-bold">
-                Estratégia 6 em 7 Validada
+              <span className="text-xs font-mono text-purple-400 block font-bold">
+                Estratégia 6 em 3 Validada
               </span>
             </div>
           </div>
 
-        </div>
-
-        {/* Squads de IA Highlight */}
-        <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-gradient-to-r from-purple-950/40 via-[#0A0F1C] to-purple-950/20 border border-purple-500/30 mb-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
-              <Bot className="w-6 h-6" />
-            </div>
+          {/* Card 4: Projetos com IA R$ 1.500 */}
+          <div id="loja-card-ia" className="p-6 rounded-2xl border border-gray-800 bg-[#0F172A]/70 backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/40 transition-all shadow-xl">
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                PRODUTIVIDADE COM IA & OBSIDIAN
+              <div className="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/25">
+                <Bot className="w-5 h-5 text-amber-400" />
+              </div>
+              <span className="text-[11px] font-mono uppercase font-bold text-amber-400">
+                Automação & Escala
               </span>
-              <h3 className="text-base font-black text-white uppercase mt-1">
-                Kit Produtividade IA: Pasta Pronta + Segundo Cérebro
-              </h3>
-              <p className="text-xs text-gray-400 mt-0.5">
-                Conecte no Claude Code, AntiGravity ou VS Code com Segundo Cérebro no Obsidian, curso em vídeo, projetos Open Source filtrados e skills seguras.
+              <h2 className="text-lg font-black text-white mt-1 mb-2 uppercase tracking-tight">
+                Projetos com IA
+              </h2>
+              <p className="text-gray-400 text-xs leading-relaxed mb-5">
+                Consultoria, Treinamento + Suporte e Execução de projetos com IA + Mensal (ferramentas à parte).
               </p>
+
+              <div className="p-4 rounded-xl bg-[#0A0F1C]/80 border border-amber-500/30 mb-6">
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-xs font-bold text-white uppercase">Projeto + Mensal</span>
+                  <span className="text-lg font-black text-amber-400 font-mono">R$ 1.500</span>
+                </div>
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  Consultoria completa, treinamento de equipe, suporte contínuo e execução (ferramentas à parte).
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-800/80">
+              <span className="text-xs font-mono text-gray-400 block">
+                Arte/Banner: IA R$ 35 | Designer R$ 150
+              </span>
             </div>
           </div>
-          <a
-            href="/agentes"
-            className="shrink-0 px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-black text-xs uppercase transition-all shadow-sm flex items-center gap-2"
-          >
-            Ver Kit IA (R$ 197) →
-          </a>
+
         </div>
 
         {/* Real-time Project Estimator */}
@@ -367,131 +369,65 @@ export default function LojaPage() {
           </div>
 
           <div className="relative z-10">
-            <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/15 px-2.5 py-0.5 rounded uppercase font-mono tracking-wider">
+            <span className="text-[10px] font-bold text-emerald-400 uppercase font-mono tracking-wider">
               Simulador de Escopo
             </span>
             <h3 className="text-xl md:text-2xl font-black text-white mt-1.5 mb-6 uppercase tracking-tight">
               Monte seu Orçamento Estimado
             </h3>
 
+            {/* Toggle Campanha 30 Dias */}
+            <div className="mb-6 p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div className="text-xs font-black text-emerald-400 uppercase font-mono">
+                  Campanha Completa de Marketing 30 Dias (R$ 5.000)
+                </div>
+                <p className="text-[11px] text-gray-300 mt-0.5">
+                  Planejamento + execução de anúncios + Artes e Vídeos de Divulgação + Vídeo Cinemático Pós-Evento
+                </p>
+              </div>
+              <button
+                onClick={() => setIncludeCampanha30Dias(!includeCampanha30Dias)}
+                className={`px-4 py-2 rounded-lg text-xs font-black uppercase transition-all cursor-pointer shrink-0 ${
+                  includeCampanha30Dias
+                    ? 'bg-emerald-500 text-black'
+                    : 'bg-gray-800 text-gray-300 hover:text-white'
+                }`}
+              >
+                {includeCampanha30Dias ? 'Incluído (R$ 5.000) ✓' : 'Adicionar R$ 5.000'}
+              </button>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 border-b border-gray-800/80 pb-8 mb-6">
               
-              {/* Photo settings column */}
+              {/* 1. Vídeos por Minutagem */}
               <div className="space-y-4">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <Camera className="w-4 h-4 text-emerald-400" /> 1. Fotografia
-                </h4>
-                
-                <div className="flex gap-2">
-                  <button 
-                    onClick={() => setPhotoOption('volume')}
-                    className={`flex-1 py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
-                      photoOption === 'volume' 
-                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
-                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    Volume / Evento
-                  </button>
-                  <button 
-                    onClick={() => setPhotoOption('plataforma')}
-                    className={`flex-1 py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
-                      photoOption === 'plataforma' 
-                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
-                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    Site (Fotto/Banlek)
-                  </button>
-                </div>
-
-                {photoOption === 'volume' ? (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                    <label className="text-[11px] text-gray-400 block mb-1">Quantidade de eventos/diárias: <strong>{photoEvents} evento(s)</strong></label>
-                    <input 
-                      type="range" 
-                      min="1" 
-                      max="10" 
-                      value={photoEvents} 
-                      onChange={(e) => setPhotoEvents(parseInt(e.target.value))}
-                      className="w-full accent-emerald-400 cursor-pointer"
-                    />
-                    <div className="flex justify-between items-center text-[9px] text-gray-500 mt-1">
-                      <span>1 evento</span>
-                      <span>5 eventos</span>
-                      <span>10 eventos</span>
-                    </div>
-                    <div className="text-right text-xs font-extrabold text-emerald-400 mt-2">
-                      Subtotal: R$ {photoEvents * 650},00
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 space-y-3">
-                    <div>
-                      <label className="text-[11px] text-gray-400 block mb-1">Fotos digitais baixadas (Est.): <strong>{photoQtyDigital} un.</strong></label>
-                      <input 
-                        type="range" 
-                        min="1" 
-                        max="100" 
-                        value={photoQtyDigital} 
-                        onChange={(e) => setPhotoQtyDigital(parseInt(e.target.value))}
-                        className="w-full accent-emerald-400 cursor-pointer"
-                      />
-                      <div className="flex justify-between text-[9px] text-gray-500">
-                        <span>1 un (R$10)</span>
-                        <span>100 un</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="text-[11px] text-gray-400 block mb-1">Fotos Impressas no A4 (Est.): <strong>{photoQtyA4} un.</strong></label>
-                      <input 
-                        type="range" 
-                        min="0" 
-                        max="30" 
-                        value={photoQtyA4} 
-                        onChange={(e) => setPhotoQtyA4(parseInt(e.target.value))}
-                        className="w-full accent-cyan-400 cursor-pointer"
-                      />
-                      <div className="flex justify-between text-[9px] text-gray-500">
-                        <span>Min (R$20/un)</span>
-                        <span>30 un</span>
-                      </div>
-                    </div>
-                    <div className="text-right text-xs font-extrabold text-emerald-400 pt-1">
-                      Subtotal Estimado: R$ {(photoQtyDigital * 10) + (photoQtyA4 * 20)},00
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Video settings column */}
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <Video className="w-4 h-4 text-cyan-400" /> 2. Gravação 4K
+                  <Video className="w-4 h-4 text-cyan-400" /> 1. Vídeo por Minutagem
                 </h4>
 
                 <div className="flex flex-col gap-2">
                   <button 
-                    onClick={() => setVideoOption('aftermovie')}
+                    onClick={() => setVideoOption('celular')}
                     className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoOption === 'aftermovie' 
+                      videoOption === 'celular' 
                         ? 'bg-cyan-500/15 border-cyan-500 text-cyan-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Aftermovie 4K Cinemático</span>
-                    <span>R$ 850 / prod.</span>
+                    <span>Vídeo com Celular</span>
+                    <span>R$ 250 / min</span>
                   </button>
                   <button 
-                    onClick={() => setVideoOption('reels')}
+                    onClick={() => setVideoOption('camera')}
                     className={`w-full py-2 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-left flex justify-between ${
-                      videoOption === 'reels' 
+                      videoOption === 'camera' 
                         ? 'bg-cyan-500/15 border-cyan-500 text-cyan-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Reels / Carrossel em Alta Qualidade</span>
-                    <span>R$ 250 / prod.</span>
+                    <span>Vídeo com Câmera</span>
+                    <span>R$ 550 / min</span>
                   </button>
                   <button 
                     onClick={() => setVideoOption('none')}
@@ -501,97 +437,204 @@ export default function LojaPage() {
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span>Nenhum Vídeo</span>
+                    <span>Sem Vídeo Avulso</span>
                     <span>R$ 0</span>
                   </button>
                 </div>
 
-                {videoOption !== 'none' ? (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 mt-2">
-                    <label className="text-[11px] text-gray-400 block mb-1">Quantidade de produções: <strong>{videoCount}</strong></label>
-                    <input 
-                      type="range" 
-                      min="1" 
-                      max="10" 
-                      value={videoCount} 
-                      onChange={(e) => setVideoCount(parseInt(e.target.value))}
-                      className="w-full accent-cyan-400 cursor-pointer"
-                    />
-                    <div className="text-right text-xs font-extrabold text-cyan-400 mt-2">
-                      Subtotal: R$ {videoCost},00
+                {videoOption !== 'none' && (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 space-y-3">
+                    <div>
+                      <label className="text-[11px] text-gray-400 block mb-1">
+                        Minutagem do Vídeo: <strong>{videoMinutes} min</strong>
+                      </label>
+                      <input 
+                        type="range" 
+                        min="1" 
+                        max="15" 
+                        value={videoMinutes} 
+                        onChange={(e) => setVideoMinutes(parseInt(e.target.value))}
+                        className="w-full accent-cyan-400 cursor-pointer"
+                      />
                     </div>
-                  </div>
-                ) : (
-                  <div className="p-4 rounded-xl bg-[#0A0F1C]/30 border border-gray-900 text-center py-6 text-gray-500 text-[10.5px]">
-                    <p>Nenhuma captação de vídeo selecionada no estimador.</p>
+
+                    <div className="pt-2 border-t border-gray-800">
+                      <button
+                        onClick={() => setAddDrone(!addDrone)}
+                        className={`w-full py-1.5 px-3 rounded-lg border text-[10px] font-black uppercase flex justify-between items-center cursor-pointer ${
+                          addDrone
+                            ? 'bg-amber-500/15 border-amber-500 text-amber-400'
+                            : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                        }`}
+                      >
+                        <span>+ Adicional Drone</span>
+                        <span>R$ 300 / min</span>
+                      </button>
+
+                      {addDrone && (
+                        <div className="mt-2">
+                          <label className="text-[11px] text-gray-400 block mb-1">
+                            Minutos de Drone: <strong>{droneMinutes} min</strong>
+                          </label>
+                          <input 
+                            type="range" 
+                            min="1" 
+                            max="10" 
+                            value={droneMinutes} 
+                            onChange={(e) => setDroneMinutes(parseInt(e.target.value))}
+                            className="w-full accent-amber-400 cursor-pointer"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="text-right text-xs font-extrabold text-cyan-400 pt-1">
+                      Subtotal Vídeo: R$ {videoCost},00
+                    </div>
                   </div>
                 )}
               </div>
 
-              {/* Artes & Tráfego Pago column */}
-              <div className="space-y-4">
+              {/* 2. Valores Avulsos (R$ 1.500) */}
+              <div className="space-y-3">
                 <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4 text-purple-400" /> 3. Artes & Tráfego Pago
+                  <TrendingUp className="w-4 h-4 text-purple-400" /> 2. Mensais Avulsos (R$ 1.500)
                 </h4>
 
-                {/* Artes */}
-                <div className="p-3.5 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-[11px] text-gray-300 font-bold uppercase flex items-center gap-1">
-                      <Palette className="w-3 h-3 text-amber-400" /> Artes Estáticas
-                    </span>
-                    <span className="text-xs font-black text-amber-400">{artesCount} un</span>
+                <button
+                  onClick={() => setAddSocialMedia(!addSocialMedia)}
+                  className={`w-full p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                    addSocialMedia
+                      ? 'bg-emerald-950/25 border-emerald-500 text-white'
+                      : 'bg-[#0A0F1C]/80 border-gray-800 text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <div className="flex justify-between items-center text-xs font-black uppercase">
+                    <span>Social Media + Eventos</span>
+                    <span className="text-emerald-400 font-mono">R$ 1.500</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="20" 
-                    value={artesCount} 
-                    onChange={(e) => setArtesCount(parseInt(e.target.value))}
-                    className="w-full accent-amber-400 cursor-pointer"
-                  />
-                  <div className="text-right text-xs font-bold text-amber-400 mt-1">
-                    {artesCount > 0 ? `${artesCount} artes selecionadas` : 'Nenhuma selecionada'}
-                  </div>
-                </div>
+                  <p className="text-[10px] text-gray-400 mt-1">
+                    Captação semanal e conteúdo mensal de todos os eventos
+                  </p>
+                </button>
 
-                {/* Tráfego Pago */}
+                <button
+                  onClick={() => setAddTraffic(!addTraffic)}
+                  className={`w-full p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                    addTraffic
+                      ? 'bg-purple-950/25 border-purple-500 text-white'
+                      : 'bg-[#0A0F1C]/80 border-gray-800 text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <div className="flex justify-between items-center text-xs font-black uppercase">
+                    <span>Assessoria Tráfego Pago</span>
+                    <span className="text-purple-400 font-mono">R$ 1.500</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 mt-1">
+                    Gestão estratégica de campanhas e anúncios pagos
+                  </p>
+                </button>
+
+                <button
+                  onClick={() => setAddProjetosIA(!addProjetosIA)}
+                  className={`w-full p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                    addProjetosIA
+                      ? 'bg-amber-950/25 border-amber-500 text-white'
+                      : 'bg-[#0A0F1C]/80 border-gray-800 text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <div className="flex justify-between items-center text-xs font-black uppercase">
+                    <span>Projetos com IA + Mensal</span>
+                    <span className="text-amber-400 font-mono">R$ 1.500</span>
+                  </div>
+                  <p className="text-[10px] text-gray-400 mt-1">
+                    Consultoria, Treinamento + Suporte e Execução (ferramentas à parte)
+                  </p>
+                </button>
+              </div>
+
+              {/* 3. Fotografia */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
+                  <Camera className="w-4 h-4 text-emerald-400" /> 3. Fotografia
+                </h4>
+                
                 <div className="flex gap-2">
                   <button 
-                    onClick={() => setAddTraffic(true)}
-                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-center ${
-                      addTraffic 
-                        ? 'bg-purple-500/15 border-purple-500 text-purple-400' 
+                    onClick={() => setPhotoOption('ensaio')}
+                    className={`flex-1 py-2 px-2 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
+                      photoOption === 'ensaio' 
+                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Tráfego (Sob Consulta)
+                    Ensaio (R$ 500)
                   </button>
                   <button 
-                    onClick={() => setAddTraffic(false)}
-                    className={`flex-1 py-1.5 px-3 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase text-center ${
-                      !addTraffic 
-                        ? 'bg-red-950/10 border-red-900/40 text-red-400' 
+                    onClick={() => setPhotoOption('avulsa')}
+                    className={`flex-1 py-2 px-2 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
+                      photoOption === 'avulsa' 
+                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-400' 
                         : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
                     }`}
                   >
-                    Sem Tráfego
+                    Fotos Avulsas
+                  </button>
+                  <button 
+                    onClick={() => setPhotoOption('none')}
+                    className={`py-2 px-2.5 rounded-lg border text-[10px] font-black tracking-tight cursor-pointer uppercase ${
+                      photoOption === 'none' 
+                        ? 'bg-red-950/15 border-red-900/40 text-red-400' 
+                        : 'bg-transparent border-gray-800 text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    Não
                   </button>
                 </div>
 
-                {addTraffic && (
-                  <div className="p-3.5 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
-                    <label className="text-[11px] text-gray-400 block mb-1">Período de assessoria: <strong>{trafficMonths} {trafficMonths === 1 ? 'mês' : 'meses'}</strong></label>
+                {photoOption === 'ensaio' && (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800">
+                    <label className="text-[11px] text-gray-400 block mb-1">Diárias de ensaio (R$ 500/diária): <strong>{photoDays}</strong></label>
                     <input 
                       type="range" 
                       min="1" 
-                      max="12" 
-                      value={trafficMonths} 
-                      onChange={(e) => setTrafficMonths(parseInt(e.target.value))}
-                      className="w-full accent-purple-400 cursor-pointer"
+                      max="10" 
+                      value={photoDays} 
+                      onChange={(e) => setPhotoDays(parseInt(e.target.value))}
+                      className="w-full accent-emerald-400 cursor-pointer"
                     />
-                    <div className="text-right text-xs font-extrabold text-purple-400 mt-1">
-                      Subtotal: R$ {trafficCost},00
+                    <div className="text-right text-xs font-extrabold text-emerald-400 mt-2">
+                      Subtotal: R$ {photoDays * 500},00
+                    </div>
+                  </div>
+                )}
+
+                {photoOption === 'avulsa' && (
+                  <div className="p-4 rounded-xl bg-[#0A0F1C]/90 border border-gray-800 space-y-3">
+                    <div>
+                      <label className="text-[11px] text-gray-400 block mb-1">Fotos digitais (R$ 14/un): <strong>{photoQtyDigital} un.</strong></label>
+                      <input 
+                        type="range" 
+                        min="1" 
+                        max="100" 
+                        value={photoQtyDigital} 
+                        onChange={(e) => setPhotoQtyDigital(parseInt(e.target.value))}
+                        className="w-full accent-emerald-400 cursor-pointer"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] text-gray-400 block mb-1">Fotos impressas (R$ 25/un): <strong>{photoQtyImpressa} un.</strong></label>
+                      <input 
+                        type="range" 
+                        min="0" 
+                        max="30" 
+                        value={photoQtyImpressa} 
+                        onChange={(e) => setPhotoQtyImpressa(parseInt(e.target.value))}
+                        className="w-full accent-cyan-400 cursor-pointer"
+                      />
+                    </div>
+                    <div className="text-right text-xs font-extrabold text-emerald-400 pt-1">
+                      Subtotal: R$ {(photoQtyDigital * 14) + (photoQtyImpressa * 25)},00
                     </div>
                   </div>
                 )}
@@ -654,7 +697,7 @@ export default function LojaPage() {
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-sm font-bold text-emerald-400">R$</span>
                   <span className="text-3xl font-extrabold text-white tracking-tight">{totalCost},00</span>
-                  <span className="text-[10px] font-mono text-gray-400 font-bold uppercase">(Orçamento acessível sob medida)</span>
+                  <span className="text-[10px] font-mono text-gray-400 font-bold uppercase">(Orçamento sob medida)</span>
                 </div>
               </div>
 
@@ -690,9 +733,10 @@ export default function LojaPage() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <span className="bg-[#121A2E] text-white py-1 px-3.5 rounded-lg font-mono text-[10px] border border-gray-800 font-bold">fotto.com.br</span>
-            <span className="bg-[#121A2E] text-white py-1 px-3.5 rounded-lg font-mono text-[10px] border border-gray-800 font-bold">banlek.com</span>
+          <div className="flex items-center gap-3 shrink-0 font-mono text-xs text-gray-300">
+            <span>fotto.com.br</span>
+            <span>·</span>
+            <span>banlek.com</span>
           </div>
         </div>
 
@@ -700,7 +744,7 @@ export default function LojaPage() {
 
       {/* Mini Footer */}
       <footer id="loja-footer" className="py-8 border-t border-gray-800/80 text-center text-gray-400 text-xs bg-[#0A0F1C]/50 relative z-10 font-mono">
-        <p>VIRTUAL PLACE AGÊNCIA // CONSULTORIA EM IA, CRM, AUDIOVISUAL 4K & TRÁFEGO PAGO</p>
+        <p>VIRTUAL PLACE AGÊNCIA · CONSULTORIA EM IA, SOCIAL MEDIA, AUDIOVISUAL 4K & TRÁFEGO PAGO</p>
       </footer>
     </div>
   );

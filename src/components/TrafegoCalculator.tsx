@@ -201,7 +201,7 @@ export function TrafegoCalculator() {
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-widest">
             <Flame className="w-3.5 h-3.5 text-emerald-400" />
-            ROI 7,3x COMPROVADO EM 100K DE VENDAS
+            6 EM 3 (100K EM 3 DIAS)
           </span>
         </div>
 
@@ -512,7 +512,7 @@ export function TrafegoCalculator() {
               </div>
             </div>
 
-            {/* CTA Buttons: WhatsApp + /precos */}
+            {/* CTA Button: WhatsApp */}
             <div className="flex flex-col sm:flex-row items-stretch gap-3">
               <a
                 href={whatsappUrl}
@@ -522,15 +522,6 @@ export function TrafegoCalculator() {
               >
                 <span>Consultar no WhatsApp</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href="/precos"
-                className="py-4 px-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
-                title="Ver tabela completa de preços"
-              >
-                <span>Tabela /precos</span>
-                <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
               </a>
             </div>
 

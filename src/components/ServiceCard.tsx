@@ -233,12 +233,12 @@ export function ServiceCard({ service }: ServiceCardProps) {
             )}
 
             {/* Action Links / Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch gap-2">
+            <div className="flex items-stretch">
               <a 
                 href={service.link}
                 target={service.link.startsWith('http') ? '_blank' : '_self'}
                 rel={service.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className={`flex-1 py-3 px-3 rounded-xl font-black text-xs uppercase flex items-center justify-center gap-1.5 transition-all shadow-md text-center cursor-pointer relative overflow-hidden group/btn ${
+                className={`w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase flex items-center justify-center gap-2 transition-all shadow-md text-center cursor-pointer relative overflow-hidden group/btn ${
                   service.link.includes('wa.me') 
                     ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20'
                     : 'bg-black hover:bg-neutral-900 text-white'
@@ -246,15 +246,6 @@ export function ServiceCard({ service }: ServiceCardProps) {
               >
                 <span>{service.linkText}</span>
                 <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5" />
-              </a>
-
-              <a
-                href="/precos"
-                className="py-3 px-3.5 rounded-xl font-bold text-xs uppercase flex items-center justify-center gap-1 transition-all bg-gray-100 hover:bg-cyan-50 text-gray-800 hover:text-cyan-700 border border-gray-300 hover:border-cyan-400 cursor-pointer text-center shrink-0"
-                title="Ver tabela completa de preços (/precos)"
-              >
-                <span>Preços</span>
-                <ChevronRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>

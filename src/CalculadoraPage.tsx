@@ -64,14 +64,8 @@ export default function CalculadoraPage() {
             </a>
           </nav>
 
-          {/* Action CTAs */}
+          {/* Action CTA */}
           <div className="flex items-center gap-2.5">
-            <a
-              href="/precos"
-              className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-cyan-400 transition-all cursor-pointer"
-            >
-              /precos
-            </a>
             <a
               href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Acessei%20a%20Calculadora%20de%20Tr%C3%A1fego%20Pago%20da%20Virtual%20Place%20e%20gostaria%20de%20um%20planejamento%20de%20campanhas."
               target="_blank"
@@ -173,13 +167,6 @@ export default function CalculadoraPage() {
               className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2 cursor-pointer"
             >
               <span>Falar no WhatsApp com o Gestor</span>
-              <ChevronRight className="w-4 h-4" />
-            </a>
-            <a
-              href="/precos"
-              className="px-6 py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-black text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <span>Ver Tabela de Preços (/precos)</span>
               <ChevronRight className="w-4 h-4" />
             </a>
           </div>

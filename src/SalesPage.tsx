@@ -82,21 +82,13 @@ export default function SalesPage() {
             <a href="#cases" className="hover:text-cyan-400 transition-colors">Resultados</a>
           </nav>
 
-          {/* Action Buttons: WhatsApp + Preços */}
+          {/* Action Button: WhatsApp */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Live Agency Status Pill */}
             <div className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono font-bold text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span>4K DISPONÍVEL</span>
             </div>
-
-            <a
-              href="/precos"
-              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-cyan-400 transition-all cursor-pointer text-center"
-              title="Abrir página /precos"
-            >
-              /precos
-            </a>
 
             <a
               href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Virtual%20Place%20e%20gostaria%20de%20um%20atendimento%20para%20produ%C3%A7%C3%A3o."
@@ -200,7 +192,7 @@ export default function SalesPage() {
           })}
         </div>
 
-        {/* CTA Hero Buttons: Preços + WhatsApp */}
+        {/* CTA Hero Button: WhatsApp */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -209,22 +201,13 @@ export default function SalesPage() {
           className="mb-20 flex flex-wrap items-center justify-center gap-3.5"
         >
           <a 
-            href="/precos"
-            className="inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-4 text-sm sm:text-base font-black uppercase tracking-wider text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all cursor-pointer"
-          >
-            <Zap className="w-5 h-5 text-black fill-black" />
-            <span>Ver Tabela de Preços (/precos)</span> 
-            <ChevronRight className="w-4 h-4" />
-          </a>
-
-          <a 
             href="https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20Virtual%20Place."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 text-sm sm:text-base font-black uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 rounded-2xl shadow-xl shadow-emerald-600/20 hover:scale-[1.02] transition-all cursor-pointer"
+            className="inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-4 text-sm sm:text-base font-black uppercase tracking-wider text-black bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 rounded-2xl shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all cursor-pointer"
           >
             <span>Chamar no WhatsApp</span>
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5 text-black" />
           </a>
         </motion.div>
 
@@ -237,17 +220,10 @@ export default function SalesPage() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12"
           >
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <div className="flex items-center justify-center mb-3">
               <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1 rounded-full">
                 Catálogo de Soluções 4K & Estratégia
               </span>
-              <a 
-                href="/precos"
-                className="text-[11px] font-mono font-bold uppercase tracking-widest text-white hover:text-cyan-300 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1 rounded-full transition-colors flex items-center gap-1"
-              >
-                <span>Acessar /precos</span>
-                <ChevronRight className="w-3 h-3 text-cyan-400" />
-              </a>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
               Nossos Planos & Serviços
@@ -310,14 +286,6 @@ export default function SalesPage() {
                 <span>Abrir Calculadora de Tráfego</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
-
-              <a
-                href="/precos"
-                className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer text-center"
-              >
-                <span>Ver Tabela /precos</span>
-                <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-              </a>
             </div>
           </div>
         </motion.div>
@@ -337,7 +305,7 @@ export default function SalesPage() {
           <StatsAndClients />
         </div>
 
-        {/* Depoimento Léo & Vídeo */}
+        {/* Depoimento & Resultados do Cliente */}
         <motion.div 
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -346,15 +314,15 @@ export default function SalesPage() {
           className="max-w-3xl mx-auto mb-20 text-left"
         >
           <div className="p-6 sm:p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-2xl relative">
-            {/* Header: Avatar, Nome e Estrelas */}
+            {/* Header: Cliente e Estrelas (Sem texto falso e sem citar nome pessoal) */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center font-black text-cyan-400 text-xl shadow-inner shrink-0">
-                  L
+                  PP
                 </div>
                 <div>
-                  <h4 className="font-black text-white text-lg uppercase tracking-tight">Léo</h4>
-                  <p className="text-sm text-cyan-400 font-mono font-semibold">Português Play</p>
+                  <h4 className="font-black text-white text-lg uppercase tracking-tight">Português Play</h4>
+                  <p className="text-sm text-cyan-400 font-mono font-semibold">@portuguesplay</p>
                 </div>
               </div>
 
@@ -366,7 +334,7 @@ export default function SalesPage() {
               </div>
             </div>
 
-            {/* Métricas Reais do Cliente com a Agência (Sem dados falsos) */}
+            {/* Métricas Reais de Lançamentos com este Cliente */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 max-w-xl mx-auto">
               <div className="p-5 rounded-2xl bg-black/40 border border-white/5 hover:border-cyan-500/30 transition-colors text-center">
                 <div className="text-3xl sm:text-4xl font-black text-cyan-400 font-mono tracking-tight mb-1">
@@ -380,15 +348,15 @@ export default function SalesPage() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-black/40 border border-white/5 hover:border-emerald-500/30 transition-colors text-center">
-                <div className="text-3xl sm:text-4xl font-black text-emerald-400 font-mono tracking-tight mb-1">
-                  R$ 60k+
+              <div className="p-5 rounded-2xl bg-black/40 border border-white/5 hover:border-purple-500/30 transition-colors text-center">
+                <div className="text-3xl sm:text-4xl font-black text-purple-400 font-mono tracking-tight mb-1">
+                  6 em 3
                 </div>
                 <div className="text-xs sm:text-sm font-bold text-neutral-200 uppercase leading-snug">
-                  Verba de Cliente
+                  100k em 3 Dias
                 </div>
                 <div className="text-[11px] text-neutral-400 font-mono mt-1">
-                  Valor investido em venda de carros e campanhas
+                  Lançamento 6 dígitos (R$ 100 mil) em 3 dias
                 </div>
               </div>
             </div>
@@ -399,7 +367,7 @@ export default function SalesPage() {
             <iframe
               className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/QW9InbF3eZE?autoplay=0&rel=0"
-              title="Depoimento Léo - Português Play"
+              title="Depoimento - Português Play"
               loading="lazy"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -407,7 +375,7 @@ export default function SalesPage() {
             />
           </div>
           <p className="text-xs text-neutral-500 mt-3 text-center flex items-center justify-center gap-1.5 font-mono">
-            <PlayCircle className="w-4 h-4 text-cyan-400" /> Depoimento do Léo (Português Play)
+            <PlayCircle className="w-4 h-4 text-cyan-400" /> Depoimento Oficial — Português Play
           </p>
         </motion.div>
 

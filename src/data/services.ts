@@ -66,20 +66,20 @@ export const SERVICES: ServiceItem[] = [
     id: 'assessoria-trafego',
     title: 'Assessoria de Tráfego Pago',
     subtitle: 'Redes Limitadas Apenas Pela Verba',
-    description: 'Gestão de tráfego pago com ROI de 7,3x comprovado em mais de 100k de vendas de cursos com alta lucratividade, margem e escala. Campanhas em Meta Ads (Instagram/Facebook), Google Ads e TikTok Ads — redes sociais limitadas apenas pela verba do cliente.',
-    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago%20%28ROI%207%2C3x%20comprovado%29.',
+    description: 'Gestão estratégica de tráfego pago com resultado de 6 em 3 (100k em 3 dias) em lançamentos de cursos e mais de R$ 60k gerenciados em campanhas automotivas. Campanhas em Meta Ads (Instagram/Facebook), Google Ads e TikTok Ads — redes sociais limitadas apenas pela verba do cliente.',
+    link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20a%20Assessoria%20de%20Tr%C3%A1fego%20Pago.',
     linkText: 'Consultar Tráfego no WhatsApp',
     category: 'Tráfego Pago & Performance',
     accentColor: 'text-emerald-600',
     bgGradient: 'bg-gradient-to-br from-emerald-100/70 via-teal-50 to-emerald-200/50',
     icon: Target,
-    badge: 'ROI 7,3x Comprovado',
+    badge: '6 em 3 (100k em 3 dias)',
     initialLikes: 412,
     features: [
       'Gestão estratégica personalizada',
       'Redes sociais limitadas apenas pela verba do cliente',
-      'ROI 7,3x comprovado em 100k de vendas com alta lucratividade',
-      'Otimização diária de CPA, ROAS e relatórios transparentes'
+      'Resultado comprovado: 6 em 3 (R$ 100k em 3 dias)',
+      'Otimização diária de campanhas e relatórios transparentes'
     ]
   },
   {
@@ -107,7 +107,7 @@ export const SERVICES: ServiceItem[] = [
     id: 'coproducao-info',
     title: 'Coprodução de Infoprodutos & Lançamentos',
     subtitle: 'Parceria de Escala e Alta Margem',
-    description: 'Lançamentos de infoprodutos e cursos com foco em performance total e alta lucratividade: estratégia validada, tráfego com ROI 7,3x, páginas de alta conversão e esteira de produtos escalável.',
+    description: 'Lançamentos de infoprodutos, livros e cursos com foco em performance total: estratégia validada com resultado 6 em 3 (100k em 3 dias), páginas de alta conversão e esteira de produtos escalável.',
     link: 'https://wa.me/5549991052315?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20Coprodu%C3%A7%C3%A3o%20de%20Infoprodutos.',
     linkText: 'Consultar no WhatsApp',
     category: 'Infoprodutos & Lançamentos',
@@ -117,7 +117,7 @@ export const SERVICES: ServiceItem[] = [
     initialLikes: 215,
     features: [
       'Estratégia de lançamento validada em +23 cases',
-      'Gestão de tráfego com alta margem e escala',
+      'Case 6 em 3 (R$ 100k em 3 dias) e +10 lançamentos por especialista',
       'Estrutura completa de checkout e esteira de vendas'
     ]
   }
