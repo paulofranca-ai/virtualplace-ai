@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Award, Car, Rocket, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Instagram, Award, TrendingUp, Rocket, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function StatsAndClients() {
@@ -23,10 +23,10 @@ export function StatsAndClients() {
       border: 'border-purple-500/20'
     },
     {
-      value: '+400',
-      label: 'Veículos Vendidos',
-      sublabel: 'Campanhas para lojas automotivas locais',
-      icon: Car,
+      value: '6 em 3',
+      label: '100k em 3 Dias',
+      sublabel: 'Lançamento de 6 dígitos em 72 horas',
+      icon: TrendingUp,
       color: 'text-emerald-400',
       bg: 'bg-emerald-950/20',
       border: 'border-emerald-500/20'
@@ -38,16 +38,14 @@ export function StatsAndClients() {
     { handle: '@portuguesplay', url: 'https://www.instagram.com/portuguesplay', niche: 'Infoproduto / Aulas' },
     { handle: '@andreluis.vsw', url: 'https://www.instagram.com/andreluis.vsw', niche: 'Produtor & Especialista' },
     { handle: '@luizoliveiraoficiall', url: 'https://www.instagram.com/luizoliveiraoficiall', niche: 'Palestrante & Mentor' },
-    { handle: '@z4.veiculos_', url: 'https://www.instagram.com/z4.veiculos_', niche: 'Concessionária & Vendas' },
-    { handle: '@fio.automoveis', url: 'https://www.instagram.com/fio.automoveis', niche: 'Revenda Automotiva' },
     { handle: '@regiao_amurc', url: 'https://www.instagram.com/regiao_amurc', niche: 'Instituição Regional' },
     { handle: '@culturaturismoamurc', url: 'https://www.instagram.com/culturaturismoamurc', niche: 'Turismo & Cultura' }
   ];
 
   const partnerBrands = [
-    "Vendedor Imbatível", "Escolinha Lucrativa", "Curso Mike Bravo", "Avenida Pneus", 
-    "Associação dos Tropeiros", "NZ Motos", "THCElétrica", "Niles Mat Construção", 
-    "Lucas Sebbem Advogado", "CM Reparos Automotivos", "Souz Place", "Plantão do Gole", 
+    "Vendedor Imbatível", "Escolinha Lucrativa", "Curso Mike Bravo", 
+    "Associação dos Tropeiros", "THCElétrica", "Niles Mat Construção", 
+    "Lucas Sebbem Advogado", "Souz Place", "Plantão do Gole", 
     "Fava Cruz Produções", "Hotel Pinotti", "Lia Tattoer", "Vintage Barber Shop"
   ];
 

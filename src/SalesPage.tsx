@@ -18,14 +18,10 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { ServiceCard } from './components/ServiceCard';
-import { SERVICES } from './data/services';
 import { BeatPlaceSection } from './components/BeatPlaceSection';
-import { AutoLeadSection } from './components/AutoLeadSection';
 import { StatsAndClients } from './components/StatsAndClients';
 import { VideoPortfolioSection } from './components/VideoPortfolioSection';
 import { Cinema3DBackground } from './components/Cinema3DBackground';
-import { AgenciaLogo } from './components/AgenciaLogo';
 import { AnimatedDeliveriesHeadline } from './components/AnimatedDeliveriesHeadline';
 
 export default function SalesPage() {
@@ -66,7 +62,6 @@ export default function SalesPage() {
             <a href="/precos" className="hover:text-cyan-400 transition-colors text-cyan-400 font-bold flex items-center gap-1 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-lg">
               <span>Tabela /precos</span>
             </a>
-            <a href="#planos" className="hover:text-cyan-400 transition-colors">Serviços 4K</a>
             <a href="/calculadora" className="hover:text-cyan-400 transition-colors flex items-center gap-1 text-neutral-300">
               <Sliders className="w-3.5 h-3.5 text-cyan-400" />
               <span>Calculadora Tráfego</span>
@@ -114,7 +109,7 @@ export default function SalesPage() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-bold text-cyan-300 uppercase tracking-widest mb-6 backdrop-blur-md shadow-lg"
         >
           <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-          <span>PRODUÇÃO 4K • POST EM ALTA QUALIDADE • ORÇAMENTOS ACESSÍVEIS</span>
+          <span>PRODUÇÃO 4K • POST EM ALTA QUALIDADE</span>
         </motion.div>
 
         {/* Master Animated Headline with rotating deliverables */}
@@ -127,7 +122,7 @@ export default function SalesPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed font-normal"
         >
-          Soluções completas com orçamentos acessíveis: produção audiovisual 4K, fotografia em alta escala, assessoria estratégica de tráfego pago, squads de inteligência artificial, talentos freelas, DJs para eventos, design profissional e sites de alta conversão.
+          Soluções completas em produção audiovisual 4K, fotografia em alta escala, assessoria estratégica de tráfego pago, squads de inteligência artificial, talentos freelas, DJs para eventos, design profissional e sites de alta conversão.
         </motion.p>
 
         {/* 4K Cinema Monitor Frame with Live Interactive Video Portfolio */}
@@ -211,43 +206,6 @@ export default function SalesPage() {
           </a>
         </motion.div>
 
-        {/* Nossos Planos & Serviços (3D Interactive Tilt Cards) */}
-        <div id="planos" className="scroll-mt-24 pt-4 mb-24 max-w-6xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-12"
-          >
-            <div className="flex items-center justify-center mb-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1 rounded-full">
-                Catálogo de Soluções 4K & Estratégia
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
-              Nossos Planos & Serviços
-            </h2>
-            <p className="text-neutral-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-              Soluções completas com orçamentos acessíveis. Produção audiovisual 4K + post em alta qualidade, fotografia em volume com milhares de fotos por evento, artes gráficas personalizadas, squads de IA e assessoria de tráfego pago.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            {SERVICES.map((service, idx) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <ServiceCard service={service} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
         {/* SIMULADOR DE TRÁFEGO PAGO (Botão & Card para /calculadora) */}
         <motion.div 
           id="calculadora-trafego" 
@@ -289,11 +247,6 @@ export default function SalesPage() {
             </div>
           </div>
         </motion.div>
-
-        {/* AUTOLEAD - Ecossistema & Portal de Venda de Carros */}
-        <div className="mb-24">
-          <AutoLeadSection />
-        </div>
 
         {/* BEAT PLACE - Agência de Festas e DJs */}
         <div className="mb-24">
@@ -398,7 +351,6 @@ export default function SalesPage() {
             <a href="/precos" className="text-cyan-400 font-bold hover:underline">Tabela de Preços (/precos)</a>
             <a href="/calculadora" className="hover:text-cyan-400 transition-colors">Calculadora Tráfego</a>
             <a href="#portfolio-videos" className="hover:text-cyan-400 transition-colors">Portfólio 4K</a>
-            <a href="#planos" className="hover:text-white transition-colors">Serviços 4K</a>
             <a href="/agentes" className="hover:text-cyan-400 transition-colors">Kit IA & Obsidian</a>
             <a href="/institucional" className="hover:text-white transition-colors">Institucional</a>
             <a href="https://bplace-five.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Beat Place</a>
